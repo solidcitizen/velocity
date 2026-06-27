@@ -114,7 +114,7 @@ Every load-bearing invariant should be bound as high on this ladder as cost allo
 Two rules govern movement on the ladder:
 
 - **Loudness is itself a binding.** A `RUNTIME_GUARD` that fails closed and loud is a real enforcement, strictly better than silence. Converting a silent corruption into a loud abort is a legitimate, shippable first binding even before `PREVENT` is reached.
-- **Detect decays; Prevent is permanent.** A `DETECT` test can be deleted, skipped, or quietly made to pass; a structural `PREVENT` constraint holds until someone deliberately removes it (and removing it can itself be tested — see the guarded-but-untested note below). For enduring invariants, prefer structural prevention.
+- **Detect decays; Prevent is permanent.** A `DETECT` test can be deleted, skipped, or quietly made to pass; a structural `PREVENT` constraint holds until someone deliberately removes it (and removing it can itself be tested — see the guarded-but-untested note below). For enduring invariants, prefer structural prevention. *Permanence is conditional:* a structural binding is only permanent if it survives the project's build and deploy toolchain — see [Prevention Is Permanent Only If It Survives The Toolchain](#prevention-is-permanent-only-if-it-survives-the-toolchain).
 
 `HOPE` is acceptable only for an invariant that is *both cheap to lose and loud when lost by other means* — i.e. an invariant whose violation announces itself anyway. Any load-bearing invariant on `HOPE` is an unbound invariant and a defect.
 
@@ -129,6 +129,8 @@ Climbing to `PREVENT` has a cost. Triage decides where to spend it, scoring each
 The **lethal quadrant** is *high-blast × silent × irreversible*. Invariants in the lethal quadrant **MUST** be bound at `PREVENT`. Silent-but-reversible or loud-but-irreversible invariants should be made `RUNTIME_GUARD`-loud at minimum and climb to `PREVENT` as cost allows. An invariant that is *cheap-and-loud* (low blast, self-announcing, reversible) may rest on `HOPE`.
 
 Record the triage class alongside each invariant so the spend is visible and reviewable.
+
+**Sequence the lethal quadrant first.** When a lethal-quadrant invariant is unbound — or, worse, already being violated silently in production — binding it takes priority over new feature work that rests on it. Building features on top of an unbound load-bearing invariant compounds the blast radius and entangles the eventual fix. Stop the silent corruption (a loud `RUNTIME_GUARD` is a cheap, shippable first step) before extending the surface that depends on the invariant holding.
 
 ### Seam Invariants
 
@@ -166,4 +168,43 @@ The register format and the inline ADR `Enforcement:` field are reusable templat
 ### Guarded-But-Untested Is Not Fully Bound
 
 A `PREVENT` mechanism that exists but has no test guarding its *removal* is one careless migration away from silent un-binding. A `DROP TRIGGER`, a dropped constraint, or a deleted RLS policy can quietly demote an invariant from `PREVENT` to `HOPE`. Where the cost is reasonable, add a `DETECT` test that asserts the structural mechanism is present, so removing the prevention fails a test. Track such mechanisms in the register as `PREVENT` with a noted test gap until that test exists.
+
+### A Gate Must Run The Guard It Fronts
+
+A *gate* is any pre-flight check that decides whether an operation may proceed: a preview, a "can I do this?" validation, a precondition checked before a commit. A *guard* is the enforcement the operation will actually hit at runtime. When a gate fronts a guard, the gate must answer the **same** question the guard will — ideally by **running the guard's own predicate** (one shared check both call) or by **dry-running the real operation without persisting**. It must never approximate the guard with a *proxy signal*.
+
+Every proxy has a gap, and the gap is a **false pass**: the gate says "go", the operation commits, and the guard then rejects it — after a durable state change, which is the worst place to discover the violation. A gate keyed on a stand-in ("a decision record exists", "this event is newer than the merge") misses every case the stand-in does not cover, silently, until one of those cases reaches the guard post-commit.
+
+- Build the gate from the **same predicate** the guard enforces, or dry-run the actual operation against every aggregate it will touch. One check, not two kept in sync — two will drift.
+- Treat "the precheck and the enforcement are derived separately" as a defect waiting to happen. Factor the decision into one function both import.
+- **Defense in depth.** If a *deterministic* failure can still occur after a durable commit — e.g. a resume loop re-running a step that will always reject — it must become **visible**: fail or flag after repeated identical failure. A deterministic post-commit error that retries forever, while the gate keeps passing, is an invisible outage.
+
+### Know What Your Guard Can See
+
+Running the real check is necessary but not sufficient: the guard itself may have a structural **blind spot**. A guard that inspects only one representation of the truth is blind to truth stored in another representation — and a guard blind to a violation does not throw, it **passes**, so the violation is applied *silently*, which is worse than a loud rejection.
+
+Before trusting a guard, **enumerate where the invariant's truth actually lives**. If authored truth exists in two places — say, a projected current-state and a separate event ledger — a guard that reads only the projection cannot see a violation expressed only in the ledger. Such an invariant needs **complementary checks, one per data-location**, not a single check assumed to be total. When you adopt "run the real check," do not delete a complementary check that covered a location the real check cannot see; map the locations first.
+
+Name a binding for the *class* it enforces, not the one trigger you first noticed — a blocker named after a single cause hides the cases it does not catch.
+
+### Prevention Is Permanent Only If It Survives The Toolchain
+
+"Detect decays; Prevent is permanent" holds only if the structural binding actually survives the project's build and deploy machinery. A schema-reconciliation or migration tool that rewrites storage to match a declared model will **silently drop** any constraint, index, trigger, or policy it does not see in that model. A `PREVENT` mechanism the toolchain can erase on the next deploy is not permanent — it is `HOPE` wearing a `PREVENT` badge, and its removal is *silent*, exactly the failure `PREVENT` was meant to exclude.
+
+- Declare structural bindings **where the reconciler preserves them**, so a deploy cannot quietly remove them.
+- Add a build-time **drift check** that fails if a binding the project depends on is missing from the durable declaration. This is the `DETECT` that guards the `PREVENT` against the toolchain itself.
+- In the register, a structural binding the toolchain can silently drop is recorded as not-yet-durable (effectively `HOPE`) until its durability is itself guarded.
+
+### Bind The Whole Surface, Not A Sample
+
+When an invariant is defined over a **set of sites** — every write policy on a class of tables, every structural guard, every entry point that can reach a state transition — bind it by **enumerating the full surface**, not by fixing the sites you happened to notice. An estimate by sampling undercounts: a surface believed to be five may turn out to be thirty. For this class of invariant the right closer is a **completeness sweep** plus a **drift-guard that re-derives the full set** from its definition and fails when a qualifying site is unbound. A sampled binding leaves silent gaps that read, from the closeout, as full coverage.
+
+### Verify The Binding Adversarially
+
+A binding is a claim, and the author of a fix is the worst judge of whether it holds. The strongest signal that a binding is real is an **independent, adversarial pass** that tries to *defeat* it — across several lenses (does it reproduce the original failure? does it admit a neighboring bad state? does it over-block a legitimate one?) — producing a ship / no-ship verdict before the change merges. In the pilot this caught a real, ship-blocking defect on most integrity changes, including silent-data-loss bugs *inside the fix meant to stop silent data loss*.
+
+Two disciplines make adversarial verification trustworthy:
+
+- **Pin to the verified artifact.** The verifier must fetch, confirm, and report the exact commit it reviewed. A verdict rendered against a stale revision is worse than none — it can produce a confident false rejection of code that is actually correct.
+- **Verify per slice, not per batch.** Verify each binding as it lands, so a defect is caught against the change that introduced it rather than diffused across a pile of merged work.
 

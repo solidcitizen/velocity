@@ -13,6 +13,7 @@ This template lives in Velocity (reusable format). The *populated* register is a
 - `Triage class` records `blast radius × silence × reversibility`. Call out the **lethal quadrant** (high-blast × silent × irreversible) explicitly.
 - `Binding mechanism (file:line)` is the actual enforcing code/constraint/test location. `HOPE` rows have no binding and are a defect to be scheduled, not a resting state.
 - `Seam?` marks invariants that span two subsystems owned by neither side's test suite (highest-risk class; require a seam-review gate).
+- A binding only counts at its stated rung if it is *real*: a `PREVENT` constraint the deploy toolchain can silently drop is recorded as `HOPE` until its durability is itself guarded; a gate that fronts a runtime guard must run the guard's own predicate, not a proxy (see Proof Model → [A Gate Must Run The Guard It Fronts](../docs/PROOF-MODEL.md#a-gate-must-run-the-guard-it-fronts) and [Prevention Is Permanent Only If It Survives The Toolchain](../docs/PROOF-MODEL.md#prevention-is-permanent-only-if-it-survives-the-toolchain)).
 
 ## Register
 
