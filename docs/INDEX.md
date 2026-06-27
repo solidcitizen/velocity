@@ -23,6 +23,8 @@
 - [Review Pack Template](../templates/review-pack-template.md)
 - [Issue Record Template](../templates/issue-record-template.md)
 - [Process Change Proposal](../templates/process-change-proposal.md)
+- [System Invariant Register](../templates/system-invariant-register.md)
+- [ADR `Enforcement:` Field Convention](../templates/adr-enforcement-field.md)
 
 ## Examples
 
