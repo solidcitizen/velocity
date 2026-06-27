@@ -1,6 +1,6 @@
 # Process Change Proposal — Invariant-Binding Doctrine
 
-> PROPOSAL — pending owner approval. This proposes amendments to the Velocity proof model and two new reusable templates. It does not assert acceptance; the Velocity Maintainer approves.
+> ACCEPTED 2026-06-27 by the Velocity Maintainer. The amendments are folded into `docs/PROOF-MODEL.md` (Core Rule note, Proof Mapping narrowing, new `## Invariant Binding` section) and the two templates live in `templates/`, both linked from `docs/INDEX.md`. This record is retained for provenance; the canon is the amended proof model, not this file.
 
 - Proposal: Fold the invariant-binding doctrine into the proof model — the enforcement ladder (PREVENT > DETECT > RUNTIME_GUARD > HOPE), blast×silence×reversibility triage with a lethal quadrant that must reach PREVENT, the seam-review gate, bind-to-touched (not bind-to-declared), no-residual-for-load-bearing, loudness-as-binding, and a standing System Invariant Register — and add two templates (the register format and the inline ADR `Enforcement:` field convention).
 - Updated 2026-06-27 (revisited after the pilot continued): added five binding-quality lessons earned *after* the initial draft, while binding the reversibility surface (unmerge, PRs #186, #193–#197): **gate–guard parity** (a preview/precheck must run the guard's own predicate, never a proxy), **know-what-your-guard-can-see** (enumerate where the invariant's truth lives; a guard blind to a data-location passes violations silently), **durable prevention** (a structural binding the deploy toolchain can silently drop is HOPE, not PREVENT), **bind-the-whole-surface-not-a-sample** (completeness sweep + drift-guard for set-defined invariants), and **adversarial per-slice verification with pin-to-head**. Plus a one-line sequencing rule: bind a lethal-quadrant invariant before building features on it.
@@ -68,8 +68,8 @@ The full proposed text is the diff to `docs/PROOF-MODEL.md` (Core Rule note + Pr
 
 ## Decision
 
-- Accepted:
-- Rejected:
-- Deferred:
+- Accepted: 2026-06-27 — folded into `docs/PROOF-MODEL.md` (Core Rule note + Proof Mapping narrowing + new `## Invariant Binding` section) and shipped as `templates/system-invariant-register.md` and `templates/adr-enforcement-field.md`, both linked from `docs/INDEX.md`. Released in Velocity canon v1.1.0.
+- Rejected: —
+- Deferred: Employment-field survival across reprojection (U2 sub-case) remains deferred to its named owner in the Nexusplus overlay register — a tracked liability in the consuming project, not a gap in this doctrine.
 - Owner: Velocity Maintainer
-- Date:
+- Date: 2026-06-27
