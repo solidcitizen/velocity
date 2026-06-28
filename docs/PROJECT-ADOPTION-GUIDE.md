@@ -41,7 +41,7 @@ A project overlay must define:
 
 - lane names and authority boundaries
 - supported dev/test/deploy commands
-- production mutation approval path
+- production mutation approval path, including the exact approval phrase(s) that authorize production mutation and whether `ship it` qualifies
 - project-specific proof harnesses
 - issue numbering and issue-doc format
 - branch naming conventions
