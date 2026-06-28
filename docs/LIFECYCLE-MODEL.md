@@ -81,3 +81,23 @@ Use this frame for substantive work:
 - Branch hygiene:
 ```
 
+## Tranche Sizing
+
+Velocity does not prescribe sprint length or estimation units; project overlays own cadence and sizing. Velocity requires only that a tranche stay small enough to keep authority and proof clear.
+
+Split a tranche when:
+
+- it changes both architecture and implementation
+- it needs more than one proof lane to make its core claim
+- acceptance criteria are still being negotiated
+- it mixes unrelated issue records
+- it requires both local patching and live promotion
+- it would leave branch disposition ambiguous
+
+Keep a tranche together when:
+
+- the proof mapping is coherent
+- the same authority owner can accept the scope
+- the same branch can carry the work cleanly
+- the implementation and verification support one claim
+
