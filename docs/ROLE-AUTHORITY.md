@@ -112,3 +112,49 @@ Owns:
 
 Must keep project-specific rules out of the core method unless they generalize.
 
+## Criticality Does Not Grant Mutation Authority
+
+`Critical`, `urgent`, `prod fix`, `production issue`, `ready`, and similar urgency or destination words describe priority, interrupt level, and target relevance. They do not grant authority to mutate production or any other protected live environment. This operationalizes the Operator's `production mutation approval unless explicitly delegated` and the [Lifecycle Model](LIFECYCLE-MODEL.md) `Promotion mode` (live or higher-lane mutation has been *explicitly* approved) on the `promotion` lane: it names what counts, and what does not count, as that explicit approval.
+
+Critical work authorizes the delivery roles to:
+
+- interrupt lower-priority work
+- isolate the issue or tranche
+- prepare a bounded fix
+- run authorized local, staging, and read-only verification
+- prepare a promotion candidate
+- state the exact production approval needed
+
+Critical work does not authorize:
+
+- production deployment
+- workflow dispatch that mutates production
+- host-local production recovery deploy
+- production database mutation
+- provider-side mutation
+- secret rotation
+- destructive reset or cleanup
+- bypassing a project promotion lane
+
+Production mutation requires an explicit operator approval sentence that names the action or an accepted equivalent, such as:
+
+- `Promote this to production.`
+- `Deploy SHA <sha> to production.`
+- `Run the production promotion workflow for <ref>.`
+
+The following are not sufficient approval:
+
+- `critical`
+- `prod fix`
+- `production issue`
+- `ready`
+- `ship it`, unless the project overlay explicitly defines it as production-promotion approval
+- prior promotion approval in another tranche
+- production being quiescent
+- successful staging proof
+- the presence of a deploy script or workflow
+
+After staging or host-qualified proof, the default closeout state is the promotion-readiness disposition (see [Branch Hygiene](BRANCH-HYGIENE.md) and [Lifecycle Model](LIFECYCLE-MODEL.md) `Promotion mode`): *Ready for production promotion; awaiting explicit operator approval.*
+
+If an agent is technically capable of production mutation but lacks explicit approval, the correct result is the `Blocked` disposition (see [Handoff Packet](../templates/handoff-packet.md) `Disposition`) with the reason *missing production-mutation authority* — not improvisation.
+

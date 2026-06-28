@@ -35,4 +35,6 @@
 - Ready for internal verify:
 - Ready for acceptance:
 - Blocked:
+- Promotion approval sentence (if proposing live mutation):
+- Approved by:
 

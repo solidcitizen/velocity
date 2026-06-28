@@ -9,6 +9,18 @@
 - Branch/PR/SHA:
 - Deployment state:
 
+## Promotion Authority
+
+- Target live lane:
+- Requested mutation:
+- Exact approval sentence:
+- Approved by:
+- Approval timestamp:
+- Commit/ref:
+- Promotion mechanism:
+
+If any field is missing, do not mutate the live lane.
+
 ## What Changed
 
 - 

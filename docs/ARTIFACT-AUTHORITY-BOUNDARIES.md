@@ -36,6 +36,7 @@ Protected artifacts make this drift visible.
 | Lifecycle process recommendations | Process Reviewer | Coordinator may propose adoption | memory-only recommendations treated as policy |
 | Velocity lifecycle policy | Velocity Maintainer, with Architect review when design-significant | Project roles may propose changes | delivery roles self-modifying governance |
 | Project overlay policy | Project Coordinator, with Velocity Maintainer for lifecycle-impacting changes | Delivery roles may propose changes | project-specific drift masquerading as core lifecycle policy |
+| Production / live-lane mutation | Operator, unless explicitly delegated | Delivery roles may prepare and request a promotion candidate; see [Criticality Does Not Grant Mutation Authority](ROLE-AUTHORITY.md#criticality-does-not-grant-mutation-authority) | implicit authorization from urgency or prior-tranche approval |
 
 ## Rules
 
