@@ -9,6 +9,39 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.2.1] — 2026-06-27
+
+### Added — Direction & positioning artifacts admitted at root (non-normative)
+
+No new `docs/` mass and no Core/policy surface change (per the manifesto anti-direction).
+These are direction/context, not lifecycle policy, so they land at repo root and are not added
+to `docs/INDEX.md`; both are linked from `README.md` under "Direction & Positioning".
+
+- **`MANIFESTO.md`** admitted at repo root — the v2 thesis (delegation grades), secondary
+  directions, and the anti-directions. It is the source of the "no new `docs/` mass"
+  anti-direction that v1.1.0 and v1.2.0 both cite by name; committing it closes a dangling
+  by-name dependency. Remains "direction, not policy" — not in `docs/INDEX.md` or GOVERNANCE
+  Protected Paths.
+- **`LINEAGE-AND-ADJACENT-WORK.md`** admitted at repo root — a positioning essay (Velocity vs.
+  agent frameworks; imported lineage; what Velocity does not provide), carrying a "positioning,
+  not policy" disclaimer.
+
+### Changed — adoption & sizing guidance folded into existing canon
+
+- **Scaling the role split** (scale-down framing; solo/pair/small-team/high-risk separation)
+  and an **Overlay Experiments** protocol folded into `docs/PROJECT-ADOPTION-GUIDE.md`; its
+  overlay checklist gained role-map, cadence-integration, issue-profile, and
+  incident-escalation items.
+- **Issue Record Profiles** (Minimal / Standard / Full) folded into
+  `templates/issue-record-template.md`.
+- **Tranche sizing heuristics** (split / keep-together) folded into `docs/LIFECYCLE-MODEL.md`.
+
+### Not admitted
+
+Candidate standalone docs `docs/ADOPTION-SCALING.md` and `docs/TRANCHE-MODEL.md` were **not**
+admitted — their primitives are already defined in existing canon (`LIFECYCLE-MODEL`,
+`ROLE-AUTHORITY`, `tranche-template`); only their non-redundant slivers were folded.
+
 ## [1.2.0] — 2026-06-27
 
 ### Added — Criticality Does Not Grant Mutation Authority
@@ -99,6 +132,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.2.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.1
 [1.2.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.0
 [1.1.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.1.0
 [1.0.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.0.0

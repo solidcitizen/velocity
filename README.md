@@ -37,6 +37,13 @@ Lifecycle-rule changes are owned by the Velocity maintainer role and require exp
 - [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md)
 - [Governance](governance/GOVERNANCE.md)
 
+## Direction & Positioning
+
+Not lifecycle policy, and not part of the governed `docs/` set:
+
+- [Manifesto](MANIFESTO.md) — direction, not policy: where Velocity should evolve next.
+- [Lineage and Adjacent Work](LINEAGE-AND-ADJACENT-WORK.md) — positioning, not policy: where Velocity sits relative to agent frameworks and prior art.
+
 ## Adoption Pattern
 
 Each product repo should keep only:
