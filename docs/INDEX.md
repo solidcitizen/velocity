@@ -25,6 +25,7 @@
 - [Process Change Proposal](../templates/process-change-proposal.md)
 - [System Invariant Register](../templates/system-invariant-register.md)
 - [ADR `Enforcement:` Field Convention](../templates/adr-enforcement-field.md)
+- [Role Brief](../templates/role-brief.md)
 
 ## Examples
 

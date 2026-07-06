@@ -54,3 +54,10 @@ Each product repo should keep only:
 
 Reusable lifecycle policy belongs here.
 
+## Adoption in Practice
+
+Velocity is validated by use beyond the repo it was born in:
+
+- **Nexusplus** — the originating project (multi-tenant contact intelligence); the invariant-binding doctrine (`proposals/2026-06-27`) was piloted here before it was canonized.
+- **smart** — a personal / home-operations framework (home automation as its first domain), and the first non-product-software adopter. Working the method in a new domain independently re-derived Velocity's core disciplines — adversarial verification, pin-to-reviewed-artifact, "a prose invariant is not a force," criticality-is-not-mutation-authority — evidence that the principles are discoverable and transfer beyond software delivery. It contributed the role-brief template (`proposals/2026-07-05`).
+
