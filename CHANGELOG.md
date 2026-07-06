@@ -9,6 +9,34 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.3.0] — 2026-07-05
+
+### Added — Role-Brief Template
+
+One new template, no Core/policy surface change. Source: two consuming projects — nexusplus
+(Coordinator / Product-Owner briefs) and **smart**, the first non-product-software adopter
+(Product-Director / Tactical / Reviewer briefs) — independently converged on the same artifact
+shape; promoted to core via the adoption guide's overlay-experiment→promote path
+(`proposals/2026-07-05-role-brief-template.md`).
+
+- **`templates/role-brief.md`** — a per-role **cold-start onboarding brief** that boots an agent
+  *into* a Velocity role. It fills the gap between `docs/ROLE-AUTHORITY.md` (what a role owns and
+  must not do) and instantiation (the artifact handed to an agent so it operates *as* that role
+  from a cold start). Authority is instantiated **by reference**; two load-bearing template rules:
+  **status-free** (point to living status, never a frozen paste) and **link, don't restate**
+  (never paraphrase a canon rule into a drift-prone second copy — in one adopter a paraphrased
+  hard-stop list silently dropped two safety-critical items). Populated per-role briefs remain
+  project-overlay artifacts, as with the System Invariant Register. Linked from `docs/INDEX.md`
+  and the `PROJECT-ADOPTION-GUIDE` template list.
+- **`README.md`** gained an "Adoption in Practice" note (nexusplus + smart) — non-normative
+  adoption evidence, not policy.
+
+### Acceptance amendment
+
+- The template's fill-in instructions gained one line: on instantiation into a consuming project,
+  **repoint the canon links** to the project's pinned Velocity reference — a dead canon link
+  defeats *link, don't restate*.
+
 ## [1.2.1] — 2026-06-27
 
 ### Added — Direction & positioning artifacts admitted at root (non-normative)

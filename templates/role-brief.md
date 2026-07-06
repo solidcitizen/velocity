@@ -8,6 +8,8 @@
 > onboard per its instructions."*
 >
 > Fill the placeholders, delete this quote block, keep it to about a page. One brief per active role.
+> When instantiating into a consuming project, **repoint the canon links** (`../docs/...`) to your
+> project's pinned Velocity reference — a dead canon link defeats *link, don't restate*.
 
 ## The role
 One paragraph: what `<ROLE>` owns end-to-end, and what it is **not**. State the through-line — the

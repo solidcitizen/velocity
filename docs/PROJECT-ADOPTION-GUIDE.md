@@ -10,7 +10,7 @@ Velocity is adopted through a thin project overlay.
 - artifact authority boundaries
 - branch hygiene requirements
 - process evolution governance
-- templates for packets, tranches, closeout, and review packs
+- templates for packets, tranches, closeout, review packs, and role briefs
 
 ## What Stays In The Project Repo
 

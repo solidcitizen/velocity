@@ -1,6 +1,6 @@
 # Process Change Proposal — Role-Brief Template
 
-> PROPOSED 2026-07-05 — pending Velocity Maintainer disposition.
+> ACCEPTED 2026-07-05 by the Velocity Maintainer. `templates/role-brief.md` ships as a reusable core template, linked from `docs/INDEX.md` and the `PROJECT-ADOPTION-GUIDE` template list. Released in Velocity canon v1.3.0. This record is retained for provenance; the canon is the template itself.
 
 - Proposal: Add a reusable `templates/role-brief.md` — a per-role **cold-start onboarding brief** that boots an agent *into* a Velocity role. It fills the gap between `docs/ROLE-AUTHORITY.md` (what a role owns and must not do) and *instantiation* (the artifact you hand an agent so it operates *as* that role from a cold start). The template is status-free and instantiates authority **by reference**; it does not redefine it.
 - Source: Two independent consuming projects converged on the same artifact shape. **Nexusplus** already carries per-role operating briefs as overlays (`COORDINATOR-OPERATING-BRIEF`, `PRODUCT-OWNER-SUPERVISORY-MODEL`). **smart** — a personal / home-operations framework, a new non-product-software adopter — produced Product-Director / Tactical / Reviewer briefs in the same shape. Uncoordinated convergence on the artifact is the recurring-need signal the adoption guide's overlay-experiment→promote path exists for.
@@ -25,8 +25,8 @@ The full proposed text is `templates/role-brief.md`, carried in this branch. It 
 
 ## Decision
 
-- Accepted:
-- Rejected:
-- Deferred:
-- Owner:
-- Date:
+- Accepted: 2026-07-05 — shipped as `templates/role-brief.md`, linked from `docs/INDEX.md` and the `PROJECT-ADOPTION-GUIDE` template list. Acceptance amendment: the fill-in instructions gained a repoint-the-canon-links line (a dead canon link defeats *link, don't restate*). Released in Velocity canon v1.3.0.
+- Rejected: —
+- Deferred: —
+- Owner: Velocity Maintainer
+- Date: 2026-07-05
