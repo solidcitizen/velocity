@@ -24,6 +24,7 @@
 - [Issue Record Template](../templates/issue-record-template.md)
 - [Process Change Proposal](../templates/process-change-proposal.md)
 - [System Invariant Register](../templates/system-invariant-register.md)
+- [Architecture Decision Record](../templates/architecture-decision-record.md)
 - [ADR `Enforcement:` Field Convention](../templates/adr-enforcement-field.md)
 - [Role Brief](../templates/role-brief.md)
 - [Agent Evaluation Pack](../templates/agent-evaluation-pack.md)

@@ -114,6 +114,25 @@ date, so this record does not assign one.
 
 ## What This Review Changes
 
+### Attribution For The September Additions
+
+Anthropic's playbook directly prompted the September review and informed the new support
+for development-agent evaluations, accepted-artifact handoffs, and measurement feedback.
+These are adaptations with attribution, not claims that Velocity originated those practices.
+The other methods above supplied comparisons and compatibility checks; their publication
+does not establish influence on Velocity's earlier work.
+
+In particular, the `intent.md` → `spec.md` → `plan.md` artifact convention is described in
+[Anthropic's introduction](https://academy.claude.com/courses/ai-native-sdlc-playbook/introduction).
+The v1.4.0 adoption section carried those filenames into Velocity without attribution beside
+them. The v1.5.0 clarification removes that convention from the adoption guidance and uses
+Velocity's established Capture, Decision, Tranche, and issue-record vocabulary. This is a
+provenance correction, not a renamed import or a claim that recording requirements is novel.
+
+The three optional templates apply the reviewed automation ideas to Velocity's existing
+artifact owners, claim-specific proof, lane boundaries, and recovery obligations. They are
+not copies of Anthropic's plays and do not reproduce its artifact convention.
+
 The shared direction is artifact-based work, executable feedback, explicit agent configuration,
 and bounded autonomy. Those ideas are increasingly represented across delivery methods.
 Velocity's useful contribution is the combination of protected acceptance criteria, proof

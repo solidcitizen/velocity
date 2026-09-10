@@ -35,6 +35,7 @@ In the consuming project:
 - `docs/agent-packets/` - project handoff packets.
 - `docs/agent-missions/` - project mission ledger if used.
 - `docs/review-packs/` - operator-facing project review artifacts.
+- a project ADR index and decision records, using the project's established location.
 
 ## Overlay Requirements
 
@@ -72,6 +73,27 @@ In a pair or small team, the most valuable real separations are Operator/Coordin
 
 Velocity governs authority, proof, lifecycle state, role handoff, and process evolution. It does not define sprint length, estimation units, roadmap cadence, team topology, backlog prioritization, or the release calendar — use Scrum, Kanban, Shape Up, incident command, or a local method for those, and let the overlay say how they map in.
 
+## ADR Discipline
+
+Architect review already applies to changes to architecture contracts, authority boundaries,
+replay/retry semantics, durable status truth, operator-facing state contracts, and lifecycle
+proof rules; see [Role Authority](ROLE-AUTHORITY.md#architect). Use an ADR to preserve the
+context, options, rationale, accepted decision, and consequences of significant architecture
+work. The optional [Architecture Decision Record](../templates/architecture-decision-record.md)
+provides a complete format; an existing project format can serve the same purpose.
+
+Keep a proposed decision distinct from an accepted one, link the authorized review and
+acceptance, and preserve a replaced decision through a superseding record. Link the decision
+to its implementation tranches and proof. For each load-bearing invariant, use the existing
+[Enforcement field](../templates/adr-enforcement-field.md) and keep it aligned with the
+[System Invariant Register](../templates/system-invariant-register.md). Acceptance of a design
+does not prove its implementation or authorize live promotion.
+
+This is recommended recordkeeping support for existing authority and proof rules, not a new
+requirement to create an ADR for every change or to migrate all historical decisions. ADRs are
+established practice; the template credits their lineage. Populated product decisions stay in
+the consuming project. Decisions about Velocity itself belong in this repository's `adrs/`.
+
 ## Overlay Experiments
 
 A project may test a local rule in its overlay before proposing a Velocity core change. An overlay experiment should state its name, owner, start date, intended duration or review trigger, the local rule being tested, the Velocity core rule it touches, a compatibility check against shared-context / separated-write-authority, the evidence to collect, and the promotion path if it works. Overlay experiments must not silently contradict core governance: they may specialize commands, issue formats, lane names, proof harnesses, and routing, but they may not remove acceptance-proof-first, erase lane proof boundaries, or let the role being evaluated rewrite its own evaluation criteria.
@@ -82,12 +104,11 @@ The v1.4 templates are opt-in support for the existing authority and proof model
 retroactively change prior conformance, introduce automatic acceptance, or adopt the manifesto's
 delegation grades. Start with one workflow and prove its behavior before widening its scope.
 
-1. **Make intent easy to capture.** A short record can hold the problem, desired outcome,
-   users, constraints, and unknowns. Map it to Capture/Decision and the existing issue profiles.
-   Requirements/design and the bounded implementation plan map to Translation/Architecture
-   and Tranche. Use existing records when they suffice; `intent.md`, `spec.md`, and `plan.md`
-   are possible filenames, not mandatory duplicate documents. Declare one authoritative home
-   per artifact and link its immutable revision from tickets or other working copies.
+1. **Use Capture, Decision, and Tranche.** Record the observation and evidence in the
+   project's existing issue record. Have the appropriate owner decide the direction, then
+   define bounded scope, acceptance criteria, and proof in a tranche. Keep requirements
+   and architecture in their existing authoritative homes. Link the accepted revision from
+   handoffs or other working copies rather than creating a second independently editable record.
 2. **Make context usable.** Keep the agent entry file short, link authoritative guidance,
    and package repeated procedures as versioned skills or equivalent adapters. Preserve policy
    ownership and record which versions ran. Test both whether the adapter loads and whether
@@ -104,7 +125,7 @@ delegation grades. Start with one workflow and prove its behavior before widenin
    serialize shared writes; add parallel sessions only while review capacity keeps up.
 5. **Measure before expanding.** Use the [Measured Pilot](../templates/automation-pilot.md)
    for baseline, shadow, bounded execution, and a recorded disposition. Monitor a signal with
-   a deterministic rule and route findings into normal issue/intent triage. Pre-approved
+   a deterministic rule and route findings into normal issue capture and triage. Pre-approved
    recovery still needs a scoped authority record and rehearsal evidence.
 
 The [worked example](../examples/measured-automation/README.md) supplies synthetic cases and
