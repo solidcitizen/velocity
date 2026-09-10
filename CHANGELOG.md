@@ -9,6 +9,34 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.5.0] — 2026-09-09
+
+### Added — ADR Recordkeeping Support
+
+- Optional complete Architecture Decision Record template: context, alternatives, rationale,
+  review/acceptance, enforcement links, consequences, delivery, and supersession.
+- Adoption guidance connects ADRs to the existing Architect review, invariant-binding,
+  project ownership, and promotion rules. Existing project ADR formats remain usable.
+- Credit the established ADR tradition, including Michael Nygard's 2011 account.
+
+### Clarified — Public Presentation And Attribution
+
+- Replace the imported artifact-filename convention in the adoption guide with Velocity's
+  existing Capture, Decision, Tranche, and issue-record vocabulary.
+- Credit Anthropic's influence on the September automation additions beside the comparison.
+- Link the public field guide and qualify project adoption accounts and historical examples.
+- Align a proof-mapping comment with the existing named-deferral rule; clarify that a role
+  brief follows the project's declared index policy and distinguishes artifact ownership from
+  live-promotion approval wording.
+
+**MINOR**: additive template and recommended guidance, plus editorial corrections. No changed
+authority boundary, proof obligation, or prior conformance. No universal per-change ADR
+requirement or historical migration is introduced. Authority: Mike's request to publish and
+clean up Velocity, credit external concepts, keep the standard primary, and embed ADR discipline
+on 2026-09-09. Affected protected artifacts: `docs/PROJECT-ADOPTION-GUIDE.md`, `docs/INDEX.md`,
+and `templates/architecture-decision-record.md`.
+Other protected editorial corrections: `docs/PROOF-MODEL.md` and `templates/role-brief.md`.
+
 ## [1.4.0] — 2026-09-09
 
 ### Added — Measured Automation Support

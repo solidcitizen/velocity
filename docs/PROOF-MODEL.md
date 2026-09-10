@@ -89,7 +89,7 @@ Every closeout should include:
 ```md
 Proof mapping:
 - <invariant or operator sentence> -> <direct test/check/evidence> -> <Enforcement: PREVENT|DETECT|RUNTIME_GUARD + file:line>
-- <touched invariant not yet bound> -> deferred to <owner> by <date or gate>   # only for non-load-bearing invariants
+- <touched invariant not yet bound> -> deferred to <owner> by <date or gate>
 ```
 
 A load-bearing invariant may not be closed as `residual` or `out of scope`. It must be bound (mapped to an enforcing mechanism) or **explicitly and visibly deferred to a named owner**, never silently dropped. The original Velocity proof mapping allowed a bare `residual / blocked` disposition; that disposition is the failure path that lets a load-bearing invariant fall through unbound, and it is no longer permitted for load-bearing invariants. See [No Residual Disposition For A Load-Bearing Invariant](#no-residual-disposition-for-a-load-bearing-invariant).
@@ -207,4 +207,3 @@ Two disciplines make adversarial verification trustworthy:
 
 - **Pin to the verified artifact.** The verifier must fetch, confirm, and report the exact commit it reviewed. A verdict rendered against a stale revision is worse than none — it can produce a confident false rejection of code that is actually correct.
 - **Verify per slice, not per batch.** Verify each binding as it lands, so a defect is caught against the change that introduced it rather than diffused across a pile of merged work.
-

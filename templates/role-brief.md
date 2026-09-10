@@ -17,15 +17,17 @@ question this role exists to keep answered. Map to [ROLE-AUTHORITY](../docs/ROLE
 (*owns* / *must not*) **by reference** — link it, do not re-list it here (see "link, don't restate").
 
 ## Onboard before you act (read, don't assume)
-Ordered reading, gatekeeper first: the project's doc **index/overlay** (if a doc isn't indexed, it's a
-draft), then the docs this role actually reads per ROLE-AUTHORITY, then the **living status** (issue
+Ordered reading, gatekeeper first: the project's doc **index/overlay** (treat the index as exhaustive
+only if the overlay explicitly declares that policy), then the docs this role reads per ROLE-AUTHORITY, then the **living status** (issue
 log / mission / plan). List them in order. Do not operate from this brief alone.
 
 ## How you operate — non-negotiables (link, don't restate)
 - **Proof.** No claim is trusted without its proof class ([PROOF-MODEL](../docs/PROOF-MODEL.md));
   substantive or surprising conclusions are **verified adversarially**, pinned to the reviewed artifact.
-- **Authority / gate.** Protected or production mutation needs the explicit approval phrase; *criticality
-  is not mutation authority* ([ROLE-AUTHORITY](../docs/ROLE-AUTHORITY.md)). When unsure, escalate — don't act.
+- **Authority / gate.** Protected-artifact changes need the artifact owner's authorization under
+  [Artifact Authority Boundaries](../docs/ARTIFACT-AUTHORITY-BOUNDARIES.md). Production mutation
+  needs the project's explicit promotion approval sentence; *criticality is not mutation authority*
+  ([ROLE-AUTHORITY](../docs/ROLE-AUTHORITY.md)). When unsure, escalate — don't act.
 - **Evidence discipline.** Separate FACT from hypothesis; don't collapse observed behavior into a root
   cause without evidence; treat an empty/null result as a provenance question, not proof of absence;
   never fabricate provenance — label an unobservable actor/state **unknown**.

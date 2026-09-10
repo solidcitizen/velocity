@@ -8,7 +8,11 @@ It is intentionally project-independent. Product repositories consume Velocity t
 
 Velocity exists to make agent-assisted delivery repeatable across projects while preserving human authority over goals, risk, and process evolution.
 
-Current canon: **v1.4.0 — measured automation guidance**.
+Read the [Velocity field guide](https://velocity-playbook.conant-9735.chatgpt.site) for a practical,
+AI-agnostic introduction, then use this repository for the authoritative rules and templates.
+The guide explains the method; it does not create a second source of lifecycle policy.
+
+Current canon: **v1.5.0 — ADR recordkeeping support and public standard**.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
 projects evaluate development agents, qualify automated handoffs, and measure delivery results;
 they do not activate automation or change existing approval boundaries.
@@ -52,8 +56,18 @@ Not lifecycle policy, and not part of the governed `docs/` set:
 
 ## Put It Into Practice
 
-Start with the [measured automation adoption steps](docs/PROJECT-ADOPTION-GUIDE.md#adopting-measured-automation)
-and [worked example](examples/measured-automation/README.md). Use the three templates together:
+Start with the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define a thin local
+overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded change.
+Velocity works with your chosen AI tools and delivery cadence.
+
+For significant architecture work, use the [ADR discipline guidance](docs/PROJECT-ADOPTION-GUIDE.md#adr-discipline)
+and [Architecture Decision Record](templates/architecture-decision-record.md) to connect the
+decision, its authority, and the mechanisms that enforce its invariants.
+
+For the optional v1.4 automation additions, read the
+[source attribution](LINEAGE-AND-ADJACENT-WORK.md#attribution-for-the-september-additions),
+[adoption steps](docs/PROJECT-ADOPTION-GUIDE.md#adopting-measured-automation), and
+[synthetic worked example](examples/measured-automation/README.md). Use the three templates together:
 
 - [Agent Evaluation Pack](templates/agent-evaluation-pack.md) — qualify changes to the development agent.
 - [Automation Transition Contract](templates/automation-transition-contract.md) — connect accepted artifacts to authorized actions.
@@ -71,7 +85,12 @@ Reusable lifecycle policy belongs here.
 
 ## Adoption in Practice
 
-Velocity is validated by use beyond the repo it was born in:
+The maintainer reports using Velocity in two projects. These accounts explain the method's
+development; they are not independent validation, customer endorsements, or measured gains.
 
 - **Nexusplus** — the originating project (multi-tenant contact intelligence); the invariant-binding doctrine (`proposals/2026-06-27`) was piloted here before it was canonized.
 - **smart** — a personal / home-operations framework (home automation as its first domain), and the first non-product-software adopter. Working the method in a new domain independently re-derived Velocity's core disciplines — adversarial verification, pin-to-reviewed-artifact, "a prose invariant is not a force," criticality-is-not-mutation-authority — evidence that the principles are discoverable and transfer beyond software delivery. It contributed the role-brief template (`proposals/2026-07-05`).
+
+The examples and accepted proposals retain their historical project context. Example commands
+are illustrative, not current operating instructions. Public availability does not turn a
+proposal or the manifesto into adopted policy; consult the changelog for release status.
