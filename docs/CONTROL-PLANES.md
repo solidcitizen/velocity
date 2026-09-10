@@ -50,6 +50,25 @@ Shared-control-plane changes need explicit ownership and disposition. Do not rel
 - coordinator-owned project repo change
 - branch/commit/push requested
 
+## Evaluating Automation Changes
+
+Product proof and automation proof answer different questions: whether the delivered system
+works, and whether the agent configuration still performs its assigned work correctly. Projects
+can use the [Agent Evaluation Pack](../templates/agent-evaluation-pack.md) to compare model,
+prompt, skill, hook, permission, and runtime changes against representative tasks and incidents.
+This is recommended qualification guidance, not a new universal evaluation requirement.
+
+Keep the evaluated configuration separate from the authority that accepts its results. Apply
+the existing artifact-authority rules to expected outcomes and evaluation criteria. A passing
+evaluation does not change lane authority or authorize a lifecycle-rule modification. Runtime
+adapters, CI jobs, fixtures, and populated results belong to the consuming project.
+
+For automated handoffs, the [Transition Contract](../templates/automation-transition-contract.md)
+records the accepted artifact, direct proof, existing authorization, permitted next action,
+and recovery route. A trigger initiates evaluation of that contract; it does not grant authority.
+The [Measured Pilot](../templates/automation-pilot.md) connects those contracts to observed
+delivery time, human effort, quality, and resource use.
+
 ## Change Disposition Labels
 
 Use these labels when recommending or making process changes:
@@ -59,4 +78,3 @@ Use these labels when recommending or making process changes:
 - `project overlay proposal` - belongs in a consuming project's local adapter.
 - `coordinator-owned project change` - belongs in the product repo under Coordinator control.
 - `branch/commit/push requested` - operator has asked for a concrete repo mutation lifecycle.
-

@@ -9,6 +9,40 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.4.0] — 2026-09-09
+
+### Added — Measured Automation Support
+
+- Three optional reusable templates: `agent-evaluation-pack.md` for regression-testing the
+  development agent/configuration, `automation-transition-contract.md` for accepted-artifact
+  handoffs within existing authority, and `automation-pilot.md` for baseline comparisons,
+  bounded rollout, deterministic monitoring, and quality/effort/resource measures.
+- A synthetic worked example under `examples/measured-automation/` with twelve case designs
+  and a tabletop trace. It is not a running integration or measured success.
+- Adoption steps and control-plane pointers folded into existing docs and linked from the
+  index and README. Runtime adapters, real fixtures, and measured results stay in project overlays.
+
+### Changed — Dated Positioning And Comparison
+
+- First-party comparison of Anthropic's AI-Native SDLC Playbook, AWS AI-DLC, GitHub Spec Kit,
+  BMad Method, Kiro, Superpowers, and OpenAI harness engineering in `LINEAGE-AND-ADJACENT-WORK.md`.
+- Historical context separates the method's development from its 2026-05-11 repository
+  extraction and distinguishes original exclusivity language from a verified priority claim.
+- Manifesto direction now acknowledges convergence and explains that its delegation grades,
+  including timeout-based acceptance, remain an unadopted sketch.
+
+### Compatibility And Acceptance
+
+**MINOR** under this changelog's versioning rules: additive, opt-in templates and guidance;
+no new universal conformance requirement, changed approval boundary, or retroactive re-judgment.
+The manifesto's v2 ambition does not require a 2.0 release for these compatible additions.
+No consuming project is migrated or enabled by this change. Runtime and pilot outcomes remain
+unmeasured. Accepted by Mike as Velocity Maintainer on 2026-09-09 for merge and release as
+`v1.4.0`; the acceptance amendment records that decision and finalizes release labels.
+
+Proposal and authority record:
+[`proposals/2026-09-09-measured-automation.md`](proposals/2026-09-09-measured-automation.md).
+
 ## [1.3.0] — 2026-07-05
 
 ### Added — Role-Brief Template
@@ -160,6 +194,8 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.4.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.4.0
+[1.3.0]: https://github.com/solidcitizen/velocity/tree/v1.3.0
 [1.2.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.1
 [1.2.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.0
 [1.1.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.1.0
