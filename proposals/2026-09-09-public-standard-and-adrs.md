@@ -1,13 +1,13 @@
 # Public Standard And ADR Recordkeeping Support
 
-- Status: Prepared for maintainer review
+- Status: Accepted
 - Date: 2026-09-09
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
 - Source: Mike's requests to publish Velocity as an AI-agnostic standard, clean up the repo
   for public visibility, credit Anthropic's ideas, and embed ADR discipline.
 - Disposition: Velocity repo proposal; branch/commit/push requested through launch preparation.
-- Proposed version: v1.5.0
+- Accepted version: v1.5.0
 
 ## Change
 
@@ -49,7 +49,14 @@ author metadata remain in the public history; no Git history rewrite is proposed
 
 ## Acceptance And Proof
 
-Maintainer acceptance is pending. The operator has authorized public launch and repository
-visibility change; this proposal records the separate reusable-artifact review required by
-Velocity governance. Verification and the final branch disposition will be recorded with
-the maintainer's decision.
+Accepted by Mike as Velocity Maintainer on 2026-09-09: "Looks good" in direct response to
+the request to merge PR #6 as v1.5.0 and finish the authorized public launch. Repository
+visibility change and public website publishing are also authorized.
+
+Proof: 36 Markdown files and 118 internal links/anchors checked; `git diff --check` passed.
+The separate publication site passed 21 local HTTP route checks, 668 local link/asset
+checks, JavaScript syntax checks, and template/archive validation. No browser interaction
+proof is claimed.
+
+Branch disposition: `codex/public-launch` accepted for merge via PR #6 and release as
+v1.5.0. The released standard remains authoritative; the website renders its pinned text.

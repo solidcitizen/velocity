@@ -37,6 +37,9 @@ on 2026-09-09. Affected protected artifacts: `docs/PROJECT-ADOPTION-GUIDE.md`, `
 and `templates/architecture-decision-record.md`.
 Other protected editorial corrections: `docs/PROOF-MODEL.md` and `templates/role-brief.md`.
 
+Accepted by Mike as Velocity Maintainer on 2026-09-09 for merge and release as `v1.5.0`.
+See the [proposal and acceptance record](proposals/2026-09-09-public-standard-and-adrs.md).
+
 ## [1.4.0] — 2026-09-09
 
 ### Added — Measured Automation Support
