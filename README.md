@@ -8,7 +8,7 @@ It is intentionally project-independent. Product repositories consume Velocity t
 
 Velocity exists to make agent-assisted delivery repeatable across projects while preserving human authority over goals, risk, and process evolution.
 
-Read the [Velocity field guide](https://velocity-playbook.conant-9735.chatgpt.site) for a practical,
+Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
 The guide explains the method; it does not create a second source of lifecycle policy.
 
@@ -83,14 +83,27 @@ Each product repo should keep only:
 
 Reusable lifecycle policy belongs here.
 
-## Adoption in Practice
+## Public Examples
 
-The maintainer reports using Velocity in two projects. These accounts explain the method's
-development; they are not independent validation, customer endorsements, or measured gains.
+These self-contained examples require no access to another repository:
 
-- **Nexusplus** — the originating project (multi-tenant contact intelligence); the invariant-binding doctrine (`proposals/2026-06-27`) was piloted here before it was canonized.
-- **smart** — a personal / home-operations framework (home automation as its first domain), and the first non-product-software adopter. Working the method in a new domain independently re-derived Velocity's core disciplines — adversarial verification, pin-to-reviewed-artifact, "a prose invariant is not a force," criticality-is-not-mutation-authority — evidence that the principles are discoverable and transfer beyond software delivery. It contributed the role-brief template (`proposals/2026-07-05`).
+- [Project overlay](examples/project-overlay/README.md) — an illustrative application showing
+  how to name local artifacts, lanes, commands, and approval boundaries.
+- [Policy and project mapping](examples/project-overlay/policy-mapping.md) — what belongs in
+  Velocity and what stays with a consuming project.
+- [Measured automation](examples/measured-automation/README.md) — a synthetic worked example
+  of evaluation, accepted-artifact handoffs, and a bounded pilot.
 
-The examples and accepted proposals retain their historical project context. Example commands
-are illustrative, not current operating instructions. Public availability does not turn a
-proposal or the manifesto into adopted policy; consult the changelog for release status.
+Example paths and commands are illustrative; they are not a supplied application or current
+operating instructions. Adapt them to your own project and its pinned Velocity version.
+
+## Development History
+
+Velocity grew out of the maintainer's work in private software and operations projects.
+Those projects are not public reference implementations. Historical proposals describe
+maintainer-reported experience, not independently reproducible evidence, customer
+endorsements, or measured gains. Public examples illustrate the method without claiming to
+reproduce those projects or their results.
+
+Public availability does not turn a proposal or the manifesto into adopted policy; consult
+the changelog for release status.

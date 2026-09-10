@@ -33,6 +33,6 @@
 
 ## Examples
 
-- [Nexusplus Project Overlay](../examples/nexusplus/project-overlay.md)
-- [Nexusplus Extraction Mapping](../examples/nexusplus/extracted-mapping.md)
+- [Illustrative Project Overlay](../examples/project-overlay/README.md)
+- [Policy and Project Mapping](../examples/project-overlay/policy-mapping.md)
 - [Measured Automation Worked Example](../examples/measured-automation/README.md)
