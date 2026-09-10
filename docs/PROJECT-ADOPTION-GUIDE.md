@@ -11,6 +11,7 @@ Velocity is adopted through a thin project overlay.
 - branch hygiene requirements
 - process evolution governance
 - templates for packets, tranches, closeout, review packs, and role briefs
+- optional evaluation, automated-transition, and measured-pilot templates
 
 ## What Stays In The Project Repo
 
@@ -75,3 +76,38 @@ Velocity governs authority, proof, lifecycle state, role handoff, and process ev
 
 A project may test a local rule in its overlay before proposing a Velocity core change. An overlay experiment should state its name, owner, start date, intended duration or review trigger, the local rule being tested, the Velocity core rule it touches, a compatibility check against shared-context / separated-write-authority, the evidence to collect, and the promotion path if it works. Overlay experiments must not silently contradict core governance: they may specialize commands, issue formats, lane names, proof harnesses, and routing, but they may not remove acceptance-proof-first, erase lane proof boundaries, or let the role being evaluated rewrite its own evaluation criteria.
 
+## Adopting Measured Automation
+
+The v1.4 templates are opt-in support for the existing authority and proof model. They do not
+retroactively change prior conformance, introduce automatic acceptance, or adopt the manifesto's
+delegation grades. Start with one workflow and prove its behavior before widening its scope.
+
+1. **Make intent easy to capture.** A short record can hold the problem, desired outcome,
+   users, constraints, and unknowns. Map it to Capture/Decision and the existing issue profiles.
+   Requirements/design and the bounded implementation plan map to Translation/Architecture
+   and Tranche. Use existing records when they suffice; `intent.md`, `spec.md`, and `plan.md`
+   are possible filenames, not mandatory duplicate documents. Declare one authoritative home
+   per artifact and link its immutable revision from tickets or other working copies.
+2. **Make context usable.** Keep the agent entry file short, link authoritative guidance,
+   and package repeated procedures as versioned skills or equivalent adapters. Preserve policy
+   ownership and record which versions ran. Test both whether the adapter loads and whether
+   the behavior it requests occurs; instructions alone do not enforce an invariant.
+3. **Qualify the development agent.** Instantiate the
+   [Agent Evaluation Pack](../templates/agent-evaluation-pack.md). Include successful work,
+   authority denials, scenario-proof failures, and incident regressions. Protect the checks
+   from the candidate, compare against the baseline, and retain all attempted-run outcomes.
+4. **Qualify one handoff.** Fill the
+   [Transition Contract](../templates/automation-transition-contract.md). Bind the accepted
+   artifact revision to the next action, verify authorization at execution, and test stale,
+   duplicate, interrupted, and denied paths. Put mandatory enforcement outside the agent's
+   write authority and exercise every relevant mutation route. Isolate concurrent work and
+   serialize shared writes; add parallel sessions only while review capacity keeps up.
+5. **Measure before expanding.** Use the [Measured Pilot](../templates/automation-pilot.md)
+   for baseline, shadow, bounded execution, and a recorded disposition. Monitor a signal with
+   a deterministic rule and route findings into normal issue/intent triage. Pre-approved
+   recovery still needs a scoped authority record and rehearsal evidence.
+
+The [worked example](../examples/measured-automation/README.md) supplies synthetic cases and
+a tabletop trace. It is not a running integration or proof of improved delivery. A project
+chooses its runtime, commands, budgets, fixtures, and rollout independently. A request to update
+Velocity does not itself migrate or enable automation in a consuming project.

@@ -26,9 +26,12 @@
 - [System Invariant Register](../templates/system-invariant-register.md)
 - [ADR `Enforcement:` Field Convention](../templates/adr-enforcement-field.md)
 - [Role Brief](../templates/role-brief.md)
+- [Agent Evaluation Pack](../templates/agent-evaluation-pack.md)
+- [Automation Transition Contract](../templates/automation-transition-contract.md)
+- [Measured Automation Pilot](../templates/automation-pilot.md)
 
 ## Examples
 
 - [Nexusplus Project Overlay](../examples/nexusplus/project-overlay.md)
 - [Nexusplus Extraction Mapping](../examples/nexusplus/extracted-mapping.md)
-
+- [Measured Automation Worked Example](../examples/measured-automation/README.md)
