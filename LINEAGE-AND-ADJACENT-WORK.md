@@ -65,7 +65,7 @@ Velocity does not provide:
 - planning cadence, estimation, or roadmap process
 
 Those belong to the project overlay, the chosen toolchain, or the team's delivery method.
-The v1.4 candidate adds optional evaluation and measurement templates, not an execution engine.
+Velocity v1.4.0 adds optional evaluation and measurement templates, not an execution engine.
 
 ## Development History And Historical Claims
 
@@ -120,7 +120,7 @@ Velocity's useful contribution is the combination of protected acceptance criter
 matched to claims and lanes, enforcement of touched invariants, and separately governed process
 evolution. None of these comparisons proves exclusive ownership of that combination.
 
-The v1.4 candidate translates the review into three optional reusable supports:
+Velocity v1.4.0 translates the review into three optional reusable supports:
 
 - [Agent Evaluation Pack](templates/agent-evaluation-pack.md): compare the development agent's
   configuration against protected expected outcomes, including incidents and denied actions.

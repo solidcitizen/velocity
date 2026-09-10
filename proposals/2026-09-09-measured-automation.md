@@ -1,13 +1,13 @@
 # Process Change Proposal — Measured Automation And Adjacent Methods
 
-- Status: implemented for review; release acceptance pending.
-- Proposed version: **v1.4.0** (additive MINOR).
+- Status: accepted by Mike as Velocity Maintainer on 2026-09-09.
+- Accepted version: **v1.4.0** (additive MINOR).
 - Source: operator request on 2026-09-09 following comparison with Anthropic's AI-Native SDLC
   Playbook: "Please incorporate the updates as you recommend, this deserves an updated
   versioning of Velocity, a check for other playbook/frameworks that are relevant for comparison."
 - Authority basis: explicit process-evolution intent in this repository. The agent prepares
-  the change under Velocity Maintainer responsibility; final merge/release acceptance remains
-  with the operator as maintainer under [Governance](../governance/GOVERNANCE.md).
+  the change under Velocity Maintainer responsibility; Mike subsequently approved merge and
+  release under [Governance](../governance/GOVERNANCE.md), as recorded below.
 - Affected control plane: Automation, with Shared Control Plane references.
 - Affected protected artifacts: `docs/CONTROL-PLANES.md`, `docs/PROJECT-ADOPTION-GUIDE.md`,
   `docs/INDEX.md`, and three new files under `templates/`.
@@ -62,15 +62,18 @@ Document validation on 2026-09-09 checked 34 Markdown files, 103 internal file/a
 and 16 tables without a broken reference or unbalanced code fence. Whitespace validation passed.
 The author also reviewed the twelve synthetic cases against the unchanged authority/proof
 rules and corrected template placeholders for Markdown rendering. This is an author document
-review, not independent agent verification or execution of those cases. The PR identifies the
-exact candidate commit for maintainer review.
+review, not independent agent verification or execution of those cases. The reviewed candidate
+is `0a816bb83f77dd0d59315fd0c863af90f0cfb999` in PR #5. The acceptance amendment changes only
+release labels, the changelog release link, and this decision record; it does not change the
+approved templates or adoption guidance.
 
 ## Decision And Rollout
 
 - Implementation requested: Mike, 2026-09-09, in the instruction quoted above.
-- Maintainer merge/release acceptance: pending review of this candidate.
-- Release action after acceptance: merge the reviewed commit and create `v1.4.0` on the merged
-  canon; update candidate labels and record acceptance. Do not move existing release tags.
+- Maintainer merge/release acceptance: Mike, 2026-09-09, replied "yes please merge" to the
+  explicit request to merge PR #5 and publish v1.4.0.
+- Release disposition: merge the reviewed candidate with this acceptance amendment and create
+  `v1.4.0` on the merged canon. Existing release tags remain unchanged.
 - Consumer action: optional adoption through the existing overlay-experiment process; pin an
   accepted release when ready. This tranche does not change any consumer's pin or enable a job.
 - Evidence to collect next: a real project's evaluation and pilot results, with named owners,

@@ -65,7 +65,7 @@ work without weakening protected authority.
 
 ## Near-Term Work: Measured Automation
 
-The v1.4 candidate supplies optional [evaluation](templates/agent-evaluation-pack.md),
+Velocity v1.4.0 supplies optional [evaluation](templates/agent-evaluation-pack.md),
 [transition](templates/automation-transition-contract.md), and
 [pilot](templates/automation-pilot.md) templates within existing policy. Its next evidence gate
 is a project pilot, not a claim of autonomous delivery already achieved.

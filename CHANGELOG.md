@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [1.4.0] — Candidate, 2026-09-09
+## [1.4.0] — 2026-09-09
 
 ### Added — Measured Automation Support
 
@@ -31,13 +31,14 @@ rather than a moving branch. Versions are canon releases, not software:
 - Manifesto direction now acknowledges convergence and explains that its delegation grades,
   including timeout-based acceptance, remain an unadopted sketch.
 
-### Compatibility And Release State
+### Compatibility And Acceptance
 
 **MINOR** under this changelog's versioning rules: additive, opt-in templates and guidance;
 no new universal conformance requirement, changed approval boundary, or retroactive re-judgment.
 The manifesto's v2 ambition does not require a 2.0 release for these compatible additions.
 No consuming project is migrated or enabled by this change. Runtime and pilot outcomes remain
-unmeasured. Candidate awaiting maintainer acceptance; no `v1.4.0` release/tag is implied yet.
+unmeasured. Accepted by Mike as Velocity Maintainer on 2026-09-09 for merge and release as
+`v1.4.0`; the acceptance amendment records that decision and finalizes release labels.
 
 Proposal and authority record:
 [`proposals/2026-09-09-measured-automation.md`](proposals/2026-09-09-measured-automation.md).
@@ -193,7 +194,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
-[1.4.0]: proposals/2026-09-09-measured-automation.md
+[1.4.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.4.0
 [1.3.0]: https://github.com/solidcitizen/velocity/tree/v1.3.0
 [1.2.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.1
 [1.2.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.0

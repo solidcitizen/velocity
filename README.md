@@ -8,7 +8,7 @@ It is intentionally project-independent. Product repositories consume Velocity t
 
 Velocity exists to make agent-assisted delivery repeatable across projects while preserving human authority over goals, risk, and process evolution.
 
-Release candidate: **v1.4.0 — measured automation guidance**; current tagged canon is v1.3.0.
+Current canon: **v1.4.0 — measured automation guidance**.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
 projects evaluate development agents, qualify automated handoffs, and measure delivery results;
 they do not activate automation or change existing approval boundaries.
