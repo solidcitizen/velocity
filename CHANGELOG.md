@@ -9,6 +9,30 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.6.0
+
+### Added — Executive Check-in Desk Template
+
+- Optional reusable template: a standing, ID-tracked page of everything the project's Operator
+  must decide or do, with a Markdown skeleton (`templates/executive-checkin-desk.md`) and a
+  generic, dependency-free HTML starter (`templates/executive-checkin-desk.html`) with light/dark
+  theming and placeholder content only.
+- Companion to the existing Handoff Packet and Review Pack Template: those carry one piece of
+  work to its next owner; this is the cross-cutting surface of every open ask to the Operator.
+- New "Executive Check-in Discipline" guidance in the Project Adoption Guide; linked from the
+  docs index.
+
+**MINOR**: additive template and adoption guidance only. No changed authority boundary, proof
+obligation, role definition, or prior conformance. The template documents an existing practice
+from a private consuming project (in use there since 2026-09-14 under a project-specific name)
+generalized to remove any project-specific naming, data, or secrets. Affected protected
+artifacts: `templates/` (one new Markdown file, one new HTML file) and `docs/INDEX.md`;
+`docs/PROJECT-ADOPTION-GUIDE.md` gains one adoption-guidance section.
+
+Proposed under Mike's request, as Velocity Maintainer, to generalize the pattern into reusable
+canon. Merge and release await explicit maintainer approval; see the
+[proposal](proposals/2026-09-18-executive-checkin-desk-template.md).
+
 ## [1.5.0] — 2026-09-09
 
 ### Added — ADR Recordkeeping Support
