@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>&lt;Project&gt; Check-in Desk</title>
+<!--
+  Executive Check-in Desk — generic HTML starter.
+
+  Companion to templates/executive-checkin-desk.md (the contract this page implements) —
+  read that file first. Placeholder content only: no project name, no real dates, no
+  secrets. Replace every <angle-bracket> placeholder and the CK-n entries below before
+  publishing, and keep the header totals in sync by hand (or wire them up) whenever you add,
+  answer, or close an ask — the contract requires the page to be republished the same turn.
+
+  No build step and no framework dependency: copy this file, edit the placeholders, host it
+  wherever your project already hosts operator-facing pages.
+-->
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f8;
+    --surface: #ffffff;
+    --border: #e2e2e6;
+    --text: #1b1c1f;
+    --text-muted: #5b5d66;
+    --accent: #2f5fd6;
+    --accent-contrast: #ffffff;
+    --decide: #a15c00;
+    --decide-bg: #fdf3e2;
+    --decide-border: #f0d9ad;
+    --do: #b0281f;
+    --do-bg: #fbeceb;
+    --do-border: #f0c6c2;
+    --answered: #1f7a4d;
+    --answered-bg: #eaf6ef;
+    --answered-border: #c7e8d5;
+    --team: #2f5fd6;
+    --team-bg: #eaf0fc;
+    --team-border: #c5d4f5;
+    --mono-bg: #eef0f4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16171a;
+      --surface: #1e1f23;
+      --border: #303239;
+      --text: #eceef2;
+      --text-muted: #a3a6b0;
+      --accent: #7fa2f7;
+      --accent-contrast: #10131c;
+      --decide: #e3a94a;
+      --decide-bg: #2c2413;
+      --decide-border: #4a3a17;
+      --do: #e8827a;
+      --do-bg: #2c1917;
+      --do-border: #4a2521;
+      --answered: #6bc796;
+      --answered-bg: #142a1f;
+      --answered-border: #234d35;
+      --team: #7fa2f7;
+      --team-bg: #161f33;
+      --team-border: #26365a;
+      --mono-bg: #26282e;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 16px 64px;
+  }
+
+  header.page-head h1 {
+    font-size: 1.5rem;
+    margin: 0 0 4px;
+  }
+
+  .updated {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0 0 16px;
+  }
+
+  .totals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .totals .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+
+  .totals .stat strong {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  .totals .stat span {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  section.group {
+    margin-bottom: 32px;
+  }
+
+  section.group > h2 {
+    font-size: 1.05rem;
+    margin: 0 0 4px;
+  }
+
+  section.group > .group-note {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin: 0 0 14px;
+  }
+
+  .ask {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left-width: 4px;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+
+  .ask.decide { border-left-color: var(--decide); }
+  .ask.do { border-left-color: var(--do); }
+
+  .ask h3 {
+    font-size: 1rem;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .ask h3 .id {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: var(--mono-bg);
+    color: var(--text-muted);
+  }
+
+  .ask dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 10px;
+  }
+
+  .ask dt {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .ask dd {
+    margin: 0;
+    font-size: 0.94rem;
+  }
+
+  .ask .lean { font-weight: 600; }
+
+  .ask.decide .lean { color: var(--decide); }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .ask.decide .badge {
+    background: var(--decide-bg);
+    color: var(--decide);
+    border: 1px solid var(--decide-border);
+  }
+
+  .ask.do .badge {
+    background: var(--do-bg);
+    color: var(--do);
+    border: 1px solid var(--do-border);
+  }
+
+  .ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ledger li {
+    background: var(--answered-bg);
+    border: 1px solid var(--answered-border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+  }
+
+  .ledger .id {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--answered);
+    font-weight: 600;
+  }
+
+  .ledger .date {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .ledger.team li {
+    background: var(--team-bg);
+    border-color: var(--team-border);
+  }
+
+  .ledger.team .id { color: var(--team); }
+
+  .how-to-reply {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .how-to-reply p {
+    margin: 0 0 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .how-to-reply code {
+    background: var(--mono-bg);
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88rem;
+  }
+
+  .how-to-reply ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .how-to-reply li {
+    margin-bottom: 4px;
+  }
+
+  footer.page-foot {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="page-head">
+    <h1>&lt;Project&gt; Check-in Desk</h1>
+    <p class="updated">Last updated: &lt;date/time, operator's time zone&gt;</p>
+  </header>
+
+  <div class="totals" aria-label="Header totals">
+    <div class="stat"><strong>&lt;n&gt;</strong><span>Decisions waiting</span></div>
+    <div class="stat"><strong>&lt;n&gt;</strong><span>Actions only you can take</span></div>
+    <div class="stat"><strong>&lt;n&gt;</strong><span>Deadlines this week</span></div>
+  </div>
+
+  <section class="group" aria-labelledby="decide-heading">
+    <h2 id="decide-heading">Decide</h2>
+    <p class="group-note">
+      Decisions only you can make. Each stays open until you answer it.
+    </p>
+
+    <article class="ask decide">
+      <h3><span class="id">CK-1</span> &lt;short title&gt; <span class="badge">Decide</span></h3>
+      <dl>
+        <dt>What it is</dt>
+        <dd>&lt;one or two sentences; assume no prior context&gt;</dd>
+        <dt>Options</dt>
+        <dd>&lt;A&gt; / &lt;B&gt; / &lt;C&gt;</dd>
+        <dt>Lean</dt>
+        <dd class="lean">&lt;recommendation&gt; — &lt;one-line reason&gt;</dd>
+        <dt>Needed by</dt>
+        <dd>&lt;date, time, operator's time zone&gt; &mdash; &lt;what waits until then&gt;</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section class="group" aria-labelledby="do-heading">
+    <h2 id="do-heading">Do</h2>
+    <p class="group-note">
+      Actions only you can take. Nothing here can be delegated back to a delivery role.
+    </p>
+
+    <article class="ask do">
+      <h3><span class="id">CK-2</span> &lt;short title&gt; <span class="badge">Do</span></h3>
+      <dl>
+        <dt>What it is</dt>
+        <dd>&lt;what you specifically must do, and why it can't be done for you&gt;</dd>
+        <dt>Needed by</dt>
+        <dd>&lt;date, time, operator's time zone&gt; &mdash; &lt;what stays blocked until then&gt;</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section class="group" aria-labelledby="team-heading">
+    <h2 id="team-heading">Decided by the team</h2>
+    <p class="group-note">
+      Decisions made within the team's own authority. Made, owned, and recorded here so you can
+      see them; reply by ID if you want one revisited.
+    </p>
+
+    <ul class="ledger team">
+      <li>
+        <span class="id">CK-3</span>
+        <span class="date">(&lt;date&gt;, &lt;owner&gt;)</span>
+        — &lt;what was decided&gt; — <strong>Why:</strong> &lt;one-line reason&gt;
+        — <strong>Status:</strong> &lt;done / in motion&gt;
+      </li>
+    </ul>
+  </section>
+
+  <section class="group" aria-labelledby="answered-heading">
+    <h2 id="answered-heading">Already answered</h2>
+    <p class="group-note">Closed asks, newest first. Dated, kept forever, IDs never reused.</p>
+
+    <ul class="ledger">
+      <li>
+        <span class="id">CK-0</span>
+        <span class="date">(&lt;date answered&gt;)</span>
+        — &lt;one-line summary of the ask&gt; — <strong>Ruling:</strong> &lt;what was decided&gt;
+      </li>
+    </ul>
+  </section>
+
+  <section class="group" aria-labelledby="reply-heading">
+    <h2 id="reply-heading">How to reply</h2>
+    <div class="how-to-reply">
+      <p>Reply by ID. Examples:</p>
+      <ul>
+        <li><code>CK-1 fine</code></li>
+        <li><code>CK-1 no, use &lt;alternative&gt;</code></li>
+        <li><code>CK-2 Saturday</code></li>
+        <li><code>CK-3 revisit</code></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    Generic Velocity starter — see
+    <code>templates/executive-checkin-desk.md</code> for the contract this page implements.
+  </footer>
+
+</main>
+</body>
+</html>

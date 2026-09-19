@@ -10,7 +10,8 @@ Velocity is adopted through a thin project overlay.
 - artifact authority boundaries
 - branch hygiene requirements
 - process evolution governance
-- templates for packets, tranches, closeout, review packs, and role briefs
+- templates for packets, tranches, closeout, review packs, role briefs, and the executive
+  check-in desk
 - optional evaluation, automated-transition, and measured-pilot templates
 
 ## What Stays In The Project Repo
@@ -93,6 +94,20 @@ This is recommended recordkeeping support for existing authority and proof rules
 requirement to create an ADR for every change or to migrate all historical decisions. ADRs are
 established practice; the template credits their lineage. Populated product decisions stay in
 the consuming project. Decisions about Velocity itself belong in this repository's `adrs/`.
+
+## Executive Check-in Discipline
+
+The [Handoff Packet](../templates/handoff-packet.md) and [Review Pack Template](../templates/review-pack-template.md)
+carry one piece of work to its next owner or readout. Neither one answers a different, recurring
+need: a standing, cross-cutting page of everything the project's [Operator](ROLE-AUTHORITY.md#operator)
+must decide or do right now, so an ask never survives only as "the earlier message" in chat. The
+optional [Executive Check-in Desk](../templates/executive-checkin-desk.md) is that companion
+artifact — every ask gets a stable ID that is never renumbered, closed asks move to a dated
+ledger instead of disappearing, and the page is republished the same turn an ask is added,
+answered, or closed. Silence is never consent: an ask stays open until the operator answers it,
+and a decision within the team's own authority is made, owned, and recorded on the page rather
+than parked for a veto window. Adopt it only where an operator genuinely sits outside day-to-day delivery
+and would otherwise have no single place to find what is still open.
 
 ## Overlay Experiments
 

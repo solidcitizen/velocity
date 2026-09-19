@@ -21,6 +21,7 @@
 - [Tranche Template](../templates/tranche-template.md)
 - [Handoff Packet](../templates/handoff-packet.md)
 - [Review Pack Template](../templates/review-pack-template.md)
+- [Executive Check-in Desk](../templates/executive-checkin-desk.md)
 - [Issue Record Template](../templates/issue-record-template.md)
 - [Process Change Proposal](../templates/process-change-proposal.md)
 - [System Invariant Register](../templates/system-invariant-register.md)
