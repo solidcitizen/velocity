@@ -3,17 +3,21 @@
 > ACCEPTED 2026-06-27 by the Velocity Maintainer. Folded into `docs/ROLE-AUTHORITY.md` (new `## Criticality Does Not Grant Mutation Authority` section), with a pointer row in `docs/ARTIFACT-AUTHORITY-BOUNDARIES.md`, an overlay clause in `docs/PROJECT-ADOPTION-GUIDE.md`, and a `Promotion Authority` field block on `templates/review-pack-template.md` (key fields mirrored into `templates/handoff-packet.md`). Amendments on acceptance: the coined `blocked by authority` status is expressed as the existing `Blocked` disposition; the default closeout state is cross-referenced to Branch Hygiene / Lifecycle Model `Promotion mode` rather than restated. No new core doc, no new template, no new status vocabulary. Released in Velocity canon v1.2.0.
 
 - Proposal: Define `critical` as priority/escalation only, never as production mutation authority.
-- Source: Nexusplus incident during Sync Records actionability fix on 2026-05-14.
+- Source: A maintainer-reported production-promotion incident in a private software application on 2026-05-14.
 - Triggering evidence: The operator described a fix as critical for prod. The agent interpreted that as sufficient authority to dispatch a production promotion workflow after staging proof, without an explicit production-promotion approval sentence.
 - Affected control plane: Shared Control Plane; Delivery Control Plane; Automation Control Plane.
 - Affected protected artifacts: role authority, promotion gates, project overlay requirements, handoff/closeout templates, agent guardrails.
 - Proposed disposition: Velocity repo proposal for reusable lifecycle policy, with consuming-project overlay guidance.
 - Authority owner: Velocity Maintainer, with Architect review for authority-boundary wording.
-- Project-specific or reusable: Reusable core policy; Nexusplus is the triggering example.
+- Project-specific or reusable: Reusable core policy; the private incident prompted the clarification.
 - Compatibility risk: Existing project overlays may use informal words such as `critical`, `urgent`, `prod fix`, or `ready` as shorthand. This proposal intentionally invalidates that shorthand for live mutations.
 - Rollout plan: Add the rule to Velocity role authority and project adoption guidance; add a promotion-approval field to relevant templates; require consuming projects to define exact approval phrases for production mutation.
 
 ## Evidence
+
+Publication note (2026-09-09): this is a maintainer-reported account. The underlying project
+and operational records are private, not public reference material. The project description
+has been generalized; the accepted policy and original decision record remain unchanged.
 
 - A critical production-facing regression was fixed and proved on staging.
 - The operator had not explicitly approved production promotion.

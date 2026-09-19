@@ -9,6 +9,25 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.5.1
+
+### Clarified — Public References and Examples
+
+- Replace private-project references in the README and docs index with a self-contained,
+  illustrative project overlay and a policy/project mapping.
+- Generalize private project names and inaccessible implementation identifiers in historical
+  proposals and changelog entries. Label those accounts as maintainer-reported private work;
+  retain original acceptance dates, policy text, and the rationale for adopted rules.
+- Update the field-guide address to the approved `velocitystandard.org` domain.
+
+**PATCH**: publication and example cleanup only. No lifecycle rule, role authority, proof
+obligation, template, or prior conformance changes. The only affected protected artifact is
+`docs/INDEX.md`, whose example links change. Historical tags and Git history remain intact.
+
+Proposed under Mike's request to remove reliance on private projects from the public repo.
+Merge and release await explicit maintainer approval; see the
+[proposal](proposals/2026-09-09-public-reference-cleanup.md).
+
 ## [1.5.0] — 2026-09-09
 
 ### Added — ADR Recordkeeping Support
@@ -78,10 +97,10 @@ Proposal and authority record:
 
 ### Added — Role-Brief Template
 
-One new template, no Core/policy surface change. Source: two consuming projects — nexusplus
-(Coordinator / Product-Owner briefs) and **smart**, the first non-product-software adopter
-(Product-Director / Tactical / Reviewer briefs) — independently converged on the same artifact
-shape; promoted to core via the adoption guide's overlay-experiment→promote path
+One new template, no Core/policy surface change. Source: maintainer-reported experience in
+two private projects — a software application (Coordinator / Product-Owner briefs) and an
+operations framework (Product-Director / Tactical / Reviewer briefs). Both reportedly
+converged on the same artifact shape; promoted to core via the adoption guide's overlay-experiment→promote path
 (`proposals/2026-07-05-role-brief-template.md`).
 
 - **`templates/role-brief.md`** — a per-role **cold-start onboarding brief** that boots an agent
@@ -93,8 +112,8 @@ shape; promoted to core via the adoption guide's overlay-experiment→promote pa
   hard-stop list silently dropped two safety-critical items). Populated per-role briefs remain
   project-overlay artifacts, as with the System Invariant Register. Linked from `docs/INDEX.md`
   and the `PROJECT-ADOPTION-GUIDE` template list.
-- **`README.md`** gained an "Adoption in Practice" note (nexusplus + smart) — non-normative
-  adoption evidence, not policy.
+- **`README.md`** gained an "Adoption in Practice" note about two private projects —
+  maintainer-reported background, not policy or independently reproducible evidence.
 
 ### Acceptance amendment
 
@@ -140,8 +159,8 @@ admitted — their primitives are already defined in existing canon (`LIFECYCLE-
 ### Added — Criticality Does Not Grant Mutation Authority
 
 Folded into `docs/ROLE-AUTHORITY.md` (its natural home; no new core doc, per the manifesto
-anti-direction) plus minimal pointer and template edits. Source: the Nexusplus Sync Records
-actionability incident (2026-05-14), where an agent read urgency language (`critical`) as
+anti-direction) plus minimal pointer and template edits. Source: a maintainer-reported
+incident in a private application (2026-05-14), where an agent read urgency language (`critical`) as
 sufficient authority to dispatch a production promotion workflow after staging proof, without
 an explicit production-promotion approval sentence.
 
@@ -187,8 +206,9 @@ Proposal of record: [`proposals/2026-05-14-critical-does-not-authorize-productio
 
 Folded into `docs/PROOF-MODEL.md` (its natural home; no new core doc, per the manifesto
 anti-direction against growing `docs/` mass) plus two reusable templates. Source: the
-Nexusplus integrity pilot (2026-06-26/27), where an audit found 11 load-bearing invariants
-stated but unbound and bound them through this discipline.
+maintainer-reported integrity pilot in a private application (2026-06-26/27), where an audit
+identified 11 load-bearing invariants without enforcement. The pilot informed this doctrine;
+its implementation and review artifacts are not publicly reproducible evidence.
 
 - **Core Rule** — an invariant is real only if a mechanism enforces it; proof must map to
   every invariant a change *touches*, not only the one the tranche *declared*.
@@ -201,7 +221,7 @@ stated but unbound and bound them through this discipline.
   MUST reach `PREVENT`; sequence-the-lethal-quadrant-first; seam invariants + a design-time
   seam-review gate; bind-to-touched (not bind-to-declared); no-residual-for-load-bearing;
   the standing System Invariant Register; guarded-but-untested-is-not-fully-bound; and five
-  binding-quality lessons earned binding the reversibility surface (PRs #186, #193–#197):
+  binding-quality lessons reported while implementing reversible operations:
   gate–guard parity, know-what-your-guard-can-see, durable-prevention-survives-the-toolchain,
   bind-the-whole-surface-not-a-sample, and adversarial-per-slice-verification-with-pin-to-head.
 - **New templates** — `templates/system-invariant-register.md` (standing register format) and
