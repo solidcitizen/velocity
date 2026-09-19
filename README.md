@@ -60,6 +60,12 @@ Start with the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define 
 overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded change.
 Velocity works with your chosen AI tools and delivery cadence.
 
+## Feedback
+
+Questions, mistakes, and proposed changes all go through
+[GitHub issues](https://github.com/solidcitizen/velocity/issues/new/choose). Pick the form that
+fits: a change to the standard, feedback on the field guide, or a mistake or broken link.
+There is no other channel, so the conversation and the change it produces stay together here.
 For significant architecture work, use the [ADR discipline guidance](docs/PROJECT-ADOPTION-GUIDE.md#adr-discipline)
 and [Architecture Decision Record](templates/architecture-decision-record.md) to connect the
 decision, its authority, and the mechanisms that enforce its invariants.

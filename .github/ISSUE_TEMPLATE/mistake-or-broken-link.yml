@@ -1,0 +1,24 @@
+name: Mistake or broken link
+description: A typo, a wrong statement, a broken link, or a page that does not render.
+title: "[Fix] "
+labels: ["fix"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: Page address or file path.
+      placeholder: https://velocitystandard.org/standard/proof-model/
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What it should say
+      description: Optional.

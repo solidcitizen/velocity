@@ -1,0 +1,28 @@
+name: Field guide feedback
+description: Tell us what was unclear, missing, or wrong in the field guide at velocitystandard.org.
+title: "[Guide] "
+labels: ["guide-feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The field guide explains the method; it is not the standard itself. Feedback here shapes the explanation. To change a rule, use "Change to the standard" instead.
+  - type: input
+    id: chapter
+    attributes:
+      label: Chapter or page
+      placeholder: Prove the right thing
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What did not work for you
+      description: What was unclear, missing, or wrong, and where you got stuck.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What would have helped
+      description: Optional. An example, a diagram, a shorter explanation, a different order.
