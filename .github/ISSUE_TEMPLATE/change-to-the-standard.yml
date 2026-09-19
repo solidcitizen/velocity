@@ -1,0 +1,44 @@
+name: Change to the standard
+description: Propose a change to a Velocity rule, template, or guidance document.
+title: "[Standard] "
+labels: ["change-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. Changes to Velocity's rules go through a proposal that the maintainer accepts or declines. This issue is the front door: say what should change and why. You do not need to write the proposal yourself.
+  - type: input
+    id: document
+    attributes:
+      label: Document
+      description: The file or page this is about.
+      placeholder: docs/PROOF-MODEL.md
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version you read
+      description: Shown at the top of every page on velocitystandard.org and in the repository README.
+      placeholder: v1.6.0
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change
+      description: The rule, template, or wording as you would have it.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What went wrong, or what would go better, with the change. Real delivery experience counts more than theory.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Your context
+      description: Optional. Team size, kind of project, which AI tools, and whether you use Velocity today.
