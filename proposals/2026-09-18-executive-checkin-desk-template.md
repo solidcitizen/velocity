@@ -1,6 +1,6 @@
 # Executive Check-in Desk Template
 
-- Status: Proposed; awaiting maintainer review and merge approval
+- Status: Accepted
 - Date: 2026-09-18
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
@@ -8,7 +8,7 @@
   since 2026-09-14 (there, "CEO Check-in Desk") into a reusable Velocity template.
 - Disposition: Velocity repo proposal; branch, commit, and pull request prepared for
   maintainer review; not merged.
-- Proposed version: v1.6.0 (minor)
+- Accepted version: v1.6.0 (minor)
 
 ## Change
 
@@ -98,5 +98,9 @@ note and the changelog's description of it. Relative links and anchors in the tw
 adoption guide, and the docs index re-checked by script. The HTML starter re-parsed for balanced
 tags; no external dependency introduced. `git diff --check` clean.
 
-Branch: `docs/executive-checkin-desk`, prepared in an isolated worktree so the maintainer's
-main checkout is untouched. Opened as a pull request for review; not merged.
+Accepted by Mike as Velocity Maintainer on 2026-09-19: "CK-2 is approved", answering the
+Velocity Check-in Desk ask to approve PR #8 as revised. Merged by the CPO session under that
+approval and stamped `v1.6.0` on this acceptance commit, per the stamping delegation of the
+same day.
+
+Branch disposition: `docs/executive-checkin-desk` merged via PR #8.

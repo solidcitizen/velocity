@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.6.0
+## [1.6.0] — 2026-09-19
 
 ### Added — Executive Check-in Desk Template
 
@@ -34,8 +34,8 @@ artifacts: `templates/` (one new Markdown file, one new HTML file) and `docs/IND
 `docs/PROJECT-ADOPTION-GUIDE.md` gains one adoption-guidance section.
 
 Proposed under Mike's request, as Velocity Maintainer, to generalize the pattern into reusable
-canon. Merge and release await explicit maintainer approval; see the
-[proposal](proposals/2026-09-18-executive-checkin-desk-template.md).
+canon. Accepted by Mike as Velocity Maintainer on 2026-09-19 for merge and release as `v1.6.0`.
+See the [proposal and acceptance record](proposals/2026-09-18-executive-checkin-desk-template.md).
 
 ## [1.5.1] — 2026-09-19
 
