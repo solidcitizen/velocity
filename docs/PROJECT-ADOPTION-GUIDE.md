@@ -104,7 +104,9 @@ must decide or do right now, so an ask never survives only as "the earlier messa
 optional [Executive Check-in Desk](../templates/executive-checkin-desk.md) is that companion
 artifact — every ask gets a stable ID that is never renumbered, closed asks move to a dated
 ledger instead of disappearing, and the page is republished the same turn an ask is added,
-answered, or closed. Adopt it only where an operator genuinely sits outside day-to-day delivery
+answered, or closed. Silence is never consent: an ask stays open until the operator answers it,
+and a decision within the team's own authority is made, owned, and recorded on the page rather
+than parked for a veto window. Adopt it only where an operator genuinely sits outside day-to-day delivery
 and would otherwise have no single place to find what is still open.
 
 ## Overlay Experiments

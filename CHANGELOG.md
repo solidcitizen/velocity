@@ -17,6 +17,10 @@ rather than a moving branch. Versions are canon releases, not software:
   must decide or do, with a Markdown skeleton (`templates/executive-checkin-desk.md`) and a
   generic, dependency-free HTML starter (`templates/executive-checkin-desk.html`) with light/dark
   theming and placeholder content only.
+- Silence is never consent: an ask stays open until the Operator answers it, and decisions within
+  the team's own authority are made, owned, and recorded in a "Decided by the team" ledger rather
+  than parked for a veto window. (Revised 2026-09-18 on maintainer review, which rejected the
+  first draft's "if silent, it stands" default.)
 - Companion to the existing Handoff Packet and Review Pack Template: those carry one piece of
   work to its next owner; this is the cross-cutting surface of every open ask to the Operator.
 - New "Executive Check-in Discipline" guidance in the Project Adoption Guide; linked from the
