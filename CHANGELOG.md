@@ -37,7 +37,7 @@ Proposed under Mike's request, as Velocity Maintainer, to generalize the pattern
 canon. Merge and release await explicit maintainer approval; see the
 [proposal](proposals/2026-09-18-executive-checkin-desk-template.md).
 
-## [Unreleased] — planned 1.5.1
+## [1.5.1] — 2026-09-19
 
 ### Clarified — Public References and Examples
 
@@ -53,8 +53,8 @@ obligation, template, or prior conformance changes. The only affected protected 
 `docs/INDEX.md`, whose example links change. Historical tags and Git history remain intact.
 
 Proposed under Mike's request to remove reliance on private projects from the public repo.
-Merge and release await explicit maintainer approval; see the
-[proposal](proposals/2026-09-09-public-reference-cleanup.md).
+Accepted by Mike as Velocity Maintainer on 2026-09-19 (merge of PR #7) for release as `v1.5.1`.
+See the [proposal and acceptance record](proposals/2026-09-09-public-reference-cleanup.md).
 
 ## [1.5.0] — 2026-09-09
 

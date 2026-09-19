@@ -1,13 +1,13 @@
 # Public Reference Cleanup
 
-- Status: Proposed; awaiting maintainer merge and release approval
+- Status: Accepted
 - Date: 2026-09-09
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution — editorial publication cleanup
 - Source: Mike identified references to private consuming repositories as out of place in
   the public Velocity repository and asked that the public material stand on its own.
 - Disposition: Velocity repo proposal; prepare branch, commit, and pull request
-- Proposed version: v1.5.1 (patch)
+- Accepted version: v1.5.1 (patch)
 
 ## Change
 
@@ -54,4 +54,9 @@ The proposed-policy sections of all three edited historical proposals match `ori
 exactly. The protected-file diff is limited to the two example links in `docs/INDEX.md`;
 core policy and templates are unchanged. `git diff --check` passed.
 
-Branch: `codex/public-reference-cleanup`; commit and push for pull-request review.
+Accepted by Mike as Velocity Maintainer on 2026-09-19 by merging PR #7 into `main` (merge
+commit c8d41b4). Release stamping was delegated to the Velocity CPO session the same day
+("stamping is yours"): tagged `v1.5.1` on this acceptance commit and published as a GitHub
+release. The website's pinned reference and download bundle are a separate follow-through.
+
+Branch disposition: `codex/public-reference-cleanup` merged via PR #7.
