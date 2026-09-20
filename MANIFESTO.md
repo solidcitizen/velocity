@@ -79,6 +79,40 @@ is a project pilot, not a claim of autonomous delivery already achieved.
 Keep the method portable. Put runtime adapters and collected results in consuming projects;
 bring demonstrated reusable lessons back through process evolution.
 
+## Direction: From Software Lifecycle To Entity Lifecycle
+
+Velocity's substrate has now been consumed by things that are not software products: an
+operations function for an estate, a finance function for a household, and product companies,
+each with an Operator, delivery roles, protected artifacts, and proof obligations. The rules
+held unchanged. What drifted in those projects was not the substrate but the surfaces around
+it: the Operator had no single page of what was theirs to decide (closed by the Check-in Desk);
+the delivery lead's plan lived where only the lead could read it, so allocation had no Operator
+view; and peers sharing infrastructure coordinated by an unwritten protocol whose record was a
+file at a known path when the live channel could not be trusted.
+
+The direction this suggests: treat the thing governed as an **entity**. An entity may be a
+product, a company, an operating function, a family, a person, or an AI agent acting for any of
+them. Every entity has a steward (the Operator), a purpose, obligations, resources, risks, a
+cadence, a record, and peers. Its lifecycle is charter, operate, develop, review, evolve, and
+transfer; software delivery's stages are one instance of *develop*. "Entity" becomes an axis
+the way product lifecycle is an axis. Nothing in the substrate changes: no new roles, no
+vocabulary refactor, no new docs mass. What changes is where templates point: at a steward's
+check-in rather than a developer's, at exchanges between entities rather than handoffs within
+one, and at a record that any vendor's agent can read rather than a channel only one can.
+
+Two consequences are already practiced and are proposed as templates: the Executive Check-in
+Board (the page around the Desk: initiatives, committed work, backlog, and a proof-backed
+record of what closed) and the Peer Exchange (notice, gate, read-back, all-clear, ask-to-peer
+between two entities' leads, with the record as the transport). Two further consequences are
+direction only, pending practice: a collaborative framework has to say how an entity's
+governance composes with its peers' without a shared Operator, and a vendor-neutral one has
+to make files, ids, and basis labels the contract while treating any one vendor's channels,
+tools, and memories as convenience.
+
+The evidence gate is the same as for measured automation: practiced in consuming projects
+across at least one monthly cycle, then judged on whether the Operator can run a check-in from
+the page alone and whether peer exchanges leave a record another party can resume from.
+
 ## Secondary Directions
 
 Listed in rough order of leverage. Each is a place where Velocity has unusually well-shaped ingredients to engage with an active frontier in the broader space.
