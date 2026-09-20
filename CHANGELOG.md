@@ -45,8 +45,10 @@ private consuming desks. Merge and release await explicit maintainer approval; s
 - Optional template `templates/executive-checkin-board.md`: the page around the Desk, five
   sections in check-in order (Desk, Initiatives, In progress, Planned, Done), three id families
   never renumbered, one source of record per section with the page derived from it, one
-  initiative per work item, initiatives owned by the Operator, Done closed only with proof. The
-  Desk section is the Desk renderer over the Desk data file. Policy, not implementation: a
+  initiative per work item, initiatives owned by the Operator, Done citing its proof artifact
+  without judging it. No ask lives outside the Desk; the Desk section is the Desk renderer over
+  the Desk data file, which the Board reads and never writes; Board data has its own file and
+  schema. Policy, not implementation: a
   tracker satisfies it by mapping.
 - Optional template `templates/peer-exchange.md`: notice, gate, read-back, all-clear, and
   ask-to-peer between two entities' delivery leads; the record is the transport and the channel

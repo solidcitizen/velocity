@@ -81,8 +81,10 @@ on:
 2. **The Board as the page around the Desk.** Five sections in check-in order (Desk, Initiatives,
    In progress, Planned, Done), three id families never renumbered, one source of record per
    section with the page derived from it, every work item tagged to exactly one initiative,
-   initiatives owned by the Operator, Done closed only with proof. Policy, not implementation: a
-   project on an issue tracker satisfies it by mapping.
+   initiatives owned by the Operator, Done citing its proof artifact in Velocity's terms without
+   judging it, no ask outside the Desk, Desk data read-only to the Board with Board data in its
+   own file and schema (terms set by the Velocity CPO session in review, 2026-09-19). Policy, not
+   implementation: a project on an issue tracker satisfies it by mapping.
 3. **The Peer Exchange as the third artifact family.** Desk for asks to an Operator, Handoff
    Packet for work inside an entity, Peer Exchange between entities. Five message types with
    required fields; the record is the transport and the channel an accelerator; a basis label on

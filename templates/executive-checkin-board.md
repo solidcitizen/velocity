@@ -64,6 +64,19 @@ weaken them.
    own id, so cross-entity dependencies are visible without a relay through the Operator.
 9. **Header totals.** The page opens with: decisions waiting, actions only the Operator can take,
    deadlines this week (all from the Desk), items in progress, items done this period.
+10. **No second home for asks.** Anything on the Board that needs the Operator to decide or do
+    is a Desk entry (a normal ask, or a pointer entry to the desk that owns it). The four Board
+    views may cite `CK` ids; they never carry an ask, a lean, a needed-by, or a ruling of their
+    own. An initiative's posture change, for instance, is raised on the Desk and reflected on
+    the Board after the answer.
+11. **The Board reads the Desk data file and never writes it.** The Board's own data
+    (initiatives, work items, the closed record) lives in a separate file with its own schema,
+    so a Board can be regenerated from the Desk data file plus the Board data file and nothing
+    else. A Board renderer that edits desk data is non-conformant.
+12. **Done cites proof; it does not judge it.** A closed item names its proof artifact in
+    Velocity's existing terms, a review pack, a handoff packet, a closeout disposition, a
+    receipt or record path, and links to it. The Board never restates the evidence or reaches
+    its own verdict; proof is judged where the [Proof Model](../docs/PROOF-MODEL.md) says it is.
 
 ## Policy, not implementation
 
@@ -89,8 +102,10 @@ Operator's edit; the page says so.
 `defect` / `issue` / `chore` / `control`, where a *control* is recurring assurance work such as a
 reconciliation or an audit); *size* (`S` / `M` / `L`, the lead's estimate); *status* (`planned` /
 `this week` / `doing` / `blocked` / `done`); *why* (one line); *blocked by* (an id, a person, or
-an external event, when blocked); *origin* (`peer:<entity>:<their id>` when it came from a
-peer, otherwise empty); *proof* (filled at close).
+an external event, when blocked; a Desk ask is cited by its `CK` id); *origin*
+(`peer:<entity>:<their id>` when it came from a peer, otherwise empty); *proof* (filled at
+close: the proof artifact's kind and reference, e.g. `review pack RP-12`, `closeout
+disposition 2026-04-01`, `receipt <path>`).
 
 ## Skeleton
 
@@ -150,5 +165,8 @@ applied directly.
   pointer entry (one owner, a pointer on the other desk), not a copy.
 - **No orphan items, no hand-edited page.** One initiative per item; one source per section.
 - **Initiatives are the Operator's to edit; milestones and status are the lead's to move.**
-- **Done needs proof.** A closed item without a proof reference is not closed.
+- **Done cites proof and never judges it.** A closed item without a proof-artifact reference
+  is not closed; the Board holds the reference, not the evidence or the verdict.
+- **No ask lives on the Board.** Decide and Do exist only on the Desk; the Board cites `CK` ids.
+- **Desk data is read-only to the Board.** Board data has its own file and schema.
 - **Peer origin is visible.** Cross-entity work shows where it came from and the peer's id.

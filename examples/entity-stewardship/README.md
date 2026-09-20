@@ -51,16 +51,18 @@ one open action (CK-10, sign in to the lender and save the statement)>
 | WI-17 | payee-set writer for paper checks | feature | S | checks download without a payee |
 
 ## Done
-- **WI-11** (2026-04-01, INI-2): lender statement parsed and tied — **Proof:** loan-actuals/2026-03.json
-- **WI-9** (2026-03-30, INI-1): daily control closes the file before batch writes — **Proof:** receipt 2026-03-30
+- **WI-11** (2026-04-01, INI-2): lender statement parsed and tied — **Proof:** closeout disposition 2026-04-01, record loan-actuals/2026-03.json
+- **WI-9** (2026-03-30, INI-1): daily control closes the file before batch writes — **Proof:** review pack RP-4; receipt 2026-03-30
 
 ## How to reply
 `CK-9 yes` · `INI-2 hold` · `WI-17 this week` · `WI-12 drop`
 ```
 
-Points to notice: the Desk is embedded, not copied; every item names one initiative; a blocked
-item names the Desk ask it waits on; Done entries carry proof; a reply about an initiative's
-posture is an Operator decision and would be recorded on the Desk ledger.
+Points to notice: the Desk is embedded, not copied, and no ask lives outside it; every item names
+one initiative; a blocked item cites the Desk ask it waits on; Done entries cite their proof
+artifact without restating it; a reply about an initiative's posture is an Operator decision and
+would be raised and recorded on the Desk, then reflected here. The page is regenerated from
+desk.json plus board.json and nothing else.
 
 ## A peer exchange, end to end
 
