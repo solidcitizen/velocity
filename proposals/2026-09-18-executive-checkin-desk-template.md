@@ -6,8 +6,8 @@
 - Mode: Process evolution
 - Source: Mike's request to generalize a pattern practiced on a private consuming project
   since 2026-09-14 (there, "CEO Check-in Desk") into a reusable Velocity template.
-- Disposition: Velocity repo proposal; branch, commit, and pull request prepared for
-  maintainer review; not merged.
+- Disposition: Velocity repo proposal; merged via PR #8 and released as v1.6.0 on 2026-09-19
+  (see Proof and Disposition).
 - Accepted version: v1.6.0 (minor)
 
 ## Change

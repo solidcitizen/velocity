@@ -9,6 +9,30 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.7.2
+
+### Clarified — Documentation currency and delegated release mechanics
+
+- Governance now states the two mechanics the maintainer may delegate in writing: merging a
+  proposal the maintainer has explicitly approved, and release stamping. Delegation transfers no
+  approval authority and creates no eighth role; every acceptance record names the approval it
+  acted on. Practice since v1.5.1 is now written down.
+- Protected paths are stated once, as directories, matching `AGENTS.md` and recorded practice:
+  `docs/`, `governance/`, `templates/`, `adrs/`, and `AGENTS.md`.
+- A proposal's header lines (Status, version, Disposition) are updated at acceptance, so no
+  merged proposal reads "not merged". Three accepted proposals corrected.
+- The README states the core invariant once and links to its canonical statement instead of
+  paraphrasing it, and points to the adoption guide for what stays in a project repository.
+- Release link definitions in this changelog now cover every release; the issue form's version
+  placeholder no longer names a specific release.
+
+**PATCH**: clarifications and corrections of existing rules and records. No lifecycle rule,
+role, approval boundary, proof obligation, or prior conformance changes.
+
+Prompted by the maintainer's observation of stale references on 2026-09-20 and two independent
+read-only audits the same day. Merge and release await explicit maintainer approval; see the
+[proposal](proposals/2026-09-20-documentation-currency.md).
+
 ## [1.7.1] — 2026-09-19
 
 ### Clarified — Check-in Desk pointers close with their owner
@@ -316,8 +340,13 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.7.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.1
+[1.7.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.0
+[1.6.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.6.0
+[1.5.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.5.1
+[1.5.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.5.0
 [1.4.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.4.0
-[1.3.0]: https://github.com/solidcitizen/velocity/tree/v1.3.0
+[1.3.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.3.0
 [1.2.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.1
 [1.2.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.2.0
 [1.1.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.1.0
