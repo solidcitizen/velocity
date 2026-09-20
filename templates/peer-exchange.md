@@ -1,4 +1,4 @@
-# Peer Exchange — Notice, Gate, Read-back, All-clear
+# Peer Exchange — Notice, Hold, Read-back, All-clear
 
 > The protocol between two delivery leads whose entities share something: infrastructure, a
 > data store, a dependency, a person's attention. Either lead may be a human or an agent, from
@@ -30,9 +30,10 @@ side, and a home in the record.
    one vendor's channel: a file at an agreed path, an issue or ticket in a shared tracker, or a
    row in a shared log. Live channels (session messages, chat, direct messages) speed delivery
    and never replace the record. A project names its peer record location in its overlay.
-2. **Five message types, each with required fields** (below): *Notice*, *Gate*, *Read-back*,
-   *All-clear*, *Ask-to-peer*. A *Handoff* between entities uses the Handoff Packet with a peer
-   origin line.
+2. **Five message types, each with required fields** (below): *Notice*, *Hold*, *Read-back*,
+   *All-clear*, *Ask-to-peer*. A *Handoff* between entities uses the Handoff Packet, cited by
+   the receiving lead as the record it files from. (*Hold* is deliberately not *Gate*: the
+   [Proof Model](../docs/PROOF-MODEL.md) already uses *gate* for a guarded pre-flight check.)
 3. **Every claim carries a basis label:** `observed` (seen by the sender, say where and when),
    `vendor-documented`, `inferred` (say from what), or `unchecked`. A read-back that carries no
    basis is not a read-back.
@@ -42,16 +43,21 @@ side, and a home in the record.
 5. **Notice before, all-clear after.** No action on shared infrastructure without a Notice
    naming the window, the expected effect, and what the peer should not start; no resumption
    without an All-clear that says what was observed afterwards.
-6. **A gate is observed, not assumed.** If a peer's action depends on a state (a snapshot exists,
-   a backup scope covers a folder), the dependent peer names it as a Gate and the other reads it
-   back with basis. "The upgrade does not touch stored config" is `inferred`; the gate waits for
-   `observed` unless the dependent peer explicitly accepts the inference and says so in its record.
+6. **A hold is released on observed state, not assumed state.** If a peer's action depends on a
+   state (a snapshot exists, a backup scope covers a folder), the dependent peer names it as a
+   Hold and the other reads it back with basis. "The upgrade does not touch stored config" is
+   `inferred`; the hold stays until `observed` unless the dependent peer explicitly accepts the
+   inference and says so in its record.
 7. **Never launder permission.** A peer never performs an action that the other's Operator denied
    or that the other's own rules block, and never asks a peer to. Such an action goes back to the
    Operator who owns it, through that entity's Desk.
-8. **Operator decisions travel by Desk, not by relay.** When a peer needs the other entity's
-   Operator to decide, the ask is placed on that Operator's Desk with `origin: peer`, and the
-   answer is read back to the peer. Operators are not transport layers.
+8. **Operator decisions travel by Desk, not by relay, and nobody writes another entity's
+   desk.** When a peer needs the other entity's Operator to decide, the *Ask-to-peer* message is
+   the request. The receiving entity's lead files it on its own Operator's Desk as an ordinary
+   ask, citing the exchange record id in "what it is"; the originating desk carries a pointer
+   entry `owned_by` the receiving desk (Desk contract rule 8). The answer is read back to the
+   peer as a Read-back. Operators are not transport layers, and a desk's data file is written
+   only by its own lead.
 9. **Any party may decline, and must leave a resumable state.** A decline says which step, why,
    the exact state left behind, and what a different party would need to continue. Plan, apply,
    and verify are separate phases with markers so that another party (or vendor) can resume.
@@ -73,17 +79,19 @@ laundering.
 expected effect on the peer, what the peer must not start, all-clear promised (yes, and how),
 file path.*
 
-**Gate** — *from, to, id, the action waiting, the state required (named precisely), who can
-observe it, deadline if any, what happens if the gate is not met by then.*
+**Hold** — *from, to, id, the action waiting, the state required before it proceeds (named
+precisely), who can observe it, deadline if any, what happens if the state is not observed by
+then.*
 
-**Read-back** — *from, to, id, the gate or question answered, each fact with its basis label and
+**Read-back** — *from, to, id, the hold or question answered, each fact with its basis label and
 where/when observed, anything not verified and why, file path.*
 
 **All-clear** — *from, to, id, what was done, what was observed afterwards (with basis), what
 changed for the peer, what remains held and until what event, file path.*
 
 **Ask-to-peer** — *from, to, id, the ask, why it is the peer's to answer, needed-by and what
-waits, whether the peer's Operator must decide (then it goes on that Desk).*
+waits, whether the peer's Operator must decide (then the receiving lead files it on that Desk as
+an ordinary ask citing this record, and the originating desk carries a pointer entry).*
 
 ## Skeleton (one record per exchange, here as a file; a tracker issue carries the same fields)
 
@@ -91,7 +99,7 @@ waits, whether the peer's Operator must decide (then it goes on that Desk).*
 # PX-<n> — <type>: <one-line subject>
 - From: <entity / lead>   To: <entity / lead>   Sent: <date time tz>
 - Ids: ours <id>; theirs <id or "none yet">
-- Type: Notice | Gate | Read-back | All-clear | Ask-to-peer
+- Type: Notice | Hold | Read-back | All-clear | Ask-to-peer
 <required fields for the type, one per line>
 ## Basis
 - <fact>: observed <where, when> | vendor-documented <source> | inferred <from what> | unchecked
@@ -105,4 +113,6 @@ waits, whether the peer's Operator must decide (then it goes on that Desk).*
 - **No basis, no read-back.** Label every fact.
 - **No action on shared ground without Notice; no resumption without All-clear.**
 - **No laundering.** Denied by one Operator means denied; it does not become a peer's job.
+- **No writing another entity's desk.** An ask crosses entities as a record the receiving lead
+  files; the originating desk points to it.
 - **Decline with a resumable state.** The next party may be a different vendor's agent.

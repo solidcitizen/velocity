@@ -45,17 +45,20 @@ weaken them.
    in the repository, a board in an issue tracker (Jira, Linear, GitHub Projects), or a database;
    the page is generated or synchronized from that record, never hand-edited, so it cannot drift
    from the record and the record cannot say something the page does not. Which tool holds the
-   record is the project's choice; that it is one record per section is the rule.
+   record is the project's choice; that it is one record per section is the rule. In this
+   revision the Board's own sections are hand-maintained Markdown from those records; the Desk
+   section is the output of the Desk renderer; a Board renderer and a Board data schema are a
+   follow-up proposal once the Board has been practiced.
 4. **Every work item carries one initiative.** No orphan items. That is what makes allocation
    visible: the Operator can read where hours went by initiative and say "less here, more there."
 5. **Initiatives are the Operator's.** The delivery lead drafts them and proposes changes; a
    change to an initiative's intent, horizon, or posture is an Operator decision, raised and
    answered through the Desk, then applied. The lead may change an initiative's *next milestone*
    and *status* within its own authority and records that under the Desk's *Decided by the team*.
-6. **Republish rules.** The Desk section republishes the same turn an ask changes (its own rule).
-   The other sections republish whenever an item changes state and at every check-in, never
-   batched past a check-in. A status message may cite ids; it never re-explains what the page
-   holds.
+6. **Republish rules.** The Desk section follows the Desk's own republish rule
+   ([Desk contract, rule 5](executive-checkin-desk.md#contract)). The other sections republish
+   whenever an item changes state and at every check-in, never batched past a check-in. A status
+   message may cite ids; it never re-explains what the page holds.
 7. **Done is a ledger, not a trophy case.** Items enter *Done* with the date they closed and the
    proof that closed them (a receipt, a verify line, a record path). The page shows the current
    period (default thirty days); the project's action log or changelog holds the rest.
@@ -161,8 +164,9 @@ applied directly.
 - **The Desk is embedded, not copied.** The Desk section is the output of
   `templates/render-checkin-desk.py` over the project's desk data file
   (`templates/executive-checkin-desk.schema.json`); a Board renderer never re-implements it, and
-  the Desk's contract, ids, and same-turn rule are untouched. A cross-entity ask uses the Desk's
-  pointer entry (one owner, a pointer on the other desk), not a copy.
+  the Desk's contract, ids, and republish rule are untouched. A cross-entity ask follows Desk
+  contract rule 8: filed by the receiving lead as an ordinary ask, with a pointer entry on the
+  originating desk; nobody writes another entity's desk.
 - **No orphan items, no hand-edited page.** One initiative per item; one source per section.
 - **Initiatives are the Operator's to edit; milestones and status are the lead's to move.**
 - **Done cites proof and never judges it.** A closed item without a proof-artifact reference
