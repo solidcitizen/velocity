@@ -3,11 +3,11 @@
 - Proposal: extend Velocity's direction from a software delivery lifecycle to an entity
   development lifecycle, and add two optional reusable templates that consuming projects have
   already practiced under it: the Executive Check-in Board and the Peer Exchange.
-- Status: Proposed; awaiting maintainer review. Stacked on the Check-in Desk repeatability
-  proposal (PR #10); to be released with it or after it, at the maintainer's stamping.
+- Status: Proposed; awaiting maintainer review. Builds on the Check-in Desk repeatability
+  release (v1.7.0); sequencing is the maintainer's and the Velocity CPO's call.
 - Date: 2026-09-19
 - Mode: Process evolution
-- Proposed version: v1.7.0 (minor), stamped with or after the Check-in Desk repeatability proposal
+- Proposed version: v1.8.0 (minor)
 - Source: the maintainer's request on 2026-09-19 to a private consuming project's delivery lead
   (a household-finance function) to "develop that view in a way that can be promoted to an
   enhanced template", widened the same evening: "it needs to be a EDLC (entity development life
