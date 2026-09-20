@@ -9,6 +9,23 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.7.1
+
+### Clarified — Check-in Desk pointers close with their owner
+
+- A pointer entry (an ask owned by another desk) now closes when the owning ask closes: state
+  `answered` or `withdrawn`, the same date, a ruling naming the owner's decision, and `owned_by`
+  kept; the renderer lists it under Already answered with "owned by <project> CK-n". The 1.7.0
+  schema described pointers as open-only, which left a decided question showing as open.
+- The renderer tolerates a withdrawn ruling that already begins with the word "withdrawn".
+
+**PATCH**: clarification of an existing rule plus a renderer and schema fix. No new field is
+required; desks built on 1.7.0 render unchanged.
+
+Reported from a consuming project's migration on 2026-09-19 as a template gap rather than a
+local variant, which is the intended path. Merge and release await explicit maintainer approval;
+see the [proposal](proposals/2026-09-19-desk-pointer-closure.md).
+
 ## [1.7.0] — 2026-09-19
 
 ### Changed — Executive Check-in Desk, repeatable by construction
