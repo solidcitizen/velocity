@@ -1,6 +1,6 @@
 # Check-in Desk Pointer Closure
 
-- Status: Proposed; awaiting maintainer review and merge approval
+- Status: Accepted
 - Date: 2026-09-19
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution — patch
@@ -11,7 +11,7 @@
   instead of building a local variant, which is the path the 1.7.0 adoption rule asks for.
 - Disposition: Velocity repo proposal; branch and pull request prepared for maintainer review;
   not merged.
-- Proposed version: v1.7.1 (patch)
+- Accepted version: v1.7.1 (patch)
 
 ## Change
 
@@ -48,4 +48,8 @@ without a ruling is rejected; an open pointer still renders under Decide and is 
 totals; a withdrawn ruling beginning "Withdrawn —" renders the word once. Two consuming desks
 migrated the same day re-validate unchanged. `git diff --check` clean; relative links re-checked.
 
-Branch: `proposal/desk-pointer-closure`. Opened as a pull request for review; not merged.
+Accepted by Mike as Velocity Maintainer on 2026-09-19: "CK-32 A", answering the Velocity Check-in Desk
+ask to approve PR #12. Merged by the CPO session under that approval and stamped `v1.7.1` on this
+acceptance commit, per the stamping delegation.
+
+Branch disposition: `proposal/desk-pointer-closure` merged via PR #12.

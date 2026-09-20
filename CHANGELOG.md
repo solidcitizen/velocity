@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.7.1
+## [1.7.1] — 2026-09-19
 
 ### Clarified — Check-in Desk pointers close with their owner
 
@@ -23,8 +23,8 @@ rather than a moving branch. Versions are canon releases, not software:
 required; desks built on 1.7.0 render unchanged.
 
 Reported from a consuming project's migration on 2026-09-19 as a template gap rather than a
-local variant, which is the intended path. Merge and release await explicit maintainer approval;
-see the [proposal](proposals/2026-09-19-desk-pointer-closure.md).
+local variant, which is the intended path. Accepted by Mike as Velocity Maintainer on 2026-09-19 for
+merge and release as `v1.7.1`. See the [proposal and acceptance record](proposals/2026-09-19-desk-pointer-closure.md).
 
 ## [1.7.0] — 2026-09-19
 
