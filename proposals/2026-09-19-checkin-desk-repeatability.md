@@ -10,8 +10,8 @@
   the same day. The maintainer's direction: templates must be simple to use, repeatable, and need
   no reinvention per project; a real gap in a Velocity template is fixed by a proposal to
   Velocity, never by rolling your own. Approved for drafting as desk ask CK-22, option A.
-- Disposition: Velocity repo proposal; branch and pull request prepared for maintainer review;
-  not merged.
+- Disposition: Velocity repo proposal; merged via PR #10 and released as v1.7.0 on 2026-09-19
+  (see Proof and Disposition).
 - Accepted version: v1.7.0 (minor)
 
 ## Change

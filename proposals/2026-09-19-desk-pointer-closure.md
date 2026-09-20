@@ -9,8 +9,8 @@
   a question the owning desk had already answered would show as open forever. The lead used a
   conformant interim (a closed ask whose ruling names the owner) and reported the gap to Velocity
   instead of building a local variant, which is the path the 1.7.0 adoption rule asks for.
-- Disposition: Velocity repo proposal; branch and pull request prepared for maintainer review;
-  not merged.
+- Disposition: Velocity repo proposal; merged via PR #12 and released as v1.7.1 on 2026-09-19
+  (see Proof and Disposition).
 - Accepted version: v1.7.1 (patch)
 
 ## Change

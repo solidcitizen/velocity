@@ -8,19 +8,19 @@ Only the Velocity Maintainer role may approve changes to reusable lifecycle poli
 
 Project roles may propose changes, including Coordinator, Fixer, Tester, Architect, and Process Reviewer. Proposal authority is not merge authority.
 
+## Delegated Mechanics
+
+The maintainer may delegate two mechanics, in writing, to a named session or role: merging a proposal the maintainer has explicitly approved, and release stamping (the acceptance record, the annotated tag, and the release notes). Delegation transfers no approval authority. A delegate never merges without the maintainer's explicit approval of that proposal, and every acceptance record names the approval it acted on. A delegate is not an eighth lifecycle role; the seven roles in [Role Authority](../docs/ROLE-AUTHORITY.md) are unchanged.
+
 ## Protected Paths
 
-Core lifecycle paths are protected artifacts:
+Core lifecycle paths are protected artifacts, stated as directories so that new files inherit the protection:
 
-- `docs/LIFECYCLE-MODEL.md`
-- `docs/ROLE-AUTHORITY.md`
-- `docs/ARTIFACT-AUTHORITY-BOUNDARIES.md`
-- `docs/CONTROL-PLANES.md`
-- `docs/PROOF-MODEL.md`
-- `docs/BRANCH-HYGIENE.md`
-- `docs/PROJECT-ADOPTION-GUIDE.md`
-- `governance/GOVERNANCE.md`
+- `docs/` (every file, including `docs/INDEX.md`)
+- `governance/`
 - `templates/`
+- `adrs/`
+- `AGENTS.md`
 
 Ordinary delivery work in a consuming project must not directly edit these paths.
 
@@ -36,7 +36,8 @@ Ordinary delivery work in a consuming project must not directly edit these paths
 3. If it affects reusable lifecycle policy, create a Velocity branch.
 4. State the authority owner and affected protected artifacts.
 5. Review for project-specific leakage.
-6. Merge only after explicit maintainer approval.
+6. Merge only after explicit maintainer approval, by the maintainer or a delegate acting on that approval.
+7. At acceptance, update the proposal's header (Status, Accepted version, Disposition) and record the approval in the changelog and the proposal's Proof and Disposition; stamp the release. A merged proposal never reads "not merged".
 
 ## Project-Specific Leakage Check
 

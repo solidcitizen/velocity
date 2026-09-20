@@ -31,9 +31,7 @@ The core invariant is:
 
 > Shared context, separated write authority.
 
-Delivery roles may read Velocity rules and propose changes. They may not directly modify Velocity governance during ordinary product delivery.
-
-Lifecycle-rule changes are owned by the Velocity maintainer role and require explicit process-change disposition.
+The rule is stated once, in [Artifact Authority Boundaries](docs/ARTIFACT-AUTHORITY-BOUNDARIES.md) and [Role Authority](docs/ROLE-AUTHORITY.md). In short: delivery roles read the rules and propose changes; only the Velocity Maintainer, or a delegate acting on the maintainer's explicit approval, changes lifecycle policy, through the [process-change flow](governance/GOVERNANCE.md#process-change-flow).
 
 ## Documents
 
@@ -81,13 +79,7 @@ For the optional v1.4 automation additions, read the
 
 ## Adoption Pattern
 
-Each product repo should keep only:
-
-- a short local `AGENTS.md` reference to Velocity
-- project-specific lane, command, environment, and risk details
-- project-specific issue logs, packets, missions, and review packs
-
-Reusable lifecycle policy belongs here.
+A product repository keeps a short `AGENTS.md` pointer to Velocity and its own project-specific material; reusable lifecycle policy belongs here. The boundary is defined once, in the adoption guide's [What Stays In The Project Repo](docs/PROJECT-ADOPTION-GUIDE.md#what-stays-in-the-project-repo).
 
 ## Public Examples
 

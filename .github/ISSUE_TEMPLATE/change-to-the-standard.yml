@@ -20,7 +20,7 @@ body:
     attributes:
       label: Version you read
       description: Shown at the top of every page on velocitystandard.org and in the repository README.
-      placeholder: v1.6.0
+      placeholder: vX.Y.Z
     validations:
       required: true
   - type: textarea

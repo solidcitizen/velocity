@@ -6,7 +6,7 @@ Velocity is the reusable lifecycle-policy repo for AI-assisted SDLC governance.
 
 Shared context, separated write authority.
 
-Agents may read broadly and propose lifecycle changes. They may not directly mutate core lifecycle governance unless the operator has explicitly asked for process evolution work in this repo.
+Agents may read broadly and propose lifecycle changes. They may not directly mutate core lifecycle governance unless the operator has explicitly asked for process evolution work in this repo. The canonical statement is [Artifact Authority Boundaries](docs/ARTIFACT-AUTHORITY-BOUNDARIES.md); this file restates it for agents working in this repository.
 
 ## Modes
 
