@@ -1,6 +1,6 @@
 # Check-in Desk Repeatability
 
-- Status: Proposed; awaiting maintainer review and merge approval
+- Status: Accepted
 - Date: 2026-09-19
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
@@ -12,7 +12,7 @@
   Velocity, never by rolling your own. Approved for drafting as desk ask CK-22, option A.
 - Disposition: Velocity repo proposal; branch and pull request prepared for maintainer review;
   not merged.
-- Proposed version: v1.7.0 (minor)
+- Accepted version: v1.7.0 (minor)
 
 ## Change
 
@@ -96,5 +96,8 @@ wording. Relative links and anchors in the changed Markdown were re-checked by s
 `git diff --check` passed. The Velocity project's own desk was migrated to the data file and
 rendered with this renderer as the first real instance.
 
-Branch: `proposal/checkin-desk-repeatability`, prepared in an isolated worktree. Opened as a pull
-request for review; not merged.
+Accepted by Mike as Velocity Maintainer on 2026-09-19: "CK-25 A", answering the Velocity Check-in
+Desk ask to approve PR #10. Merged by the CPO session under that approval and stamped `v1.7.0` on
+this acceptance commit, per the stamping delegation.
+
+Branch disposition: `proposal/checkin-desk-repeatability` merged via PR #10.
