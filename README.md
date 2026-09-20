@@ -79,6 +79,13 @@ For the optional v1.4 automation additions, read the
 - [Automation Transition Contract](templates/automation-transition-contract.md) — connect accepted artifacts to authorized actions.
 - [Measured Automation Pilot](templates/automation-pilot.md) — compare delivery time, human effort, quality, and cost.
 
+For an Operator who steers more than one initiative, or projects that share infrastructure, the
+[Executive Check-in Board](templates/executive-checkin-board.md) is the page around the Check-in
+Desk (initiatives, committed work, backlog, and a proof-backed record of what closed) and the
+[Peer Exchange](templates/peer-exchange.md) is the notice, gate, read-back, and all-clear protocol
+between two entities' delivery leads. Both are optional and entity-agnostic; see the
+[entity stewardship example](examples/entity-stewardship/README.md).
+
 ## Adoption Pattern
 
 Each product repo should keep only:

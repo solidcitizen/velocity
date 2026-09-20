@@ -9,6 +9,42 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.8.0
+
+### Added — Entity Development Lifecycle: Board and Peer Exchange
+
+- Direction, in the manifesto: the thing Velocity governs is an entity (a product, a company, an
+  operating function, a family, a person, or an AI agent acting for any of them) with a steward,
+  a purpose, obligations, resources, risks, a cadence, a record, and peers; software delivery is
+  one instance. The substrate is unchanged; templates now point at a steward's check-in and at
+  exchanges between entities as well as handoffs within one.
+- Optional template `templates/executive-checkin-board.md`: the page around the Desk, five
+  sections in check-in order (Desk, Initiatives, In progress, Planned, Done), three id families
+  never renumbered, one source of record per section with the page derived from it, one
+  initiative per work item, initiatives owned by the Operator, Done citing its proof artifact
+  without judging it. No ask lives outside the Desk; the Desk section is the Desk renderer over
+  the Desk data file, which the Board reads and never writes; Board data has its own file and
+  schema. Policy, not implementation: a
+  tracker satisfies it by mapping.
+- Optional template `templates/peer-exchange.md`: notice, hold, read-back, all-clear, and
+  ask-to-peer between two entities' delivery leads; the record is the transport and the channel
+  an accelerator; a basis label on every fact; ids on both sides; holds released on observed
+  state; no permission laundering; Operator decisions travel by Desk under Desk contract rule 8
+  (nobody writes another entity's desk); any party may decline and must leave a resumable state;
+  vendor-neutral by construction. In this revision the Board's own sections are hand-maintained
+  from their records and the Desk section is the Desk renderer's output; a Board renderer and
+  schema follow once practiced.
+- Adoption guidance ("Entity Stewardship: Board And Peer Exchange"), two optional overlay
+  bullets, index links, and a synthetic worked example (`examples/entity-stewardship/README.md`).
+
+**MINOR**: additive direction, templates, and guidance. No role, lane, proof class, authority
+boundary, or prior closeout changes; renderers and schemas for the Board's own sections follow
+in a later proposal once practiced. Proposed under Mike's request, as Velocity Maintainer, to
+develop the practiced view "in a way that can be promoted to an enhanced template" and to widen
+the framework toward an entity development lifecycle; merge and release await explicit
+maintainer approval; see the
+[proposal](proposals/2026-09-19-entity-development-lifecycle.md).
+
 ## [1.7.0] — 2026-09-19
 
 ### Changed — Executive Check-in Desk, repeatable by construction

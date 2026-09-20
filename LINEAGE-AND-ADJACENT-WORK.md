@@ -157,6 +157,19 @@ Refresh this comparison when evaluating a new adapter, changing authority policy
 a release whose positioning depends on it. Recheck the specific feature and source before
 claiming equivalence, superiority, historical priority, or measured gains.
 
+### Attribution For The Entity Lifecycle Additions
+
+The Executive Check-in Board generalizes a page practiced in a private consuming project (a
+household-finance function) from 2026-09-19, itself built around the Check-in Desk; the Peer
+Exchange writes down a protocol that emerged, unwritten, between two private consuming projects
+sharing a storage host on the same day. Both are maintainer-reported private work, not
+independently reproducible evidence. Initiative-and-work-item boards and notice/read-back
+protocols are long-established practice in product management, operations, and change
+management; Velocity claims no priority over them. Its contribution is binding them to the
+Desk's authority rules (silence is never consent; decisions within delivery authority are made
+and recorded), to a record-first, vendor-neutral transport, and to separately governed process
+evolution.
+
 ## Positioning Rule
 
 Velocity can govern work executed through different runtimes and can overlap with other full

@@ -10,8 +10,8 @@ Velocity is adopted through a thin project overlay.
 - artifact authority boundaries
 - branch hygiene requirements
 - process evolution governance
-- templates for packets, tranches, closeout, review packs, role briefs, and the executive
-  check-in desk
+- templates for packets, tranches, closeout, review packs, role briefs, the executive
+  check-in desk, the executive check-in board, and the peer exchange
 - optional evaluation, automated-transition, and measured-pilot templates
 
 ## What Stays In The Project Repo
@@ -53,6 +53,9 @@ A project overlay must define:
 - issue-record profile default and escalation triggers
 - incident escalation path
 - local exceptions to Velocity, if any
+- if the project has peers: the peer record location and the peer-exchange id prefix
+- if the board is adopted: the id prefixes for initiatives and work items, and the tracker or
+  file that is the source of record for each board section
 
 Project overlays may specialize Velocity. They may not silently override core lifecycle governance.
 
@@ -112,6 +115,32 @@ time-zone label, and color tokens vary per project. An operator who runs several
 several desks, so the desk is a shared surface: a project that needs something the data file
 cannot express raises a Velocity proposal rather than building a local variant. Adopt it only where an operator genuinely sits outside day-to-day delivery
 and would otherwise have no single place to find what is still open.
+
+## Entity Stewardship: Board And Peer Exchange
+
+The Desk answers one question for an Operator: what is mine to decide or do. Two more questions
+come up at every check-in and have no Velocity artifact: where is the effort going, and what
+happened. The optional [Executive Check-in Board](../templates/executive-checkin-board.md) is the
+page around the Desk that answers them: initiatives with the Operator's posture, committed work
+tagged to one initiative each, the uncommitted backlog, and a dated ledger of what closed with
+its proof. The Desk section of a Board is the Desk's own renderer over the Desk's own data file;
+a Board never re-implements the Desk, and the audit rule for desks applies to boards: one shape
+across an Operator's projects, and a gap is a Velocity proposal, not a local variant. The Board is
+policy, not implementation: a project that runs its work in an issue tracker satisfies it by
+mapping epics to initiatives, issues to work items, and closed issues with a proof field to Done.
+
+Where two entities share something, a host, a data store, a dependency, a person's attention, the
+optional [Peer Exchange](../templates/peer-exchange.md) is the protocol between their delivery
+leads: notice before acting on shared ground, holds released only on observed state,
+read-backs with a basis label on every fact, an all-clear afterwards, and asks to a peer's
+Operator filed by that entity's own lead on its Desk (with a pointer entry on the originating
+desk) rather than relayed or written across. The record
+is the transport and the live channel an accelerator, so the protocol works between agents from
+different vendors and survives a dropped channel. A peer never performs what the other's Operator
+denied, and any party that declines a step leaves a state another party can resume from. Adopt
+the Board where an Operator steers more than one initiative and would otherwise learn allocation
+from whoever spoke last; adopt the Peer Exchange the first time two projects touch the same
+infrastructure.
 
 ## Overlay Experiments
 
