@@ -35,7 +35,10 @@ one open action (CK-10, sign in to the lender and save the statement)>
 ### INI-2 — Liquidity and debt  ·  invest  ·  horizon 2026-Q4  ·  active
 - **Intent:** the variable-rate line is paid down ahead of its repayment period, without breaching
   the cash floor the family agreed.
+- **Steward:** controller
 - **Next milestone:** 2026-04-15, second paydown sized against the year-end cash view.
+- **Risks it retires:** rate exposure on the line; a floor breach in the holiday quarter.
+- **Measures:** line balance month over month; lowest projected cash against the floor.
 
 ## In progress
 | id | item | initiative | type | size | status | why / blocked by |
@@ -61,8 +64,9 @@ one open action (CK-10, sign in to the lender and save the statement)>
 Points to notice: the Desk is embedded, not copied, and no ask lives outside it; every item names
 one initiative; a blocked item cites the Desk ask it waits on; Done entries cite their proof
 artifact without restating it; a reply about an initiative's posture is an Operator decision and
-would be raised and recorded on the Desk, then reflected here. The page is regenerated from
-desk.json plus board.json and nothing else.
+would be raised and recorded on the Desk, then reflected here. In this revision the Desk section
+is the Desk renderer's output and the four Board sections are hand-maintained from their
+records; a Board renderer and schema follow once the Board has been practiced.
 
 ## A peer exchange, end to end
 
@@ -84,7 +88,7 @@ record location:
 ```
 
 ```md
-# PX-8 — Gate: finance move waits on an observed backup scope
+# PX-8 — Hold: finance move waits on an observed backup scope
 - From: finance lead   To: home-ops lead   Sent: 2026-04-03 12:52 ET
 - Ids: ours WI-15; theirs PX-7
 - Action waiting: move of the history folder into the family share (planned 17:30)
@@ -101,14 +105,15 @@ record location:
 - Observed afterwards: shell up (observed 16:40); shares served (observed 16:41); snapshots
   intact, baseline of 11:52 present (observed 16:42); backup folder selection: inferred only,
   console session logged out by the upgrade, Operator asked to sign in
-- Changed for peer: the move whose gates are all observed may run; the relocation that depends on
+- Changed for peer: the move whose holds are all released on observed state may run; the relocation that depends on
   the backup selection stays held until the read-back
 ```
 
-Points to notice: each message is a record with an id on each side; the gate names an observer;
+Points to notice: each message is a record with an id on each side; the hold names an observer;
 the all-clear separates observed from inferred and scopes the release to what was observed; the
-dependent lead does not act on the inference; the Operator's sign-in is an Operator action, so it
-would sit on that Operator's Desk, not travel as a favor between leads.
+dependent lead does not act on the inference; the Operator's sign-in is an Operator action, so
+the home-operations lead files it on that Operator's Desk as an ordinary ask citing PX-8, and the
+finance desk carries a pointer entry to it, not a favor between leads.
 
 ## The same shapes for other entities
 

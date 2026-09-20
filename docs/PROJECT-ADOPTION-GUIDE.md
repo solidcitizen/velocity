@@ -131,9 +131,10 @@ mapping epics to initiatives, issues to work items, and closed issues with a pro
 
 Where two entities share something, a host, a data store, a dependency, a person's attention, the
 optional [Peer Exchange](../templates/peer-exchange.md) is the protocol between their delivery
-leads: notice before acting on shared ground, gates that are observed rather than assumed,
+leads: notice before acting on shared ground, holds released only on observed state,
 read-backs with a basis label on every fact, an all-clear afterwards, and asks to a peer's
-Operator placed on that Operator's Desk through its pointer entry rather than relayed. The record
+Operator filed by that entity's own lead on its Desk (with a pointer entry on the originating
+desk) rather than relayed or written across. The record
 is the transport and the live channel an accelerator, so the protocol works between agents from
 different vendors and survives a dropped channel. A peer never performs what the other's Operator
 denied, and any party that declines a step leaves a state another party can resume from. Adopt

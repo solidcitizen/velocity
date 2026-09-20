@@ -81,11 +81,12 @@ bring demonstrated reusable lessons back through process evolution.
 
 ## Direction: From Software Lifecycle To Entity Lifecycle
 
-Velocity's substrate has now been consumed by things that are not software products: an
-operations function for an estate, a finance function for a household, and product companies,
-each with an Operator, delivery roles, protected artifacts, and proof obligations. The rules
-held unchanged. What drifted in those projects was not the substrate but the surfaces around
-it: the Operator had no single page of what was theirs to decide (closed by the Check-in Desk);
+By the maintainer's own report (private consuming projects, not independently reproducible
+evidence; see [lineage](LINEAGE-AND-ADJACENT-WORK.md#attribution-for-the-entity-lifecycle-additions)),
+Velocity's substrate has been consumed by things that are not software products: an operations
+function for an estate, a finance function for a household, and product companies, each with an
+Operator, delivery roles, protected artifacts, and proof obligations. The rules held unchanged.
+What drifted in those projects was not the substrate but the surfaces around it: the Operator had no single page of what was theirs to decide (closed by the Check-in Desk);
 the delivery lead's plan lived where only the lead could read it, so allocation had no Operator
 view; and peers sharing infrastructure coordinated by an unwritten protocol whose record was a
 file at a known path when the live channel could not be trusted.
@@ -100,9 +101,9 @@ vocabulary refactor, no new docs mass. What changes is where templates point: at
 check-in rather than a developer's, at exchanges between entities rather than handoffs within
 one, and at a record that any vendor's agent can read rather than a channel only one can.
 
-Two consequences are already practiced and are proposed as templates: the Executive Check-in
-Board (the page around the Desk: initiatives, committed work, backlog, and a proof-backed
-record of what closed) and the Peer Exchange (notice, gate, read-back, all-clear, ask-to-peer
+Two consequences have been practiced in those private projects, by the same report, and are
+proposed as templates: the Executive Check-in Board (the page around the Desk: initiatives, committed work, backlog, and a proof-backed
+record of what closed) and the Peer Exchange (notice, hold, read-back, all-clear, ask-to-peer
 between two entities' leads, with the record as the transport). Two further consequences are
 direction only, pending practice: a collaborative framework has to say how an entity's
 governance composes with its peers' without a shared Operator, and a vendor-neutral one has
