@@ -9,6 +9,32 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.7.0
+
+### Changed — Executive Check-in Desk, repeatable by construction
+
+- The desk is now built from a data file (`templates/executive-checkin-desk.example.json`,
+  defined by `templates/executive-checkin-desk.schema.json`) with a dependency-free renderer
+  (`templates/render-checkin-desk.py`) that validates the file against the contract and computes
+  the header totals, ordering, and reply examples. The HTML starter is now the renderer's output.
+- The contract states what was previously implied: exact headings and field labels, the `CK`
+  prefix everywhere, the time of day in the header stamp, a maintainer slot, and an ID on every
+  team decision. Only the project name, operator, maintainer, time-zone label, and color tokens
+  vary per project.
+- Three gaps closed: withdrawn asks keep their ID and close with a reason; one ask open on two
+  desks has one owner and a pointer on the other; team-decision status opens with one of four
+  fixed words.
+- Adoption guidance: the desk is a shared surface across an operator's projects; a need the
+  data file cannot express is raised as a Velocity proposal, never met with a local variant.
+
+**MINOR**: additive files and a tightened optional template. No lifecycle rule, role authority,
+proof obligation, or delivery closeout is re-judged. Desks instantiated before this release
+should be migrated per the template's migration steps; the migration keeps every existing ID.
+
+Proposed under Mike's request, as Velocity Maintainer, after a maintainer-reported audit of five
+private consuming desks. Merge and release await explicit maintainer approval; see the
+[proposal](proposals/2026-09-19-checkin-desk-repeatability.md).
+
 ## [1.6.0] — 2026-09-19
 
 ### Added — Executive Check-in Desk Template

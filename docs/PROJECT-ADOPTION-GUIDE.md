@@ -106,7 +106,11 @@ artifact — every ask gets a stable ID that is never renumbered, closed asks mo
 ledger instead of disappearing, and the page is republished the same turn an ask is added,
 answered, or closed. Silence is never consent: an ask stays open until the operator answers it,
 and a decision within the team's own authority is made, owned, and recorded on the page rather
-than parked for a veto window. Adopt it only where an operator genuinely sits outside day-to-day delivery
+than parked for a veto window. The desk is built from a data file by the template's renderer,
+which validates the file against the contract; only the project name, operator, maintainer,
+time-zone label, and color tokens vary per project. An operator who runs several projects meets
+several desks, so the desk is a shared surface: a project that needs something the data file
+cannot express raises a Velocity proposal rather than building a local variant. Adopt it only where an operator genuinely sits outside day-to-day delivery
 and would otherwise have no single place to find what is still open.
 
 ## Overlay Experiments

@@ -1,0 +1,50 @@
+{
+  "project": "<Project>",
+  "operator": "<operator name>",
+  "tz_label": "<PT>",
+  "maintainer": "<role that keeps this page current>",
+  "updated": "2026-01-01T09:00",
+  "theme": {},
+  "entries": [
+    {
+      "id": 1, "kind": "decide", "state": "open",
+      "title": "<short title>",
+      "what": "<one or two sentences; assume no prior context>",
+      "options": ["A. <option>", "B. <option>", "C. <option>"],
+      "lean": "A", "lean_why": "<one-line reason>",
+      "needed_by": "2026-01-08T17:00",
+      "waits": "<what waits until then>"
+    },
+    {
+      "id": 2, "kind": "do", "state": "open",
+      "title": "<short title>",
+      "what": "<what the operator specifically must do, and why it cannot be done for them>",
+      "needed_by": null,
+      "waits": "<what stays blocked until it is done>"
+    },
+    {
+      "id": 3, "kind": "team",
+      "title": "<what was decided>",
+      "date": "2026-01-01", "owner": "<role>",
+      "why": "<one-line reason>",
+      "status": "done", "status_text": "<optional detail>"
+    },
+    {
+      "id": 4, "kind": "decide", "state": "answered",
+      "title": "<one-line summary of the ask>",
+      "answered_on": "2025-12-31",
+      "ruling": "<what was decided>"
+    },
+    {
+      "id": 5, "kind": "do", "state": "withdrawn",
+      "title": "<one-line summary of the ask>",
+      "answered_on": "2025-12-30",
+      "ruling": "<why it no longer needs an answer>"
+    },
+    {
+      "id": 6, "kind": "decide", "state": "open",
+      "title": "<an ask another desk owns>",
+      "owned_by": { "project": "<other project>", "id": 9 }
+    }
+  ]
+}

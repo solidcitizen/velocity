@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/solidcitizen/velocity/blob/main/templates/executive-checkin-desk.schema.json",
+  "title": "Executive Check-in Desk data file",
+  "description": "Single source of truth for a project's Check-in Desk. Rendered by templates/render-checkin-desk.py, which also validates it. Only project, operator, tz_label, maintainer, and theme tokens vary per project.",
+  "type": "object",
+  "required": ["project", "operator", "tz_label", "maintainer", "updated", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "project": { "type": "string", "minLength": 1, "description": "Rendered as '<Project> Check-in Desk'." },
+    "operator": { "type": "string", "minLength": 1, "description": "The person whose decisions gate the work." },
+    "tz_label": { "type": "string", "minLength": 1, "description": "Time-zone label shown after every time, e.g. PT. All times in the file are in this zone." },
+    "maintainer": { "type": "string", "minLength": 1, "description": "The role that keeps the page current." },
+    "updated": { "type": "string", "description": "ISO datetime of this version, in the operator's zone. Rewritten in the same edit as any content change." },
+    "theme": { "$ref": "#/$defs/theme" },
+    "theme_dark": { "$ref": "#/$defs/theme" },
+    "entries": {
+      "type": "array", "minItems": 1,
+      "description": "Every CK id ever assigned. Ids are positive integers, unique, contiguous from 1, never renumbered or dropped.",
+      "items": { "oneOf": [ { "$ref": "#/$defs/openAsk" }, { "$ref": "#/$defs/pointerAsk" }, { "$ref": "#/$defs/closedAsk" }, { "$ref": "#/$defs/teamDecision" } ] }
+    }
+  },
+  "$defs": {
+    "theme": {
+      "type": "object", "additionalProperties": false,
+      "description": "Color token overrides. The only visual customization a project may make.",
+      "properties": { "bg": {}, "surface": {}, "border": {}, "text": {}, "text-muted": {}, "accent": {}, "decide": {}, "decide-bg": {}, "decide-border": {}, "do": {}, "do-bg": {}, "do-border": {}, "team": {}, "team-bg": {}, "team-border": {}, "answered": {}, "answered-bg": {}, "answered-border": {}, "mono-bg": {} }
+    },
+    "openAsk": {
+      "type": "object",
+      "required": ["id", "kind", "state", "title", "what", "waits"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "kind": { "enum": ["decide", "do"] },
+        "state": { "const": "open" },
+        "title": { "type": "string" },
+        "what": { "type": "string", "description": "Self-contained. Someone who has read nothing else can act on it." },
+        "options": { "type": "array", "items": { "type": "string" }, "minItems": 2, "description": "Decide only." },
+        "lean": { "type": "string", "description": "Decide only. The recommendation." },
+        "lean_why": { "type": "string", "description": "Decide only. One-line reason." },
+        "needed_by": { "type": ["string", "null"], "description": "ISO datetime or null. Never converts a non-answer into a yes." },
+        "waits": { "type": "string", "description": "What waits, or stays blocked, until the operator answers." }
+      }
+    },
+    "pointerAsk": {
+      "type": "object",
+      "required": ["id", "kind", "state", "title", "owned_by"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "kind": { "enum": ["decide", "do"] },
+        "state": { "const": "open" },
+        "title": { "type": "string" },
+        "owned_by": { "type": "object", "required": ["project", "id"], "properties": { "project": { "type": "string" }, "id": { "type": "integer" } }, "description": "The desk that owns this ask: another desk of the same operator, or a peer entity's desk. Answering there closes this entry; it is excluded from totals. Only this desk's own lead writes this file; an ask from elsewhere is filed by that lead, never written in by the other party." }
+      }
+    },
+    "closedAsk": {
+      "type": "object",
+      "required": ["id", "kind", "state", "title", "answered_on", "ruling"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "kind": { "enum": ["decide", "do"] },
+        "state": { "enum": ["answered", "withdrawn"] },
+        "title": { "type": "string" },
+        "answered_on": { "type": "string", "description": "ISO date." },
+        "ruling": { "type": "string", "description": "What was decided; for withdrawn, why it no longer needs an answer." }
+      }
+    },
+    "teamDecision": {
+      "type": "object",
+      "required": ["id", "kind", "title", "date", "owner", "why", "status"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "kind": { "const": "team" },
+        "title": { "type": "string", "description": "What was decided." },
+        "date": { "type": "string" },
+        "owner": { "type": "string" },
+        "why": { "type": "string" },
+        "status": { "enum": ["done", "in motion", "blocked", "reversed"] },
+        "status_text": { "type": "string" }
+      }
+    }
+  }
+}
