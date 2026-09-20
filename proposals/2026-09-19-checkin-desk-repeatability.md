@@ -30,8 +30,9 @@ stated: exact section headings and field labels; the `CK` prefix everywhere; the
 the header stamp; a maintainer slot in the stamp; an ID on every team decision; and the rule that
 only the project name, operator, maintainer, time-zone label, and color tokens vary per project.
 Close three gaps the audit found: an ask that stops needing an answer closes as withdrawn with a
-reason and keeps its ID; one question open on two of the operator's desks has one owning desk and
-a pointer entry on the other; and a team decision's status opens with one of `done`, `in motion`,
+reason and keeps its ID; one question open on two desks (one operator's, or two cooperating entities') has one owning
+desk and a pointer entry on the other, and each desk's data file is written only by its own
+lead; and a team decision's status opens with one of `done`, `in motion`,
 `blocked`, `reversed`. Add migration steps for desks built before this revision.
 
 Extend the "Executive Check-in Discipline" section of `docs/PROJECT-ADOPTION-GUIDE.md` with the

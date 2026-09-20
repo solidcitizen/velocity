@@ -71,11 +71,15 @@ beyond the five things that vary. The renderer enforces every rule it can check.
    when the decision is needed and what waits until then; it never converts a non-answer into a
    yes. Urgency and a chosen lean are not the operator's approval either, per [Criticality Does
    Not Grant Mutation Authority](../docs/ROLE-AUTHORITY.md#criticality-does-not-grant-mutation-authority).
-8. **One ask, one owner.** When the same question is open on two of the operator's desks, one
-   desk owns it and the other carries a pointer entry (`owned_by`) naming the owning project and
-   its ID, rendered as "Owned by *project* CK-n. Answer it there." Pointers keep their own ID,
-   are excluded from the totals, and close when the owning ask closes. Cross-references in prose
-   are written as `<project> CK-n`.
+8. **One ask, one owner, and each desk is written only by its own lead.** When the same
+   question is open on two desks — two of one operator's desks, or the desks of two entities whose
+   leads work together — one desk owns it and the other carries a pointer entry (`owned_by`)
+   naming the owning project and its ID, rendered as "Owned by *project* CK-n. Answer it there."
+   Pointers keep their own ID, are excluded from the totals, and close when the owning ask closes.
+   Cross-references in prose are written as `<project> CK-n`. A desk's data file is written only
+   by that project's own delivery lead. An ask that originates elsewhere arrives as a record the
+   lead can cite (a handoff packet, a peer message, an issue) and is filed by that lead as an
+   ordinary entry; nobody writes into another entity's desk.
 9. **Decide vs. Do is a hard boundary.** If a delivery role could do it, it does not belong in
    Do. If a delivery role could decide it, it does not belong in Decide either: decide it, own
    it, and record it under *Decided by the team*.
