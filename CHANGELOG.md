@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.7.0
+## [1.7.0] — 2026-09-19
 
 ### Changed — Executive Check-in Desk, repeatable by construction
 
@@ -32,8 +32,8 @@ proof obligation, or delivery closeout is re-judged. Desks instantiated before t
 should be migrated per the template's migration steps; the migration keeps every existing ID.
 
 Proposed under Mike's request, as Velocity Maintainer, after a maintainer-reported audit of five
-private consuming desks. Merge and release await explicit maintainer approval; see the
-[proposal](proposals/2026-09-19-checkin-desk-repeatability.md).
+private consuming desks. Accepted by Mike as Velocity Maintainer on 2026-09-19 for merge and release
+as `v1.7.0`. See the [proposal and acceptance record](proposals/2026-09-19-checkin-desk-repeatability.md).
 
 ## [1.6.0] — 2026-09-19
 
