@@ -50,7 +50,7 @@
         "kind": { "enum": ["decide", "do"] },
         "state": { "const": "open" },
         "title": { "type": "string" },
-        "owned_by": { "type": "object", "required": ["project", "id"], "properties": { "project": { "type": "string" }, "id": { "type": "integer" } }, "description": "The desk that owns this ask. Answering there closes this entry; it is excluded from totals." }
+        "owned_by": { "type": "object", "required": ["project", "id"], "properties": { "project": { "type": "string" }, "id": { "type": "integer" } }, "description": "The desk that owns this ask: another desk of the same operator, or a peer entity's desk. Answering there closes this entry; it is excluded from totals. Only this desk's own lead writes this file; an ask from elsewhere is filed by that lead, never written in by the other party." }
       }
     },
     "closedAsk": {
