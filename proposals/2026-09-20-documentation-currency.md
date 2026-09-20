@@ -1,6 +1,6 @@
 # Documentation Currency
 
-- Status: Proposed; awaiting maintainer review and merge approval
+- Status: Accepted
 - Date: 2026-09-20
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution — patch
@@ -8,8 +8,9 @@
   stale references, followed the same day by two independent read-only audits (one commissioned
   by this session, one by a consuming project's lead at the maintainer's request) that agreed on
   a narrow set of findings.
-- Disposition: Velocity repo proposal; branch and pull request prepared for maintainer review.
-- Proposed version: v1.7.2 (patch)
+- Disposition: Velocity repo proposal; merged via PR #13 and released as v1.7.2 on 2026-09-20
+  (see Proof and Disposition).
+- Accepted version: v1.7.2 (patch)
 
 ## Change
 
@@ -55,4 +56,8 @@ core-rule duplication, adoption-pattern duplication) are each addressed by a cha
 proposal or recorded as intentionally unchanged: `templates/AGENTS.fragment.md` restates the core
 rule on purpose, because it is pasted into project repositories where links do not resolve.
 
-Branch: `proposal/documentation-currency`. Opened as a pull request for review.
+Accepted by Mike as Velocity Maintainer on 2026-09-20: "CK-37 A", answering the Velocity Check-in Desk
+ask to approve PR #13. Merged by the CPO session as delegate under that approval (governance,
+Delegated Mechanics) and stamped `v1.7.2` on this acceptance commit.
+
+Branch disposition: `proposal/documentation-currency` merged via PR #13.

@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.7.2
+## [1.7.2] — 2026-09-20
 
 ### Clarified — Documentation currency and delegated release mechanics
 
@@ -30,8 +30,8 @@ rather than a moving branch. Versions are canon releases, not software:
 role, approval boundary, proof obligation, or prior conformance changes.
 
 Prompted by the maintainer's observation of stale references on 2026-09-20 and two independent
-read-only audits the same day. Merge and release await explicit maintainer approval; see the
-[proposal](proposals/2026-09-20-documentation-currency.md).
+read-only audits the same day. Accepted by Mike as Velocity Maintainer on 2026-09-20 for merge and
+release as `v1.7.2`. See the [proposal and acceptance record](proposals/2026-09-20-documentation-currency.md).
 
 ## [1.7.1] — 2026-09-19
 
@@ -340,6 +340,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.7.2]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.2
 [1.7.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.1
 [1.7.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.0
 [1.6.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.6.0
