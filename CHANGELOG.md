@@ -50,11 +50,14 @@ private consuming desks. Merge and release await explicit maintainer approval; s
   the Desk data file, which the Board reads and never writes; Board data has its own file and
   schema. Policy, not implementation: a
   tracker satisfies it by mapping.
-- Optional template `templates/peer-exchange.md`: notice, gate, read-back, all-clear, and
+- Optional template `templates/peer-exchange.md`: notice, hold, read-back, all-clear, and
   ask-to-peer between two entities' delivery leads; the record is the transport and the channel
-  an accelerator; a basis label on every fact; ids on both sides; gates observed, not assumed;
-  no permission laundering; Operator decisions travel by Desk; any party may decline and must
-  leave a resumable state; vendor-neutral by construction.
+  an accelerator; a basis label on every fact; ids on both sides; holds released on observed
+  state; no permission laundering; Operator decisions travel by Desk under Desk contract rule 8
+  (nobody writes another entity's desk); any party may decline and must leave a resumable state;
+  vendor-neutral by construction. In this revision the Board's own sections are hand-maintained
+  from their records and the Desk section is the Desk renderer's output; a Board renderer and
+  schema follow once practiced.
 - Adoption guidance ("Entity Stewardship: Board And Peer Exchange"), two optional overlay
   bullets, index links, and a synthetic worked example (`examples/entity-stewardship/README.md`).
 

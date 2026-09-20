@@ -6,6 +6,8 @@
 - Status: Proposed; awaiting maintainer review. Stacked on the Check-in Desk repeatability
   proposal (PR #10); to be released with it or after it, at the maintainer's stamping.
 - Date: 2026-09-19
+- Mode: Process evolution
+- Proposed version: v1.7.0 (minor), stamped with or after the Check-in Desk repeatability proposal
 - Source: the maintainer's request on 2026-09-19 to a private consuming project's delivery lead
   (a household-finance function) to "develop that view in a way that can be promoted to an
   enhanced template", widened the same evening: "it needs to be a EDLC (entity development life
@@ -18,7 +20,7 @@
   (2) the delivery lead's plan lived in a working file only the lead could read, so allocation
   and "what is on for next week" had no Operator-readable answer; (3) two projects sharing a
   storage host coordinated a multi-hour move across an operating-system upgrade through an
-  unwritten protocol of notice, gate, read-back, and all-clear, with a file copy at a known path
+  unwritten protocol of notice, hold, read-back, and all-clear, with a file copy at a known path
   as the fallback when the live channel could not be trusted. The protocol held; it was never
   written down, and one of the two leads was an agent from a different vendor than the other
   project's earlier tooling.
@@ -53,9 +55,9 @@
   pages must not diverge per project and that gaps are proposals, not local variants (PR #10).
   The Board is designed under that ruling: one shape, the Desk embedded via its canonical renderer.
 - The peer protocol was exercised end to end on 2026-09-19 between two consuming projects: a
-  notice of a shared-host upgrade window with two reboots; a named gate (a backup selection that
+  notice of a shared-host upgrade window with two reboots; a named hold (a backup selection that
   had to be observed, not inferred, after the upgrade); a partial all-clear scoped to the work
-  whose gates were observed, with the rest held; a read-back with basis labels once the
+  whose holds were released on observed state, with the rest held; a read-back with basis labels once the
   maintainer signed in; a final all-clear. Every message cited an id on each side and had a file
   copy at a known path in the receiving project's record. One executing agent declined a
   hard-delete step on its own policy and left a resumable state with markers; a different agent
@@ -88,10 +90,16 @@ on:
 3. **The Peer Exchange as the third artifact family.** Desk for asks to an Operator, Handoff
    Packet for work inside an entity, Peer Exchange between entities. Five message types with
    required fields; the record is the transport and the channel an accelerator; a basis label on
-   every fact; ids on both sides; notice before and all-clear after; gates observed not assumed;
-   no permission laundering; Operator decisions travel by Desk (using the Desk's pointer entry);
+   every fact; ids on both sides; notice before and all-clear after; holds released on observed state;
+   no permission laundering; Operator decisions travel by Desk under Desk contract rule 8
+   (the receiving lead files the ask on its own Desk citing the exchange record; the originating
+   desk carries a pointer entry; nobody writes another entity's desk);
    any party may decline and must leave a resumable state; vendor-neutral by construction.
-4. **Collaboration and vendor neutrality as a stated direction**, in the manifesto, with the
+4. **What ships now versus later.** The Desk section of a Board is the Desk renderer's output.
+   The Board's own four sections are hand-maintained Markdown from their records in this
+   revision; a Board renderer and data schema are a follow-up proposal once practiced. Claims
+   follow proof.
+5. **Collaboration and vendor neutrality as a stated direction**, in the manifesto, with the
    evidence gate that both templates are practiced before they are called canon.
 
 ## Proof And Disposition
