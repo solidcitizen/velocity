@@ -75,7 +75,10 @@ beyond the five things that vary. The renderer enforces every rule it can check.
    question is open on two desks — two of one operator's desks, or the desks of two entities whose
    leads work together — one desk owns it and the other carries a pointer entry (`owned_by`)
    naming the owning project and its ID, rendered as "Owned by *project* CK-n. Answer it there."
-   Pointers keep their own ID, are excluded from the totals, and close when the owning ask closes.
+   Pointers keep their own ID and are excluded from the totals. When the owning ask closes, the
+   pointer closes with it: same `answered_on`, state `answered` or `withdrawn`, a ruling that names
+   the owner's decision, and `owned_by` kept, so the pointer is a pointer for its whole life and the
+   closed entry reads "owned by *project* CK-n".
    Cross-references in prose are written as `<project> CK-n`. A desk's data file is written only
    by that project's own delivery lead. An ask that originates elsewhere arrives as a record the
    lead can cite (a handoff packet, a peer message, an issue) and is filed by that lead as an
@@ -129,7 +132,8 @@ tokens under `theme` and `theme_dark`. The renderer rejects any other token.
 3. Move anything that is not an ask or a team decision off the desk: status narrative into the
    status message, invariants into the [System Invariant Register](system-invariant-register.md).
 4. If another desk carries the same question, decide which desk owns it and turn the other entry
-   into a pointer.
+   into a pointer; if the owner has already answered, the pointer is a closed entry that keeps
+   `owned_by`.
 5. Run `--check` until it passes, render, and republish at the desk's existing address so the
    operator's link does not change.
 

@@ -45,6 +45,7 @@
     "pointerAsk": {
       "type": "object",
       "required": ["id", "kind", "state", "title", "owned_by"],
+      "description": "An open pointer. When the owning ask closes, the pointer closes too: it becomes a closedAsk that keeps owned_by, with the same answered_on and a ruling that names the owner's decision.",
       "properties": {
         "id": { "type": "integer", "minimum": 1 },
         "kind": { "enum": ["decide", "do"] },
@@ -62,7 +63,8 @@
         "state": { "enum": ["answered", "withdrawn"] },
         "title": { "type": "string" },
         "answered_on": { "type": "string", "description": "ISO date." },
-        "ruling": { "type": "string", "description": "What was decided; for withdrawn, why it no longer needs an answer." }
+        "ruling": { "type": "string", "description": "What was decided; for withdrawn, why it no longer needs an answer." },
+        "owned_by": { "type": "object", "required": ["project", "id"], "properties": { "project": { "type": "string" }, "id": { "type": "integer" } }, "description": "Present when this was a pointer: the desk that owned the ask. Rendered as \"owned by <project> CK-n\" after the ruling." }
       }
     },
     "teamDecision": {

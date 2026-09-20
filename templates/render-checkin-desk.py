@@ -21,7 +21,7 @@ import re
 import sys
 from datetime import datetime, timedelta
 
-CANON = "v1.7.0"
+CANON = "v1.7.1"
 KINDS = ("decide", "do", "team")
 STATES = ("open", "answered", "withdrawn")
 TEAM_STATUS = ("done", "in motion", "blocked", "reversed")
@@ -164,6 +164,9 @@ def validate(d):
                     if not isinstance(e.get(key), str) or not e[key].strip():
                         errs.append(f"{tag}: decide needs '{key}'")
         else:
+            ob = e.get("owned_by")
+            if ob is not None and not (isinstance(ob, dict) and isinstance(ob.get("project"), str) and isinstance(ob.get("id"), int)):
+                errs.append(f"{tag}: 'owned_by' must be {{project, id}}")
             if parse_dt(e.get("answered_on")) is None:
                 errs.append(f"{tag}: {state} ask needs ISO 'answered_on'")
             if not isinstance(e.get("ruling"), str) or not e["ruling"].strip():
@@ -236,11 +239,17 @@ def render_team(e):
 
 
 def render_answered(e):
-    ruling = inline(e["ruling"])
+    text = e["ruling"]
     if e["state"] == "withdrawn":
-        ruling = "withdrawn — " + ruling
+        text = re.sub(r"^\s*withdrawn\s*[—–:-]\s*", "", text, flags=re.I)  # tolerate a repeated leading word
+        text = "withdrawn — " + text
+    ruling = inline(text)
+    owner = ""
+    if e.get("owned_by"):
+        ob = e["owned_by"]
+        owner = f' <span class="date">(owned by {inline(ob["project"])} {ck(ob["id"])})</span>'
     return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["answered_on"])})</span> '
-            f'— {inline(e["title"])} — <strong>Ruling:</strong> {ruling}</li>')
+            f'— {inline(e["title"])} — <strong>Ruling:</strong> {ruling}{owner}</li>')
 
 
 def sort_open(entries):
