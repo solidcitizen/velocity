@@ -45,9 +45,11 @@
    action is a [Check-in Desk](executive-checkin-desk.md) ask. The board item that waits on it is
    *blocked* with `waits_on.ask` naming `<project> CK-n`. The board never carries a lean, a
    needed-by for the operator, or a ruling.
-7. **Peer-originated work is marked.** An item that exists because another entity asked carries
-   `origin` (their project and their id). Work whose normal path runs without an agent carries
-   `automated: true`, so the project can count it.
+7. **Peer-originated and automated work is marked.** An item that exists because another entity
+   asked carries `origin` (their project and their id). `automated` says how an item's normal path
+   runs: by software, by an agent on schedule, or when a person triggers it; the page counts each,
+   and the software bucket is the measure of a software-owned function. An optional `size`
+   (S, M, L) lets a backlog be ranked roughly.
 8. **The header is computed.** Five totals: in motion (doing + committed), waiting (blocked +
    held), backlog, due this week (needed-by dates, held-until dates, and non-daily control due
    dates inside seven days), and controls built but never run. Below them, open work by
@@ -86,8 +88,29 @@ python3 render-work-board.py board.json --fragment           # title, style, and
 Only these vary per project: `project`, `maintainer`, `tz_label`, `desk`, `adopted`, and the color
 tokens under `theme` and `theme_dark`.
 
+## Adoption notes
+
+- **A project's wrapper stamps and publishes; it implements nothing.** A project may automate the
+  workflow around the board (set `updated`, run the renderer with `--check` and then `--fragment`,
+  publish the output unmodified). It may not validate, order, total, or render on its own; any of
+  those in project code is the local variant the standard forbids. Pin the renderer from the
+  project's Velocity checkout so the board and the standard move together.
+- **The board is kept by the delivery agent.** Every move is an edit to the data file and a
+  republish the same turn. That cost is small for an agent-kept queue and heavy for a person;
+  a project whose queue is kept by hand should keep its existing tracker and adopt only the desk.
+- **Controls trust `last_completed` as entered.** The renderer reads the data file and nothing
+  else. A project whose control receipts live at a known path can add a pre-flight to its wrapper
+  that compares the newest receipt to `last_completed` and refuses to publish on a mismatch; that
+  check belongs to the project, because only the project knows its evidence.
+
 ## Pilot record
 
+- 2026-09-21, first hours live: `size` added for ranking; `automated` split into software / agent /
+  person because the boolean could not show the software-owned measure; the wrapper rule, the
+  maintenance-cost note, and the evidence pre-flight moved from messages into the adoption notes.
+  Reported by the pilot: the seven states fit finance work without bending; controls that never
+  leave the board and the proof-to-close rule with `adopted` forced an honest split between
+  evidenced and remembered work.
 - 2026-09-21, round 2, same project, live on the data file: ten findings from the rendered page,
   nine taken into the contract the same day (section counts, grouping by initiative, the due-week
   rules and the never-run count, planned controls, dependencies shown from both sides, unproven

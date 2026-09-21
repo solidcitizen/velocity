@@ -26,9 +26,11 @@ KINDS = ("work", "control")
 STATES = ("backlog", "committed", "doing", "blocked", "held", "done", "dropped")
 OPEN_STATES = ("backlog", "committed", "doing", "blocked", "held")
 CADENCES = ("daily", "weekly", "monthly", "quarterly", "annual")
+SIZES = ("S", "M", "L")
+AUTOMATED = ("software", "agent", "person")
 TOP_KEYS = {"project", "maintainer", "tz_label", "updated", "adopted", "desk", "theme", "theme_dark", "items"}
 WORK_KEYS = {"id", "kind", "title", "owner", "state", "belongs_to", "initiative", "depends_on", "waits_on", "needed_by",
-             "closed_on", "proof", "reason", "origin", "automated", "source", "uncertain"}
+             "closed_on", "proof", "reason", "origin", "automated", "size", "source", "uncertain"}
 CONTROL_KEYS = {"id", "kind", "title", "owner", "cadence", "last_completed", "proof", "evidence", "suspended", "planned",
                 "belongs_to", "initiative", "automated", "source", "uncertain"}
 UNCERTAIN_RE = re.compile(r"^\s*([a-z_]+)\s*:\s*\S")
@@ -200,8 +202,10 @@ def validate(d):
                 errs.append(f"{tag}: '{key}' is required")
         if e.get("origin") is not None and not is_ref(e["origin"]):
             errs.append(f"{tag}: 'origin' must be {{project, id}}")
-        if e.get("automated") is not None and not isinstance(e["automated"], bool):
-            errs.append(f"{tag}: 'automated' must be true or false")
+        if e.get("automated") is not None and e["automated"] not in AUTOMATED:
+            errs.append(f"{tag}: 'automated' must be one of {AUTOMATED}: runs by software, runs by an agent on schedule, or runs when a person triggers it")
+        if e.get("size") is not None and e["size"] not in SIZES:
+            errs.append(f"{tag}: 'size' must be one of {SIZES}")
         if e.get("initiative") is not None and not isinstance(e["initiative"], str):
             errs.append(f"{tag}: 'initiative' must be a string")
         if kind == "control":
@@ -314,10 +318,14 @@ def id_span(e):
     return f'<span class="id"{src}>{wi(e["id"])}</span>'
 
 
+AUTO_LABEL = {"software": "runs by software", "agent": "agent-scheduled", "person": "person-triggered"}
+
+
 def render_item(e, tz, titles, unblocks=()):
     state = e["state"]
     tags = uncertain_tag(e)
-    if e.get("automated"): tags += '<span class="tag">runs without an agent</span>'
+    if e.get("size"): tags += f'<span class="tag">{e["size"]}</span>'
+    if e.get("automated"): tags += f'<span class="tag">{AUTO_LABEL[e["automated"]]}</span>'
     if e.get("initiative"): tags += f'<span class="tag">{inline(e["initiative"])}</span>'
     head = f'<h3>{id_span(e)} {inline(e["title"])}{tags} <span class="badge">{state}</span></h3>'
     rows = [("Owner", inline(e["owner"]))]
@@ -352,7 +360,7 @@ def render_control(e, today):
         status = f'<strong>Next due:</strong> {due:%Y-%m-%d}'
     last_txt = f' — <strong>Last:</strong> {last:%Y-%m-%d}, proof {inline(e.get("proof", ""))}' if last else ""
     ev = f' — <strong>Evidence:</strong> <code>{inline(e["evidence"])}</code>' if e.get("evidence") else ""
-    tag = f' <span class="tag">{e["cadence"]}</span>' + (' <span class="tag">runs without an agent</span>' if e.get("automated") else "") + uncertain_tag(e)
+    tag = f' <span class="tag">{e["cadence"]}</span>' + (f' <span class="tag">{AUTO_LABEL[e["automated"]]}</span>' if e.get("automated") else "") + uncertain_tag(e)
     return (f'<li>{id_span(e)} {inline(e["title"])}{tag} <span class="date">({inline(e["owner"])})</span>'
             f'{last_txt}{ev} — {status}</li>')
 
@@ -427,7 +435,7 @@ def render(d, fragment=False, errors=()):
     for e in open_items:
         inits[e.get("initiative") or "no initiative"] = inits.get(e.get("initiative") or "no initiative", 0) + 1
     peers = sum(1 for e in open_items if e.get("origin"))
-    auto = sum(1 for e in open_items + controls if e.get("automated"))
+    auto = {k: sum(1 for e in open_items + controls if e.get("automated") == k) for k in AUTOMATED}
 
     light = dict(TOKENS, **d.get("theme", {}))
     dark = dict(TOKENS_DARK, **d.get("theme_dark", {}))
@@ -478,7 +486,7 @@ def render(d, fragment=False, errors=()):
         f"<div class=\"stat\"><strong>{len(backlog)}</strong><span>Backlog</span></div>"
         f"<div class=\"stat due\"><strong>{due}</strong><span>Due this week</span></div>"
         f"<div class=\"stat never\"><strong>{never_run}</strong><span>Controls never run</span></div></div>\n"
-        f"<p class=\"counts\">Open work by initiative: " + " · ".join(f"<b>{inline(k)}</b> {v}" for k, v in sorted(inits.items(), key=lambda kv: (-kv[1], kv[0]))) + f" · <b>{peers}</b> from peers · <b>{auto}</b> run without an agent</p>\n"
+        f"<p class=\"counts\">Open work by initiative: " + " · ".join(f"<b>{inline(k)}</b> {v}" for k, v in sorted(inits.items(), key=lambda kv: (-kv[1], kv[0]))) + f" · <b>{peers}</b> from peers · <b>{auto['software']}</b> run by software · <b>{auto['agent']}</b> agent-scheduled · <b>{auto['person']}</b> person-triggered</p>\n"
         + section("motion", f"In motion ({len(doing) + len(committed)})", "Doing now, then committed to a date or a week. Ordered by needed-by.", cards(doing + committed, "Nothing in motion.")) + "\n"
         + section("waiting", f"Waiting ({len(waiting)})", "Blocked on a desk ask or another item, or held for an event with a date. Nothing here is forgotten; each names what it waits on.", cards(waiting, "Nothing waiting.")) + "\n"
         + section("backlog", f"Backlog ({len(backlog)})", "Wanted, not yet committed, by initiative.", cards(backlog, "Backlog is empty.", grouped=True)) + "\n"

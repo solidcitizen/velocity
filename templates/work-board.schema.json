@@ -209,8 +209,12 @@
           "description": "Present when the item exists because a peer entity asked; their project and their id."
         },
         "automated": {
-          "type": "boolean",
-          "description": "True when the item's normal path runs without an agent. Counted, so the project can measure it."
+          "enum": [
+            "software",
+            "agent",
+            "person"
+          ],
+          "description": "How the item's normal path runs: 'software' (no agent and no person), 'agent' (an agent on schedule), 'person' (a person triggers it). Counted per value; the software-owned measure is the first bucket."
         },
         "source": {
           "type": "string",
@@ -222,6 +226,14 @@
             "type": "string"
           },
           "description": "Fields the maintainer could not confirm, each exactly '<field>: <why>' where <field> is a real field name. Rendered as an 'unconfirmed: <fields>' tag; the reasons show on hover."
+        },
+        "size": {
+          "enum": [
+            "S",
+            "M",
+            "L"
+          ],
+          "description": "Rough size, for ranking the backlog. Optional."
         }
       },
       "additionalProperties": false,
@@ -411,7 +423,12 @@
           "type": "string"
         },
         "automated": {
-          "type": "boolean"
+          "enum": [
+            "software",
+            "agent",
+            "person"
+          ],
+          "description": "How the item's normal path runs: 'software' (no agent and no person), 'agent' (an agent on schedule), 'person' (a person triggers it). Counted per value; the software-owned measure is the first bucket."
         },
         "evidence": {
           "type": "string",

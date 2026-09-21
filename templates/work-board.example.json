@@ -63,7 +63,8 @@
       "origin": {
         "project": "<peer project>",
         "id": 3
-      }
+      },
+      "size": "M"
     },
     {
       "id": 6,
@@ -73,7 +74,7 @@
       "cadence": "monthly",
       "last_completed": "2025-12-31",
       "proof": "<receipt id or record path>",
-      "automated": true,
+      "automated": "software",
       "evidence": "<path pattern where each completion's receipt lives>"
     },
     {
