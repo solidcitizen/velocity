@@ -1,0 +1,505 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/solidcitizen/velocity/blob/main/templates/work-board.schema.json",
+  "title": "Work Board data file",
+  "description": "Single source of truth for a project's Work Board. Rendered by templates/render-work-board.py, which also validates it. Operator decisions never live here; an item that waits on the Operator names the Check-in Desk ask (CK id) it waits on.",
+  "type": "object",
+  "required": [
+    "project",
+    "maintainer",
+    "tz_label",
+    "updated",
+    "items"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "project": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Rendered as '<Project> Work Board'."
+    },
+    "maintainer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The role that keeps the board current."
+    },
+    "tz_label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Time-zone label shown after times, e.g. PT. All times in the file are in this zone."
+    },
+    "updated": {
+      "type": "string",
+      "description": "ISO datetime of this version. Rewritten in the same edit as any content change."
+    },
+    "desk": {
+      "type": "string",
+      "description": "Optional name or link of the project's Check-in Desk, shown in the header."
+    },
+    "theme": {
+      "$ref": "#/$defs/theme"
+    },
+    "theme_dark": {
+      "$ref": "#/$defs/theme"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every WI id ever assigned. Ids are positive integers, unique, contiguous from 1, never renumbered or dropped (a dropped item stays, with its reason). Unknown fields are rejected.",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/workItem"
+          },
+          {
+            "$ref": "#/$defs/control"
+          }
+        ]
+      }
+    },
+    "adopted": {
+      "type": "string",
+      "description": "ISO date the board's discipline began. Done items closed before it are history: belongs_to and proof optional, shown as operator-reported. Absent means every done item needs both."
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": [
+        "project",
+        "id"
+      ],
+      "properties": {
+        "project": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Color token overrides. The only visual customization a project may make.",
+      "properties": {
+        "bg": {},
+        "surface": {},
+        "border": {},
+        "text": {},
+        "text-muted": {},
+        "accent": {},
+        "doing": {},
+        "doing-bg": {},
+        "doing-border": {},
+        "committed": {},
+        "committed-bg": {},
+        "committed-border": {},
+        "blocked": {},
+        "blocked-bg": {},
+        "blocked-border": {},
+        "held": {},
+        "held-bg": {},
+        "held-border": {},
+        "backlog": {},
+        "backlog-bg": {},
+        "backlog-border": {},
+        "control": {},
+        "control-bg": {},
+        "control-border": {},
+        "done": {},
+        "done-bg": {},
+        "done-border": {},
+        "dropped": {},
+        "dropped-bg": {},
+        "dropped-border": {},
+        "mono-bg": {}
+      }
+    },
+    "workItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "owner",
+        "state"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "const": "work",
+          "description": "Default when omitted."
+        },
+        "title": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string",
+          "description": "The role that owns the item."
+        },
+        "state": {
+          "enum": [
+            "backlog",
+            "committed",
+            "doing",
+            "blocked",
+            "held",
+            "done",
+            "dropped"
+          ],
+          "description": "backlog: wanted, not scheduled. committed: named for a week or date. doing: in hand. blocked: waits on a desk ask or another item. held: waits on an external event with a date. done: closed with proof. dropped: closed without doing, with a reason."
+        },
+        "belongs_to": {
+          "type": "string",
+          "description": "What bounds this work: a tranche, an issue record, a control document, an ADR, a decision (CK id), or an evidence folder. Required for doing, and for done unless closed before 'adopted'."
+        },
+        "initiative": {
+          "type": "string",
+          "description": "Optional tag; the entity layer reads it."
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "WI ids that must close first. Ordering only; not a reason to be blocked."
+        },
+        "waits_on": {
+          "type": "object",
+          "description": "blocked: {ask: {project, id}} (a Check-in Desk ask) or {item: WI id}. held: {event, by?} (an external event; by is an ISO date). Absent on every other state.",
+          "properties": {
+            "ask": {
+              "$ref": "#/$defs/ref"
+            },
+            "item": {
+              "type": "integer"
+            },
+            "event": {
+              "type": "string"
+            },
+            "by": {
+              "type": "string"
+            }
+          }
+        },
+        "needed_by": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "ISO date or datetime. Informs the Due this week count; never changes a state on its own."
+        },
+        "closed_on": {
+          "type": "string",
+          "description": "ISO date. Required for done and dropped."
+        },
+        "proof": {
+          "type": "string",
+          "description": "Required for done unless closed before 'adopted'. An artifact in Velocity's terms: review pack, handoff packet, closeout disposition, receipt id, or record path. Cited, not judged, by the board."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Required for dropped."
+        },
+        "origin": {
+          "$ref": "#/$defs/ref",
+          "description": "Present when the item exists because a peer entity asked; their project and their id."
+        },
+        "automated": {
+          "enum": [
+            "software",
+            "agent",
+            "person"
+          ],
+          "description": "How the item's normal path runs: 'software' (no agent and no person), 'agent' (an agent on schedule), 'person' (a person triggers it). Counted per value; the software-owned measure is the first bucket."
+        },
+        "source": {
+          "type": "string",
+          "description": "Provenance: where this item came from (a queue paragraph, a log line). Kept, not rendered."
+        },
+        "uncertain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Fields the maintainer could not confirm, each exactly '<field>: <why>' where <field> is a real field name. Rendered as an 'unconfirmed: <fields>' tag; the reasons show on hover."
+        },
+        "size": {
+          "enum": [
+            "S",
+            "M",
+            "L"
+          ],
+          "description": "Rough size, for ranking the backlog. Optional."
+        },
+        "benefit": {
+          "type": "object",
+          "required": [
+            "kind",
+            "scale"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "risk retired",
+                "cost saved",
+                "capability gained",
+                "obligation met"
+              ]
+            },
+            "scale": {
+              "enum": [
+                "S",
+                "M",
+                "L"
+              ]
+            },
+            "note": {
+              "type": "string",
+              "description": "One line: what is retired, saved, gained, or met."
+            }
+          },
+          "description": "Why the work is worth doing, for ranking against size. Optional. The backlog orders by benefit scale, then size, within each initiative; the entity layer rolls benefit up by initiative."
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "doing"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "belongs_to"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "done"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "closed_on"
+            ],
+            "description": "proof and belongs_to also required unless closed_on is before the board's adopted date (renderer-checked)"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "dropped"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "closed_on",
+              "reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "blocked"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "waits_on"
+            ],
+            "properties": {
+              "waits_on": {
+                "oneOf": [
+                  {
+                    "required": [
+                      "ask"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "item"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "held"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "waits_on"
+            ],
+            "properties": {
+              "waits_on": {
+                "required": [
+                  "event"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "backlog",
+                  "committed",
+                  "doing",
+                  "done",
+                  "dropped"
+                ]
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "waits_on"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "control": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "owner",
+        "cadence"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "const": "control"
+        },
+        "title": {
+          "type": "string",
+          "description": "Recurring assurance work: a reconcile, an audit, a periodic package. Never leaves the board."
+        },
+        "owner": {
+          "type": "string"
+        },
+        "cadence": {
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly",
+            "quarterly",
+            "annual"
+          ]
+        },
+        "last_completed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "ISO date of the last completion, or null if never. Next due is computed from it."
+        },
+        "proof": {
+          "type": "string",
+          "description": "Proof of the last completion. Required when last_completed is set."
+        },
+        "suspended": {
+          "type": "object",
+          "required": [
+            "since",
+            "reason"
+          ],
+          "properties": {
+            "since": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        },
+        "belongs_to": {
+          "type": "string"
+        },
+        "initiative": {
+          "type": "string"
+        },
+        "automated": {
+          "enum": [
+            "software",
+            "agent",
+            "person"
+          ],
+          "description": "How the item's normal path runs: 'software' (no agent and no person), 'agent' (an agent on schedule), 'person' (a person triggers it). Counted per value; the software-owned measure is the first bucket."
+        },
+        "evidence": {
+          "type": "string",
+          "description": "Path pattern where every completion's proof lives, e.g. private/daily-control-YYYYMMDD/RECEIPT.json. 'proof' holds the last one; 'evidence' says where the next will be."
+        },
+        "source": {
+          "type": "string",
+          "description": "Provenance: where this item came from (a queue paragraph, a log line). Kept, not rendered."
+        },
+        "uncertain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Fields the maintainer could not confirm, each '<field>: <why>'. Rendered as an 'unconfirmed' tag naming the fields."
+        },
+        "planned": {
+          "type": "boolean",
+          "description": "True when the control is defined but not yet built. Shown as 'not yet built' and not counted as due or never-run until it exists."
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "last_completed": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "last_completed"
+            ]
+          },
+          "then": {
+            "required": [
+              "proof"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
