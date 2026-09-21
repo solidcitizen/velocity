@@ -97,6 +97,15 @@
       "owner": "<role>",
       "closed_on": "2026-01-03",
       "reason": "<why it no longer needs doing>"
+    },
+    {
+      "id": 9,
+      "kind": "control",
+      "title": "<a control defined but not yet built>",
+      "owner": "<role>",
+      "cadence": "quarterly",
+      "last_completed": null,
+      "planned": true
     }
   ]
 }

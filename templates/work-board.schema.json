@@ -221,7 +221,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Fields the maintainer could not confirm, each '<field>: <why>'. Rendered as an 'unconfirmed' tag naming the fields."
+          "description": "Fields the maintainer could not confirm, each exactly '<field>: <why>' where <field> is a real field name. Rendered as an 'unconfirmed: <fields>' tag; the reasons show on hover."
         }
       },
       "additionalProperties": false,
@@ -427,6 +427,10 @@
             "type": "string"
           },
           "description": "Fields the maintainer could not confirm, each '<field>: <why>'. Rendered as an 'unconfirmed' tag naming the fields."
+        },
+        "planned": {
+          "type": "boolean",
+          "description": "True when the control is defined but not yet built. Shown as 'not yet built' and not counted as due or never-run until it exists."
         }
       },
       "additionalProperties": false,

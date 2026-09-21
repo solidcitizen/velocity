@@ -29,8 +29,9 @@ CADENCES = ("daily", "weekly", "monthly", "quarterly", "annual")
 TOP_KEYS = {"project", "maintainer", "tz_label", "updated", "adopted", "desk", "theme", "theme_dark", "items"}
 WORK_KEYS = {"id", "kind", "title", "owner", "state", "belongs_to", "initiative", "depends_on", "waits_on", "needed_by",
              "closed_on", "proof", "reason", "origin", "automated", "source", "uncertain"}
-CONTROL_KEYS = {"id", "kind", "title", "owner", "cadence", "last_completed", "proof", "evidence", "suspended",
+CONTROL_KEYS = {"id", "kind", "title", "owner", "cadence", "last_completed", "proof", "evidence", "suspended", "planned",
                 "belongs_to", "initiative", "automated", "source", "uncertain"}
+UNCERTAIN_RE = re.compile(r"^\s*([a-z_]+)\s*:\s*\S")
 TOKENS = {
     "bg": "#f7f7f8", "surface": "#ffffff", "border": "#e2e2e6", "text": "#1b1c1f",
     "text-muted": "#5b5d66", "accent": "#2f5fd6",
@@ -64,13 +65,18 @@ CSS = """
   main { max-width: 820px; margin: 0 auto; padding-block: 24px 64px; padding-inline: 16px; }
   header.page-head h1 { font-size: 1.5rem; margin: 0 0 4px; }
   .updated { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 16px; }
-  .totals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px; }
+  .totals { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 12px; }
+  .counts { color: var(--text-muted); font-size: 0.86rem; margin: 0 0 28px; }
+  .counts b { color: var(--text); font-weight: 600; }
+  h3.grp { font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin: 14px 0 8px; }
+  .ledger li.unproven { background: var(--surface); border-style: dashed; color: var(--text-muted); }
   .totals .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; text-align: center; }
   .totals .stat strong { display: block; font-size: 1.6rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
   .totals .stat span { color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
   .totals .stat.doing strong { color: var(--doing); }
   .totals .stat.waiting strong { color: var(--blocked); }
   .totals .stat.due strong { color: var(--held); }
+  .totals .stat.never strong { color: var(--blocked); }
   section.group { margin-bottom: 32px; }
   section.group > h2 { font-size: 1.05rem; margin: 0 0 4px; }
   section.group > .group-note { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 14px; }
@@ -112,6 +118,7 @@ CSS = """
   footer.page-foot { color: var(--text-muted); font-size: 0.8rem; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 12px; }
   @media (max-width: 560px) {
     .totals { grid-template-columns: 1fr 1fr; }
+    .totals .stat:last-child { grid-column: span 2; }
     .item dl { grid-template-columns: 1fr; gap: 2px 0; }
     .item dt { padding-top: 8px; }
   }
@@ -179,8 +186,15 @@ def validate(d):
             errs.append(f"{tag}: unknown fields {unknown}; provenance goes in 'source' (text) and 'uncertain' (list of what could not be confirmed)")
         if e.get("source") is not None and not isinstance(e["source"], str):
             errs.append(f"{tag}: 'source' must be a string")
-        if e.get("uncertain") is not None and not (isinstance(e["uncertain"], list) and all(isinstance(x, str) for x in e["uncertain"])):
-            errs.append(f"{tag}: 'uncertain' must be a list of strings, each '<field>: <why it could not be confirmed>'")
+        if e.get("uncertain") is not None:
+            allowed = CONTROL_KEYS if kind == "control" else WORK_KEYS
+            if not (isinstance(e["uncertain"], list) and all(isinstance(x, str) for x in e["uncertain"])):
+                errs.append(f"{tag}: 'uncertain' must be a list of strings, each '<field>: <why it could not be confirmed>'")
+            else:
+                for x in e["uncertain"]:
+                    m = UNCERTAIN_RE.match(x)
+                    if not m or m.group(1) not in allowed:
+                        errs.append(f"{tag}: uncertain entry must read '<field>: <why>' with a real field name; got {x[:50]!r}")
         for key in ("title", "owner"):
             if not isinstance(e.get(key), str) or not e[key].strip():
                 errs.append(f"{tag}: '{key}' is required")
@@ -198,6 +212,10 @@ def validate(d):
                 errs.append(f"{tag}: control 'last_completed' must be an ISO date or null")
             if lc is not None and (not isinstance(e.get("proof"), str) or not e["proof"].strip()):
                 errs.append(f"{tag}: control with 'last_completed' needs 'proof' of that completion")
+            if e.get("planned") is not None and not isinstance(e["planned"], bool):
+                errs.append(f"{tag}: control 'planned' must be true (not yet built) or false")
+            if e.get("planned") and e.get("last_completed"):
+                errs.append(f"{tag}: a control cannot be both planned (not yet built) and completed")
             if e.get("evidence") is not None and not isinstance(e["evidence"], str):
                 errs.append(f"{tag}: control 'evidence' must be a string (path pattern where every completion's proof lives)")
             sus = e.get("suspended")
@@ -287,16 +305,21 @@ def waits_text(w, boards):
 def uncertain_tag(e):
     if not e.get("uncertain"):
         return ""
-    fields = ", ".join(sorted({u.split(":")[0].strip() for u in e["uncertain"]}))
+    fields = ", ".join(sorted({(UNCERTAIN_RE.match(u).group(1) if UNCERTAIN_RE.match(u) else u.split(":")[0].strip()) for u in e["uncertain"]}))
     return f'<span class="tag warn" title="{html.escape(" | ".join(e["uncertain"]), quote=True)}">unconfirmed: {inline(fields)}</span>'
 
 
-def render_item(e, tz, titles):
+def id_span(e):
+    src = f' title="{html.escape(e["source"], quote=True)}"' if e.get("source") else ""
+    return f'<span class="id"{src}>{wi(e["id"])}</span>'
+
+
+def render_item(e, tz, titles, unblocks=()):
     state = e["state"]
     tags = uncertain_tag(e)
     if e.get("automated"): tags += '<span class="tag">runs without an agent</span>'
     if e.get("initiative"): tags += f'<span class="tag">{inline(e["initiative"])}</span>'
-    head = f'<h3><span class="id">{wi(e["id"])}</span> {inline(e["title"])}{tags} <span class="badge">{state}</span></h3>'
+    head = f'<h3>{id_span(e)} {inline(e["title"])}{tags} <span class="badge">{state}</span></h3>'
     rows = [("Owner", inline(e["owner"]))]
     if e.get("belongs_to"): rows.append(("Belongs to", inline(e["belongs_to"])))
     if state in ("blocked", "held") and isinstance(e.get("waits_on"), dict):
@@ -306,6 +329,8 @@ def render_item(e, tz, titles):
         rows.append(("Depends on", ", ".join(f"{wi(x)} ({inline(titles.get(x, ''))})" for x in e["depends_on"])))
     if e.get("needed_by"):
         rows.append(("Needed by", fmt_dt(parse_dt(e["needed_by"]), tz)))
+    if unblocks:
+        rows.append(("Unblocks", ", ".join(f"{wi(x)} ({inline(titles.get(x, ''))})" for x in unblocks)))
     if e.get("origin"):
         rows.append(("Origin", f'asked by {inline(e["origin"]["project"])}, their item {e["origin"]["id"]}'))
     dl = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows)
@@ -317,28 +342,31 @@ def render_control(e, today):
     due = next_due(last, e["cadence"])
     if e.get("suspended"):
         status = f'<strong>Suspended</strong> since {inline(e["suspended"]["since"])}: {inline(e["suspended"]["reason"])}'
+    elif e.get("planned"):
+        status = '<strong>Not yet built</strong> — not counted as due until it exists'
     elif due is None:
-        status = '<strong>Next due:</strong> <span class="overdue">never completed — due now</span>'
+        status = '<strong>Next due:</strong> <span class="overdue">built, never run — due now</span>'
     elif due.date() < today.date():
         status = f'<strong>Next due:</strong> <span class="overdue">{due:%Y-%m-%d} (overdue)</span>'
     else:
         status = f'<strong>Next due:</strong> {due:%Y-%m-%d}'
     last_txt = f' — <strong>Last:</strong> {last:%Y-%m-%d}, proof {inline(e.get("proof", ""))}' if last else ""
     ev = f' — <strong>Evidence:</strong> <code>{inline(e["evidence"])}</code>' if e.get("evidence") else ""
-    tag = (' <span class="tag">runs without an agent</span>' if e.get("automated") else "") + uncertain_tag(e)
-    return (f'<li><span class="id">{wi(e["id"])}</span> {inline(e["title"])}{tag} <span class="date">({inline(e["owner"])}, {e["cadence"]})</span>'
+    tag = f' <span class="tag">{e["cadence"]}</span>' + (' <span class="tag">runs without an agent</span>' if e.get("automated") else "") + uncertain_tag(e)
+    return (f'<li>{id_span(e)} {inline(e["title"])}{tag} <span class="date">({inline(e["owner"])})</span>'
             f'{last_txt}{ev} — {status}</li>')
 
 
 def render_done(e):
     proof = inline(e["proof"]) if e.get("proof") else '<span class="tag warn">operator-reported, no artifact (closed before the board was adopted)</span>'
     where = f' <span class="date">({inline(e["belongs_to"])})</span>' if e.get("belongs_to") else ""
-    return (f'<li><span class="id">{wi(e["id"])}</span> <span class="date">({inline(e.get("closed_on", "?"))}, {inline(e["owner"])})</span> '
+    cls = "" if e.get("proof") else ' class="unproven"'
+    return (f'<li{cls}>{id_span(e)} <span class="date">({inline(e.get("closed_on", "?"))}, {inline(e["owner"])})</span> '
             f'— {inline(e["title"])}{where}{uncertain_tag(e)} — <strong>Proof:</strong> {proof}</li>')
 
 
 def render_dropped(e):
-    return (f'<li><span class="id">{wi(e["id"])}</span> <span class="date">({inline(e.get("closed_on", "?"))})</span> '
+    return (f'<li>{id_span(e)} <span class="date">({inline(e.get("closed_on", "?"))})</span> '
             f'— {inline(e["title"])} — <strong>Reason:</strong> {inline(e.get("reason", ""))}</li>')
 
 
@@ -373,7 +401,7 @@ def render(d, fragment=False, errors=()):
     backlog = order(by_state("backlog"))
     done = sorted(by_state("done"), key=lambda e: (parse_dt(e["closed_on"]), e["id"]), reverse=True)
     dropped = sorted(by_state("dropped"), key=lambda e: (parse_dt(e["closed_on"]), e["id"]), reverse=True)
-    controls_sorted = sorted(controls, key=lambda e: (bool(e.get("suspended")), e["id"]))
+    controls_sorted = sorted(controls, key=lambda e: (bool(e.get("suspended")), bool(e.get("planned")), e["id"]))
 
     week_end = updated + timedelta(days=7)
     due = 0
@@ -382,10 +410,24 @@ def render(d, fragment=False, errors=()):
         if nb and nb <= week_end: due += 1
         w = e.get("waits_on") or {}
         if e["state"] == "held" and w.get("by") and parse_dt(w["by"]) <= week_end: due += 1
+    never_run = 0
     for e in controls:
-        if e.get("suspended"): continue
-        nd = next_due(parse_dt(e["last_completed"]) if e.get("last_completed") else None, e["cadence"])
-        if nd is None or nd <= week_end: due += 1
+        if e.get("suspended") or e.get("planned"): continue
+        last = parse_dt(e["last_completed"]) if e.get("last_completed") else None
+        if last is None:
+            never_run += 1; continue
+        if e["cadence"] == "daily": continue  # always due; would swamp the count
+        if next_due(last, e["cadence"]) <= week_end: due += 1
+    open_items = doing + committed + waiting + backlog
+    unblocks = {}
+    for e in open_items:
+        for x in e.get("depends_on") or []:
+            unblocks.setdefault(x, []).append(e["id"])
+    inits = {}
+    for e in open_items:
+        inits[e.get("initiative") or "no initiative"] = inits.get(e.get("initiative") or "no initiative", 0) + 1
+    peers = sum(1 for e in open_items if e.get("origin"))
+    auto = sum(1 for e in open_items + controls if e.get("automated"))
 
     light = dict(TOKENS, **d.get("theme", {}))
     dark = dict(TOKENS_DARK, **d.get("theme_dark", {}))
@@ -397,11 +439,27 @@ def render(d, fragment=False, errors=()):
         return (f'<section class="group" aria-labelledby="{sid}-heading"><h2 id="{sid}-heading">{heading}</h2>'
                 f'<p class="group-note">{note}</p>{body}</section>')
 
-    def cards(entries, empty):
-        return "".join(render_item(e, tz, titles) for e in entries) or f'<p class="group-note">{empty}</p>'
+    def cards(entries, empty, grouped=False):
+        if not entries:
+            return f'<p class="group-note">{empty}</p>'
+        if grouped and any(e.get("initiative") for e in entries):
+            out = ""
+            for name in sorted({e.get("initiative") or "no initiative" for e in entries}, key=lambda n: (n == "no initiative", n)):
+                grp = [e for e in entries if (e.get("initiative") or "no initiative") == name]
+                out += f'<h3 class="grp">{inline(name)} ({len(grp)})</h3>' + "".join(render_item(e, tz, titles, unblocks.get(e["id"], ())) for e in grp)
+            return out
+        return "".join(render_item(e, tz, titles, unblocks.get(e["id"], ())) for e in entries)
 
-    def ledger(cls, entries, fn, empty):
-        return (f'<ul class="ledger {cls}">' + "".join(fn(e) for e in entries) + "</ul>") if entries else f'<p class="group-note">{empty}</p>'
+    def ledger(cls, entries, fn, empty, grouped=False):
+        if not entries:
+            return f'<p class="group-note">{empty}</p>'
+        if grouped and any(e.get("initiative") for e in entries):
+            out = ""
+            for name in sorted({e.get("initiative") or "no initiative" for e in entries}, key=lambda n: (n == "no initiative", n)):
+                grp = [e for e in entries if (e.get("initiative") or "no initiative") == name]
+                out += f'<h3 class="grp">{inline(name)} ({len(grp)})</h3><ul class="ledger {cls}">' + "".join(fn(e) for e in grp) + "</ul>"
+            return out
+        return f'<ul class="ledger {cls}">' + "".join(fn(e) for e in entries) + "</ul>"
 
     repair = ""
     if errors:
@@ -418,13 +476,15 @@ def render(d, fragment=False, errors=()):
         f"<div class=\"stat doing\"><strong>{len(doing) + len(committed)}</strong><span>In motion</span></div>"
         f"<div class=\"stat waiting\"><strong>{len(waiting)}</strong><span>Waiting</span></div>"
         f"<div class=\"stat\"><strong>{len(backlog)}</strong><span>Backlog</span></div>"
-        f"<div class=\"stat due\"><strong>{due}</strong><span>Due this week</span></div></div>\n"
-        + section("motion", "In motion", "Doing now, then committed to a date or a week. Ordered by needed-by.", cards(doing + committed, "Nothing in motion.")) + "\n"
-        + section("waiting", "Waiting", "Blocked on a desk ask or another item, or held for an event with a date. Nothing here is forgotten; each names what it waits on.", cards(waiting, "Nothing waiting.")) + "\n"
-        + section("backlog", "Backlog", "Wanted, not yet committed.", cards(backlog, "Backlog is empty.")) + "\n"
-        + section("controls", "Controls", "Recurring assurance work. A control never leaves the board; its next due date is computed from its cadence.", ledger("controls", controls_sorted, lambda e: render_control(e, updated), "No controls.")) + "\n"
-        + section("done", "Done", "Closed with proof, newest first. The proof is cited, not judged here.", ledger("done", done, render_done, "Nothing closed yet.")) + "\n"
-        + section("dropped", "Dropped", "Closed without doing, newest first, with the reason. IDs never reused.", ledger("dropped", dropped, render_dropped, "Nothing dropped.")) + "\n"
+        f"<div class=\"stat due\"><strong>{due}</strong><span>Due this week</span></div>"
+        f"<div class=\"stat never\"><strong>{never_run}</strong><span>Controls never run</span></div></div>\n"
+        f"<p class=\"counts\">Open work by initiative: " + " · ".join(f"<b>{inline(k)}</b> {v}" for k, v in sorted(inits.items(), key=lambda kv: (-kv[1], kv[0]))) + f" · <b>{peers}</b> from peers · <b>{auto}</b> run without an agent</p>\n"
+        + section("motion", f"In motion ({len(doing) + len(committed)})", "Doing now, then committed to a date or a week. Ordered by needed-by.", cards(doing + committed, "Nothing in motion.")) + "\n"
+        + section("waiting", f"Waiting ({len(waiting)})", "Blocked on a desk ask or another item, or held for an event with a date. Nothing here is forgotten; each names what it waits on.", cards(waiting, "Nothing waiting.")) + "\n"
+        + section("backlog", f"Backlog ({len(backlog)})", "Wanted, not yet committed, by initiative.", cards(backlog, "Backlog is empty.", grouped=True)) + "\n"
+        + section("controls", f"Controls ({len(controls)})", "Recurring assurance work. A control never leaves the board; its next due date is computed from its cadence. Daily controls are always due and are not counted in the week.", ledger("controls", controls_sorted, lambda e: render_control(e, updated), "No controls.")) + "\n"
+        + section("done", f"Done ({len(done)})", "Closed with proof, newest first, by initiative. The proof is cited, not judged here; a close without an artifact is shown lighter.", ledger("done", done, render_done, "Nothing closed yet.", grouped=True)) + "\n"
+        + section("dropped", f"Dropped ({len(dropped)})", "Closed without doing, newest first, with the reason. IDs never reused.", ledger("dropped", dropped, render_dropped, "Nothing dropped.")) + "\n"
         f"<footer class=\"page-foot\">Built on the Velocity Work Board template ({CANON}), rendered from the board data file. "
         f"IDs are assigned once and never renumbered. Operator decisions live on the Check-in Desk, never here.</footer>\n</main>"
     )

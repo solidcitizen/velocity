@@ -39,7 +39,8 @@
 5. **Controls recur.** Recurring assurance work (a reconcile, an audit, a periodic package) is a
    *control* with a cadence, its last completion's proof, and `evidence`, the path pattern where
    every completion's proof lives. A control never leaves the board; its next due date is
-   computed, an overdue control is marked, and a control never completed reads "due now".
+   computed, an overdue control is marked, a control built but never run reads "due now", and a
+   control that is defined but not yet built (`planned: true`) is shown as such and not counted.
 6. **Operator decisions never live on the board.** Anything that needs the operator's decision or
    action is a [Check-in Desk](executive-checkin-desk.md) ask. The board item that waits on it is
    *blocked* with `waits_on.ask` naming `<project> CK-n`. The board never carries a lean, a
@@ -47,16 +48,18 @@
 7. **Peer-originated work is marked.** An item that exists because another entity asked carries
    `origin` (their project and their id). Work whose normal path runs without an agent carries
    `automated: true`, so the project can count it.
-8. **The header is computed.** Four totals: in motion (doing + committed), waiting (blocked +
-   held), backlog, and due this week (needed-by dates, held-until dates, and control due dates
-   inside seven days). Nobody types them.
+8. **The header is computed.** Five totals: in motion (doing + committed), waiting (blocked +
+   held), backlog, due this week (needed-by dates, held-until dates, and non-daily control due
+   dates inside seven days), and controls built but never run. Below them, open work by
+   initiative, work from peers, and work that runs without an agent. Section headings carry
+   their counts; Backlog and Done are grouped by initiative. Nobody types any of it.
 9. **Republished the same turn** an item is added, moved, closed, or dropped, with the `updated`
    stamp changed in the same edit.
 10. **Provenance has a home; unknown fields do not.** `source` holds where an item came from (a
     queue paragraph, a log line) and is kept, not shown. `uncertain` lists the fields the
-    maintainer could not confirm, each as `field: why`, and the page tags the item
-    **unconfirmed** naming those fields. Any other field is rejected, so a typo cannot pass
-    silently.
+    maintainer could not confirm, each exactly `field: why` with a real field name, and the page
+    tags the item **unconfirmed** naming only the fields, with the reasons on hover. The source
+    shows on hover over the id. Any other field is rejected, so a typo cannot pass silently.
 11. **A broken file still shows the board.** Validation lists every violation and the renderer
     exits non-zero, but the page is still produced with a **Needs repair** block at the top, so one
     stale field never hides the other fifty items from the operator. `--check` alone reports and
@@ -85,6 +88,13 @@ tokens under `theme` and `theme_dark`.
 
 ## Pilot record
 
+- 2026-09-21, round 2, same project, live on the data file: ten findings from the rendered page,
+  nine taken into the contract the same day (section counts, grouping by initiative, the due-week
+  rules and the never-run count, planned controls, dependencies shown from both sides, unproven
+  closes shown lighter, peer and automation counts, source on hover, the strict `uncertain` form);
+  the tenth, a by-initiative allocation of committed effort, belongs to the entity layer above the
+  board. The board surfaced two stale backlog items the flat queue had hidden; they were dropped
+  with reasons.
 - 2026-09-21, round 1, one consuming project, 52 items (43 work, 9 controls): the first draft
   failed 8 items and refused the page. Findings taken into the contract the same day: `adopted`
   and history closes (rule 3), `evidence` on controls (rule 5), `source` and `uncertain` with
