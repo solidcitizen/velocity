@@ -27,10 +27,12 @@ STATES = ("backlog", "committed", "doing", "blocked", "held", "done", "dropped")
 OPEN_STATES = ("backlog", "committed", "doing", "blocked", "held")
 CADENCES = ("daily", "weekly", "monthly", "quarterly", "annual")
 SIZES = ("S", "M", "L")
+BENEFITS = ("risk retired", "cost saved", "capability gained", "obligation met")
+RANK = {"S": 1, "M": 2, "L": 3}
 AUTOMATED = ("software", "agent", "person")
 TOP_KEYS = {"project", "maintainer", "tz_label", "updated", "adopted", "desk", "theme", "theme_dark", "items"}
 WORK_KEYS = {"id", "kind", "title", "owner", "state", "belongs_to", "initiative", "depends_on", "waits_on", "needed_by",
-             "closed_on", "proof", "reason", "origin", "automated", "size", "source", "uncertain"}
+             "closed_on", "proof", "reason", "origin", "automated", "size", "benefit", "source", "uncertain"}
 CONTROL_KEYS = {"id", "kind", "title", "owner", "cadence", "last_completed", "proof", "evidence", "suspended", "planned",
                 "belongs_to", "initiative", "automated", "source", "uncertain"}
 UNCERTAIN_RE = re.compile(r"^\s*([a-z_]+)\s*:\s*\S")
@@ -101,6 +103,7 @@ CSS = """
   .item.backlog .badge { background: var(--backlog-bg); color: var(--backlog); border: 1px solid var(--backlog-border); }
   .tag { display: inline-block; font-size: 0.72rem; padding: 1px 7px; border-radius: 999px; background: var(--mono-bg); color: var(--text-muted); margin-left: 6px; }
   .tag.warn { background: var(--held-bg); color: var(--held); border: 1px solid var(--held-border); }
+  .tag.benefit { background: var(--done-bg); color: var(--done); border: 1px solid var(--done-border); }
   .repair { background: var(--blocked-bg); border: 1px solid var(--blocked-border); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; }
   .repair h2 { font-size: 1rem; margin: 0 0 6px; color: var(--blocked); }
   .repair ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
@@ -206,6 +209,12 @@ def validate(d):
             errs.append(f"{tag}: 'automated' must be one of {AUTOMATED}: runs by software, runs by an agent on schedule, or runs when a person triggers it")
         if e.get("size") is not None and e["size"] not in SIZES:
             errs.append(f"{tag}: 'size' must be one of {SIZES}")
+        b = e.get("benefit")
+        if b is not None:
+            if not (isinstance(b, dict) and b.get("kind") in BENEFITS and b.get("scale") in SIZES and (b.get("note") is None or isinstance(b["note"], str))):
+                errs.append(f"{tag}: 'benefit' must be {{kind: one of {BENEFITS}, scale: S/M/L, note?: one line}}")
+            elif set(b) - {"kind", "scale", "note"}:
+                errs.append(f"{tag}: 'benefit' has unknown keys {sorted(set(b) - {'kind', 'scale', 'note'})}")
         if e.get("initiative") is not None and not isinstance(e["initiative"], str):
             errs.append(f"{tag}: 'initiative' must be a string")
         if kind == "control":
@@ -324,7 +333,10 @@ AUTO_LABEL = {"software": "runs by software", "agent": "agent-scheduled", "perso
 def render_item(e, tz, titles, unblocks=()):
     state = e["state"]
     tags = uncertain_tag(e)
-    if e.get("size"): tags += f'<span class="tag">{e["size"]}</span>'
+    if e.get("size"): tags += f'<span class="tag">size {e["size"]}</span>'
+    if e.get("benefit"):
+        b = e["benefit"]; note = f' title="{html.escape(b["note"], quote=True)}"' if b.get("note") else ""
+        tags += f'<span class="tag benefit"{note}>benefit {b["scale"]}: {inline(b["kind"])}</span>'
     if e.get("automated"): tags += f'<span class="tag">{AUTO_LABEL[e["automated"]]}</span>'
     if e.get("initiative"): tags += f'<span class="tag">{inline(e["initiative"])}</span>'
     head = f'<h3>{id_span(e)} {inline(e["title"])}{tags} <span class="badge">{state}</span></h3>'
@@ -406,7 +418,10 @@ def render(d, fragment=False, errors=()):
 
     doing, committed = order(by_state("doing")), order(by_state("committed"))
     waiting = order(by_state("blocked", "held"))
-    backlog = order(by_state("backlog"))
+    def rank(e):
+        b = e.get("benefit"); nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
+        return (-(RANK[b["scale"]] if b else 0), RANK.get(e.get("size"), 4), nb is None, nb or datetime.max, e["id"])
+    backlog = sorted(by_state("backlog"), key=rank)
     done = sorted(by_state("done"), key=lambda e: (parse_dt(e["closed_on"]), e["id"]), reverse=True)
     dropped = sorted(by_state("dropped"), key=lambda e: (parse_dt(e["closed_on"]), e["id"]), reverse=True)
     controls_sorted = sorted(controls, key=lambda e: (bool(e.get("suspended")), bool(e.get("planned")), e["id"]))

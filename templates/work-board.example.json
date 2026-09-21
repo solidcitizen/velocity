@@ -64,7 +64,12 @@
         "project": "<peer project>",
         "id": 3
       },
-      "size": "M"
+      "size": "M",
+      "benefit": {
+        "kind": "risk retired",
+        "scale": "M",
+        "note": "<what risk this retires>"
+      }
     },
     {
       "id": 6,

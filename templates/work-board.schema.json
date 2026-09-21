@@ -234,6 +234,36 @@
             "L"
           ],
           "description": "Rough size, for ranking the backlog. Optional."
+        },
+        "benefit": {
+          "type": "object",
+          "required": [
+            "kind",
+            "scale"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "risk retired",
+                "cost saved",
+                "capability gained",
+                "obligation met"
+              ]
+            },
+            "scale": {
+              "enum": [
+                "S",
+                "M",
+                "L"
+              ]
+            },
+            "note": {
+              "type": "string",
+              "description": "One line: what is retired, saved, gained, or met."
+            }
+          },
+          "description": "Why the work is worth doing, for ranking against size. Optional. The backlog orders by benefit scale, then size, within each initiative; the entity layer rolls benefit up by initiative."
         }
       },
       "additionalProperties": false,
