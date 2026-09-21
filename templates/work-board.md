@@ -23,11 +23,13 @@
    **dropped**, with the reason, and keeps its id.
 2. **Seven states, and the state says what the item waits on.** *backlog* (wanted, not scheduled),
    *committed* (named for a week or a date), *doing*, *blocked* (waits on a desk ask or another
-   item, named in `waits_on`), *held* (waits on an external event with a date, named in
-   `waits_on`), *done* (closed with proof), *dropped* (closed without doing, with a reason). The
-   renderer refuses a blocked or held item that does not name what it waits on. "Blocked on the
-   operator" and "held until Monday's read-back" are an ask and a calendar; the board keeps them
-   apart.
+   item, named in `waits_on`), *held* (waits on an external event or party, named in `waits_on`,
+   with a date when one is known), *done* (closed with proof), *dropped* (closed without doing,
+   with a reason). The renderer refuses a blocked or held item that does not name what it waits
+   on. An undated hold is legitimate: the page marks it "no date" and leaves it out of the
+   due-this-week count, and it is the maintainer's job to give it a date or turn it into an
+   operator ask when the wait becomes the operator's to end. "Blocked on the operator" and "held
+   until Monday's read-back" are an ask and a calendar; the board keeps them apart.
 3. **Work in hand belongs to bounded work.** A *doing* or *done* item names what bounds it: a
    tranche, an issue record, a control document, an ADR, a decision (`CK` id), or an evidence
    folder. A project that adopts the board with history sets `adopted` to the day its discipline
@@ -96,6 +98,13 @@ tokens under `theme` and `theme_dark`.
 
 ## Adoption notes
 
+- **Pinning the pilot draft.** Until this template is released, a project that adopts it pins a
+  commit of the proposal branch, never the branch head: copy the renderer, schema, and this
+  contract at that commit into the project's own overlay, record the commit in the overlay as a
+  pin exception, and re-point at the project's pinned Velocity checkout when the release lands.
+  Do not read the renderer from another project's working tree. While the draft moves, Velocity
+  notifies each consuming project on the session channel when a change lands that could fail a
+  board that validated before, naming the commit and the change.
 - **A project's wrapper stamps and publishes; it implements nothing.** A project may automate the
   workflow around the board (set `updated`, run the renderer with `--check` and then `--fragment`,
   publish the output unmodified). It may not validate, order, total, or render on its own; any of
@@ -120,6 +129,9 @@ tokens under `theme` and `theme_dark`.
 
 ## Pilot record
 
+- 2026-09-21, second consuming project adopts the pilot (19 items: 15 work, 4 controls) as a
+  recorded pin exception. Its first gap report: an external party with no return date. The code
+  already allowed a hold without a date; the contract text said "with a date". Text corrected.
 - 2026-09-21, from the Operator: "a portfolio view of knowing size of work and benefit of work
   is a generalizable thing that makes sense in the template." `benefit` added beside `size`; the
   backlog orders by the two; the roll-up by initiative is left to the entity layer. First reading
