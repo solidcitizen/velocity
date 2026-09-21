@@ -53,7 +53,9 @@
    obligation met; its scale S, M, L; and one line) let a backlog be ranked by benefit against
    size instead of by order of entry. Within each initiative the backlog orders by benefit, then
    size, then date. Rolling benefit and size up by initiative is the portfolio view, and it belongs
-   to the entity layer over this data.
+   to the entity layer over this data. **Benefit and size are always shown as the pair, never
+   collapsed into a score.** The ordering implies a ratio; a number would hide the judgment that
+   produced it, and the operator's judgment stays visible.
 8. **The header is computed.** Five totals: in motion (doing + committed), waiting (blocked +
    held), backlog, due this week (needed-by dates, held-until dates, and non-daily control due
    dates inside seven days), and controls built but never run. Below them, open work by
@@ -120,7 +122,9 @@ tokens under `theme` and `theme_dark`.
 
 - 2026-09-21, from the Operator: "a portfolio view of knowing size of work and benefit of work
   is a generalizable thing that makes sense in the template." `benefit` added beside `size`; the
-  backlog orders by the two; the roll-up by initiative is left to the entity layer.
+  backlog orders by the two; the roll-up by initiative is left to the entity layer. First reading
+  by the pilot: the ranking put an architecture decision and an audit above a diagram and a
+  consolidation, which its flat queue had inverted.
 - 2026-09-21, first hours live: `size` added for ranking; `automated` split into software / agent /
   person because the boolean could not show the software-owned measure; the wrapper rule, the
   maintenance-cost note, and the evidence pre-flight moved from messages into the adoption notes.
