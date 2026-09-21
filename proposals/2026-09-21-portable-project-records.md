@@ -269,5 +269,6 @@ operation. No live external-tracker integration, actual role-denial boundary, li
 or post-cutover destination recovery has been qualified. These remain explicit pilot obligations.
 
 Decision: implementation authorized; acceptance and release pending Velocity Maintainer review.
-Branch disposition: `ready for PR` on `codex/portable-project-records`. The shared main
+Branch disposition: `pushed and parked` on `codex/portable-project-records`, with
+[draft PR #14](https://github.com/solidcitizen/velocity/pull/14) open for review. The shared main
 checkout and the other proposal branches are unchanged by this work; no merge or release.
