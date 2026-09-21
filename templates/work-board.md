@@ -95,6 +95,15 @@ tokens under `theme` and `theme_dark`.
   publish the output unmodified). It may not validate, order, total, or render on its own; any of
   those in project code is the local variant the standard forbids. Pin the renderer from the
   project's Velocity checkout so the board and the standard move together.
+- **`automated` is a cost line and a quality profile, not a taxonomy.** The three values are
+  three ways the same work gets done, each with its own cost per occurrence and its own likelihood
+  of leaving a receipt: software costs cents and leaves a receipt every time; an agent costs
+  dollars and leaves one most of the time; a person costs the operator's attention and often
+  leaves none. The field is the leading indicator that a control's transition to software has
+  finished. The lagging measures, cost and touches per occurrence and correctness read from the
+  receipts, belong to the project's cadence reports and to the [Measured Automation
+  Pilot](automation-pilot.md) and [Automation Transition Contract](automation-transition-contract.md),
+  not to the board.
 - **The board is kept by the delivery agent.** Every move is an edit to the data file and a
   republish the same turn. That cost is small for an agent-kept queue and heavy for a person;
   a project whose queue is kept by hand should keep its existing tracker and adopt only the desk.
