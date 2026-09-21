@@ -58,6 +58,15 @@ Start with the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define 
 overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded change.
 Velocity works with your chosen AI tools and delivery cadence.
 
+## Portable Project Records (development)
+
+An optional [Portable Project Records profile](docs/PORTABLE-PROJECT-RECORDS.md) is under
+development alongside the lightweight Work Board pilot. It connects project-owned records,
+the Check-in Desk, shared update/recovery commands, and a documented handoff to a chosen
+tracker. See the [worked example and qualification limits](examples/portable-records/README.md).
+This development support does not change the current canon release or qualify an AI provider
+or external tracker without its scenario evidence.
+
 ## Feedback
 
 Questions, mistakes, and proposed changes all go through

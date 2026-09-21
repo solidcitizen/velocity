@@ -9,6 +9,7 @@
 - [Proof Model](PROOF-MODEL.md)
 - [Branch Hygiene](BRANCH-HYGIENE.md)
 - [Project Adoption Guide](PROJECT-ADOPTION-GUIDE.md)
+- [Portable Project Records](PORTABLE-PROJECT-RECORDS.md) — opt-in development profile; qualification scope stated explicitly
 
 ## Governance
 
@@ -22,6 +23,10 @@
 - [Handoff Packet](../templates/handoff-packet.md)
 - [Review Pack Template](../templates/review-pack-template.md)
 - [Executive Check-in Desk](../templates/executive-checkin-desk.md) — with its data-file schema, example, and renderer
+- [Work Board](../templates/work-board.md) — lightweight tracker pilot, with data schema and renderer
+- [Artifact Index](../templates/artifact-index.md) — shared discovery and ownership
+- [Project Records File Support](../templates/project-records.md) — guarded updates, recovery, views, and export
+- [Tracker Binding and Handoff](../templates/tracker-binding-and-handoff.md) — preserve meaning and authority when moving trackers
 - [Issue Record Template](../templates/issue-record-template.md)
 - [Process Change Proposal](../templates/process-change-proposal.md)
 - [System Invariant Register](../templates/system-invariant-register.md)
@@ -37,3 +42,4 @@
 - [Illustrative Project Overlay](../examples/project-overlay/README.md)
 - [Policy and Project Mapping](../examples/project-overlay/policy-mapping.md)
 - [Measured Automation Worked Example](../examples/measured-automation/README.md)
+- [Portable Records Worked Example](../examples/portable-records/README.md) — synthetic command-line continuation and mapping, with explicit proof limits

@@ -9,6 +9,23 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## Unreleased — Portable Project Records (development)
+
+- Add an opt-in profile and shared artifact index for project-owned records, independent of
+  an AI vendor's memory or artifact panel. Public code and private operational records may
+  have separate homes; Git and GitHub remain optional.
+- Integrate the existing Work Board pilot with the Check-in Desk. Add empty startup and local
+  guarded updates with revision checks, retry identities, recoverable coupled writes, view
+  receipts, and complete record/history exports, using the existing shared renderers.
+- Add tracker-binding and handoff guidance, exact normalized-snapshot comparison, and archive
+  labeling/write retirement after an authorized cutover. No live tracker connector is included.
+- Add a runnable synthetic TODO/Desk/Work example and qualification record. Local checks do
+  not establish cross-vendor operation, external-tracker integration, or live migration.
+
+Implementation authorized by Mike as Velocity Maintainer on 2026-09-21: "I like it proceed".
+Prepared for review; no acceptance, merge, version assignment, or release is recorded here.
+See the [proposal and implementation record](proposals/2026-09-21-portable-project-records.md).
+
 ## [1.7.2] — 2026-09-20
 
 ### Clarified — Documentation currency and delegated release mechanics

@@ -109,6 +109,8 @@ def parse_dt(value):
 
 
 def validate(d):
+    if not isinstance(d, dict):
+        return ["top level: expected an object"]
     errs = []
     for key in ("project", "operator", "tz_label", "maintainer", "updated"):
         if not isinstance(d.get(key), str) or not d[key].strip():
@@ -116,12 +118,15 @@ def validate(d):
     if parse_dt(d.get("updated")) is None:
         errs.append("top level: 'updated' must be an ISO datetime, e.g. 2026-09-19T21:21")
     entries = d.get("entries")
-    if not isinstance(entries, list) or not entries:
-        return errs + ["top level: 'entries' must be a non-empty list"]
+    if not isinstance(entries, list):
+        return errs + ["top level: 'entries' must be a list (an empty desk is valid)"]
     ids = []
     for i, e in enumerate(entries):
+        if not isinstance(e, dict):
+            errs.append(f"entry {i}: expected an object")
+            continue
         tag = f"entry {i} (id {e.get('id')!r})"
-        if not isinstance(e.get("id"), int) or e["id"] < 1:
+        if type(e.get("id")) is not int or e["id"] < 1:
             errs.append(f"{tag}: 'id' must be a positive integer")
             continue
         ids.append(e["id"])
@@ -346,7 +351,7 @@ def main(argv=None):
         return 1
     if args.check:
         n = len(d["entries"])
-        print(f"ok: {d['project']} Check-in Desk, {n} entries, highest id CK-{max(e['id'] for e in d['entries'])}")
+        print(f"ok: {d['project']} Check-in Desk, {n} entries, highest id CK-{max((e['id'] for e in d['entries']), default=0)}")
         return 0
     out = render(d, fragment=args.fragment)
     if args.out:

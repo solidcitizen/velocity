@@ -101,7 +101,11 @@ beyond the five things that vary. The renderer enforces every rule it can check.
 | `templates/render-checkin-desk.py` | Validates and renders. Python 3.9+, standard library only. |
 | `templates/executive-checkin-desk.html` | What the example renders to. Generated; do not edit. |
 
-Keep the data file in the project's own overlay, never in Velocity. Render with:
+Keep populated data in the consuming project's operational workspace, separate from reusable
+templates. Under the optional [Portable Project Records profile](../docs/PORTABLE-PROJECT-RECORDS.md),
+declare that location in the shared artifact index, outside agent session/cache storage.
+An empty `entries` list is valid for a new Desk. The
+[shared file helper](project-records.md) provides coordinated updates and recovery. Render with:
 
 ```
 python3 render-checkin-desk.py desk.json --check              # validate; exit code 1 lists every violation

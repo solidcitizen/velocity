@@ -44,7 +44,7 @@
     },
     "items": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "description": "Every WI id ever assigned. Ids are positive integers, unique, contiguous from 1, never renumbered or dropped (a dropped item stays, with its reason). Unknown fields are rejected.",
       "items": {
         "oneOf": [
@@ -150,7 +150,7 @@
             "done",
             "dropped"
           ],
-          "description": "backlog: wanted, not scheduled. committed: named for a week or date. doing: in hand. blocked: waits on a desk ask or another item. held: waits on an external event with a date. done: closed with proof. dropped: closed without doing, with a reason."
+          "description": "backlog: wanted, not scheduled. committed: named for a week or date. doing: in hand. blocked: waits on a desk ask or another item. held: waits on an external event, with a date when known. done: closed with proof. dropped: closed without doing, with a reason."
         },
         "belongs_to": {
           "type": "string",

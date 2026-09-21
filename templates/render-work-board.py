@@ -162,6 +162,8 @@ def is_ref(v):
 # ---------- validation ----------
 
 def validate(d):
+    if not isinstance(d, dict):
+        return ["top level: expected an object"]
     errs = []
     for key in ("project", "maintainer", "tz_label", "updated"):
         if not isinstance(d.get(key), str) or not d[key].strip():
@@ -175,13 +177,16 @@ def validate(d):
     if unknown:
         errs.append(f"top level: unknown keys {unknown}")
     items = d.get("items")
-    if not isinstance(items, list) or not items:
-        return errs + ["top level: 'items' must be a non-empty list"]
-    ids = [e["id"] for e in items if isinstance(e.get("id"), int)]
+    if not isinstance(items, list):
+        return errs + ["top level: 'items' must be a list (an empty board is valid)"]
+    ids = [e["id"] for e in items if isinstance(e, dict) and type(e.get("id")) is int]
     idset = set(ids)
     for i, e in enumerate(items):
+        if not isinstance(e, dict):
+            errs.append(f"item {i}: expected an object")
+            continue
         tag = f"item {i} (id {e.get('id')!r})"
-        if not isinstance(e.get("id"), int) or e["id"] < 1:
+        if type(e.get("id")) is not int or e["id"] < 1:
             errs.append(f"{tag}: 'id' must be a positive integer"); continue
         kind = e.get("kind", "work")
         if kind not in KINDS:
@@ -403,7 +408,7 @@ def renderable(e):
     return kind == "work" and e.get("state") in STATES
 
 
-def render(d, fragment=False, errors=()):
+def render(d, fragment=False, errors=(), archive_binding=None):
     tz = html.escape(str(d.get("tz_label", "")), quote=True)
     updated = parse_dt(d.get("updated")) or datetime.now()
     items = [e for e in d.get("items", []) if renderable(e)]
@@ -491,10 +496,14 @@ def render(d, fragment=False, errors=()):
         repair = f'<div class="repair" role="alert"><h2>Needs repair ({len(errors)})</h2><p class="group-note">The data file breaks the contract. The page is shown best-effort so nothing is hidden; the maintainer fixes the file, not the page.{skip_note}</p><ul>{lines}</ul></div>\n'
     title = f"{d.get('project', '<Project>')} Work Board"
     desk_note = f' · desk: {inline(d["desk"])}' if d.get("desk") else ""
+    archive_note = (f'<p class="repair" role="status"><strong>Archived work records.</strong> '
+                    f'The authoritative tracker is identified in {inline(archive_binding)}. '
+                    'This page is a retained snapshot, not the active work queue.</p>'
+                    if archive_binding else "")
     main = (
         f"<main>\n<header class=\"page-head\"><h1>{inline(title)}</h1>"
         f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · maintained by {inline(d.get('maintainer', ''))}{desk_note}</p></header>\n"
-        + repair +
+        + archive_note + repair +
         f"<div class=\"totals\" aria-label=\"Header totals\">"
         f"<div class=\"stat doing\"><strong>{len(doing) + len(committed)}</strong><span>In motion</span></div>"
         f"<div class=\"stat waiting\"><strong>{len(waiting)}</strong><span>Waiting</span></div>"
@@ -525,6 +534,7 @@ def main(argv=None):
     ap.add_argument("--out", help="write HTML here instead of stdout")
     ap.add_argument("--fragment", action="store_true", help="emit title+style+main only (for artifact hosting)")
     ap.add_argument("--check", action="store_true", help="validate only")
+    ap.add_argument("--archive-binding", help="label a retained snapshot with its successor binding")
     args = ap.parse_args(argv)
     with open(args.data, encoding="utf-8") as f:
         d = json.load(f)
@@ -538,9 +548,9 @@ def main(argv=None):
         print("Rendering best-effort with a repair block; fix the data file. Exit code 1.", file=sys.stderr)
     if args.check:
         n = len(d["items"])
-        print(f"ok: {d['project']} Work Board, {n} items, highest id WI-{max(e['id'] for e in d['items'])}")
+        print(f"ok: {d['project']} Work Board, {n} items, highest id WI-{max((e['id'] for e in d['items']), default=0)}")
         return 0
-    out = render(d, fragment=args.fragment, errors=errs)
+    out = render(d, fragment=args.fragment, errors=errs, archive_binding=args.archive_binding)
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             f.write(out)

@@ -113,6 +113,22 @@ several desks, so the desk is a shared surface: a project that needs something t
 cannot express raises a Velocity proposal rather than building a local variant. Adopt it only where an operator genuinely sits outside day-to-day delivery
 and would otherwise have no single place to find what is still open.
 
+## Adopting Portable Project Records
+
+For the optional [Portable Project Records profile](PORTABLE-PROJECT-RECORDS.md), name a
+project-owned operational workspace and link one [artifact index](../templates/artifact-index.md)
+from the overlay and all agent entry files. Record responsible roles, audience, source/view
+locations, tool pin, update commands, writer coordination, and recovery. Public code and private
+operational records can have separate homes. Git/GitHub are optional storage/collaboration choices.
+
+A project can start with the [lightweight Work Board](../templates/work-board.md), preserve
+and import its TODO file, or bind an existing tracker through the
+[Tracker Binding and Handoff](../templates/tracker-binding-and-handoff.md) record. Keep one
+authoritative backlog. The Desk remains the operator decision/action surface and can stay in
+place when work migrates. The [file helper](../templates/project-records.md) supplies a shared
+procedure for authorized AI sessions; native panels remain optional views. Check the profile's
+qualification record before claiming cross-vendor or tracker-migration support.
+
 ## Overlay Experiments
 
 A project may test a local rule in its overlay before proposing a Velocity core change. An overlay experiment should state its name, owner, start date, intended duration or review trigger, the local rule being tested, the Velocity core rule it touches, a compatibility check against shared-context / separated-write-authority, the evidence to collect, and the promotion path if it works. Overlay experiments must not silently contradict core governance: they may specialize commands, issue formats, lane names, proof harnesses, and routing, but they may not remove acceptance-proof-first, erase lane proof boundaries, or let the role being evaluated rewrite its own evaluation criteria.

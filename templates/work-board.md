@@ -12,7 +12,7 @@
 >
 > **Build it from the data file and the renderer, never by hand.** The page is derived from
 > `board.json` by [`render-work-board.py`](render-work-board.py), which validates the file against
-> this contract and refuses to render a board that breaks it. Start from
+> this contract and marks violations in its best-effort view. Start from
 > [`work-board.example.json`](work-board.example.json); the field definitions are in
 > [`work-board.schema.json`](work-board.schema.json).
 
@@ -97,6 +97,14 @@ Only these vary per project: `project`, `maintainer`, `tz_label`, `desk`, `adopt
 tokens under `theme` and `theme_dark`.
 
 ## Adoption notes
+
+- **Portable project records.** The optional [shared profile](../docs/PORTABLE-PROJECT-RECORDS.md)
+  adds project-owned discovery, guarded file updates, history, and export. Its
+  [file helper](project-records.md) invokes this renderer; it does not reimplement content rules.
+  Empty `items` is valid for a new board. Existing TODO imports preserve their source and
+  uncertainty. A [tracker binding](tracker-binding-and-handoff.md) supports the project's chosen
+  destination; migration retires this file as a writable queue. `--archive-binding <locator>`
+  labels a retained HTML snapshot with its successor authority. Staying in file mode is valid.
 
 - **Pinning the pilot draft.** Until this template is released, a project that adopts it pins a
   commit of the proposal branch, never the branch head: copy the renderer, schema, and this

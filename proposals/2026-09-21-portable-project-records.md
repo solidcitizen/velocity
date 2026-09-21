@@ -1,12 +1,14 @@
 # Portable Project Records and Tracker Handoff
 
-- Status: Proposed; not adopted or implemented
+- Status: Design approved for implementation; common contract and file support prepared for review
 - Date: 2026-09-21
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
 - Source: The maintainer's request to incorporate AI-vendor-independent artifacts, the
-  lightweight work tracker, and a path to the project's chosen tracking system.
-- Disposition: Integration proposal for the existing Work Board pilot and Check-in Desk.
+  lightweight work tracker, and a path to the project's chosen tracking system, followed by
+  "I like it proceed" on 2026-09-21.
+- Disposition: Common contract, integrated Work Board pilot/Desk file support, and synthetic
+  qualification prepared. Live cross-vendor and destination pilots remain unqualified.
   No release, live-record migration, or external integration is enabled by this document.
 - Accepted version: None
 
@@ -98,9 +100,9 @@ ledger. Answering an ask releases only the dependency covered by that answer, no
 blocker or authority boundary attached to an item. Moving work to another tracker does not
 require moving the Desk.
 
-Qualify a truly empty starting desk/board. The currently inspected schemas require at least
-one entry; adoption must not require inventing an ask or task to make a new project validate.
-Any change to that behavior belongs in the shared schema and renderer, not a project wrapper.
+Qualify a truly empty starting desk/board. The initially inspected schemas required at least
+one entry; the implementation now permits empty sources in the shared schemas and renderers.
+Adoption does not require inventing an ask or task to make a new project validate.
 
 ## 3. One update procedure across AI tools
 
@@ -200,11 +202,12 @@ export and restoration path; a Git clone of code does not establish recovery of 
 | 4. Tracker handoff pilot | Rehearse and verify one owner-selected tracker destination, its identity mapping, Desk links, final-delta cutover, export, and recovery. |
 | 5. Release and adoption | Publish only the support actually qualified. State remaining limitations. Migrate existing live projects in separately owned, bounded tranches. |
 
-Implementation changes to `proposal/work-board` and the Entity Development Lifecycle proposal
-are coordinated with their existing owner. This proposal records dependencies without taking
-over those branches. Entity/portfolio views can consume these records, but are not needed to
-adopt lightweight tracking. Integrate the portable-storage and tracker-binding rules into that
-work so it does not establish competing authoritative records.
+This branch integrates the inspected Work Board pilot with its Git history; it does not mutate
+`proposal/work-board` or the Entity Development Lifecycle branch. Further changes on those
+branches remain with their existing owner and require reconciliation before shared acceptance.
+Entity/portfolio views can consume these records, but are not needed to adopt lightweight
+tracking. Their future integration must use the same storage and tracker authority rather than
+establishing competing authoritative records.
 
 ## Required acceptance evidence
 
@@ -230,15 +233,19 @@ the cross-vendor or tracker-handoff claim. Preserve the tested revisions and lim
 
 ## Scope, authority, and compatibility
 
-- Authority basis: the maintainer's request to work out incorporation authorizes this proposed
-  process design. Adoption, merge, and release follow [Governance](../governance/GOVERNANCE.md).
-- Classification: reusable policy and template-support proposal. Populated operational
-  records, vendor credentials, publication targets, and live migrations remain project work.
-- Protected artifacts changed by this proposal: none. It changes only this proposal file.
-- Proposed implementation touches: a new common contract in `docs/`, `docs/INDEX.md`,
-  `docs/PROJECT-ADOPTION-GUIDE.md`, `templates/AGENTS.fragment.md`, artifact-index and tracker
-  handoff templates, and the Desk/Work Board schemas, renderers, and shared update support.
-  A synthetic example belongs in `examples/`; no private project record is copied into canon.
+- Authority basis: the maintainer's "I like it proceed" authorizes implementation of this
+  process evolution proposal. Adoption, merge, and release follow
+  [Governance](../governance/GOVERNANCE.md).
+- Classification: reusable policy and template support, plus a synthetic example. Populated
+  operational records, vendor credentials, publication targets, and live migrations remain
+  separately scoped project work.
+- Protected artifacts affected: `docs/PORTABLE-PROJECT-RECORDS.md`, `docs/INDEX.md`,
+  `docs/PROJECT-ADOPTION-GUIDE.md`, `templates/AGENTS.fragment.md`,
+  `templates/artifact-index.md`, `templates/tracker-binding-and-handoff.md`,
+  `templates/project-records.md`, `templates/project-records.py`, and the Desk/Work Board
+  contracts, schemas, and renderers. The imported Work Board example JSON and HTML are shared
+  template support. Synthetic fixtures and evidence are under `examples/portable-records/`;
+  no private project record is copied into public material.
 - Compatibility: an additive, opt-in profile can be a MINOR release. Prior conformance is not
   re-judged. Existing adopters migrate explicitly. A decision to impose new mandatory rules on
   all prior adopters requires a separate compatibility assessment under the
@@ -248,10 +255,19 @@ the cross-vendor or tracker-handoff claim. Preserve the tested revisions and lim
 
 ## Proof and disposition
 
-Proposal-only evidence: inspected current canon and the named Work Board development snapshot;
-checked local Markdown links and `git diff --check`. No cross-vendor workflow, external-tracker
-integration, migration, or recovery scenario has been run for this proposal. Those outcomes
-remain unproven until the acceptance scenarios above are executed.
+Local support verified on 2026-09-21 with Python 3.14.6 on macOS 26.6.2: 17 automated tests
+cover empty startup, TODO provenance/uncertainty and historical completion, fresh CLI processes,
+concurrent/stale writes, retries, interrupted Desk/Work updates, divergent recovery, view
+failures, export preservation, and negative handoff comparisons. The synthetic runnable example
+continues through a fresh process and compares three normalized destination records. The Desk
+and Work Board were inspected in Codex's browser. See the
+[qualification record](../examples/portable-records/QUALIFICATION.md) for the actual proof scope.
 
-Decision: pending Velocity Maintainer review. Branch disposition: ready for PR on
-`codex/portable-project-records`; local proposal commit only, not pushed, merged, or released.
+Static review covers local Markdown links, JSON schema syntax, reproducibility of the existing
+example HTML, and `git diff --check`. Runtime command sessions do not establish cross-vendor
+operation. No live external-tracker integration, actual role-denial boundary, live migration,
+or post-cutover destination recovery has been qualified. These remain explicit pilot obligations.
+
+Decision: implementation authorized; acceptance and release pending Velocity Maintainer review.
+Branch disposition: `ready for PR` on `codex/portable-project-records`. The shared main
+checkout and the other proposal branches are unchanged by this work; no merge or release.

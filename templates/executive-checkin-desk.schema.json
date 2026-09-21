@@ -15,7 +15,7 @@
     "theme": { "$ref": "#/$defs/theme" },
     "theme_dark": { "$ref": "#/$defs/theme" },
     "entries": {
-      "type": "array", "minItems": 1,
+      "type": "array", "minItems": 0,
       "description": "Every CK id ever assigned. Ids are positive integers, unique, contiguous from 1, never renumbered or dropped.",
       "items": { "oneOf": [ { "$ref": "#/$defs/openAsk" }, { "$ref": "#/$defs/pointerAsk" }, { "$ref": "#/$defs/closedAsk" }, { "$ref": "#/$defs/teamDecision" } ] }
     }
