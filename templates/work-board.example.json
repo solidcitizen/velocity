@@ -3,25 +3,100 @@
   "maintainer": "<role that keeps this board current>",
   "tz_label": "<PT>",
   "updated": "2026-01-05T09:00",
+  "adopted": "2026-01-01",
   "desk": "<Project> Check-in Desk",
   "theme": {},
   "items": [
-    { "id": 1, "kind": "work", "state": "doing", "title": "<what is being done>", "owner": "<role>",
-      "belongs_to": "<tranche or issue record, e.g. issues/0042.md>", "initiative": "<optional initiative>",
-      "needed_by": "2026-01-09T17:00" },
-    { "id": 2, "kind": "work", "state": "committed", "title": "<what is next>", "owner": "<role>",
-      "belongs_to": "<tranche>", "depends_on": [1], "needed_by": "2026-01-16" },
-    { "id": 3, "kind": "work", "state": "blocked", "title": "<what cannot move until the Operator answers>", "owner": "<role>",
-      "belongs_to": "<tranche>", "waits_on": { "ask": { "project": "<project>", "id": 7 } } },
-    { "id": 4, "kind": "work", "state": "held", "title": "<what waits for an outside event>", "owner": "<role>",
-      "waits_on": { "event": "<peer read-back or statement date>", "by": "2026-01-12" } },
-    { "id": 5, "kind": "work", "state": "backlog", "title": "<wanted, not scheduled>", "owner": "<role>",
-      "origin": { "project": "<peer project>", "id": 3 } },
-    { "id": 6, "kind": "control", "title": "<recurring assurance work, e.g. monthly reconcile>", "owner": "<role>",
-      "cadence": "monthly", "last_completed": "2025-12-31", "proof": "<receipt id or record path>", "automated": true },
-    { "id": 7, "kind": "work", "state": "done", "title": "<what was finished>", "owner": "<role>",
-      "belongs_to": "<tranche>", "closed_on": "2026-01-02", "proof": "<review pack, handoff packet, closeout disposition, receipt or record path>" },
-    { "id": 8, "kind": "work", "state": "dropped", "title": "<what was not done>", "owner": "<role>",
-      "closed_on": "2026-01-03", "reason": "<why it no longer needs doing>" }
+    {
+      "id": 1,
+      "kind": "work",
+      "state": "doing",
+      "title": "<what is being done>",
+      "owner": "<role>",
+      "belongs_to": "<tranche or issue record, e.g. issues/0042.md>",
+      "initiative": "<optional initiative>",
+      "needed_by": "2026-01-09T17:00"
+    },
+    {
+      "id": 2,
+      "kind": "work",
+      "state": "committed",
+      "title": "<what is next>",
+      "owner": "<role>",
+      "belongs_to": "<tranche>",
+      "depends_on": [
+        1
+      ],
+      "needed_by": "2026-01-16"
+    },
+    {
+      "id": 3,
+      "kind": "work",
+      "state": "blocked",
+      "title": "<what cannot move until the Operator answers>",
+      "owner": "<role>",
+      "belongs_to": "<tranche>",
+      "waits_on": {
+        "ask": {
+          "project": "<project>",
+          "id": 7
+        }
+      }
+    },
+    {
+      "id": 4,
+      "kind": "work",
+      "state": "held",
+      "title": "<what waits for an outside event>",
+      "owner": "<role>",
+      "waits_on": {
+        "event": "<peer read-back or statement date>",
+        "by": "2026-01-12"
+      }
+    },
+    {
+      "id": 5,
+      "kind": "work",
+      "state": "backlog",
+      "title": "<wanted, not scheduled>",
+      "owner": "<role>",
+      "origin": {
+        "project": "<peer project>",
+        "id": 3
+      }
+    },
+    {
+      "id": 6,
+      "kind": "control",
+      "title": "<recurring assurance work, e.g. monthly reconcile>",
+      "owner": "<role>",
+      "cadence": "monthly",
+      "last_completed": "2025-12-31",
+      "proof": "<receipt id or record path>",
+      "automated": true,
+      "evidence": "<path pattern where each completion's receipt lives>"
+    },
+    {
+      "id": 7,
+      "kind": "work",
+      "state": "done",
+      "title": "<what was finished>",
+      "owner": "<role>",
+      "belongs_to": "<tranche>",
+      "closed_on": "2026-01-02",
+      "proof": "<review pack, handoff packet, closeout disposition, receipt or record path>",
+      "uncertain": [
+        "closed_on: <why the date could not be confirmed>"
+      ]
+    },
+    {
+      "id": 8,
+      "kind": "work",
+      "state": "dropped",
+      "title": "<what was not done>",
+      "owner": "<role>",
+      "closed_on": "2026-01-03",
+      "reason": "<why it no longer needs doing>"
+    }
   ]
 }

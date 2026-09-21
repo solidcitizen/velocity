@@ -26,6 +26,11 @@ KINDS = ("work", "control")
 STATES = ("backlog", "committed", "doing", "blocked", "held", "done", "dropped")
 OPEN_STATES = ("backlog", "committed", "doing", "blocked", "held")
 CADENCES = ("daily", "weekly", "monthly", "quarterly", "annual")
+TOP_KEYS = {"project", "maintainer", "tz_label", "updated", "adopted", "desk", "theme", "theme_dark", "items"}
+WORK_KEYS = {"id", "kind", "title", "owner", "state", "belongs_to", "initiative", "depends_on", "waits_on", "needed_by",
+             "closed_on", "proof", "reason", "origin", "automated", "source", "uncertain"}
+CONTROL_KEYS = {"id", "kind", "title", "owner", "cadence", "last_completed", "proof", "evidence", "suspended",
+                "belongs_to", "initiative", "automated", "source", "uncertain"}
 TOKENS = {
     "bg": "#f7f7f8", "surface": "#ffffff", "border": "#e2e2e6", "text": "#1b1c1f",
     "text-muted": "#5b5d66", "accent": "#2f5fd6",
@@ -87,6 +92,10 @@ CSS = """
   .item.held .badge { background: var(--held-bg); color: var(--held); border: 1px solid var(--held-border); }
   .item.backlog .badge { background: var(--backlog-bg); color: var(--backlog); border: 1px solid var(--backlog-border); }
   .tag { display: inline-block; font-size: 0.72rem; padding: 1px 7px; border-radius: 999px; background: var(--mono-bg); color: var(--text-muted); margin-left: 6px; }
+  .tag.warn { background: var(--held-bg); color: var(--held); border: 1px solid var(--held-border); }
+  .repair { background: var(--blocked-bg); border: 1px solid var(--blocked-border); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; }
+  .repair h2 { font-size: 1rem; margin: 0 0 6px; color: var(--blocked); }
+  .repair ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
   .ledger { list-style: none; margin: 0; padding: 0; }
   .ledger li { border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 0.92rem; }
   .ledger.controls li { background: var(--control-bg); border-color: var(--control-border); }
@@ -147,6 +156,12 @@ def validate(d):
             errs.append(f"top level: '{key}' is required (non-empty string)")
     if parse_dt(d.get("updated")) is None:
         errs.append("top level: 'updated' must be an ISO datetime, e.g. 2026-09-21T09:00")
+    if d.get("adopted") is not None and parse_dt(d["adopted"]) is None:
+        errs.append("top level: 'adopted' must be an ISO date (the day this board's discipline began) or absent")
+    adopted = parse_dt(d["adopted"]) if d.get("adopted") else None
+    unknown = sorted(set(d) - TOP_KEYS)
+    if unknown:
+        errs.append(f"top level: unknown keys {unknown}")
     items = d.get("items")
     if not isinstance(items, list) or not items:
         return errs + ["top level: 'items' must be a non-empty list"]
@@ -159,6 +174,13 @@ def validate(d):
         kind = e.get("kind", "work")
         if kind not in KINDS:
             errs.append(f"{tag}: 'kind' must be one of {KINDS}"); continue
+        unknown = sorted(set(e) - (CONTROL_KEYS if kind == "control" else WORK_KEYS))
+        if unknown:
+            errs.append(f"{tag}: unknown fields {unknown}; provenance goes in 'source' (text) and 'uncertain' (list of what could not be confirmed)")
+        if e.get("source") is not None and not isinstance(e["source"], str):
+            errs.append(f"{tag}: 'source' must be a string")
+        if e.get("uncertain") is not None and not (isinstance(e["uncertain"], list) and all(isinstance(x, str) for x in e["uncertain"])):
+            errs.append(f"{tag}: 'uncertain' must be a list of strings, each '<field>: <why it could not be confirmed>'")
         for key in ("title", "owner"):
             if not isinstance(e.get(key), str) or not e[key].strip():
                 errs.append(f"{tag}: '{key}' is required")
@@ -176,6 +198,8 @@ def validate(d):
                 errs.append(f"{tag}: control 'last_completed' must be an ISO date or null")
             if lc is not None and (not isinstance(e.get("proof"), str) or not e["proof"].strip()):
                 errs.append(f"{tag}: control with 'last_completed' needs 'proof' of that completion")
+            if e.get("evidence") is not None and not isinstance(e["evidence"], str):
+                errs.append(f"{tag}: control 'evidence' must be a string (path pattern where every completion's proof lives)")
             sus = e.get("suspended")
             if sus is not None and not (isinstance(sus, dict) and parse_dt(sus.get("since")) and isinstance(sus.get("reason"), str) and sus["reason"].strip()):
                 errs.append(f"{tag}: 'suspended' must be {{since: ISO date, reason}}")
@@ -183,8 +207,13 @@ def validate(d):
         state = e.get("state")
         if state not in STATES:
             errs.append(f"{tag}: 'state' must be one of {STATES}"); continue
-        if state in ("doing", "done") and (not isinstance(e.get("belongs_to"), str) or not e["belongs_to"].strip()):
-            errs.append(f"{tag}: '{state}' work must name the bounded work it belongs to ('belongs_to': tranche or issue record)")
+        closed = parse_dt(e.get("closed_on")) if isinstance(e.get("closed_on"), str) else None
+        history = state == "done" and adopted is not None and closed is not None and closed < adopted
+        has_belongs = isinstance(e.get("belongs_to"), str) and e["belongs_to"].strip()
+        if state == "doing" and not has_belongs:
+            errs.append(f"{tag}: 'doing' work must name what bounds it ('belongs_to': a tranche, issue record, control document, ADR, decision, or evidence folder)")
+        if state == "done" and not has_belongs and not history:
+            errs.append(f"{tag}: 'done' work must name what bounded it ('belongs_to'); closes dated before the board's 'adopted' date are exempt as history")
         deps = e.get("depends_on")
         if deps is not None:
             if not isinstance(deps, list) or not all(isinstance(x, int) for x in deps):
@@ -209,8 +238,8 @@ def validate(d):
         if state in ("done", "dropped"):
             if parse_dt(e.get("closed_on")) is None:
                 errs.append(f"{tag}: '{state}' needs ISO 'closed_on'")
-        if state == "done" and (not isinstance(e.get("proof"), str) or not e["proof"].strip()):
-            errs.append(f"{tag}: 'done' needs 'proof' (an artifact in Velocity's terms: review pack, handoff packet, closeout disposition, receipt or record path)")
+        if state == "done" and (not isinstance(e.get("proof"), str) or not e["proof"].strip()) and not history:
+            errs.append(f"{tag}: 'done' needs 'proof' (an artifact in Velocity's terms: review pack, handoff packet, closeout disposition, receipt or record path); closes dated before 'adopted' are exempt and shown as operator-reported")
         if state == "dropped" and (not isinstance(e.get("reason"), str) or not e["reason"].strip()):
             errs.append(f"{tag}: 'dropped' needs 'reason'")
     if ids:
@@ -255,16 +284,24 @@ def waits_text(w, boards):
     return inline(w["event"]) + (f" — by {fmt_dt(by, '')}" if by else "")
 
 
+def uncertain_tag(e):
+    if not e.get("uncertain"):
+        return ""
+    fields = ", ".join(sorted({u.split(":")[0].strip() for u in e["uncertain"]}))
+    return f'<span class="tag warn" title="{html.escape(" | ".join(e["uncertain"]), quote=True)}">unconfirmed: {inline(fields)}</span>'
+
+
 def render_item(e, tz, titles):
     state = e["state"]
-    tags = ""
+    tags = uncertain_tag(e)
     if e.get("automated"): tags += '<span class="tag">runs without an agent</span>'
     if e.get("initiative"): tags += f'<span class="tag">{inline(e["initiative"])}</span>'
     head = f'<h3><span class="id">{wi(e["id"])}</span> {inline(e["title"])}{tags} <span class="badge">{state}</span></h3>'
     rows = [("Owner", inline(e["owner"]))]
     if e.get("belongs_to"): rows.append(("Belongs to", inline(e["belongs_to"])))
-    if state in ("blocked", "held"):
-        rows.append(("Waits on", waits_text(e["waits_on"], titles)))
+    if state in ("blocked", "held") and isinstance(e.get("waits_on"), dict):
+        w = e["waits_on"]
+        rows.append(("Waits on", waits_text(w, titles) + ("" if w.get("by") or w.get("ask") or w.get("item") else ' <span class="tag warn">no date</span>')))
     if e.get("depends_on"):
         rows.append(("Depends on", ", ".join(f"{wi(x)} ({inline(titles.get(x, ''))})" for x in e["depends_on"])))
     if e.get("needed_by"):
@@ -286,30 +323,43 @@ def render_control(e, today):
         status = f'<strong>Next due:</strong> <span class="overdue">{due:%Y-%m-%d} (overdue)</span>'
     else:
         status = f'<strong>Next due:</strong> {due:%Y-%m-%d}'
-    last_txt = f' — <strong>Last:</strong> {last:%Y-%m-%d}, proof {inline(e["proof"])}' if last else ""
-    tag = ' <span class="tag">runs without an agent</span>' if e.get("automated") else ""
+    last_txt = f' — <strong>Last:</strong> {last:%Y-%m-%d}, proof {inline(e.get("proof", ""))}' if last else ""
+    ev = f' — <strong>Evidence:</strong> <code>{inline(e["evidence"])}</code>' if e.get("evidence") else ""
+    tag = (' <span class="tag">runs without an agent</span>' if e.get("automated") else "") + uncertain_tag(e)
     return (f'<li><span class="id">{wi(e["id"])}</span> {inline(e["title"])}{tag} <span class="date">({inline(e["owner"])}, {e["cadence"]})</span>'
-            f'{last_txt} — {status}</li>')
+            f'{last_txt}{ev} — {status}</li>')
 
 
 def render_done(e):
-    return (f'<li><span class="id">{wi(e["id"])}</span> <span class="date">({inline(e["closed_on"])}, {inline(e["owner"])})</span> '
-            f'— {inline(e["title"])} — <strong>Proof:</strong> {inline(e["proof"])}</li>')
+    proof = inline(e["proof"]) if e.get("proof") else '<span class="tag warn">operator-reported, no artifact (closed before the board was adopted)</span>'
+    where = f' <span class="date">({inline(e["belongs_to"])})</span>' if e.get("belongs_to") else ""
+    return (f'<li><span class="id">{wi(e["id"])}</span> <span class="date">({inline(e.get("closed_on", "?"))}, {inline(e["owner"])})</span> '
+            f'— {inline(e["title"])}{where}{uncertain_tag(e)} — <strong>Proof:</strong> {proof}</li>')
 
 
 def render_dropped(e):
-    return (f'<li><span class="id">{wi(e["id"])}</span> <span class="date">({inline(e["closed_on"])})</span> '
-            f'— {inline(e["title"])} — <strong>Reason:</strong> {inline(e["reason"])}</li>')
+    return (f'<li><span class="id">{wi(e["id"])}</span> <span class="date">({inline(e.get("closed_on", "?"))})</span> '
+            f'— {inline(e["title"])} — <strong>Reason:</strong> {inline(e.get("reason", ""))}</li>')
 
 
 def css_block(tokens):
     return "".join(f"    --{k}: {v};\n" for k, v in tokens.items())
 
 
-def render(d, fragment=False):
-    tz = html.escape(d["tz_label"], quote=True)
-    updated = parse_dt(d["updated"])
-    items = d["items"]
+def renderable(e):
+    if not isinstance(e, dict) or not isinstance(e.get("id"), int) or not isinstance(e.get("title"), str) or not isinstance(e.get("owner"), str):
+        return False
+    kind = e.get("kind", "work")
+    if kind == "control":
+        return e.get("cadence") in CADENCES
+    return kind == "work" and e.get("state") in STATES
+
+
+def render(d, fragment=False, errors=()):
+    tz = html.escape(str(d.get("tz_label", "")), quote=True)
+    updated = parse_dt(d.get("updated")) or datetime.now()
+    items = [e for e in d.get("items", []) if renderable(e)]
+    skipped = len(d.get("items", [])) - len(items)
     titles = {e["id"]: e["title"] for e in items}
     work = [e for e in items if e.get("kind", "work") == "work"]
     controls = [e for e in items if e.get("kind") == "control"]
@@ -353,11 +403,17 @@ def render(d, fragment=False):
     def ledger(cls, entries, fn, empty):
         return (f'<ul class="ledger {cls}">' + "".join(fn(e) for e in entries) + "</ul>") if entries else f'<p class="group-note">{empty}</p>'
 
-    title = f"{d['project']} Work Board"
+    repair = ""
+    if errors:
+        lines = "".join(f"<li>{inline(x)}</li>" for x in errors)
+        skip_note = f" {skipped} item(s) could not be shown at all." if skipped else ""
+        repair = f'<div class="repair" role="alert"><h2>Needs repair ({len(errors)})</h2><p class="group-note">The data file breaks the contract. The page is shown best-effort so nothing is hidden; the maintainer fixes the file, not the page.{skip_note}</p><ul>{lines}</ul></div>\n'
+    title = f"{d.get('project', '<Project>')} Work Board"
     desk_note = f' · desk: {inline(d["desk"])}' if d.get("desk") else ""
     main = (
         f"<main>\n<header class=\"page-head\"><h1>{inline(title)}</h1>"
-        f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · maintained by {inline(d['maintainer'])}{desk_note}</p></header>\n"
+        f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · maintained by {inline(d.get('maintainer', ''))}{desk_note}</p></header>\n"
+        + repair +
         f"<div class=\"totals\" aria-label=\"Header totals\">"
         f"<div class=\"stat doing\"><strong>{len(doing) + len(committed)}</strong><span>In motion</span></div>"
         f"<div class=\"stat waiting\"><strong>{len(waiting)}</strong><span>Waiting</span></div>"
@@ -394,18 +450,20 @@ def main(argv=None):
         print("Board data does not satisfy the contract:", file=sys.stderr)
         for e in errs:
             print("  - " + e, file=sys.stderr)
-        return 1
+        if args.check:
+            return 1
+        print("Rendering best-effort with a repair block; fix the data file. Exit code 1.", file=sys.stderr)
     if args.check:
         n = len(d["items"])
         print(f"ok: {d['project']} Work Board, {n} items, highest id WI-{max(e['id'] for e in d['items'])}")
         return 0
-    out = render(d, fragment=args.fragment)
+    out = render(d, fragment=args.fragment, errors=errs)
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             f.write(out)
     else:
         sys.stdout.write(out)
-    return 0
+    return 1 if errs else 0
 
 
 if __name__ == "__main__":

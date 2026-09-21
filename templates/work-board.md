@@ -28,14 +28,18 @@
    renderer refuses a blocked or held item that does not name what it waits on. "Blocked on the
    operator" and "held until Monday's read-back" are an ask and a calendar; the board keeps them
    apart.
-3. **Work in hand belongs to bounded work.** A *doing* or *done* item names the tranche or issue
-   record it belongs to.
+3. **Work in hand belongs to bounded work.** A *doing* or *done* item names what bounds it: a
+   tranche, an issue record, a control document, an ADR, a decision (`CK` id), or an evidence
+   folder. A project that adopts the board with history sets `adopted` to the day its discipline
+   began; *done* items closed before that date are history and may omit `belongs_to` and proof,
+   and the page marks them **operator-reported**. From `adopted` on, the rule holds.
 4. **Done cites proof; it does not judge it.** An item reaches *done* only with a proof artifact
    in Velocity's terms: a review pack, a handoff packet, a closeout disposition, a receipt id, or
    a record path. The board shows the citation and nothing more.
 5. **Controls recur.** Recurring assurance work (a reconcile, an audit, a periodic package) is a
-   *control* with a cadence and its last completion's proof. A control never leaves the board;
-   its next due date is computed, and an overdue control is marked.
+   *control* with a cadence, its last completion's proof, and `evidence`, the path pattern where
+   every completion's proof lives. A control never leaves the board; its next due date is
+   computed, an overdue control is marked, and a control never completed reads "due now".
 6. **Operator decisions never live on the board.** Anything that needs the operator's decision or
    action is a [Check-in Desk](executive-checkin-desk.md) ask. The board item that waits on it is
    *blocked* with `waits_on.ask` naming `<project> CK-n`. The board never carries a lean, a
@@ -48,7 +52,16 @@
    inside seven days). Nobody types them.
 9. **Republished the same turn** an item is added, moved, closed, or dropped, with the `updated`
    stamp changed in the same edit.
-10. **One way to build it.** The board is the renderer's output from the project's data file,
+10. **Provenance has a home; unknown fields do not.** `source` holds where an item came from (a
+    queue paragraph, a log line) and is kept, not shown. `uncertain` lists the fields the
+    maintainer could not confirm, each as `field: why`, and the page tags the item
+    **unconfirmed** naming those fields. Any other field is rejected, so a typo cannot pass
+    silently.
+11. **A broken file still shows the board.** Validation lists every violation and the renderer
+    exits non-zero, but the page is still produced with a **Needs repair** block at the top, so one
+    stale field never hides the other fifty items from the operator. `--check` alone reports and
+    stops. The maintainer fixes the file, never the page.
+12. **One way to build it.** The board is the renderer's output from the project's data file,
     unmodified. A need the data file cannot express is a gap report to Velocity, not a local
     variant.
 
@@ -67,5 +80,15 @@ python3 render-work-board.py board.json --out board.html     # standalone page f
 python3 render-work-board.py board.json --fragment           # title, style, and main only, for artifact hosting
 ```
 
-Only these vary per project: `project`, `maintainer`, `tz_label`, `desk`, and the color tokens
-under `theme` and `theme_dark`.
+Only these vary per project: `project`, `maintainer`, `tz_label`, `desk`, `adopted`, and the color
+tokens under `theme` and `theme_dark`.
+
+## Pilot record
+
+- 2026-09-21, round 1, one consuming project, 52 items (43 work, 9 controls): the first draft
+  failed 8 items and refused the page. Findings taken into the contract the same day: `adopted`
+  and history closes (rule 3), `evidence` on controls (rule 5), `source` and `uncertain` with
+  unknown fields rejected (rule 10), best-effort rendering with a repair block (rule 11), and the
+  schema now declares every rule the renderer enforces. Under the revised draft the same data
+  validates with two changes on the project's side (set `adopted`; rename its provenance field to
+  `source`) and none to its substance.
