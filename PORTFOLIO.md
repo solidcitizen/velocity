@@ -17,7 +17,8 @@ development stage, and permission to spend or release.
   remains **proposed**; there is no release ruling.
 - Stage/evidence: development and local qualification; existing JSON support has local proof,
   and the decision/Markdown contract has a documented review walkthrough. See the proposal's
-  proof section for exact coverage and limits.
+  proof section for exact coverage and limits. Bounded preparation is complete in draft PR #14;
+  the initiative remains at its Maintainer review gate, not accepted or released.
 - Authorized scope/capacity: current session/repository work under the artifact index. No new
   spend, staffing allocation, consuming-project migration, or production rollout is approved.
 - Options/tradeoffs: support inherited context and alternative bindings now; defer automatic

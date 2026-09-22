@@ -142,8 +142,9 @@ limits of documentary review.
 
 The [JSON qualification record](../examples/portable-records/QUALIFICATION.md) records the
 existing 17 local contract tests, synthetic process-continuation/mapping workflow, and local
-HTML inspection. Relevant checks are rerun for this tranche's final closeout. The helper's
-behavior and renderer layouts are not changed by the decision-contract additions.
+HTML inspection. All 17 tests were rerun and passed for this tranche; 239 local links/anchors
+in its 28 changed/new Markdown files and `git diff --check` passed before the foundation commit.
+The helper's behavior and renderer layouts are not changed by the decision-contract additions.
 
 Architect and Tester are named review responsibilities within this implementation session,
 as allowed by Role Authority; this is not independent Maintainer acceptance. Required live
@@ -168,5 +169,7 @@ documentation or local test success closes those claims.
   Earlier conformance is unchanged. Making new context/records mandatory for all prior
   adopters requires a separate compatibility and version decision. No release number assigned.
 - Decision: implementation authorized; policy acceptance, merge, and release pending.
-- Branch disposition: continue draft PR #14 on `codex/portable-project-records`; push reviewed
-  changes and park for Maintainer review. Shared main and other owners' worktrees remain unchanged.
+- Branch disposition: foundation commit `edbeb54` pushed to draft PR #14 on
+  `codex/portable-project-records`; PR title/body read back with the final scope. Closeout records
+  are committed with operation `VEL-PF-1-20260921-closeout`; branch is pushed and parked for
+  Maintainer review. Shared main and other owners' worktrees are unchanged by this work. No merge/release.

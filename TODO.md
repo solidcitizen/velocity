@@ -44,14 +44,19 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 
 ### VEL-WI-3 — Verify the foundation and prepare its review
 
-- State: `doing`
+- State: `done`
 - Owner: Coordinator with named Architect and Tester review passes.
 - Scope / done when: documentation/links and local file-support checks pass, decision scenarios
   are reviewed, qualification limits are recorded, and the draft PR describes the final scope.
   Maintainer acceptance, merge, release, and live pilots are separate outcomes.
 - Source: framework proof and closeout obligations for the authorized change.
 - Context: [VEL-PF-1](PORTFOLIO.md#vel-pf-1--decision-aware-work-and-portable-records).
-- History: 2026-09-21, Coordinator began local validation and review preparation.
+- Completion: 2026-09-21; [review and proof](examples/decision-scopes/README.md), 17 passing
+  file-support tests, local link/anchor and whitespace checks, and
+  [draft PR #14](https://github.com/solidcitizen/velocity/pull/14) updated and read back with
+  foundation commit `edbeb54`. No policy acceptance or release is claimed.
+- History: 2026-09-21, Coordinator started validation, recorded the Architect/Tester review
+  results, pushed the foundation, verified the draft PR, and closed review preparation.
 
 ## Backlog — not committed
 
