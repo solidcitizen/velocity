@@ -8,6 +8,7 @@ no JSON conversion, rendered board, or external service is required.
 
 - Stable project ID / scope covered:
 - Accountable coordinator / priority owner:
+- Executing role/agent and accountable human owner: `<may inherit the project role map>`
 - Decision context: `<project context or governing plan; inherited by items below>`
 - History / revisions: `<Git history or equivalent retained versions>`
 - Writer coordination: `<one named editor at a time; shared lock/service if used>`
@@ -26,7 +27,7 @@ field or distinguish dropped from done. Preserve unconfirmed imported facts expl
 ### `<project>-WI-1` — `<title>`
 
 - State: `backlog`
-- Owner: `<accountable role; unconfirmed when genuinely unknown>`
+- Owner: `<responsible work owner; unconfirmed when genuinely unknown>`
 - Scope / done when: `<inline bounded action/result, or issue/tranche link>`
 - Context: `<inherit project context; optional more specific initiative/decision link>`
 - Source / uncertainty: `<origin and unknowns, if any>`

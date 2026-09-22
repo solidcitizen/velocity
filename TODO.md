@@ -3,7 +3,9 @@
 Authoritative Markdown queue for the bounded effort in [ARTIFACTS.md](ARTIFACTS.md), on this
 proposal branch. It does not import every other Velocity queue or operational Desk item.
 Project identity: `velocity`. Priority owner: Velocity Maintainer; coordinating editor: Codex
-in the Coordinator responsibility. All items inherit `VEL-PF-1` and its declared authority.
+in the Coordinator responsibility. Accountable human owner: Mike as Velocity Maintainer.
+All items inherit `VEL-PF-1` and its declared authority; their outcome plan is
+[VEL-INI-1](INITIATIVES.md#vel-ini-1--decision-aware-work-and-portable-continuity).
 Queue order within a state gives the next-work preference, without granting new authority.
 
 States and update discipline: [work contract](docs/WORK-MANAGEMENT.md) and
@@ -11,6 +13,26 @@ States and update discipline: [work contract](docs/WORK-MANAGEMENT.md) and
 snapshot overrides an explicit state. Dates below are records of events, not deadlines.
 
 ## Current tranche
+
+### VEL-WI-6 — Define the standing reference method and decision surfaces
+
+- State: `done`
+- Owner: Coordinator; Architect review of artifact/authority boundaries.
+- Scope / done when: a PMI-informed reference method names the baseline artifacts, review
+  loop, and decision routing at work, initiative, and portfolio levels; examples show when
+  one Desk suffices and when separate authorities need their own surfaces. Velocity's scoped
+  records demonstrate the method without starting the future goal-setting candidate.
+- Source: Maintainer's 2026-09-21 request to define the standing method and assess boards per level.
+- Research scope: includes the follow-up question about PMI's adaptation for AI entities;
+  distinguish verified public guidance from unreviewed full-standard coverage.
+- Context: `VEL-PF-1`; current documentation/review scope and capacity from the artifact index.
+- Completion: 2026-09-21; [reference method](docs/MANAGEMENT-REFERENCE.md), expanded templates,
+  [initiative record](INITIATIVES.md), and
+  [eight-case review](examples/decision-scopes/README.md#reference-method-review). Local links,
+  whitespace and public-source checks passed. This closes definition/review preparation;
+  it does not accept policy, qualify a new UI, or claim full PMI-standard coverage.
+- History: 2026-09-21, Coordinator researched primary sources, defined the method, then
+  completed named Architect/Tester documentary review and recorded its limits.
 
 ### VEL-WI-1 — Formalize decision context across scopes
 

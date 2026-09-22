@@ -52,6 +52,20 @@ Velocity borrows deliberately from older software and governance traditions:
 
 Velocity does not claim novelty for these pieces. Its contribution is integrating them for one human working with fluent agents, where the main failure is not lack of automation but loss of role separation.
 
+## Management and AI Practice Reviewed 2026-09-21
+
+The proposed [management reference method](docs/MANAGEMENT-REFERENCE.md) draws on PMI's
+project, program, portfolio, and governance guidance. PMI also publishes a
+[2026 AI standard](https://www.pmi.org/standards/artificial-intelligence) and concrete
+[human–agent role guidance](https://www.pmi.org/blog/stakeholder-management-raci). AI governance
+and adapting management practice for agents are established adjacent work, not an empty field.
+
+This comparison covers public publication overviews and practitioner guidance. It does not
+establish full-standard compatibility or the absence of a persistent AI-entity/goal-setting
+lifecycle in PMI's work. Velocity's artifact bindings and execution/proof procedures should be
+compared against that work before making distinctive-coverage claims. The reference method's
+filenames, cadence options, and shared-Desk default are Velocity design choices.
+
 ## What Velocity Does Not Provide
 
 Velocity does not provide:
@@ -62,7 +76,7 @@ Velocity does not provide:
 - subagent communication protocols
 - a universal benchmark, project-specific graders, or measured performance guarantees
 - tracing, telemetry, or observability infrastructure
-- planning cadence, estimation, or roadmap process
+- a mandatory planning cadence, estimation system, or roadmap process
 
 Those belong to the project overlay, the chosen toolchain, or the team's delivery method.
 Velocity v1.4.0 adds optional evaluation and measurement templates, not an execution engine.

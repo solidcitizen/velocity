@@ -11,6 +11,7 @@
 - [Project Adoption Guide](PROJECT-ADOPTION-GUIDE.md)
 - [Portable Project Records](PORTABLE-PROJECT-RECORDS.md) — opt-in development profile; qualification scope stated explicitly
 - [Decision Scopes](DECISION-SCOPES.md) — development contract for strategy, portfolio, initiative, and execution context
+- [Standing Management Reference](MANAGEMENT-REFERENCE.md) — baseline artifacts, review loop, and decision surfaces by level; PMI-informed development method
 - [Lightweight Work Management](WORK-MANAGEMENT.md) — development contract; Markdown TODO is a first-class tracker binding
 
 ## Governance

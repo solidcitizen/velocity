@@ -104,6 +104,11 @@ beyond the five things that vary. The renderer enforces every rule it can check.
 Keep populated data in the consuming project's operational workspace, separate from reusable
 templates. Under the optional [Portable Project Records profile](../docs/PORTABLE-PROJECT-RECORDS.md),
 declare that location in the shared artifact index, outside agent session/cache storage.
+The development [management reference method](../docs/MANAGEMENT-REFERENCE.md) allows one
+Desk to cover work, initiative, and portfolio asks within its declared ownership/access scope.
+Separate desks follow separate decision rights and accountable leads, not the number of
+management levels. Use existing reference/prose fields and `owned_by` pointers; this introduces
+no new sections, scope filter, automatic synchronization, or committee approval mechanism.
 An empty `entries` list is valid for a new Desk. The
 [shared file helper](project-records.md) provides coordinated updates and recovery. Render with:
 

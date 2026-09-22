@@ -41,6 +41,11 @@ portfolio-level future thing to tackle.” This authorizes reusable process chan
 scoped Velocity trial records together. It does not authorize executing strategic goal-setting,
 migrating other projects, accepting policy, merging, or releasing.
 
+The follow-up request defines the standing reference method and baseline artifacts at work,
+initiative and portfolio levels, asks whether each needs a decision board, and asks about PMI's
+adaptation for AI entities. It authorizes the reference definition and scoped example update;
+new governance services, rendered dashboards, or strategic-goal execution are not implied.
+
 Read-only inspection of private consuming projects informed the separation of work, operating
 controls, initiative planning, and investment authority. That is maintainer-context evidence,
 not a public reference implementation or independent validation. The public scenarios are
@@ -81,6 +86,18 @@ remains development support, not released canon.
 enforcement limits, and consequences. The core authority/proof model is retained. Record
 access, actor metadata, a task state, or a model change cannot grant approval authority.
 
+The [standing reference method](../docs/MANAGEMENT-REFERENCE.md) makes those contracts
+operational: baseline artifacts, a frame/select/execute/assess/adjust loop, tailored review
+triggers, and decision coverage at each level. A shared Desk is the compact default within
+aligned authority, lead ownership, and access; separate decision rights can require separate
+surfaces. Management status remains outside the Desk. Baseline artifact coverage does not
+require a fixed file count or three dashboards. Agent execution and human accountability are
+explicitly distinct.
+
+PMI's 2026 AI standard and human–agent guidance are relevant adjacent work. The comparison
+uses public sources and does not establish that PMI lacks an AI-entity lifecycle. Full-standard
+comparison is a future research need before claiming a distinctive coverage gap.
+
 ## Templates and implementation boundary
 
 - [Decision records](../templates/decision-records.md): small inherited context; optional
@@ -111,6 +128,10 @@ uncommitted qualification work. [PORTFOLIO.md](../PORTFOLIO.md) separates:
 - `VEL-PF-1`: the currently authorized foundation, with local proof and a Maintainer review gate;
 - `VEL-PF-2`: strategic goal-setting, captured as a future portfolio candidate with no execution
   envelope, deadline, automatic start, or corresponding committed task.
+
+[INITIATIVES.md](../INITIATIVES.md) carries the current effort's outcome plan and assessment as
+`VEL-INI-1`. Its authority comes from `VEL-PF-1`; work stays in TODO. The existing proposal/PR
+records remain this scoped trial's review and ruling route, without creating another Desk.
 
 The future candidate's next decision is whether to charter bounded discovery, including
 authority, constraints, capacity, evidence, and a review gate. This proposal defines the
@@ -146,6 +167,12 @@ HTML inspection. All 17 tests were rerun and passed for this tranche; 239 local 
 in its 28 changed/new Markdown files and `git diff --check` passed before the foundation commit.
 The helper's behavior and renderer layouts are not changed by the decision-contract additions.
 
+The standing-method follow-up adds eight documentary review cases and scoped initiative
+records, with local link/anchor, whitespace and public-source checks. It changes no runtime
+or schema; the prior runtime tests were not rerun and do not qualify new management behavior.
+Its source review includes PMI's 2026 AI standard overview and agent-team guidance, with
+full-standard comparison explicitly outstanding.
+
 Architect and Tester are named review responsibilities within this implementation session,
 as allowed by Role Authority; this is not independent Maintainer acceptance. Required live
 proof remains outstanding for actual model/provider continuation, protected role denial,
@@ -156,7 +183,7 @@ documentation or local test success closes those claims.
 
 - Classification: reusable proposed policy and template support, synthetic examples, and
   Velocity's scoped trial records. No private project material is published.
-- Protected artifacts: `docs/DECISION-SCOPES.md`, `docs/WORK-MANAGEMENT.md`,
+- Protected artifacts: `docs/MANAGEMENT-REFERENCE.md`, `docs/DECISION-SCOPES.md`, `docs/WORK-MANAGEMENT.md`,
   `docs/PORTABLE-PROJECT-RECORDS.md`, `docs/LIFECYCLE-MODEL.md`,
   `docs/CONTROL-PLANES.md`, `docs/ARTIFACT-AUTHORITY-BOUNDARIES.md`,
   `docs/PROJECT-ADOPTION-GUIDE.md`, `docs/INDEX.md`, the linked record/adoption/tranche and
@@ -173,3 +200,5 @@ documentation or local test success closes those claims.
   `codex/portable-project-records`; PR title/body read back with the final scope. Closeout records
   are committed with operation `VEL-PF-1-20260921-closeout`; branch is pushed and parked for
   Maintainer review. Shared main and other owners' worktrees are unchanged by this work. No merge/release.
+  The standing-method follow-up is recorded under operation `VEL-PF-1-20260921-method` on the
+  same review branch; no new release or separate acceptance is implied.

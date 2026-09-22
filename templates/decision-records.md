@@ -4,6 +4,9 @@ Optional record support for [Decision Scopes](../docs/DECISION-SCOPES.md). Use e
 where they already carry this information. Start with the context block; create portfolio,
 initiative, or gate records only when the decision needs them. Empty example fields are not
 approvals. Populated records belong in the adopting project's declared workspace/system.
+The [standing reference method](../docs/MANAGEMENT-REFERENCE.md) defines the baseline coverage
+and how records can be combined. Artifact coverage does not require a separate file or Desk
+for every level.
 
 ## Project decision context
 
@@ -15,7 +18,24 @@ approvals. Populated records belong in the adopting project's declared workspace
 - Escalate when / to: `<boundary and decision owner; route through Desk if adopted>`
 - Next review / gate: `<event/date and owner, or no formal gate with a change trigger>`
 - Record locations / audience: `<artifact index; private/public boundary>`
+- Decision surface: `<shared Desk, separate authority-owned desks, or existing request/decision record>`
+- Review arrangement: `<reviewer, cadence/event, evidence needed, decision rights and escalation>`
+- Human/agent role map: `<accountable human owner; executing agents and their delegated scope>`
 - Unresolved context: `<unknowns, affected decisions, owner/next disposition>`
+
+## Portfolio mandate and review
+
+- Scope / strategic direction / accountable portfolio owner:
+- Selection principles and decision rights: `<how alternatives are judged; no invented scoring>`
+- Resource boundary: `<approved capacity/envelopes, assumptions and source records>`
+- Component inventory: `<candidate and selected effort IDs; posture, owners, parent links>`
+- Allocation/outlook: `<commitments versus capacity; actual/forecast source, unknowns>`
+- Value/risk review: `<outcome evidence, cross-component dependencies and tradeoffs>`
+- Review trigger / next decision / authoritative ruling location:
+
+This block can be the introduction to `PORTFOLIO.md` or inherited from an existing charter.
+Portfolio components use the opportunity/investment shape below; do not duplicate their
+initiative plans or execution queues here.
 
 ## Portfolio opportunity or investment
 
@@ -34,18 +54,23 @@ approvals. Populated records belong in the adopting project's declared workspace
 ## Initiative or program
 
 - Stable ID / title / owner:
-- Outcome and evidence of success:
+- Mandate / accountable sponsor / executing lead:
+- Outcome, intended beneficiary, and evidence of success:
 - Parent goals / portfolio decisions and revisions:
 - Scope / exclusions / dependencies:
 - Stage and next milestone or gate:
 - Current authorized envelope / capacity assumptions:
 - Material risks / uncertainties and owners:
+- Current assessment: `<as-of/source revision, progress, forecast, confidence and next decision>`
+- Benefit review: `<measure/baseline/target/evidence and owner; unknown or not yet observed>`
 - Work source / operating handoff:
 - Review trigger / change authority / decision history:
 
 One initiative record may cover a project. Several initiatives may belong to one program.
 Use relationships that reflect actual responsibility; record structures need not mirror an
 organization chart. Multiple contributors do not remove the need for an accountable owner.
+Keep delivery evidence distinct from outcome/benefit evidence. A brief rationale and capacity
+assumption can suffice for a small initiative; use a fuller business case where warranted.
 
 ## Stage or investment decision
 

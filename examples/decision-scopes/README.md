@@ -31,6 +31,10 @@ foundation separately from future strategic goal-setting. `VEL-PF-2` is a candid
 execution capacity, date, or corresponding committed task. The proposal branch's source files
 are its current view; the earlier local HTML snapshot is not an adopted source for this queue.
 
+[INITIATIVES.md](../../INITIATIVES.md) now carries `VEL-INI-1`'s outcome brief, plan, assessment,
+risks and review trigger. Portfolio selection and work execution remain in their respective
+sources. The artifact index maps all three levels to the existing proposal/PR decision route.
+
 These records exercise discovery and representation in a real repository. They do not prove
 portfolio decision quality, business benefit, stage-gate enforcement, or a cross-vendor runtime.
 
@@ -74,3 +78,35 @@ Remaining qualifications: live AI-tool continuation, actual role denial at a pro
 an external tracker migration, and measured decision acceleration. Automatic Markdown
 rendering is not implemented; the existing JSON support keeps its separately documented
 [qualification scope](../portable-records/QUALIFICATION.md).
+
+## Reference-method review
+
+The standing-method follow-up is a documentary Architect/Tester review on 2026-09-21, not an
+executed committee, operational Desk migration, or independent acceptance. It uses the
+[reference method](../../docs/MANAGEMENT-REFERENCE.md) and the scoped Velocity records.
+
+| Case | Reviewed disposition |
+| --- | --- |
+| One owner and lead across all three levels | One shared decision surface can route work, initiative and portfolio asks. Three readable management views may be sections of existing files; no three-Desk requirement. |
+| Same operator, distinct project leads | Existing desks keep their own writers and identities. Cross-desk references follow ownership/pointer rules; shared readership does not grant shared write authority. |
+| Initiative sponsor and portfolio authority differ | Local scope/stage choices remain within delegation; resource/priority exceptions reach the portfolio authority. Store one owning ruling per question. |
+| One action requires scope and funding approval | Preserve two linked decisions for the genuinely separate authorizations. Answering one does not release the action while the other remains unmet. |
+| Confidential portfolio material and public work queue | Keep the ruling at its authorized source; provide an access-appropriate reference or summary. A consolidated view does not expose restricted details or silently grant access. |
+| Work done, benefit unmeasured | TODO closure remains valid for its bounded work. Initiative outcome and portfolio value remain unverified until their own evidence is available. |
+| Agent performs work or proposes a decision | Execution identity is separate from the accountable human role. Its tools or assignment do not expand decision rights. |
+| Future goal-setting candidate | `VEL-PF-2` stays outside initiative execution. PMI AI coverage remains an explicit research consideration; no claim that PMI lacks the proposed capability. |
+
+Source review: current official PMI publication overviews for project, program, portfolio,
+governance and AI; PMI's human–agent RACI guidance. Full standards were not inspected. The
+references support the stated comparison, not a certification/compliance claim or the claim
+that PMI prescribes Velocity's filenames, review cadence, or Desk layout.
+
+The follow-up changes only Markdown contracts, templates and trial records. Local links/anchors,
+whitespace, artifact coverage and public-source hygiene were checked successfully before closing
+`VEL-WI-6`. The coverage pass confirmed that work state/proof stays in TODO, initiative
+outcome/plan/assessment has its own record, and portfolio selection/capacity remains separate;
+the same proposal/PR decision route serves this scoped trial. The eight cases above were
+reviewed against the contract, including separate authorizations and ownership boundaries.
+These are Class D documentary checks. The prior 17 runtime test results remain scoped to the
+unchanged JSON implementation and were not rerun for this documentation-only follow-up;
+they do not prove this new management method or a new UI capability.

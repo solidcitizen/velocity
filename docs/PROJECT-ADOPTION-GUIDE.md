@@ -142,6 +142,12 @@ can combine ownership and inherit a short context block; larger efforts link ups
 Existing work within its authority can proceed while unrelated upstream unknowns are resolved.
 This development profile is optional and does not change earlier conformance.
 
+Use the [standing management reference](MANAGEMENT-REFERENCE.md) to map baseline work,
+initiative, and portfolio artifacts, their review triggers, and their decision route. Coverage
+can be combined in existing records. Default to a shared Check-in Desk within aligned
+ownership/access; split it for distinct authorities, accountable leads, or access/review needs.
+Status belongs in the management views. No new Desk filters or synchronization are implied.
+
 ## Overlay Experiments
 
 A project may test a local rule in its overlay before proposing a Velocity core change. An overlay experiment should state its name, owner, start date, intended duration or review trigger, the local rule being tested, the Velocity core rule it touches, a compatibility check against shared-context / separated-write-authority, the evidence to collect, and the promotion path if it works. Overlay experiments must not silently contradict core governance: they may specialize commands, issue formats, lane names, proof harnesses, and routing, but they may not remove acceptance-proof-first, erase lane proof boundaries, or let the role being evaluated rewrite its own evaluation criteria.

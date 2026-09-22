@@ -71,14 +71,18 @@ connect each effort to its purpose, selection authority, capacity, and escalatio
 [Lightweight work management](docs/WORK-MANAGEMENT.md) defines the common semantics:
 `TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
 The Check-in Desk routes decisions at any scope. See the
+[standing reference method](docs/MANAGEMENT-REFERENCE.md) for baseline artifacts, reviews,
+and when to share or separate decision surfaces. Its PMI comparison includes the 2026 AI
+standard and human–agent responsibility guidance. See the
 [decision walkthrough](examples/decision-scopes/README.md) and
 [file-support qualification limits](examples/portable-records/README.md).
 This development support does not change the current canon release or qualify an AI provider
 or external tracker without its scenario evidence.
 
 Velocity is trying this structure in its own scoped [artifact index](ARTIFACTS.md),
-[work queue](TODO.md), and [portfolio](PORTFOLIO.md). Strategic goal-setting is recorded there
-as a future portfolio opportunity, not committed delivery work.
+[work queue](TODO.md), [initiative plan](INITIATIVES.md), and [portfolio](PORTFOLIO.md).
+Strategic goal-setting is recorded there as a future portfolio opportunity, not committed
+delivery work.
 
 ## Feedback
 

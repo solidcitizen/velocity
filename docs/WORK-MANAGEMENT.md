@@ -7,11 +7,14 @@ It is not merely an inbox to be emptied into another system.
 
 ## Small common record
 
-Each work item has stable identity within a project, a title, an accountable owner, and an
+Each work item has stable identity within a project, a title, a responsible work owner, and an
 explicit state. Preserve its source, history, and any uncertainty. The project declares its
 [decision context](DECISION-SCOPES.md) once; items inherit it or link their more specific parent,
 outcome, and authority. Known ownership can be a named role. Imported unknown ownership is
-marked unconfirmed and must be resolved before making a delivery commitment.
+marked unconfirmed and must be resolved before making a delivery commitment. For AI-executed
+work, the inherited role map also identifies the accountable human owner and escalation path;
+an agent assignment does not itself confer accountability or approval authority. See the
+[reference method](MANAGEMENT-REFERENCE.md) for coverage at the other management levels.
 
 Use the existing issue, plan, tranche, or a short inline statement to bound the work and say
 what done means. Link dependencies and the decision that governs any protected action. Keep

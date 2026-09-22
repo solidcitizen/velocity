@@ -12,6 +12,7 @@ checkout; a copied template's links do not automatically become valid at its new
 - Stable project identity: `<retain through renames and migrations; match records.json if used>`
 - Operational workspace: `<project-owned location; use a private locator where appropriate>`
 - Responsible delivery role: `<role>`
+- Role map: `<accountable human owner and escalation contact; executing agents and delegation>`
 - Operator and decision authority: `<owner; delegation record if applicable>`
 - Audience: `<local/private team/public; publication destinations and allowed content>`
 - Access and write enforcement: `<OS/service identities, protected wrapper or access rules>`

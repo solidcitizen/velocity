@@ -5,6 +5,24 @@ current foundation and its next strategic opportunity; it is not an exhaustive p
 inventory. Work execution belongs in [TODO.md](TODO.md). Posture is distinct from work state,
 development stage, and permission to spend or release.
 
+## Mandate and current outlook
+
+- Accountable portfolio authority: Mike in the Velocity Maintainer role; purpose and delegation
+  boundaries are in the artifact index. The current Maintainer request selects `VEL-PF-1` for
+  bounded definition/review work; `VEL-PF-2` remains a future option.
+- Selection basis for this trial: implement the requested foundation, examine relevant PMI
+  practice, and use evidence/authority/capacity gaps to frame subsequent choices. No numerical
+  scoring, portfolio optimization, or strategic goal-setting method has been accepted.
+- Capacity/allocation: existing session and Maintainer review capacity for the current request.
+  No additional staffing or monetary envelope is approved. Actual cost/effort, total available
+  capacity, and benefit baselines are not measured by this trial. Nothing is allocated to
+  `VEL-PF-2` or the unselected live pilots.
+- Value/risk outlook: reusable contracts and local proof exist; live continuation, management
+  outcomes, and acceleration remain unverified. PMI's 2026 AI standard is relevant prior work;
+  a full comparison is needed before asserting a distinctive coverage gap.
+- Review trigger: Maintainer selection/resource decision, material change, or completed review
+  packet. Rulings stay in the named proposal/PR record; no separate portfolio Desk is introduced.
+
 ## VEL-PF-1 — Decision-aware work and portable records
 
 - Accountable owner: Velocity Maintainer.
@@ -15,10 +33,10 @@ development stage, and permission to spend or release.
 - Decision status/authority: implementation authorized by the Maintainer's 2026-09-21 request
   in the [proposal](proposals/2026-09-21-portable-project-records.md). Reusable policy acceptance
   remains **proposed**; there is no release ruling.
-- Stage/evidence: development and local qualification; existing JSON support has local proof,
-  and the decision/Markdown contract has a documented review walkthrough. See the proposal's
-  proof section for exact coverage and limits. Bounded preparation is complete in draft PR #14;
-  the initiative remains at its Maintainer review gate, not accepted or released.
+- Stage/evidence: development and local qualification. The standing-method follow-up is part
+  of [VEL-INI-1](INITIATIVES.md#vel-ini-1--decision-aware-work-and-portable-continuity), which owns
+  the current plan and assessment; source work/proof lives in its linked records. Policy
+  acceptance and release remain pending.
 - Authorized scope/capacity: current session/repository work under the artifact index. No new
   spend, staffing allocation, consuming-project migration, or production rollout is approved.
 - Options/tradeoffs: support inherited context and alternative bindings now; defer automatic
@@ -30,6 +48,7 @@ development stage, and permission to spend or release.
   [decision walkthrough](examples/decision-scopes/README.md),
   [JSON qualification](examples/portable-records/QUALIFICATION.md).
 - History: 2026-09-21, Coordinator recorded the Maintainer-authorized foundation and its limits.
+  The follow-up request makes the standing reference method and initiative record explicit.
 
 ## VEL-PF-2 — Strategic goal-setting
 
@@ -48,6 +67,8 @@ development stage, and permission to spend or release.
 - Questions for a possible discovery brief: how to elicit values and competing objectives;
   who may adopt/change goals; how to compare alternatives and uncertainty; what constitutes
   outcome evidence; how to challenge/revise a goal without an agent rewriting its own criteria.
+  Compare the full PMI AI standard and other relevant practice before claiming an uncovered
+  AI-entity lifecycle or goal-setting capability; the current review covers public sources only.
 - Options/tradeoffs: keep manual goal ownership with AI evidence support; investigate bounded
   delegated goal formation; or defer. No option is selected here.
 - Next decision/owner/trigger: at the Maintainer's next portfolio prioritization, or an explicit

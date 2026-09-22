@@ -43,7 +43,9 @@ Use a feature branch for substantive changes. Keep project-specific migration wo
 ## Development Work Records
 
 For the decision-aware work/portable-records proposal, read [ARTIFACTS.md](ARTIFACTS.md), then
-the scoped [TODO.md](TODO.md) and [PORTFOLIO.md](PORTFOLIO.md). These are Velocity's own trial
+the scoped [TODO.md](TODO.md), [INITIATIVES.md](INITIATIVES.md), and [PORTFOLIO.md](PORTFOLIO.md).
+Their baseline coverage and decision routing follow the proposed
+[standing reference method](docs/MANAGEMENT-REFERENCE.md). These are Velocity's own trial
 records on this proposal branch, not released requirements or an inventory of every open
 Velocity effort. Inherit their decision context and preserve ownership of other proposal
 branches. Future portfolio candidates are not execution commitments. No task closure, board

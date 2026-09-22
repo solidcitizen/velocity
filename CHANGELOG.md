@@ -11,6 +11,12 @@ rather than a moving branch. Versions are canon releases, not software:
 
 ## Unreleased — Decision-Aware Work and Portable Records (development)
 
+- Define the standing reference method and baseline artifacts at work, initiative, and portfolio
+  levels, with a shared review loop and tailored decision surfaces. One Desk may cover all three
+  within aligned ownership/access; management views retain status and outcome evidence.
+- Extend the scoped trial with `INITIATIVES.md` and explicitly separate AI execution from human
+  accountability. Acknowledge PMI's 2026 AI standard and agent-team guidance; full-standard
+  comparison and AI-entity capability gaps remain unverified.
 - Add decision scopes connecting strategy, portfolio investment, initiative development, and
   execution. Adopters inherit a small authority/capacity context; business cases and stage gates
   are conditional. Distinguish work state, development stage, investment posture, and rulings.

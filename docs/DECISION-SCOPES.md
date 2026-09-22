@@ -32,6 +32,10 @@ Recurring operations are an additional work pattern across these scopes, not ano
 in this hierarchy. A continuing service or function may have a mandate, an operating envelope,
 improvement initiatives, and recurring obligations alongside discrete projects.
 
+The [standing reference method](MANAGEMENT-REFERENCE.md) defines baseline artifacts and the
+review loop for work, initiatives, and portfolios. It requires decision coverage at each
+level while allowing one shared Desk where owners, responsibility, and access align.
+
 ## Awareness is universal within the adopted profile; machinery is conditional
 
 Every adopting effort declares its decision context once in its overlay, charter, or artifact
