@@ -16,7 +16,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 
 ### VEL-WI-8 — Publish the experimental 2.0 release
 
-- State: `doing`
+- State: `done`
 - Owner: Coordinator; Mike as Maintainer accepted experimental publication.
 - Scope / done when: publish a fixed `v2.0.0-experimental.1` tag and GitHub prerelease on
   `codex/2.0-experimental`, provide project adoption instructions, and verify remote source,
@@ -25,7 +25,13 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
   permission to use an experimental 2.0 release branch; recorded in the proposal.
 - Context: `VEL-PF-1`, `VEL-INI-1`; current session capacity. No project migration or stable
   main merge is required by this work item.
-- History: 2026-09-21, Coordinator began release preparation after the explicit ruling.
+- Completion: 2026-09-21; [GitHub prerelease](https://github.com/solidcitizen/velocity/releases/tag/v2.0.0-experimental.1)
+  is published, with tag resolving to `aa9462b784416f1db1e743e0f0a8f5041d95d0d4` and the
+  experimental branch published. Public HTTPS clone, six release-file byte comparisons,
+  remote tag/branch identity, and stable v1.7.2 read-back passed. See the
+  [publication receipt](examples/portable-records/RELEASE-RECEIPT.md).
+- History: 2026-09-21, Coordinator prepared and published the release under the explicit
+  ruling, verified it remotely, then recorded this closeout without moving the fixed tag.
 
 ### VEL-WI-7 — Qualify decisions on the shared Check-in Desk
 

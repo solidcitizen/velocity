@@ -9,7 +9,8 @@
 - Accepted version: v2.0.0-experimental.1 (opt-in prerelease); stable canon remains v1.7.2
 - Branch: `codex/portable-project-records`, [draft PR #14](https://github.com/solidcitizen/velocity/pull/14)
 - Release channel: `codex/2.0-experimental`; fixed tag `v2.0.0-experimental.1`
-- Disposition: experimental publication authorized; publication receipt tracked as VEL-WI-8.
+- Disposition: v2.0.0-experimental.1 published and remotely verified; see the
+  [publication receipt](../examples/portable-records/RELEASE-RECEIPT.md). Stable integration remains pending.
 
 ## Problem and resulting behavior
 

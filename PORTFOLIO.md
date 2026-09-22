@@ -37,7 +37,7 @@ development stage, and permission to spend or release.
 - Stage/evidence: development and local qualification. The standing-method follow-up is part
   of [VEL-INI-1](INITIATIVES.md#vel-ini-1--decision-aware-work-and-portable-continuity), which owns
   the current plan and assessment; source work/proof lives in its linked records. Policy
-  stable acceptance remains pending; experimental publication is tracked by `VEL-WI-8`.
+  stable acceptance remains pending; experimental publication is complete under `VEL-WI-8`.
 - Authorized scope/capacity: current session/repository work under the artifact index. No new
   spend, staffing allocation, consuming-project migration, or production rollout is approved.
 - Options/tradeoffs: support inherited context and alternative bindings now; defer automatic
