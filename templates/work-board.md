@@ -1,8 +1,8 @@
 # Work Board — `<project>`
 
-> **Pilot draft, not canon.** This template is being proven on one consuming project before it is
-> proposed for release. Its contract may change on that project's evidence. Until it is accepted,
-> nothing here binds any other project.
+> **Experimental pilot.** Included in `v2.0.0-experimental.1` for explicit project adoption;
+> not part of stable v1.7.2. Its contract may change on pilot evidence. Pin the experimental
+> version and review changes before upgrading; no existing project is automatically migrated.
 >
 > A **living page** of a project's active work, for projects that have no issue tracker or board of
 > their own and want one their delivery agent keeps current. It is the standing answer to "what is
@@ -116,13 +116,11 @@ tokens under `theme` and `theme_dark`.
   destination; migration retires this file as a writable queue. `--archive-binding <locator>`
   labels a retained HTML snapshot with its successor authority. Staying in file mode is valid.
 
-- **Pinning the pilot draft.** Until this template is released, a project that adopts it pins a
-  commit of the proposal branch, never the branch head: copy the renderer, schema, and this
-  contract at that commit into the project's own overlay, record the commit in the overlay as a
-  pin exception, and re-point at the project's pinned Velocity checkout when the release lands.
-  Do not read the renderer from another project's working tree. While the draft moves, Velocity
-  notifies each consuming project on the session channel when a change lands that could fail a
-  board that validated before, naming the commit and the change.
+- **Pinning the pilot.** Adopt a fixed experimental tag or commit using the
+  [experimental adoption guide](../docs/EXPERIMENTAL-ADOPTION.md). Keep the renderer, schema,
+  and contract from the same pin, never another project's working tree or a moving branch.
+  Review release notes and requalify affected behavior before upgrading; existing pins do not
+  change when the experimental branch advances.
 - **A project's wrapper stamps and publishes; it implements nothing.** A project may automate the
   workflow around the board (set `updated`, run the renderer with `--check` and then `--fragment`,
   publish the output unmodified). It may not validate, order, total, or render on its own; any of

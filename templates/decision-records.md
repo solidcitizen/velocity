@@ -18,7 +18,7 @@ for every level.
 - Escalate when / to: `<boundary and decision owner; route through Desk if adopted>`
 - Next review / gate: `<event/date and owner, or no formal gate with a change trigger>`
 - Record locations / audience: `<artifact index; private/public boundary>`
-- Decision surface: `<shared Desk, separate authority-owned desks, or existing request/decision record>`
+- Decision surface: `<one shared Desk within declared ownership/access, or existing request/decision record>`
 - Review arrangement: `<reviewer, cadence/event, evidence needed, decision rights and escalation>`
 - Human/agent role map: `<accountable human owner; executing agents and their delegated scope>`
 - Unresolved context: `<unknowns, affected decisions, owner/next disposition>`
@@ -75,6 +75,7 @@ assumption can suffice for a small initiative; use a fuller business case where 
 ## Stage or investment decision
 
 - Stable decision ID / affected scope:
+- Decision level: `<work / initiative / portfolio; classify the ruling requested, not its origin>`
 - Status: `<proposed / accepted / superseded / declined>`
 - Owner / authority basis:
 - Current stage / requested next stage or action:
@@ -88,3 +89,5 @@ assumption can suffice for a small initiative; use a fuller business case where 
 If the Desk owns the ruling, link its ledger here. If another governance system owns it, link
 that record from the Desk's closure. Proposals, recommendations, accepted rulings, and proof
 of execution remain distinct. Routine work already covered by an envelope needs no new gate.
+Keep the decision level with the ruling. Independent scope and investment authorizations use
+linked requests on the shared board; one decision must not stand in for both authorities.

@@ -21,7 +21,7 @@ import re
 import sys
 from datetime import datetime, timedelta
 
-CANON = "v1.8.0-draft"
+CANON = "v2.0.0-experimental.1"
 KINDS = ("work", "control")
 STATES = ("backlog", "committed", "doing", "blocked", "held", "done", "dropped")
 OPEN_STATES = ("backlog", "committed", "doing", "blocked", "held")

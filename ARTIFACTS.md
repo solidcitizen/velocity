@@ -4,7 +4,8 @@ This is Velocity's own trial adoption of the proposed decision/work contract. It
 decision-aware work and portable-records effort on `codex/portable-project-records`, for
 [draft PR #14](https://github.com/solidcitizen/velocity/pull/14). It is not a complete inventory
 of Velocity's work, an adoption by all consuming projects, or a migration of an existing live
-Desk. These branch records become shared defaults only through review and integration.
+Desk. The Maintainer subsequently authorized opt-in experimental publication as
+`v2.0.0-experimental.1` on `codex/2.0-experimental`; stable integration remains separate.
 
 ## Decision context
 
@@ -23,15 +24,17 @@ Desk. These branch records become shared defaults only through review and integr
   Architect and Tester responsibilities are explicit review passes, not independent acceptance.
 - Current authority/capacity: the Maintainer authorized formalization and these trial records
   on 2026-09-21. Use the existing session and repository capacity for docs, local proof, and
-  review preparation. No monetary/resource budget is estimated or approved by this record.
+  review preparation, then the explicitly requested experimental GitHub release. No
+  monetary/resource budget is estimated or approved by this record.
 - Escalate to the Maintainer for a scope/resource expansion, goal adoption, acceptance of
   reusable policy, merge/release/public-site change, or live project migration. Routine edits
   and validation within this requested scope need no repeated approval.
-- Next gate: Maintainer review of the proposed contracts and evidence; no promised date.
-  Record the ruling in the existing review/decision record and link it here when it exists.
+- Current ruling: [the proposal](proposals/2026-09-21-portable-project-records.md#source-authority-and-evidence)
+  records acceptance for experimental publication and the single-Desk default. Next gate:
+  stable integration or a selected pilot; no date or pilot is implied by this release.
 - Audience: public repository content. Private operational data and agent-session locations
   are excluded. All public examples are self-contained or explicitly synthetic.
-- Unknowns: release/version, live pilot owners/configurations, external tracker destination,
+- Unknowns: stable release/version, live pilot owners/configurations, external tracker destination,
   and the scope/evidence contract for strategic goal-setting. None is assumed approved.
 
 ## Sources and views
@@ -85,6 +88,8 @@ parents identify resulting/starting saved revisions. On retry, reconcile that id
 the saved source before writing again. This foundation's request is
 `VEL-PF-1-20260921-foundation`; its closeout is a separate recorded change.
 The standing-method follow-up uses `VEL-PF-1-20260921-method`.
+Decision qualification uses `VEL-PF-1-20260921-decision-levels`; experimental publication uses
+`VEL-PF-1-20260921-experimental-release` and a subsequent remote-verification receipt.
 Retain prior closures in Git and the item history. These
 Markdown files are the current view; no TODO HTML generation is declared. The JSON helper is
 not this queue's writer. For coupled decisions, preserve the authoritative ruling before

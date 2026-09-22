@@ -41,7 +41,7 @@ def main():
     history.mkdir()
     (history / "TODO-2026-09-21.md").write_bytes(Path(__file__).with_name("TODO.snapshot.md").read_bytes())
     board["adopted"] = "2026-09-21"
-    desk["entries"] = [{"id": 1, "kind": "decide", "state": "open", "title": "Choose the first import scope",
+    desk["entries"] = [{"id": 1, "kind": "decide", "state": "open", "decision_level": "work", "title": "Choose the first import scope",
                         "what": "Synthetic scenario: decide whether the next test import includes completed history.",
                         "options": ["Include work and history", "Start with open work"], "lean": "Include work and history",
                         "lean_why": "Exercises history preservation", "waits": "WI-1 waits for this decision"}]
@@ -68,7 +68,7 @@ def main():
     apply("create", "First command-line session", {"desk": desk, "work": board})
     desk = read(workspace / "checkin/desk.json")
     board = read(workspace / "work/board.json")
-    desk["entries"] = [{"id": 1, "kind": "decide", "state": "answered", "title": "Choose the first import scope",
+    desk["entries"] = [{"id": 1, "kind": "decide", "state": "answered", "decision_level": "work", "title": "Choose the first import scope",
                         "answered_on": "2026-09-21", "ruling": "Synthetic owner chose work and history; fixture only."}]
     board["items"][0].pop("waits_on")
     board["items"][0]["state"] = "committed"

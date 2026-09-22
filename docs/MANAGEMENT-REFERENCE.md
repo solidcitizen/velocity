@@ -1,7 +1,7 @@
 # Work, Initiative, and Portfolio Reference Method
 
-The standing reference method for the proposed [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
-profile. Status: development, pending Maintainer acceptance and release. This defines the
+The standing reference method for the experimental [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
+profile, accepted for `v2.0.0-experimental.1`. See [experimental adoption](EXPERIMENTAL-ADOPTION.md). This defines the
 baseline for that profile's adopters, not a new requirement for prior conformant projects.
 
 Work, initiative, and portfolio are **management levels** under [Decision Scopes](DECISION-SCOPES.md).
@@ -78,17 +78,36 @@ its declared operator and responsible lead. It presents what needs an answer or 
 action, plus the decision history. Keep ordinary status narrative in the management views,
 as the existing Desk contract requires.
 
-**Default for a compact adoption: one shared Desk across the three levels when the decision
-owner, accountable lead, and access boundary are the same.** Identify the management level
-and affected record in the ask. Provide level-specific views if useful; a filter does not
-create a new authoritative ledger. Without a Desk adoption, use a durable pending-decision
-section and ruling history in the existing records. Chat alone is never the standing record.
+**The reference default is one Check-in Desk within its declared ownership and access scope,
+with every decision request qualified as Work, Initiative, or Portfolio.** These are decision
+levels, separate from Velocity's execution lanes. The same board retains its existing Decide,
+Do, Decided by the team, Already answered, and How to reply sections and one CK ID sequence.
+Management levels do not create three boards or three approval queues.
 
-Create separate decision surfaces when there are distinct decision authorities, separate
-accountable leads, confidentiality boundaries, or enough volume/different review cycles to
-justify them. Portfolio committees and program sponsors may warrant distinct forums even if
-their UI is shared. One person with several hats can use one surface while naming the hat
-under which each decision is made.
+| Decision level | Question being decided | Example |
+| --- | --- | --- |
+| Work | What happens to bounded work within the current mandate? | Resolve a reserved priority choice or accept a work result. |
+| Initiative | What outcome, scope, plan, or development stage should this effort pursue within its investment envelope? | Change the pilot outcome or pass a delegated milestone gate. |
+| Portfolio | Which efforts merit selection, resources, continuation, or a changed investment envelope? | Fund discovery, reallocate capacity, hold, or stop an investment. |
+
+Classify the **ruling requested**, not the task that discovered the need. A work item needing
+additional investment raises a Portfolio request. A stage gate may be Initiative or Portfolio
+depending on the authority exercised. Each ask names one primary level, its affected record,
+the decision owner/hat and authority basis, options/recommendation, and what waits. Link other
+affected levels; the label neither grants authority nor creates a new gate for delegated work.
+
+In JSON, use `decision_level: work | initiative | portfolio`; the shared renderer displays
+**Decision level**. The profile requires it on all open Decide entries, including pointers,
+and preserves it with the ruling. Do and team entries may also carry it. In a Markdown or
+external decision record, carry the same explicit field and values. Without a Desk adoption,
+use a durable pending-decision section and ruling history in the existing records. Chat alone
+is never the standing record. See the [synthetic unified Desk](../examples/decision-scopes/desk.json).
+
+Different hats, review cadences, or record levels alone do not call for additional boards.
+Separate desks are appropriate only where authority ownership or access boundaries prevent
+one shared source under one responsible lead. Distinct decision forums can use the same
+surface where its ownership/access contract permits. One person with several hats names the
+hat under which each ruling is made. Existing separately owned desks are not merged implicitly.
 
 A governance board is a person/group with decision rights; a visual board is a presentation.
 A dashboard cannot establish quorum, delegated authority, or a decision. If a committee owns
@@ -111,11 +130,15 @@ and a funding decision. Keep these as linked, distinct decisions with their own 
 conditions. One ask per question prevents duplicates; it does not collapse genuinely separate
 decision rights or release work while another required authorization is missing.
 
-The current JSON Desk has no scope-filtering UI, portfolio roll-up, committee workflow, or
-automatic cross-desk synchronization. Use existing prose/reference fields for context and
-the documented pointer convention; do not add undeclared schema fields or claim those future
-integrations exist. This method does not modify the shared renderer or accept the separately
-owned Entity Development Lifecycle board proposal.
+The JSON support validates and displays decision levels; the optional strict check requires
+qualification of open decisions. Legacy standalone desks remain valid without the field,
+and unlabeled historical rulings are not retrospectively guessed. The file helper applies
+the strict profile check and guards retention on closure. Meaning, authority, and agreement
+with an owning desk's classification still require review.
+
+No level filter, portfolio roll-up, committee workflow, or automatic cross-desk synchronization
+is supplied. Level labels do not accept the separately owned Entity Development Lifecycle
+board proposal.
 
 ## Review and escalation contract
 

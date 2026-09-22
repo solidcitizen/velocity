@@ -20,7 +20,8 @@ assessment. It is not an inventory of all Velocity initiatives.
   Actual cross-tool workflow evidence and measured decision improvements remain unqualified.
 - Authorized current scope: reusable contract/template definition, local file support and proof,
   and preparation of draft PR #14, including the standing reference method requested on
-  2026-09-21. Strategic goal-setting execution, live adoption, and release are excluded.
+  2026-09-21, followed by decision-level support and experimental GitHub publication.
+  Strategic goal-setting execution, live project migration, and stable-main integration are excluded.
 - Capacity/resource assumption: existing session and maintainer review capacity. No new spend,
   staffing allocation, or delivery date is approved. Actual effort/cost and benefit baselines
   have not been measured; do not infer a budget or realized gain from completed work counts.
@@ -31,14 +32,16 @@ assessment. It is not an inventory of all Velocity initiatives.
 | --- | --- | --- |
 | Decision scopes and portable work foundation | Draft prepared; 17 JSON support tests and documentary review recorded. | `VEL-WI-1` through `VEL-WI-3`; foundation `edbeb54`, closeout `ec4a5af` |
 | Standing reference method | Proposed method prepared; eight documentary cases and source/contract navigation reviewed. | `VEL-WI-6`; [reference](docs/MANAGEMENT-REFERENCE.md) |
-| Maintainer acceptance and release disposition | Pending; proposed policy remains development support. | [Draft PR #14](https://github.com/solidcitizen/velocity/pull/14) and its proposal/ADR |
+| Single Desk with qualified requests | Defined and locally tested; Work, Initiative, and Portfolio share the existing sections. | `VEL-WI-7`; [qualification](examples/portable-records/QUALIFICATION.md) |
+| Experimental acceptance and publication | Maintainer authorized v2.0.0-experimental.1; publication receipt tracked in work. | `VEL-WI-8`; [proposal](proposals/2026-09-21-portable-project-records.md) |
+| Stable acceptance and integration | Pending, separately scoped from the experimental release. | [Draft PR #14](https://github.com/solidcitizen/velocity/pull/14) |
 | Actual cross-vendor and external-tracker pilots | Candidates, not selected or resourced. | `VEL-WI-4` and `VEL-WI-5` |
 | Outcome/benefit review after a qualified pilot | Not run; a pilot would define its baseline and measures before claiming acceleration. | [Measured-pilot template](templates/automation-pilot.md) |
 
 ### Current assessment and review
 
 - As of: 2026-09-21; Git revision/history identifies the source version.
-- Stage: proposed reference prepared, awaiting Maintainer review within the current envelope.
+- Stage: accepted for experimental publication; stable integration and operational proof pending.
 - Evidence/confidence: verified local support checks; documentary review of the proposed
   contracts; live management outcomes and cross-vendor behavior remain unknown.
 - Dependencies/risks: the separate Entity Development Lifecycle proposal remains unaccepted;
@@ -46,7 +49,7 @@ assessment. It is not an inventory of all Velocity initiatives.
   No automatic level-filtered Desk, portfolio renderer, or live tracker connector is supplied.
 - Review trigger: completion of this reference tranche, material scope/authority change, or
   Maintainer request. No calendar automation is created by this record.
-- Next decision: Maintainer acceptance/revision of the proposed method and any bounded pilot.
+- Next decision: Maintainer stable integration/revision or selection of a bounded pilot.
   Review requests and rulings for this scope stay in the existing proposal/PR record; no extra
   Desk or duplicate approval ledger is created.
 - Closure/handoff: preparing or accepting documents does not prove operational adoption.

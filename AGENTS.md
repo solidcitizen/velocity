@@ -46,7 +46,8 @@ For the decision-aware work/portable-records proposal, read [ARTIFACTS.md](ARTIF
 the scoped [TODO.md](TODO.md), [INITIATIVES.md](INITIATIVES.md), and [PORTFOLIO.md](PORTFOLIO.md).
 Their baseline coverage and decision routing follow the proposed
 [standing reference method](docs/MANAGEMENT-REFERENCE.md). These are Velocity's own trial
-records on this proposal branch, not released requirements or an inventory of every open
-Velocity effort. Inherit their decision context and preserve ownership of other proposal
+records for this proposal/experimental release, not stable requirements or an inventory of
+every open Velocity effort. The Maintainer authorized `v2.0.0-experimental.1`; see its proposal
+and [adoption guide](docs/EXPERIMENTAL-ADOPTION.md). Inherit the decision context and preserve ownership of other proposal
 branches. Future portfolio candidates are not execution commitments. No task closure, board
 view, or draft PR approval substitutes for Maintainer acceptance and release authority.

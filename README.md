@@ -11,13 +11,17 @@ Velocity exists to make agent-assisted delivery repeatable across projects while
 Its broader direction is to accelerate decisions from strategy and portfolio investment
 through initiative development, execution, and ongoing operations. The
 [manifesto](MANIFESTO.md#decision-making-throughout-an-entity) describes that ambition;
-the development profile below lays the groundwork without claiming those capabilities are released.
+the experimental profile below lays the groundwork; strategic goal-setting remains future work.
 
 Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
 The guide explains the method; it does not create a second source of lifecycle policy.
 
 Current canon: **v1.7.2 — documentation currency and delegated release mechanics**.
+Experimental channel: **[v2.0.0-experimental.1](https://github.com/solidcitizen/velocity/releases/tag/v2.0.0-experimental.1)**
+on `codex/2.0-experimental`. Start with the [experimental adoption guide](docs/EXPERIMENTAL-ADOPTION.md)
+and pin the tag or its commit; the branch may advance. This opt-in prerelease does not replace
+stable v1.7.2 or establish a finalized 2.0 compatibility contract.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
 projects evaluate development agents, qualify automated handoffs, and measure delivery results;
 they do not activate automation or change existing approval boundaries.
@@ -63,16 +67,16 @@ Start with the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define 
 overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded change.
 Velocity works with your chosen AI tools and delivery cadence.
 
-## Decision-Aware Work and Portable Records (development)
+## Decision-Aware Work and Portable Records (experimental)
 
-An optional [Portable Project Records profile](docs/PORTABLE-PROJECT-RECORDS.md) is under
-development alongside the lightweight Work Board pilot. [Decision scopes](docs/DECISION-SCOPES.md)
+An optional [Portable Project Records profile](docs/PORTABLE-PROJECT-RECORDS.md) is available
+in the experimental release with the lightweight Work Board pilot. [Decision scopes](docs/DECISION-SCOPES.md)
 connect each effort to its purpose, selection authority, capacity, and escalation path.
 [Lightweight work management](docs/WORK-MANAGEMENT.md) defines the common semantics:
 `TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
-The Check-in Desk routes decisions at any scope. See the
+One Check-in Desk routes decisions qualified as Work, Initiative, or Portfolio. See the
 [standing reference method](docs/MANAGEMENT-REFERENCE.md) for baseline artifacts, reviews,
-and when to share or separate decision surfaces. Its PMI comparison includes the 2026 AI
+and the ownership/access boundary for that shared surface. Its PMI comparison includes the 2026 AI
 standard and human–agent responsibility guidance. See the
 [decision walkthrough](examples/decision-scopes/README.md) and
 [file-support qualification limits](examples/portable-records/README.md).

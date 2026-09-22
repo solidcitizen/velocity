@@ -104,11 +104,26 @@ beyond the five things that vary. The renderer enforces every rule it can check.
 Keep populated data in the consuming project's operational workspace, separate from reusable
 templates. Under the optional [Portable Project Records profile](../docs/PORTABLE-PROJECT-RECORDS.md),
 declare that location in the shared artifact index, outside agent session/cache storage.
-The development [management reference method](../docs/MANAGEMENT-REFERENCE.md) allows one
-Desk to cover work, initiative, and portfolio asks within its declared ownership/access scope.
-Separate desks follow separate decision rights and accountable leads, not the number of
-management levels. Use existing reference/prose fields and `owned_by` pointers; this introduces
-no new sections, scope filter, automatic synchronization, or committee approval mechanism.
+The development [management reference method](../docs/MANAGEMENT-REFERENCE.md) uses one
+Desk across work, initiative, and portfolio within its declared ownership/access scope.
+Every open Decide entry, including a pointer, has `decision_level` set to `work`, `initiative`,
+or `portfolio`. The field qualifies the ruling requested, not the originating task or execution
+lane. State the affected record, decision owner's hat, and authority basis in `what`; the
+Desk's declared operator remains the decision owner. Keep the field when answered or withdrawn;
+a pointer uses the owning ask's level. Do and team entries may carry it too.
+
+This is required only for adopters of the development management profile. Legacy standalone
+desks render unchanged when the field is absent; do not infer a level for historical rulings.
+At adoption, qualify open decisions, then use `--require-decision-levels` when checking or
+rendering. The flag checks open Decide entries, including pointers; every supplied level is
+validated even without the flag. The file helper always uses the profile check and refuses
+to drop an existing level or change it while closing/closed. To correct an open ask's
+classification, record the reason and retain the earlier revision before answering it.
+
+Separate desks require ownership/access boundaries that prevent a shared source; a change of
+level, hat, or cadence alone does not create another board. Use the existing `owned_by` pointer
+contract where separate desks are necessary. This introduces no new sections, level filter,
+automatic synchronization, or committee approval mechanism.
 An empty `entries` list is valid for a new Desk. The
 [shared file helper](project-records.md) provides coordinated updates and recovery. Render with:
 
@@ -116,6 +131,7 @@ An empty `entries` list is valid for a new Desk. The
 python3 render-checkin-desk.py desk.json --check              # validate; exit code 1 lists every violation
 python3 render-checkin-desk.py desk.json --out desk.html      # standalone page for any static host
 python3 render-checkin-desk.py desk.json --fragment           # title, style, and main only, for artifact hosting
+python3 render-checkin-desk.py desk.json --check --require-decision-levels  # management profile
 ```
 
 What the renderer prints, so every desk reads the same:
@@ -127,6 +143,7 @@ What the renderer prints, so every desk reads the same:
 | Do entry | `What it is` · `Needed by` |
 | Team entry | `(date, owner)` · `Why:` · `Status:` |
 | Answered entry | `(date)` · `Ruling:` (withdrawn entries read `Ruling: withdrawn — reason`) |
+| Any entry with `decision_level` | `Decision level` · `Work`, `Initiative`, or `Portfolio`; retained with the ruling |
 | How to reply | examples computed from the open asks, e.g. `CK-2 fine`, `CK-2 no, use <alternative>`, `CK-4 done`, `CK-3 revisit` |
 
 Only these vary per project: `project`, `operator`, `tz_label`, `maintainer`, and the color

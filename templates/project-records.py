@@ -160,7 +160,8 @@ def tool_revision():
 
 def validate(name, data):
     try:
-        errors = renderer(name).validate(data)
+        options = {"require_decision_levels": True} if name == "desk" else {}
+        errors = renderer(name).validate(data, **options)
     except (TypeError, ValueError, KeyError, AttributeError) as exc:
         raise RecordError(f"{name}: invalid record shape: {exc}")
     if errors:
@@ -308,6 +309,14 @@ def apply(root, config, request):
         new_ids = {entry["id"] for entry in value[field]}
         if not old_ids <= new_ids:
             raise RecordError(f"{name}: existing IDs cannot disappear; close or withdraw records")
+    old_asks = {entry["id"]: entry for entry in before["desk"]["entries"]}
+    for entry in after["desk"]["entries"]:
+        previous = old_asks.get(entry["id"], {})
+        if "decision_level" in previous:
+            if "decision_level" not in entry:
+                raise RecordError(f"CK-{entry['id']}: retain decision_level in the record and its ruling")
+            if entry.get("state") in ("answered", "withdrawn") and entry["decision_level"] != previous["decision_level"]:
+                raise RecordError(f"CK-{entry['id']}: closing or closed asks must retain their decision_level")
     if config["mode"] == "file":
         validate_links(after)
     op = {"operation_id": request["operation_id"], "request_revision": digest(request),

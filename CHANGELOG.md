@@ -9,11 +9,19 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## Unreleased — Decision-Aware Work and Portable Records (development)
+## [2.0.0-experimental.1] — 2026-09-21
+
+**Experimental prerelease**, explicitly available for opt-in project adoption on
+`codex/2.0-experimental`. Stable canon remains v1.7.2. The 2.0 prefix identifies the experimental
+direction; it does not yet declare a final major-version compatibility change. Pin this tag
+or its commit and follow the [adoption guide](docs/EXPERIMENTAL-ADOPTION.md).
 
 - Define the standing reference method and baseline artifacts at work, initiative, and portfolio
-  levels, with a shared review loop and tailored decision surfaces. One Desk may cover all three
-  within aligned ownership/access; management views retain status and outcome evidence.
+  levels, with a shared review loop. One Desk is the default within its ownership/access scope;
+  every request is qualified by decision level, while management views retain status and outcomes.
+- Add `decision_level` to the shared Desk schema and renderer, a strict profile check for open
+  Decide entries, and level retention through the guarded file helper. Legacy standalone desks
+  remain compatible; supplied labels appear with open asks, pointers, and decision history.
 - Extend the scoped trial with `INITIATIVES.md` and explicitly separate AI execution from human
   accountability. Acknowledge PMI's 2026 AI standard and agent-team guidance; full-standard
   comparison and AI-entity capability gaps remain unverified.
@@ -40,8 +48,13 @@ Implementation authorized by Mike as Velocity Maintainer on 2026-09-21: "I like 
 then the explicit request to formalize decision levels and record future strategic goal-setting
 using Velocity's own framework. Requirements apply only on adoption of this development profile;
 prior conformance is unchanged. Related Entity Development Lifecycle work remains separately owned.
-Prepared for review; no acceptance, merge, version assignment, or release is recorded here.
+Mike subsequently accepted the one-Desk/qualified-decision framing and instructed this Codex
+session to publish the work to GitHub, allowing an experimental 2.0 release branch. That is
+the authority for experimental acceptance and release stamping as `v2.0.0-experimental.1`.
+It does not authorize a stable-main merge, unrelated proposal acceptance, or project migrations.
 See the [proposal and implementation record](proposals/2026-09-21-portable-project-records.md).
+
+[2.0.0-experimental.1]: https://github.com/solidcitizen/velocity/releases/tag/v2.0.0-experimental.1
 
 ## [1.7.2] — 2026-09-20
 

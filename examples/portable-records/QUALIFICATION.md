@@ -3,6 +3,37 @@
 This record distinguishes local template-support proof from live integration acceptance.
 It does not qualify every model/provider that can read the files.
 
+## Experimental release qualification
+
+For `v2.0.0-experimental.1` on 2026-09-21, the 25-test suite passes on macOS 26.6.2,
+Python 3.14.6. It includes the original 17 file-support scenarios plus eight decision-level
+checks: one Decide section and total across three levels; strict qualification including
+pointers; invalid values on open/closed/team entries; unclassified legacy history; pointers
+excluded from totals; CLI/example reproduction; closure/export retention; and a recorded
+correction followed by pointer withdrawal. Failed qualification/retention leaves sources intact.
+
+The synthetic fresh-process workflow and normalized destination comparison pass. Python 3.9
+syntax and JSON syntax pass; no Python 3.9 runtime run is claimed. Legacy Desk and Work example
+output matches the pre-follow-up renderer byte for byte except for the experimental version
+in the footer. The qualified Desk example and shared Work example reproduce from their sources.
+
+The [three-level Desk](../decision-scopes/desk.html), rendered unmodified from its JSON source,
+was inspected in Codex's in-app browser at its desktop viewport: the shared Decide section
+contains Work, Initiative, and Portfolio labels, with a total of three pending decisions.
+This is local synthetic UI proof, not a migration of an operational board. No mobile or other
+browser qualification is claimed. Static link/anchor and whitespace checks accompany the release.
+
+Architect review: one ruling retains one owner and record; a level label grants no authority.
+The opt-in strict check leaves older standalone adopters valid, and closed historical levels
+are not fabricated. The helper guards cooperating writers, not hostile edits or real approvals.
+Tester review: the named scenarios above address the board, closure, rejection, and history
+claims. These are explicit review passes in the same session, not independent review or live
+integration acceptance. Remote publication proof is recorded separately under `VEL-WI-8`.
+
+The following foundation results remain as dated evidence, not the final prerelease test count.
+
+## Foundation qualification
+
 Local verification on 2026-09-21: macOS 26.6.2, Python 3.14.6. The shared support declares
 Python 3.9+ compatibility; this run did not exercise every supported interpreter version.
 

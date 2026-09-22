@@ -27,7 +27,8 @@
 - [Handoff Packet](../templates/handoff-packet.md)
 - [Review Pack Template](../templates/review-pack-template.md)
 - [Executive Check-in Desk](../templates/executive-checkin-desk.md) — with its data-file schema, example, and renderer
-- [Work Board](../templates/work-board.md) — lightweight tracker pilot, with data schema and renderer
+- [Work Board](../templates/work-board.md) — experimental tracker pilot, with data schema and renderer
+- [Experimental Adoption](EXPERIMENTAL-ADOPTION.md) — fixed 2.0 prerelease pin, record setup, and qualification
 - [Artifact Index](../templates/artifact-index.md) — shared discovery and ownership
 - [Markdown Work Tracker](../templates/work-tracker.md) — lightweight TODO semantics and manual update discipline
 - [Decision and Management Records](../templates/decision-records.md) — inherited context, portfolio opportunities, initiatives, and gates

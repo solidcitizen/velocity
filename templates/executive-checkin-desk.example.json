@@ -7,7 +7,7 @@
   "theme": {},
   "entries": [
     {
-      "id": 1, "kind": "decide", "state": "open",
+      "id": 1, "kind": "decide", "state": "open", "decision_level": "work",
       "title": "<short title>",
       "what": "<one or two sentences; assume no prior context>",
       "options": ["A. <option>", "B. <option>", "C. <option>"],
@@ -16,33 +16,33 @@
       "waits": "<what waits until then>"
     },
     {
-      "id": 2, "kind": "do", "state": "open",
+      "id": 2, "kind": "do", "state": "open", "decision_level": "work",
       "title": "<short title>",
       "what": "<what the operator specifically must do, and why it cannot be done for them>",
       "needed_by": null,
       "waits": "<what stays blocked until it is done>"
     },
     {
-      "id": 3, "kind": "team",
+      "id": 3, "kind": "team", "decision_level": "work",
       "title": "<what was decided>",
       "date": "2026-01-01", "owner": "<role>",
       "why": "<one-line reason>",
       "status": "done", "status_text": "<optional detail>"
     },
     {
-      "id": 4, "kind": "decide", "state": "answered",
+      "id": 4, "kind": "decide", "state": "answered", "decision_level": "initiative",
       "title": "<one-line summary of the ask>",
       "answered_on": "2025-12-31",
       "ruling": "<what was decided>"
     },
     {
-      "id": 5, "kind": "do", "state": "withdrawn",
+      "id": 5, "kind": "do", "state": "withdrawn", "decision_level": "initiative",
       "title": "<one-line summary of the ask>",
       "answered_on": "2025-12-30",
       "ruling": "<why it no longer needs an answer>"
     },
     {
-      "id": 6, "kind": "decide", "state": "open",
+      "id": 6, "kind": "decide", "state": "open", "decision_level": "portfolio",
       "title": "<an ask another desk owns>",
       "owned_by": { "project": "<other project>", "id": 9 }
     }

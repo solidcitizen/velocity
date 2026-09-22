@@ -1,6 +1,6 @@
 # Lightweight Work Management
 
-Development contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
+Experimental contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
 profile. The contract defines work meaning; a binding defines how it is stored and updated.
 `TODO.md` can carry the complete lightweight work-management responsibility indefinitely.
 It is not merely an inbox to be emptied into another system.

@@ -14,6 +14,34 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 
 ## Current tranche
 
+### VEL-WI-8 — Publish the experimental 2.0 release
+
+- State: `doing`
+- Owner: Coordinator; Mike as Maintainer accepted experimental publication.
+- Scope / done when: publish a fixed `v2.0.0-experimental.1` tag and GitHub prerelease on
+  `codex/2.0-experimental`, provide project adoption instructions, and verify remote source,
+  tag/branch identity, prerelease status, and stable-release disposition.
+- Source: Maintainer's 2026-09-21 instruction to release this for consuming projects and
+  permission to use an experimental 2.0 release branch; recorded in the proposal.
+- Context: `VEL-PF-1`, `VEL-INI-1`; current session capacity. No project migration or stable
+  main merge is required by this work item.
+- History: 2026-09-21, Coordinator began release preparation after the explicit ruling.
+
+### VEL-WI-7 — Qualify decisions on the shared Check-in Desk
+
+- State: `done`
+- Owner: Coordinator, with named Architect and Tester review passes.
+- Scope / done when: one Desk retains its five sections; Work, Initiative, or Portfolio
+  identifies the ruling requested and survives closure without creating another queue.
+- Source: Maintainer's 2026-09-21 agreement to one board with qualified decision requests.
+- Context: `VEL-PF-1`, `VEL-INI-1`; implementation and local proof within existing capacity.
+- Completion: 2026-09-21; shared contract/schema/renderer, strict open-decision profile check,
+  helper retention guard, and [three-level example](examples/decision-scopes/desk.json).
+  25 local tests passed, including classification, pointers, closure/history/export, and
+  prior file-workflow scenarios. This does not qualify a live project migration or AI vendor.
+- History: 2026-09-21, Coordinator implemented the agreed semantics; Architect review kept
+  authority and management level separate; Tester checked the shared board and retained rulings.
+
 ### VEL-WI-6 — Define the standing reference method and decision surfaces
 
 - State: `done`

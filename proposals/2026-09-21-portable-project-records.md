@@ -1,13 +1,15 @@
 # Decision-Aware Work and Portable Project Records
 
-- Status: Implementation authorized; proposed contracts and support prepared for review
+- Status: Accepted for experimental publication; stable integration pending
 - Date: 2026-09-21
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
 - Affected control planes: Shared authority/proof rules and reusable automation support;
   project decision ownership remains with the declared project/upstream authorities.
-- Accepted version: None; current released canon remains v1.7.2
+- Accepted version: v2.0.0-experimental.1 (opt-in prerelease); stable canon remains v1.7.2
 - Branch: `codex/portable-project-records`, [draft PR #14](https://github.com/solidcitizen/velocity/pull/14)
+- Release channel: `codex/2.0-experimental`; fixed tag `v2.0.0-experimental.1`
+- Disposition: experimental publication authorized; publication receipt tracked as VEL-WI-8.
 
 ## Problem and resulting behavior
 
@@ -45,6 +47,18 @@ The follow-up request defines the standing reference method and baseline artifac
 initiative and portfolio levels, asks whether each needs a decision board, and asks about PMI's
 adaptation for AI entities. It authorizes the reference definition and scoped example update;
 new governance services, rendered dashboards, or strategic-goal execution are not implied.
+
+The Maintainer then agreed: “one check-in board, each decision request is qualified by the
+lane that it is handling.” This selects the single-Desk default and explicit Work, Initiative,
+or Portfolio decision-level metadata, distinct from execution lanes.
+
+The subsequent instruction was to have this “actually released to the repo” for consuming
+projects, with permission to “put it on github as an experimental release branch of 2.0 or
+something.” This accepts the profile for experimental adoption and delegates branch/tag/release
+publication to this Codex session. The chosen pin is `v2.0.0-experimental.1` on
+`codex/2.0-experimental`. This supersedes the earlier release exclusion for this bounded
+prerelease; it does not accept the separate Entity Development Lifecycle proposal or authorize
+a stable-main merge, project migration, new spend, or execution of strategic goal-setting.
 
 Read-only inspection of private consuming projects informed the separation of work, operating
 controls, initiative planning, and investment authority. That is maintainer-context evidence,
@@ -114,10 +128,12 @@ comparison is a future research need before claiming a distinctive coverage gap.
   identity, meaning, context, history, evidence access, and recovery before retiring a source.
   A JSON export or matching fixture is not a live destination qualification.
 
-The structured templates retain their shared renderer/content rules. Context can be inherited
-through the index or existing references; this tranche does not add unrecognized JSON fields
-or claim that the JSON schema enforces the full management contract. Unsupported operations
-or investment semantics remain in linked authoritative records.
+The structured templates retain their shared renderer/content rules. The Desk now declares
+`decision_level` in its schema and displays Work, Initiative, or Portfolio. The profile check
+requires it on every open Decide, including pointers; the helper guards retention through
+closure. Legacy standalone desks may omit it, and unclassified historical rulings are not
+guessed. Authority, semantic classification, and agreement with an upstream owning ask remain
+review duties. No filter or new board section is added.
 
 ## Velocity's own trial
 
@@ -151,7 +167,7 @@ There is no consuming-project data migration or replacement of an existing live 
 | Cross-vendor continuation | Backlog qualification: select two actual integrations and a bounded project. Fresh CLI processes are supporting proof only. |
 | External tracker | Backlog qualification: owner chooses destination, access, scope, and migration owner; prove real read/write, cutover, and recovery. |
 | Strategic goal-setting | Future portfolio candidate `VEL-PF-2`; selection and charter precede any execution tranche. |
-| Release/adoption | Maintainer acceptance and version disposition first. Release only supported claims; separately scope live project adoption. |
+| Release/adoption | Maintainer authorized experimental publication as v2.0.0-experimental.1. Stable integration and live project migrations remain separate. |
 
 ## Proof and review
 
@@ -172,6 +188,11 @@ records, with local link/anchor, whitespace and public-source checks. It changes
 or schema; the prior runtime tests were not rerun and do not qualify new management behavior.
 Its source review includes PMI's 2026 AI standard overview and agent-team guidance, with
 full-standard comparison explicitly outstanding.
+
+The single-Desk follow-up adds runtime decision-level qualification, history retention,
+legacy handling, and a three-level example. The 25-test suite passes, including the existing
+file workflow and eight additional scenario checks. Updated proof and release checks are
+recorded in the [qualification record](../examples/portable-records/QUALIFICATION.md).
 
 Architect and Tester are named review responsibilities within this implementation session,
 as allowed by Role Authority; this is not independent Maintainer acceptance. Required live
@@ -194,11 +215,14 @@ documentation or local test success closes those claims.
   above. Separate private project migrations are excluded.
 - Compatibility: optional development profile, mandatory semantics only for its adopters.
   Earlier conformance is unchanged. Making new context/records mandatory for all prior
-  adopters requires a separate compatibility and version decision. No release number assigned.
-- Decision: implementation authorized; policy acceptance, merge, and release pending.
-- Branch disposition: foundation commit `edbeb54` pushed to draft PR #14 on
-  `codex/portable-project-records`; PR title/body read back with the final scope. Closeout records
-  are committed with operation `VEL-PF-1-20260921-closeout`; branch is pushed and parked for
-  Maintainer review. Shared main and other owners' worktrees are unchanged by this work. No merge/release.
-  The standing-method follow-up is recorded under operation `VEL-PF-1-20260921-method` on the
-  same review branch; no new release or separate acceptance is implied.
+  adopters requires a separate compatibility and version decision. The experimental 2.0 label
+  identifies the channel, not a finalized breaking-change contract.
+- Decision: accepted for opt-in experimental publication by the Maintainer's explicit request
+  above. Stable acceptance/merge and live adoption remain separate.
+- Branch disposition: retain `codex/portable-project-records` and draft PR #14 for stable
+  integration review; publish its prepared snapshot to `codex/2.0-experimental` and the fixed
+  `v2.0.0-experimental.1` tag/GitHub prerelease. Shared main and other owners' worktrees retain
+  their ownership. Publication read-back is the completion condition for `VEL-WI-8` in TODO.
+- Prior operations: `VEL-PF-1-20260921-foundation`, `-closeout`, and `-method` record the
+  preparation history. This follow-up uses `VEL-PF-1-20260921-decision-levels` and
+  `VEL-PF-1-20260921-experimental-release`.

@@ -1,7 +1,7 @@
 # Decision Scopes
 
-Development contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
-profile. Acceptance and release are pending. Earlier adopters are not re-judged.
+Experimental contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
+profile, accepted for `v2.0.0-experimental.1`. Earlier adopters are not re-judged.
 
 Velocity's direction is to accelerate evidence-backed decision-making throughout an entity's
 work: establishing direction, choosing investments, developing outcomes, and executing work.
@@ -34,7 +34,7 @@ improvement initiatives, and recurring obligations alongside discrete projects.
 
 The [standing reference method](MANAGEMENT-REFERENCE.md) defines baseline artifacts and the
 review loop for work, initiatives, and portfolios. It requires decision coverage at each
-level while allowing one shared Desk where owners, responsibility, and access align.
+level, with one shared Desk whose requests name their decision level within its ownership/access scope.
 
 ## Awareness is universal within the adopted profile; machinery is conditional
 

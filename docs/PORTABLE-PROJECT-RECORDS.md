@@ -2,7 +2,8 @@
 
 An opt-in profile for decision context, lightweight work management, the Check-in Desk, and
 bindings to a project's chosen tracker. This profile and its file support are development
-additions pending release; the Work Board remains a pilot. Qualification is specific to the
+additions accepted for `v2.0.0-experimental.1`; the Work Board remains a pilot. See
+[experimental adoption](EXPERIMENTAL-ADOPTION.md). Qualification is specific to the
 tested tools and scope.
 
 ## Purpose and authority

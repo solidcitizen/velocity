@@ -1,6 +1,6 @@
 # ADR-0002: Decision Context and Work Bindings
 
-- Status: Proposed; implementation authorized, policy acceptance pending
+- Status: Accepted for experimental adoption in v2.0.0-experimental.1; stable integration pending
 - Date: 2026-09-21
 - Authority owner: Velocity Maintainer
 - Proposal: [Decision-aware work and portable records](../proposals/2026-09-21-portable-project-records.md)
@@ -32,6 +32,14 @@ Make Markdown a first-class authoritative binding. Keep the JSON pilot's rendere
 writer as one implementation, not a required migration path. A future rendered TODO adapter
 is a separately qualified capability. Preserve one authority for work and for each ruling.
 
+Use one Check-in Desk within its declared ownership/access scope. Qualify each decision
+request as Work, Initiative, or Portfolio according to the ruling needed, retaining that level
+with its history. These levels do not create separate boards or grant decision rights. Separate
+desks reflect incompatible ownership/access, not management level or review cadence.
+The Maintainer agreed to this reference default on 2026-09-21, then explicitly authorized
+publication as an experimental 2.0 release branch for consuming projects. This accepts the
+bounded experimental profile; stable integration and live project migration remain separate.
+
 Record strategic goal-setting as a future portfolio opportunity. Define the interface to
 accepted goals now; defer methods for creating, selecting, and revising goals. This does not
 delegate goal adoption or expand agent authority.
@@ -62,5 +70,6 @@ and executive views before accepting overlapping contracts.
 
 Architect review is a named responsibility in this implementation session, separate from the
 drafting pass; it is not independent acceptance. The final review and scenario evidence are in
-the [decision-scope walkthrough](../examples/decision-scopes/README.md). Maintainer acceptance,
-version assignment, merge, and release are not recorded by this ADR.
+the [decision-scope walkthrough](../examples/decision-scopes/README.md). Experimental acceptance
+and publication authority are recorded in the proposal; stable-main merge is not authorized
+by that experimental-release ruling.

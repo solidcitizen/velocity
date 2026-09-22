@@ -29,26 +29,29 @@ development stage, and permission to spend or release.
 - Outcome: every adopting effort can relate its work to purpose, selection authority, capacity,
   and escalation, while continuing across AI tools and retaining a lightweight or chosen tracker.
 - Strategic relationship: groundwork for faster, evidence-backed decisions across the entity.
-- Posture: **invest**, limited to the currently requested framework design and review preparation.
+- Posture: **invest**, limited to the requested framework design, proof, and experimental publication.
 - Decision status/authority: implementation authorized by the Maintainer's 2026-09-21 request
-  in the [proposal](proposals/2026-09-21-portable-project-records.md). Reusable policy acceptance
-  remains **proposed**; there is no release ruling.
+  in the [proposal](proposals/2026-09-21-portable-project-records.md). The subsequent Maintainer
+  ruling accepts opt-in experimental publication as `v2.0.0-experimental.1`; stable acceptance
+  and consuming-project migration remain separate.
 - Stage/evidence: development and local qualification. The standing-method follow-up is part
   of [VEL-INI-1](INITIATIVES.md#vel-ini-1--decision-aware-work-and-portable-continuity), which owns
   the current plan and assessment; source work/proof lives in its linked records. Policy
-  acceptance and release remain pending.
+  stable acceptance remains pending; experimental publication is tracked by `VEL-WI-8`.
 - Authorized scope/capacity: current session/repository work under the artifact index. No new
   spend, staffing allocation, consuming-project migration, or production rollout is approved.
 - Options/tradeoffs: support inherited context and alternative bindings now; defer automatic
   Markdown rendering, live cross-vendor qualification, and a selected tracker integration until
   separately scoped. This keeps the contract useful before every adapter exists.
-- Next decision/owner/trigger: Maintainer review when the proposal and proof are ready; select
-  acceptance/revision and any bounded pilot. No automatic release or date commitment.
+- Next decision/owner/trigger: Maintainer selects a bounded pilot or stable integration after
+  experimental publication and evidence review. Neither follows automatically from this release.
 - Work/proof: [execution queue](TODO.md), [proposed ADR](adrs/0002-decision-context-and-work-bindings.md),
   [decision walkthrough](examples/decision-scopes/README.md),
   [JSON qualification](examples/portable-records/QUALIFICATION.md).
 - History: 2026-09-21, Coordinator recorded the Maintainer-authorized foundation and its limits.
   The follow-up request makes the standing reference method and initiative record explicit.
+  The Maintainer then selected one Desk with qualified requests and authorized experimental
+  GitHub publication; no capacity was allocated to goal-setting or live migration.
 
 ## VEL-PF-2 — Strategic goal-setting
 

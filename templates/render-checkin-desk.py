@@ -7,6 +7,7 @@ Velocity template support. Dependency-free: Python 3.9+ standard library only.
     python3 render-checkin-desk.py desk.json --out desk.html
     python3 render-checkin-desk.py desk.json --fragment      # title+style+main only (artifact hosting)
     python3 render-checkin-desk.py desk.json --check         # validate only, no output
+    python3 render-checkin-desk.py desk.json --check --require-decision-levels  # management profile
 
 The data file is the single source of truth; the page is derived from it. Totals, ordering,
 reply examples, and the header stamp are computed here, never typed by hand. Validation
@@ -21,10 +22,11 @@ import re
 import sys
 from datetime import datetime, timedelta
 
-CANON = "v1.7.1"
+CANON = "v2.0.0-experimental.1"
 KINDS = ("decide", "do", "team")
 STATES = ("open", "answered", "withdrawn")
 TEAM_STATUS = ("done", "in motion", "blocked", "reversed")
+DECISION_LEVELS = ("work", "initiative", "portfolio")
 TOKENS = {
     "bg": "#f7f7f8", "surface": "#ffffff", "border": "#e2e2e6", "text": "#1b1c1f",
     "text-muted": "#5b5d66", "accent": "#2f5fd6",
@@ -108,7 +110,7 @@ def parse_dt(value):
         return None
 
 
-def validate(d):
+def validate(d, require_decision_levels=False):
     if not isinstance(d, dict):
         return ["top level: expected an object"]
     errs = []
@@ -136,6 +138,10 @@ def validate(d):
             continue
         if not isinstance(e.get("title"), str) or not e["title"].strip():
             errs.append(f"{tag}: 'title' is required")
+        if "decision_level" in e and e["decision_level"] not in DECISION_LEVELS:
+            errs.append(f"{tag}: 'decision_level' must be one of {DECISION_LEVELS}")
+        if require_decision_levels and kind == "decide" and e.get("state") == "open" and "decision_level" not in e:
+            errs.append(f"{tag}: open Decide needs 'decision_level' in the management profile")
         if kind == "team":
             for key in ("date", "owner", "why"):
                 if not isinstance(e.get(key), str) or not e[key].strip():
@@ -218,15 +224,26 @@ def ck(n):
     return f"CK-{n}"
 
 
+def level_label(e):
+    return e["decision_level"].capitalize() if "decision_level" in e else ""
+
+
+def ledger_level(e):
+    return f' <span class="date">· Decision level: {level_label(e)}</span>' if level_label(e) else ""
+
+
 def render_open(e, tz):
     kind = e["kind"]
     badge = "Decide" if kind == "decide" else "Do"
     head = f'<h3><span class="id">{ck(e["id"])}</span> {inline(e["title"])} <span class="badge">{badge}</span></h3>'
     if e.get("owned_by"):
         ob = e["owned_by"]
+        level = f'<p class="owned">Decision level: {level_label(e)}</p>' if level_label(e) else ""
         return (f'<article class="ask {kind}">{head}'
+                f'{level}'
                 f'<p class="owned">Owned by {inline(ob["project"])} {ck(ob["id"])}. Answer it there; this entry closes with it.</p></article>')
-    rows = [("What it is", inline(e["what"]))]
+    rows = [("Decision level", level_label(e))] if level_label(e) else []
+    rows.append(("What it is", inline(e["what"])))
     if kind == "decide":
         rows.append(("Options", "<ul>" + "".join(f"<li>{inline(o)}</li>" for o in e["options"]) + "</ul>"))
         rows.append(("Lean", f'<span class="lean">{inline(e["lean"])}</span> — {inline(e["lean_why"])}'))
@@ -239,7 +256,7 @@ def render_open(e, tz):
 
 def render_team(e):
     status = inline(e["status"]) + (f": {inline(e['status_text'])}" if e.get("status_text") else "")
-    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["date"])}, {inline(e["owner"])})</span> '
+    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["date"])}, {inline(e["owner"])})</span>{ledger_level(e)} '
             f'— {inline(e["title"])} — <strong>Why:</strong> {inline(e["why"])} — <strong>Status:</strong> {status}</li>')
 
 
@@ -253,7 +270,7 @@ def render_answered(e):
     if e.get("owned_by"):
         ob = e["owned_by"]
         owner = f' <span class="date">(owned by {inline(ob["project"])} {ck(ob["id"])})</span>'
-    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["answered_on"])})</span> '
+    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["answered_on"])})</span>{ledger_level(e)} '
             f'— {inline(e["title"])} — <strong>Ruling:</strong> {ruling}{owner}</li>')
 
 
@@ -340,10 +357,12 @@ def main(argv=None):
     ap.add_argument("--out", help="write HTML here instead of stdout")
     ap.add_argument("--fragment", action="store_true", help="emit title+style+main only (for artifact hosting)")
     ap.add_argument("--check", action="store_true", help="validate only")
+    ap.add_argument("--require-decision-levels", action="store_true",
+                    help="require work/initiative/portfolio qualification on every open Decide, including pointers")
     args = ap.parse_args(argv)
     with open(args.data, encoding="utf-8") as f:
         d = json.load(f)
-    errs = validate(d)
+    errs = validate(d, require_decision_levels=args.require_decision_levels)
     if errs:
         print("Desk data does not satisfy the contract:", file=sys.stderr)
         for e in errs:

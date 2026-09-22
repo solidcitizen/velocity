@@ -72,6 +72,14 @@ saves Desk before Work, rereads the sources, then renders and verifies the local
 hash receipts. It does not infer whether a human approved a decision, whether proof is adequate,
 or whether an existing ID has been semantically reassigned. Those remain role/review duties.
 
+The management profile's single Desk qualifies every open Decide with `decision_level`:
+`work`, `initiative`, or `portfolio`, including pointers. The helper requires this field and
+retains it in history and the ruling; dropping a supplied level or changing it while
+closing/closed is refused. An open classification can be corrected with a recorded reason
+before closure. Previously unclassified closed history may remain unclassified. This guard
+does not decide whether a classification is semantically correct or confirm a remote pointer's
+level. Review those against the actual authority and owning ask.
+
 Reuse the same operation ID **and unchanged request** for a retry. A completed retry returns
 the prior completion and current status without writing its old snapshot over newer work.
 Reusing an ID for a different request fails. A stale base revision fails before any source

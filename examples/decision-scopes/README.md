@@ -87,7 +87,7 @@ executed committee, operational Desk migration, or independent acceptance. It us
 
 | Case | Reviewed disposition |
 | --- | --- |
-| One owner and lead across all three levels | One shared decision surface can route work, initiative and portfolio asks. Three readable management views may be sections of existing files; no three-Desk requirement. |
+| One owner and lead across all three levels | One shared decision surface is the default; each request names Work, Initiative, or Portfolio. Three readable management views may be sections of existing files; no three-Desk requirement. |
 | Same operator, distinct project leads | Existing desks keep their own writers and identities. Cross-desk references follow ownership/pointer rules; shared readership does not grant shared write authority. |
 | Initiative sponsor and portfolio authority differ | Local scope/stage choices remain within delegation; resource/priority exceptions reach the portfolio authority. Store one owning ruling per question. |
 | One action requires scope and funding approval | Preserve two linked decisions for the genuinely separate authorizations. Answering one does not release the action while the other remains unmet. |

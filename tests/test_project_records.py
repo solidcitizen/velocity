@@ -111,16 +111,58 @@ class ProjectRecordsTests(unittest.TestCase):
         self.assertEqual(records.operations(self.root), [])
 
     def test_coupled_desk_decision_and_work_release(self):
-        ask = {"id": 1, "kind": "decide", "state": "open", "title": "Choose approach",
+        ask = {"id": 1, "kind": "decide", "state": "open", "decision_level": "work", "title": "Choose approach",
                "what": "Choose the documented approach", "waits": "Task 1 waits",
                "options": ["A", "B"], "lean": "A", "lean_why": "Meets scope"}
         blocked = dict(self.item(), state="blocked", waits_on={"ask": {"project": "Example App", "id": 1}})
         self.apply(self.request(items=[blocked], desk=[ask]))
-        closed = {"id": 1, "kind": "decide", "state": "answered", "title": ask["title"],
+        closed = {"id": 1, "kind": "decide", "state": "answered", "decision_level": "work", "title": ask["title"],
                   "answered_on": "2026-09-21", "ruling": "Synthetic owner chose A; scoped to Task 1"}
         self.apply(self.request("answer", items=[self.item()], desk=[closed]))
         self.assertEqual(self.data()["desk"]["entries"][0]["ruling"], closed["ruling"])
         self.assertEqual(self.data()["work"]["items"][0]["state"], "backlog")
+        self.assertIn("Decision level: Work", (self.root / "views/desk.html").read_text())
+
+    def test_decision_qualification_and_closure_cannot_lose_its_level(self):
+        ask = {"id": 1, "kind": "decide", "state": "open", "title": "Investment choice",
+               "what": "Owner must decide the capacity envelope", "waits": "Discovery waits",
+               "options": ["Invest", "Defer"], "lean": "Defer", "lean_why": "Missing evidence"}
+        before = self.data()
+        self.assertIn("decision_level", self.apply(self.request(desk=[ask]), ok=False)["error"])
+        self.assertEqual(self.data(), before)
+        self.assertEqual(records.operations(self.root), [])
+        ask["decision_level"] = "portfolio"
+        self.apply(self.request(desk=[ask]))
+        closed = {"id": 1, "kind": "decide", "state": "answered", "title": ask["title"],
+                  "answered_on": "2026-09-21", "ruling": "Synthetic owner deferred discovery"}
+        for candidate in (closed, dict(closed, decision_level="work")):
+            self.assertIn("retain", self.apply(self.request("bad-close", desk=[candidate]), ok=False)["error"])
+            self.assertEqual(self.data()["desk"]["entries"], [ask])
+        closed["decision_level"] = "portfolio"
+        self.apply(self.request("close", desk=[closed]))
+        self.assertIn("Decision level: Portfolio", (self.root / "views/desk.html").read_text())
+        bundle_path = self.base / "level-export.json"
+        self.cli("export", self.root, bundle_path)
+        bundle = records.read(bundle_path)
+        self.assertEqual(bundle["records"]["desk"]["entries"][0]["decision_level"], "portfolio")
+        self.assertTrue(all(op["after"]["desk"]["entries"][0]["decision_level"] == "portfolio"
+                            for op in bundle["history"]))
+
+    def test_open_level_correction_keeps_history_and_pointer_closure_keeps_owner(self):
+        pointer = {"id": 1, "kind": "decide", "state": "open", "title": "Owner's question",
+                   "decision_level": "work", "owned_by": {"project": "Example upstream", "id": 9}}
+        self.apply(self.request(desk=[pointer]))
+        corrected = dict(pointer, decision_level="portfolio")
+        request = self.request("correct", desk=[corrected])
+        request["reason"] = "Synthetic owning desk classified its investment question as Portfolio"
+        self.apply(request)
+        op = records.read(records.op_path(self.root, "correct"))
+        self.assertEqual(op["before"]["desk"]["entries"][0]["decision_level"], "work")
+        closed = dict(corrected, state="withdrawn", answered_on="2026-09-21",
+                      ruling="Example upstream CK-9 withdrew the investment question")
+        self.apply(self.request("withdraw", desk=[closed]))
+        self.assertEqual(self.data()["desk"]["entries"][0]["owned_by"], pointer["owned_by"])
+        self.assertIn("Decision level: Portfolio", (self.root / "views/desk.html").read_text())
 
     def test_missing_desk_reference_refused(self):
         item = dict(self.item(), state="blocked", waits_on={"ask": {"project": "Example App", "id": 1}})
