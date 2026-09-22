@@ -23,6 +23,7 @@ if it loses the distinction among backlog, committed, doing, blocked, and held.
 | --- | --- | --- |
 | Project identity and stable WI ID | `<native key + permanent legacy reference>` | `<crosswalk>` |
 | Title, owner, bounded scope and provenance | | |
+| Inherited decision context, parent initiative/investment references and revisions | `<linked authoritative records; no duplicate approvals>` | |
 | Backlog / committed / doing | | |
 | Blocked / held, blocker and review/date information | | |
 | Done / dropped, completion proof / reason, closed date | | |
@@ -36,6 +37,12 @@ Every source item gets a destination identity or immutable archive reference. Ac
 controls are imported. Done/dropped history can be retained in an accessible archive with a
 crosswalk. Stable references survive renumbering in the destination. Explicitly list any
 unmapped semantics; owner acceptance cannot remove Velocity authority or proof requirements.
+
+A Markdown TODO is a valid source and can remain the tracker until the owner chooses cutover.
+Record its actual state/field mapping; the supplied JSON helper is not a Markdown importer.
+Preserve the distinction among work state, development stage, investment posture, and decision
+status even if the destination offers only one status field. Linked records may supply the
+missing context. A tracker migration does not delegate portfolio or stage-gate authority.
 
 ## Rehearsal and reconciliation
 

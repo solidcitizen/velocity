@@ -4,6 +4,11 @@ Development support for the opt-in [Portable Project Records profile](../docs/PO
 The Work Board remains a pilot. A tool installation does not adopt the profile or migrate a
 live project. Pin the whole template directory at a reviewed revision.
 
+This helper implements the structured JSON binding only. A project may instead retain its
+authoritative `TODO.md` under the [Markdown work contract](work-tracker.md). These commands
+do not parse, synchronize, or render Markdown, manage investment gates, or enforce the
+adequacy of a decision context.
+
 ## Runtime and trust boundary
 
 `project-records.py` uses Python 3.9+ and the standard library, including POSIX `flock`.
@@ -31,8 +36,10 @@ python3 templates/project-records.py status /path/to/project-records
 `init` creates an empty Desk and Work Board, standalone HTML views, `records.json`, a view
 receipt, and [ARTIFACTS.md](artifact-index.md). Complete the ownership/access/backup/tool-pin
 fields in that index and link it from the overlay and all agent entry files. It does not copy
-or infer operational data. `records.json` binds the two sources and views to safe relative
-paths within the workspace; keep source, view, and history paths distinct.
+or infer operational data. Select the structured JSON Work row and remove the alternative
+binding rows; declare the inherited decision context before operational use. `records.json`
+binds the two sources and views to safe relative paths within the workspace; keep source, view,
+and history paths distinct.
 
 ## Prepare and apply a change
 

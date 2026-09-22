@@ -9,8 +9,16 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## Unreleased — Portable Project Records (development)
+## Unreleased — Decision-Aware Work and Portable Records (development)
 
+- Add decision scopes connecting strategy, portfolio investment, initiative development, and
+  execution. Adopters inherit a small authority/capacity context; business cases and stage gates
+  are conditional. Distinguish work state, development stage, investment posture, and rulings.
+- Define common work semantics with Markdown TODO as a first-class authoritative tracker,
+  alongside structured JSON and external bindings. No automatic Markdown parser/renderer is supplied.
+- Add management-record templates, a proposed ADR, synthetic decision walkthroughs, and
+  Velocity's scoped artifact index, TODO, and portfolio. Strategic goal-setting is future
+  portfolio candidate VEL-PF-2, with no execution commitment.
 - Add an opt-in profile and shared artifact index for project-owned records, independent of
   an AI vendor's memory or artifact panel. Public code and private operational records may
   have separate homes; Git and GitHub remain optional.
@@ -22,7 +30,10 @@ rather than a moving branch. Versions are canon releases, not software:
 - Add a runnable synthetic TODO/Desk/Work example and qualification record. Local checks do
   not establish cross-vendor operation, external-tracker integration, or live migration.
 
-Implementation authorized by Mike as Velocity Maintainer on 2026-09-21: "I like it proceed".
+Implementation authorized by Mike as Velocity Maintainer on 2026-09-21: "I like it proceed",
+then the explicit request to formalize decision levels and record future strategic goal-setting
+using Velocity's own framework. Requirements apply only on adoption of this development profile;
+prior conformance is unchanged. Related Entity Development Lifecycle work remains separately owned.
 Prepared for review; no acceptance, merge, version assignment, or release is recorded here.
 See the [proposal and implementation record](proposals/2026-09-21-portable-project-records.md).
 

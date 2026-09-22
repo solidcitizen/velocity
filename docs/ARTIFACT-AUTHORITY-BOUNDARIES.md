@@ -40,6 +40,14 @@ Protected artifacts make this drift visible.
 
 ## Rules
 
+For adopters of the development [decision-scope profile](DECISION-SCOPES.md), the same rule
+extends to goals, portfolio selections, investment envelopes, and stage-gate rulings. Their
+authority is the owner named in the project charter or upstream governance, not automatically
+the work item's editor or Coordinator. Agents may prepare evidence and recommendations;
+changing an accepted goal, commitment, gate criterion, or envelope requires that owner's
+authority. Link the authoritative ruling rather than copying an editable approval into a
+work queue. This optional extension does not transfer any existing role's authority.
+
 Acceptance criteria and proof mappings are protected artifacts.
 
 Fixer may propose changes to them, but should not unilaterally apply those changes when the change affects:
@@ -71,4 +79,3 @@ For workflow or operator-trust defects, closeout must state:
 - who had authority for the change
 
 If the direct scenario proof is missing, the work is not behavior-proven.
-

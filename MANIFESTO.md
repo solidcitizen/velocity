@@ -22,6 +22,31 @@ and to seek a human decision when they do not. Existing policy already permits e
 delegation; how much time it saves must be measured. The v1/v2 framing here describes a
 direction, not a released semantic version or an authorization to bypass current policy.
 
+## Decision-Making Throughout an Entity
+
+Software delivery is Velocity's established starting point. Its broader purpose is to
+accelerate sound decisions at every scope of an entity's work: strategic goals, portfolio
+investments, initiative and program development, execution, and ongoing operations. All
+efforts have this context, even when a small project combines the decisions in one owner and
+assumes existing capacity instead of running a formal investment process.
+
+The groundwork is a common connection between purpose, authority, evidence, resources, and
+next action. It should support an ordinary TODO file as well as a program governed through
+investment gates. It should connect to the management systems people choose and continue
+across AI vendors. Task throughput alone is not evidence of better decisions.
+
+Self-actualization, as a direction for this framework, means helping a governed entity
+establish goals and find ways to achieve them. It does not give an agent permission to adopt
+its own goals or rewrite the standards used to evaluate its work. Strategic goal-setting is
+the next proposed frontier, recorded as [VEL-PF-2](PORTFOLIO.md#vel-pf-2--strategic-goal-setting)
+in Velocity's portfolio. It remains a future candidate until the Maintainer selects a bounded
+discovery effort with an authority and evidence contract.
+
+The current [development proposal](proposals/2026-09-21-portable-project-records.md) formalizes
+decision scopes and lightweight tracking first. The separately owned Entity Development
+Lifecycle proposal explores related entity-level views; neither proposal becomes accepted
+canon through this statement of direction.
+
 ## Frontier Velocity Is Built To Address
 
 The wider AI-coding conversation is currently most active and least settled around questions Velocity already has substrate for:
@@ -103,7 +128,10 @@ also address this; Velocity should contribute tested authority and proof mapping
 
 The following moves look attractive and should be resisted.
 
-- *More lifecycle docs.* The current doc mass is already at the edge of intelligibility. New mass costs adoption. Future additions belong in templates, examples, overlays, or this manifesto — not in `docs/`.
+- *Unnecessary lifecycle machinery.* New concepts need a clear contract and a small adoption
+  path. Keep reusable rules compact; put optional record shapes in templates and populated
+  records in project overlays. Do not make a small effort imitate a portfolio office merely
+  to express its governing context.
 - *More roles.* Seven is at the limit of useful separation. Sub-roles belong in overlays.
 - *Vocabulary refactors.* The current vocabulary is one of the framework's strengths. Churning it adds friction without unlocking capability.
 - *Specific-framework reference implementations published as Velocity.* Coupling to CrewAI, LangGraph, or any single agent runtime trades the framework's portability for short-term adoption. Substrate-agnostic is the durable position.

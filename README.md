@@ -8,6 +8,11 @@ It is intentionally project-independent. Product repositories consume Velocity t
 
 Velocity exists to make agent-assisted delivery repeatable across projects while preserving human authority over goals, risk, and process evolution.
 
+Its broader direction is to accelerate decisions from strategy and portfolio investment
+through initiative development, execution, and ongoing operations. The
+[manifesto](MANIFESTO.md#decision-making-throughout-an-entity) describes that ambition;
+the development profile below lays the groundwork without claiming those capabilities are released.
+
 Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
 The guide explains the method; it does not create a second source of lifecycle policy.
@@ -58,14 +63,22 @@ Start with the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define 
 overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded change.
 Velocity works with your chosen AI tools and delivery cadence.
 
-## Portable Project Records (development)
+## Decision-Aware Work and Portable Records (development)
 
 An optional [Portable Project Records profile](docs/PORTABLE-PROJECT-RECORDS.md) is under
-development alongside the lightweight Work Board pilot. It connects project-owned records,
-the Check-in Desk, shared update/recovery commands, and a documented handoff to a chosen
-tracker. See the [worked example and qualification limits](examples/portable-records/README.md).
+development alongside the lightweight Work Board pilot. [Decision scopes](docs/DECISION-SCOPES.md)
+connect each effort to its purpose, selection authority, capacity, and escalation path.
+[Lightweight work management](docs/WORK-MANAGEMENT.md) defines the common semantics:
+`TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
+The Check-in Desk routes decisions at any scope. See the
+[decision walkthrough](examples/decision-scopes/README.md) and
+[file-support qualification limits](examples/portable-records/README.md).
 This development support does not change the current canon release or qualify an AI provider
 or external tracker without its scenario evidence.
+
+Velocity is trying this structure in its own scoped [artifact index](ARTIFACTS.md),
+[work queue](TODO.md), and [portfolio](PORTFOLIO.md). Strategic goal-setting is recorded there
+as a future portfolio opportunity, not committed delivery work.
 
 ## Feedback
 

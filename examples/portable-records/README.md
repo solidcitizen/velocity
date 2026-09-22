@@ -15,6 +15,10 @@ records a synthetic Desk ask and three work items, then uses a fresh process to 
 synthetic answer and release only the referenced blocker. It exports the full records/history
 and compares a normalized destination fixture. All outputs stay in the chosen directory.
 
+This example exercises a chosen conversion to the JSON binding. An existing TODO can instead
+remain authoritative under the [Markdown work contract](../../docs/WORK-MANAGEMENT.md); this
+demo is not a required adoption path or a Markdown parser.
+
 Two items come from [the synthetic TODO snapshot](TODO.snapshot.md). The example copies that
 source unchanged into the operational history folder and maps it explicitly. Unstated owners
 and dates stay unconfirmed; the historical checkbox renders as operator-reported completion,

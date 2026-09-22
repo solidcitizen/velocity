@@ -26,6 +26,12 @@ the tested scope. The Desk/Work templates remain usable independently of the gua
 
 ## Architecture review
 
+The 17 local tests were rerun and passed for the decision-context/Markdown-contract additions
+on 2026-09-21. The JSON helper and renderer code are unchanged by that tranche. The separate
+[decision walkthrough](../decision-scopes/README.md) records documentary scenario review and
+Velocity's own scoped Markdown adoption. It does not add a Markdown parser/renderer or extend
+the live integration qualifications above.
+
 Reviewed on 2026-09-21 as a named Architect responsibility within the implementation session,
 as permitted by Role Authority. This records design review, not independent acceptance.
 

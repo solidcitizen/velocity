@@ -37,3 +37,10 @@ memory is not the authority. Do not create a second backlog, bypass a pending op
 report a view current without checking the selected display. External-tracker mode routes work
 to its declared binding; the retained local board is an archive. Changing models/tools does
 not change role authority.
+
+Within that adopted profile, read the declared decision context before committing or starting
+work. Inherit purpose, owner, capacity/authority, and escalation boundaries; link more specific
+initiative or investment decisions when needed. Keep work state, development stage, and
+investment posture distinct. Revalidate affected work when a governing decision changes.
+`TODO.md` may be the authoritative tracker. A rendered board is a view, and a future portfolio
+opportunity is not a task commitment. Routine work within existing authority needs no new gate.

@@ -10,11 +10,14 @@
 - [Branch Hygiene](BRANCH-HYGIENE.md)
 - [Project Adoption Guide](PROJECT-ADOPTION-GUIDE.md)
 - [Portable Project Records](PORTABLE-PROJECT-RECORDS.md) — opt-in development profile; qualification scope stated explicitly
+- [Decision Scopes](DECISION-SCOPES.md) — development contract for strategy, portfolio, initiative, and execution context
+- [Lightweight Work Management](WORK-MANAGEMENT.md) — development contract; Markdown TODO is a first-class tracker binding
 
 ## Governance
 
 - [Governance](../governance/GOVERNANCE.md)
 - [ADR-0001: Independent Lifecycle Repository](../adrs/0001-independent-lifecycle-repo.md)
+- [ADR-0002: Decision Context and Work Bindings](../adrs/0002-decision-context-and-work-bindings.md) — proposed
 
 ## Templates
 
@@ -25,6 +28,8 @@
 - [Executive Check-in Desk](../templates/executive-checkin-desk.md) — with its data-file schema, example, and renderer
 - [Work Board](../templates/work-board.md) — lightweight tracker pilot, with data schema and renderer
 - [Artifact Index](../templates/artifact-index.md) — shared discovery and ownership
+- [Markdown Work Tracker](../templates/work-tracker.md) — lightweight TODO semantics and manual update discipline
+- [Decision and Management Records](../templates/decision-records.md) — inherited context, portfolio opportunities, initiatives, and gates
 - [Project Records File Support](../templates/project-records.md) — guarded updates, recovery, views, and export
 - [Tracker Binding and Handoff](../templates/tracker-binding-and-handoff.md) — preserve meaning and authority when moving trackers
 - [Issue Record Template](../templates/issue-record-template.md)
@@ -43,3 +48,4 @@
 - [Policy and Project Mapping](../examples/project-overlay/policy-mapping.md)
 - [Measured Automation Worked Example](../examples/measured-automation/README.md)
 - [Portable Records Worked Example](../examples/portable-records/README.md) — synthetic command-line continuation and mapping, with explicit proof limits
+- [Decision-Scope Walkthrough](../examples/decision-scopes/README.md) — synthetic cases and explicit review limits

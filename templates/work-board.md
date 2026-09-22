@@ -98,6 +98,16 @@ tokens under `theme` and `theme_dark`.
 
 ## Adoption notes
 
+- **One work binding, not the definition of work management.** The development
+  [work-management contract](../docs/WORK-MANAGEMENT.md) also permits an authoritative Markdown
+  TODO or a mapped external tracker. This JSON renderer does not read Markdown. A richer view
+  alone is not a reason to migrate a queue. Inherit the project's
+  [decision context](../docs/DECISION-SCOPES.md) through its artifact index; use existing
+  `initiative` and `belongs_to` references for more specific scope. Do not add undeclared JSON
+  fields. Benefit/size and initiative totals support attention; they do not constitute a
+  business case, investment authorization, or gate decision. Unsupported management and control
+  lifecycle semantics remain in linked authoritative records, not inferred from board totals.
+
 - **Portable project records.** The optional [shared profile](../docs/PORTABLE-PROJECT-RECORDS.md)
   adds project-owned discovery, guarded file updates, history, and export. Its
   [file helper](project-records.md) invokes this renderer; it does not reimplement content rules.

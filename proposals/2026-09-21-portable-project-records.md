@@ -1,274 +1,172 @@
-# Portable Project Records and Tracker Handoff
+# Decision-Aware Work and Portable Project Records
 
-- Status: Design approved for implementation; common contract and file support prepared for review
+- Status: Implementation authorized; proposed contracts and support prepared for review
 - Date: 2026-09-21
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
-- Source: The maintainer's request to incorporate AI-vendor-independent artifacts, the
-  lightweight work tracker, and a path to the project's chosen tracking system, followed by
-  "I like it proceed" on 2026-09-21.
-- Disposition: Common contract, integrated Work Board pilot/Desk file support, and synthetic
-  qualification prepared. Live cross-vendor and destination pilots remain unqualified.
-  No release, live-record migration, or external integration is enabled by this document.
-- Accepted version: None
+- Affected control planes: Shared authority/proof rules and reusable automation support;
+  project decision ownership remains with the declared project/upstream authorities.
+- Accepted version: None; current released canon remains v1.7.2
+- Branch: `codex/portable-project-records`, [draft PR #14](https://github.com/solidcitizen/velocity/pull/14)
 
-## Outcome and evidence
+## Problem and resulting behavior
 
-A project can begin with a TODO file, adopt Velocity's lightweight tracker, change its AI
-tool, and later move to another tracker without losing work, decisions, evidence, or authority.
-Remaining on the lightweight tracker indefinitely is a valid choice. Projects with an existing
-tracker can map it directly; they do not need to adopt the file implementation first.
+A project can already use `TODO.md` for work management. Requiring conversion to a structured
+board confuses the contract with a storage format. Conversely, a sophisticated task board
+does not establish why an initiative is selected, what resources it may consume, or who
+decides whether it advances to its next stage.
 
-The maintainer's review found a populated desk whose JSON source lived in an AI application's
-project directory, whose rendered HTML lived in session scratch storage, and whose discovery
-instructions lived in that application's memory. The source was readable by another agent,
-but the project entry point did not identify it. This is observed local evidence of a
-discovery and continuity gap, not a cross-vendor acceptance test. No private records are needed
-to understand or reproduce the proposed qualification scenarios below.
+The proposed profile connects strategy, portfolio investment, initiative development, and
+work execution. Every adopter declares its decision context; work inherits it. Small efforts
+can use one owner, an assumed capacity, and a Markdown queue. Larger efforts link their
+existing management records and stage gates. Work state, development stage, investment
+posture, and decision status remain separate.
 
-The current [Desk contract](../templates/executive-checkin-desk.md) already separates data from
-rendering, preserves IDs, and names the writing role. The Work Board pilot on
-`proposal/work-board`, inspected at `e97f0188bf571e5c4000ffabee454c7471e9702f`, already supplies
-a file, schema, validator, renderer, work states, dependencies, and completion references.
-That revision is a development snapshot, not released canon. This proposal supplies a common
-operating contract around those artifacts; it does not create another board implementation.
+The same work semantics can be carried by Markdown, the structured Work Board pilot, or an
+external tracker. Project-owned sources continue across AI sessions; vendor panels are
+replaceable views. The Check-in Desk routes decisions at any scope without creating a
+competing backlog or approval ledger.
 
-## Proposed policy
+## Source, authority, and evidence
 
-> Every durable artifact adopted under this profile has a project-owned, discoverable source
-> of truth, a responsible role, an explicit audience, and a documented update and recovery path.
-> An authorized successor can continue the work without the originating AI session. Vendor
-> displays are replaceable views. A tracker handoff preserves identities, meaning, decisions,
-> and evidence, and ends with one declared authority for each record.
+The Maintainer requested vendor-independent artifacts, a lightweight tracker, and a path to
+the project's chosen system, then authorized implementation with “I like it proceed.”
+Subsequent review clarified that TODO can itself carry work management and that portfolio,
+investment, and stage decisions must be acknowledged without putting all their machinery in
+every small project's queue.
 
-This is an opt-in portability profile until accepted. Existing role and proof rules continue
-to apply. Reading a record, possessing a connector, or changing AI models grants no new write
-or approval authority. Qualified operation is claimed only for the tested integrations and
-versions, never for every model or vendor by inference.
+The Maintainer then explicitly requested: “see how we best formalize what we are discussing
+within velocity” and “use our own framework's structure to put goal-setting as a
+portfolio-level future thing to tackle.” This authorizes reusable process changes and the
+scoped Velocity trial records together. It does not authorize executing strategic goal-setting,
+migrating other projects, accepting policy, merging, or releasing.
 
-## 1. Shared discovery and storage
+Read-only inspection of private consuming projects informed the separation of work, operating
+controls, initiative planning, and investment authority. That is maintainer-context evidence,
+not a public reference implementation or independent validation. The public scenarios are
+synthetic and self-contained.
 
-The project overlay links one artifact index. Every supported agent entry file points to that
-same index. A human-readable table is sufficient; an additional registry service is unnecessary.
-Each entry identifies:
+The earlier local artifact inspection found a continuity gap: sources and discovery lived
+under one AI application's project/memory locations and views in scratch storage. Another
+tool's ability to read the files did not establish discovery from the project entry point.
+The existing Desk contract already separates source, rendering, stable IDs, and authority.
+The Work Board pilot inspected at `e97f0188bf571e5c4000ffabee454c7471e9702f` supplies JSON states,
+dependencies, and completion references. Its history is integrated into this branch; it
+remains development support, not released canon.
 
-- stable project/artifact identity, purpose, responsible role, and authoritative location;
-- audience and access requirements, including the boundary between private and public records;
-- file format/schema and pinned validator/renderer, or external system and field/state mapping;
-- supported read, update, validate, render/open, export, and recovery procedures;
-- revision identification, writer coordination, and locations of history and derived views.
+## Proposed contracts
 
-Canonical file sources live in a project-owned workspace with documented retention and backup.
-Agent memory directories and temporary output directories are not canonical homes under this
-profile. A public code repository may point authorized operators to a separate private
-operational workspace without publishing its contents or sensitive metadata. Git is a useful
-default for text history, but neither Git nor GitHub is required.
+1. **Decision awareness.** [Decision Scopes](../docs/DECISION-SCOPES.md) names the four
+   connected scopes, inherited purpose/authority/capacity, conditional management records,
+   escalation, parent-change review, and AI participation boundaries. These are separate
+   from L0–L5, lanes, modes, and control planes. Recurring operations are an additional pattern.
+2. **Common work meaning.** [Lightweight Work Management](../docs/WORK-MANAGEMENT.md)
+   defines stable identity, ownership, priority, the seven state meanings, bounded scope,
+   dependencies, appropriate completion evidence, reopening, history, and uncertainty.
+   A future portfolio opportunity is not a delivery commitment.
+3. **Alternative bindings.** Markdown TODO can remain authoritative indefinitely. The JSON
+   pilot and an external tracker are alternatives. One authoritative source owns work in a
+   declared scope; derived views do not create another queue. Import is optional and retires
+   a source only after a chosen, reconciled cutover.
+4. **Portable records.** [Portable Project Records](../docs/PORTABLE-PROJECT-RECORDS.md)
+   defines discovery, audience, source ownership, updates, writer coordination, recovery,
+   view freshness, qualification, and handoff. Git/GitHub are useful choices, not requirements.
+   Public code may coexist with private operational records.
+5. **One ruling.** A Desk decision stays in its ledger. Where an upstream system owns the
+   ruling, the Desk closes with a pointer to it. Releasing a dependent action checks the exact
+   authority, remaining dependencies, current parent decision, and scope. Existing envelopes
+   permit routine bounded work without a new approval for every task.
 
-Illustrative layout, resolved relative to the declared operational workspace:
+[ADR-0002](../adrs/0002-decision-context-and-work-bindings.md) records alternatives, invariants,
+enforcement limits, and consequences. The core authority/proof model is retained. Record
+access, actor metadata, a task state, or a model change cannot grant approval authority.
 
-```text
-ARTIFACTS.md             # ownership, locations, procedures, audience
-checkin/desk.json        # authoritative operator decision/action ledger
-work/board.json          # authoritative work records in file mode
-history/                 # audit records or a documented version-history mechanism
-views/desk.html          # generated portable view
-views/board.html         # generated portable view
-```
+## Templates and implementation boundary
 
-These paths illustrate a layout, not new required filenames. An external-tracker project
-replaces the work-file entry with its tracker binding. An export or cache is labeled as such,
-with its source revision and collection time, and cannot become a second independent backlog.
+- [Decision records](../templates/decision-records.md): small inherited context; optional
+  portfolio opportunity, initiative, and stage/investment decision records.
+- [Markdown tracker](../templates/work-tracker.md): a complete manual versioned binding.
+  There is no supplied TODO parser, automatic state validator, lock, or TODO-to-HTML adapter.
+- [Artifact index](../templates/artifact-index.md), agent fragment, adoption and tranche
+  guidance: discover the selected binding and context without copying records into AI memory.
+- Existing JSON [file support](../templates/project-records.md): empty Desk/Board startup,
+  guarded local cooperating-writer updates, revision checks, idempotent retries, durable
+  interrupted-operation recovery, source/view receipts, and exact snapshot handoff comparison.
+  It supplies neither an authorization service nor a distributed/Markdown writer.
+- [Tracker binding and handoff](../templates/tracker-binding-and-handoff.md): preserve record
+  identity, meaning, context, history, evidence access, and recovery before retiring a source.
+  A JSON export or matching fixture is not a live destination qualification.
 
-## 2. Lightweight work tracking and the Desk
+The structured templates retain their shared renderer/content rules. Context can be inherited
+through the index or existing references; this tranche does not add unrecognized JSON fields
+or claim that the JSON schema enforces the full management contract. Unsupported operations
+or investment semantics remain in linked authoritative records.
 
-The lightweight tracker remains optional template support. Ordinary work starts with the
-pilot's small required record: identity, title, owner, and state. Required information grows
-with the claim: an active item names its bounded scope, a blocked item names its blocker, a
-completed item cites appropriate evidence, and a dropped item records its reason. Size,
-benefit, initiatives, dates, and recurring controls are used when applicable. Completion
-evidence does not require a new document for every small task; an existing appropriate
-record or verification result can serve. A citation alone does not judge proof adequacy.
+## Velocity's own trial
 
-Retain the pilot's distinctions among backlog, committed, doing, blocked, held, done, and
-dropped. External systems can use different labels if the documented mapping preserves those
-meanings, including the difference between wanted work and a delivery commitment.
+[ARTIFACTS.md](../ARTIFACTS.md) declares this branch's scope, authority, audience, Markdown
+binding, revision handling, and recovery. [TODO.md](../TODO.md) carries bounded execution and
+uncommitted qualification work. [PORTFOLIO.md](../PORTFOLIO.md) separates:
 
-The Work Board answers what is being done, waiting, or planned. The Check-in Desk records
-operator decisions/actions and decisions owned by the team under its existing contract.
-Work references Desk asks; an approval is not duplicated into a second editable decision
-ledger. Answering an ask releases only the dependency covered by that answer, not every
-blocker or authority boundary attached to an item. Moving work to another tracker does not
-require moving the Desk.
+- `VEL-PF-1`: the currently authorized foundation, with local proof and a Maintainer review gate;
+- `VEL-PF-2`: strategic goal-setting, captured as a future portfolio candidate with no execution
+  envelope, deadline, automatic start, or corresponding committed task.
 
-Qualify a truly empty starting desk/board. The initially inspected schemas required at least
-one entry; the implementation now permits empty sources in the shared schemas and renderers.
-Adoption does not require inventing an ask or task to make a new project validate.
+The future candidate's next decision is whether to charter bounded discovery, including
+authority, constraints, capacity, evidence, and a review gate. This proposal defines the
+interface to accepted goals; it does not deliver a goal-setting method or an autonomous
+strategist. The manifesto records the broader direction without making it current canon.
 
-## 3. One update procedure across AI tools
+These records cover this effort, not every Velocity proposal or live operational ask. The
+earlier local HTML work preview remains a snapshot, not the authority for this Markdown queue.
+There is no consuming-project data migration or replacement of an existing live Desk.
 
-All supported AI integrations follow the same procedure:
+## Related proposals and sequencing
 
-1. Read the index, current source revision, relevant evidence, and acting role's authority.
-2. Resolve the requested change to stable IDs. Ask only when meaning or authority is missing;
-   ordinary updates within granted authority do not acquire a new confirmation requirement.
-3. Prepare and validate the candidate with the shared, pinned implementation. Identify the
-   actor, request, starting revision, and any decision/approval evidence governing the change.
-4. Commit through serialized ownership or a conditional write against the starting revision.
-   A stale writer rereads and reconciles; it must not silently overwrite a newer change.
-5. Read back the saved source, render its revision, and refresh the configured operator view.
-6. Report the result with source and view revisions. If rendering or publication fails,
-   record that the source was saved but the view is stale; do not report a complete update.
-
-Retries reuse the recorded operation identity or reconcile the actual result before writing
-again, so they cannot assign a second ID to the same request. Coupled Desk/Board updates need
-either a transaction or a durable pending operation and recovery procedure. Record the
-decision before releasing the work it authorizes; an interrupted update must remain visible
-and repairable. A conflicting operator answer is resolved through the existing authority
-model rather than whichever agent writes last.
-
-Keep the existing requirement to refresh the operator view in the same turn. A failure receipt
-explains an unmet requirement; it does not turn a stale display into conformant success.
-Record view identity and source revision in a generated footer or publication receipt. A
-timestamp alone does not prove that a view contains the current source.
-
-## 4. Portable presentation and thin integrations
-
-The baseline view is standalone HTML readable in an ordinary browser. Source records remain
-readable independently. A vendor's side panel is an optional presentation integration; no
-particular panel API, hosting account, or AI session is necessary to recover the source and
-produce the baseline view. Preserve the shared renderer's content and layout contract.
-
-AI integrations locate the project, invoke the documented update procedure, and open or
-refresh the appropriate view. They do not independently redefine states, permissions,
-validation, ordering, or totals. Credentials remain in the environment's credential mechanism.
-Missing access is reported explicitly and does not result in a new privately maintained copy.
-
-Shared validation and rendering stay in Velocity's template support. Shared file-update
-mechanics needed for qualification should also be reusable support. Project wrappers may
-resolve storage, coordinate writes, perform documented evidence preflights, and publish/open
-the output; they must not reimplement the artifact's content rules. Integration instructions
-identify the exact commands that exist rather than assuming every agent discovers them.
-
-## 5. Tracker adoption and handoff
-
-Two supported modes are sufficient: **file mode**, using the lightweight tracker, and
-**external-tracker mode**, binding to the project's chosen tracker. The shared work-record
-meaning applies in both. A tracker binding names the destination, record and field mappings,
-write authority, query/export mechanism, recovery procedure, and qualified scope.
-
-Adopting from a TODO file preserves the original as a dated source. Retain wording and origin,
-record uncertain fields, and distinguish historical reported completion from verified proof.
-Reconcile the import before retiring the TODO file as an active queue.
-
-Moving to an external tracker is a bounded project migration:
-
-1. Select the destination and record scope, audience, responsible owner, and cutover authority.
-   Scale, collaboration, reporting, or integrations may motivate a move; no automatic threshold
-   forces it. Source selection is separate from approval to expose data or purchase services.
-2. Snapshot the source and inventory open work, closed/dropped history, dependencies, Desk
-   references, owners, dates, uncertainty, completion evidence, and recurring controls.
-3. Define the mapping and rehearse import in an appropriate test scope. Every old identity
-   receives a destination identity or an explicit immutable archive location. For example,
-   project `example-app` item `WI-7` may map to destination issue `482`; old references still
-   resolve through that crosswalk. Display names may change without changing project identity.
-4. Preserve distinctions the destination lacks in documented fields or linked durable records.
-   For example, a tracker with only Open/Closed must still distinguish held from doing and
-   dropped from completed. A control's history, next due date, and execution mechanism need an
-   explicit disposition; moving a work item does not migrate its scheduler. Missing mappings
-   block cutover or require the owner to accept a specifically documented loss of semantics.
-   Such acceptance cannot waive Velocity's authority or proof requirements.
-5. Coordinate a brief write freeze or a verified final-delta transfer. Reconcile each record,
-   not just totals: text, state meaning, ownership, references, evidence access, and history.
-   Verify real reads and an authorized update in the destination, including a Desk dependency.
-6. Record the cutover revision/time and owner decision. Switch the artifact index and all
-   supported agents to the destination. Retain the source as a dated, read-only archive with
-   the crosswalk. Any remaining Velocity board reads from the destination as a derived view.
-7. Exercise recovery. Before cutover, the source remains authoritative; afterward, reconcile
-   new destination changes before any rollback. Never resume an old snapshot as a writable
-   queue while losing updates made after cutover.
-
-A generic JSON/CSV export is transfer support, not proof of destination compatibility. The
-first supported destination is selected by the pilot project's owner and qualified end to end.
-Unimplemented connectors are recorded as unsupported. An external tracker needs a documented
-export and restoration path; a Git clone of code does not establish recovery of tracker data.
-
-## Delivery sequence and ownership
-
-| Tranche | Deliverable and completion condition |
+| Related work | Relationship and disposition |
 | --- | --- |
-| 1. Common contract | Accept the profile, artifact-index template, tracker-binding/handoff template, and adoption guidance. Keep storage ownership, lifecycle state, audience, and authority explicit. |
-| 2. Shared file support | Integrate into the existing Desk and Work Board work: empty start, revision/history support, guarded update mechanics, portable views, and failure reporting. Reuse their schemas and renderers. |
-| 3. Cross-vendor pilot | In a project-owned private operational workspace, qualify two independent AI-tool integrations against the same source and browser baseline, including interrupted and conflicting updates. |
-| 4. Tracker handoff pilot | Rehearse and verify one owner-selected tracker destination, its identity mapping, Desk links, final-delta cutover, export, and recovery. |
-| 5. Release and adoption | Publish only the support actually qualified. State remaining limitations. Migrate existing live projects in separately owned, bounded tranches. |
+| Work Board pilot | Integrated inspected history into this branch. Shared JSON support remains a pilot; its owner branch is unchanged. |
+| [Entity Development Lifecycle, PR #11](https://github.com/solidcitizen/velocity/pull/11) | Shared broader direction. Its initiative/executive views and peer exchange remain separately owned proposals. Reconcile vocabulary, authority, and source bindings before accepting overlapping contracts; this work does not accept or rewrite that branch. |
+| Cross-vendor continuation | Backlog qualification: select two actual integrations and a bounded project. Fresh CLI processes are supporting proof only. |
+| External tracker | Backlog qualification: owner chooses destination, access, scope, and migration owner; prove real read/write, cutover, and recovery. |
+| Strategic goal-setting | Future portfolio candidate `VEL-PF-2`; selection and charter precede any execution tranche. |
+| Release/adoption | Maintainer acceptance and version disposition first. Release only supported claims; separately scope live project adoption. |
 
-This branch integrates the inspected Work Board pilot with its Git history; it does not mutate
-`proposal/work-board` or the Entity Development Lifecycle branch. Further changes on those
-branches remain with their existing owner and require reconciliation before shared acceptance.
-Entity/portfolio views can consume these records, but are not needed to adopt lightweight
-tracking. Their future integration must use the same storage and tracker authority rather than
-establishing competing authoritative records.
+## Proof and review
 
-## Required acceptance evidence
+The [decision walkthrough](../examples/decision-scopes/README.md) reviews a retained TODO,
+unknown history, capacity escalation, a capital gate, delegated work, changed parent authority,
+recurring obligations, upstream rulings, concurrent writers, migration, a future candidate,
+and an agent-proposed goal. It includes the actual Velocity trial records and states the
+limits of documentary review.
 
-Use the existing [Proof Model](../docs/PROOF-MODEL.md) and
-[Agent Evaluation Pack](../templates/agent-evaluation-pack.md). Models, prompts, tools, and
-entry instructions are identified in qualification evidence; a new model or integration gets
-the relevant evaluations rather than inheriting an unsupported claim of equivalent behavior.
+The [JSON qualification record](../examples/portable-records/QUALIFICATION.md) records the
+existing 17 local contract tests, synthetic process-continuation/mapping workflow, and local
+HTML inspection. Relevant checks are rerun for this tranche's final closeout. The helper's
+behavior and renderer layouts are not changed by the decision-contract additions.
 
-| Scenario | Expected observable result | Proof |
-| --- | --- | --- |
-| Empty project / TODO adoption | Empty views work; imported items retain source, uncertainty, and historical-completion labels. | Runtime contract and operator view |
-| Tool A creates; fresh Tool B continues; A resumes | Using only the project entry point and authorized access, each finds the same IDs, history, and current source; an authorized update survives the handoffs. No original chat/memory is supplied. | End-to-end scenario, source revisions, view read-back |
-| Operator answers a Desk ask | Exact authorized decision is retained; the correct work dependency changes; unrelated blockers and approvals remain. | Operator scenario and state evidence |
-| Two agents edit the same revision | One serialized update succeeds; the stale write is refused or explicitly reconciled without lost data. | Runtime contract |
-| Retry / interrupted coupled update | No duplicate work or approval; pending work resumes or is reconciled from recorded state. | Runtime contract and trace |
-| Render/publish failure | Saved source and last displayed revision are distinguished; the operator is told the view is stale. Retry restores the current view. | End-to-end scenario and trace |
-| Unauthorized update | Access does not substitute for role authority; protected decisions remain unchanged. | Runtime denial and state evidence |
-| Tracker cutover | Every record has a disposition; IDs, state meanings, evidence, controls, and Desk references survive; the selected destination becomes the sole writable work authority. | Destination runtime and operator scenario |
-| Recovery after a new destination update | New changes survive restoration or reconciled rollback; the archived queue does not silently become writable. | Recovery rehearsal |
+Architect and Tester are named review responsibilities within this implementation session,
+as allowed by Role Authority; this is not independent Maintainer acceptance. Required live
+proof remains outstanding for actual model/provider continuation, protected role denial,
+external reads/writes, cutover/recovery, and measured decision acceleration. No amount of
+documentation or local test success closes those claims.
 
-An agent's successful read, a valid JSON file, or a rendered screenshot alone does not close
-the cross-vendor or tracker-handoff claim. Preserve the tested revisions and limitations.
+## Compatibility, affected artifacts, and disposition
 
-## Scope, authority, and compatibility
-
-- Authority basis: the maintainer's "I like it proceed" authorizes implementation of this
-  process evolution proposal. Adoption, merge, and release follow
-  [Governance](../governance/GOVERNANCE.md).
-- Classification: reusable policy and template support, plus a synthetic example. Populated
-  operational records, vendor credentials, publication targets, and live migrations remain
-  separately scoped project work.
-- Protected artifacts affected: `docs/PORTABLE-PROJECT-RECORDS.md`, `docs/INDEX.md`,
-  `docs/PROJECT-ADOPTION-GUIDE.md`, `templates/AGENTS.fragment.md`,
-  `templates/artifact-index.md`, `templates/tracker-binding-and-handoff.md`,
-  `templates/project-records.md`, `templates/project-records.py`, and the Desk/Work Board
-  contracts, schemas, and renderers. The imported Work Board example JSON and HTML are shared
-  template support. Synthetic fixtures and evidence are under `examples/portable-records/`;
-  no private project record is copied into public material.
-- Compatibility: an additive, opt-in profile can be a MINOR release. Prior conformance is not
-  re-judged. Existing adopters migrate explicitly. A decision to impose new mandatory rules on
-  all prior adopters requires a separate compatibility assessment under the
-  [versioning policy](../CHANGELOG.md), not an automatic minor-version claim.
-- Version and timing: unassigned. Coordinate with the existing Work Board pilot's disposition;
-  do not relabel that pilot accepted or promise a release date through this proposal.
-
-## Proof and disposition
-
-Local support verified on 2026-09-21 with Python 3.14.6 on macOS 26.6.2: 17 automated tests
-cover empty startup, TODO provenance/uncertainty and historical completion, fresh CLI processes,
-concurrent/stale writes, retries, interrupted Desk/Work updates, divergent recovery, view
-failures, export preservation, and negative handoff comparisons. The synthetic runnable example
-continues through a fresh process and compares three normalized destination records. The Desk
-and Work Board were inspected in Codex's browser. See the
-[qualification record](../examples/portable-records/QUALIFICATION.md) for the actual proof scope.
-
-Static review covers local Markdown links, JSON schema syntax, reproducibility of the existing
-example HTML, and `git diff --check`. Runtime command sessions do not establish cross-vendor
-operation. No live external-tracker integration, actual role-denial boundary, live migration,
-or post-cutover destination recovery has been qualified. These remain explicit pilot obligations.
-
-Decision: implementation authorized; acceptance and release pending Velocity Maintainer review.
-Branch disposition: `pushed and parked` on `codex/portable-project-records`, with
-[draft PR #14](https://github.com/solidcitizen/velocity/pull/14) open for review. The shared main
-checkout and the other proposal branches are unchanged by this work; no merge or release.
+- Classification: reusable proposed policy and template support, synthetic examples, and
+  Velocity's scoped trial records. No private project material is published.
+- Protected artifacts: `docs/DECISION-SCOPES.md`, `docs/WORK-MANAGEMENT.md`,
+  `docs/PORTABLE-PROJECT-RECORDS.md`, `docs/LIFECYCLE-MODEL.md`,
+  `docs/CONTROL-PLANES.md`, `docs/ARTIFACT-AUTHORITY-BOUNDARIES.md`,
+  `docs/PROJECT-ADOPTION-GUIDE.md`, `docs/INDEX.md`, the linked record/adoption/tranche and
+  Desk/Work templates and JSON support under `templates/`, `adrs/0002-decision-context-and-work-bindings.md`,
+  and `AGENTS.md`. Root direction, proposal, changelog, trial records, examples, and tests
+  provide context and proof.
+- Authority basis: the Maintainer's explicit process-evolution and self-adoption requests
+  above. Separate private project migrations are excluded.
+- Compatibility: optional development profile, mandatory semantics only for its adopters.
+  Earlier conformance is unchanged. Making new context/records mandatory for all prior
+  adopters requires a separate compatibility and version decision. No release number assigned.
+- Decision: implementation authorized; policy acceptance, merge, and release pending.
+- Branch disposition: continue draft PR #14 on `codex/portable-project-records`; push reviewed
+  changes and park for Maintainer review. Shared main and other owners' worktrees remain unchanged.

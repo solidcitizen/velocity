@@ -29,6 +29,13 @@ Use this axis to describe the stage of the work item:
 
 ## Abstraction Layers
 
+The optional development [decision-scope profile](DECISION-SCOPES.md) adds the question
+"which level of decision does this work serve?" Strategy, portfolio investment, initiative
+development, and execution are a separate axis from the abstraction layers below. An adopter
+links its governing decision context; it does not renumber L0–L5 or treat a task state as an
+investment approval. The [work tracker](WORK-MANAGEMENT.md) records execution state separately
+from this lifecycle's maturity, lane, and mode.
+
 - `L0 Mission` - business goal, human owned.
 - `L1 Architecture` - invariants, boundaries, and tradeoffs, human-led/shared.
 - `L2 Tranche` - bounded scope and proof gate, shared/AI-heavy.
@@ -81,6 +88,11 @@ Use this frame for substantive work:
 - Branch hygiene:
 ```
 
+When adopting that development profile, add `Decision scope` and `Governing context` to the
+task frame, normally as a link to inherited project/initiative authority and capacity. Add
+`Next management decision` only where a gate or escalation applies. These are not new fields
+required of earlier adopters.
+
 ## Tranche Sizing
 
 Velocity does not prescribe sprint length or estimation units; project overlays own cadence and sizing. Velocity requires only that a tranche stay small enough to keep authority and proof clear.
@@ -100,4 +112,3 @@ Keep a tranche together when:
 - the same authority owner can accept the scope
 - the same branch can carry the work cleanly
 - the implementation and verification support one claim
-

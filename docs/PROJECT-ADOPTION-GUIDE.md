@@ -13,6 +13,7 @@ Velocity is adopted through a thin project overlay.
 - templates for packets, tranches, closeout, review packs, role briefs, and the executive
   check-in desk
 - optional evaluation, automated-transition, and measured-pilot templates
+- optional development contracts for decision context, work semantics, and portable records
 
 ## What Stays In The Project Repo
 
@@ -121,13 +122,25 @@ from the overlay and all agent entry files. Record responsible roles, audience, 
 locations, tool pin, update commands, writer coordination, and recovery. Public code and private
 operational records can have separate homes. Git/GitHub are optional storage/collaboration choices.
 
-A project can start with the [lightweight Work Board](../templates/work-board.md), preserve
-and import its TODO file, or bind an existing tracker through the
+A project can retain an authoritative [Markdown TODO](../templates/work-tracker.md), choose
+the structured [Work Board](../templates/work-board.md), or bind an existing tracker through the
 [Tracker Binding and Handoff](../templates/tracker-binding-and-handoff.md) record. Keep one
-authoritative backlog. The Desk remains the operator decision/action surface and can stay in
+authoritative backlog per declared scope. The [work contract](WORK-MANAGEMENT.md) supplies
+state and completion meanings; import/retirement is necessary only for a chosen migration.
+The Desk remains the operator decision/action surface and can stay in
 place when work migrates. The [file helper](../templates/project-records.md) supplies a shared
-procedure for authorized AI sessions; native panels remain optional views. Check the profile's
+procedure for authorized AI sessions using JSON; it does not parse Markdown. Native panels
+remain optional views. Check the profile's
 qualification record before claiming cross-vendor or tracker-migration support.
+
+Declare the [decision context](DECISION-SCOPES.md) in the existing overlay or index: purpose,
+selection/initiative owners, current authority and capacity assumptions, escalation, and review.
+All adopting efforts acknowledge these scopes; separate portfolio, business-case, resource,
+and gate records are conditional on the decisions involved. Use the
+[management record templates](../templates/decision-records.md) only where useful. Small projects
+can combine ownership and inherit a short context block; larger efforts link upstream systems.
+Existing work within its authority can proceed while unrelated upstream unknowns are resolved.
+This development profile is optional and does not change earlier conformance.
 
 ## Overlay Experiments
 

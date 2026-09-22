@@ -40,3 +40,11 @@ For any repo mutation, closeout must state:
 
 Use a feature branch for substantive changes. Keep project-specific migration work separate from Velocity core-policy changes unless the operator explicitly requests a combined tranche.
 
+## Development Work Records
+
+For the decision-aware work/portable-records proposal, read [ARTIFACTS.md](ARTIFACTS.md), then
+the scoped [TODO.md](TODO.md) and [PORTFOLIO.md](PORTFOLIO.md). These are Velocity's own trial
+records on this proposal branch, not released requirements or an inventory of every open
+Velocity effort. Inherit their decision context and preserve ownership of other proposal
+branches. Future portfolio candidates are not execution commitments. No task closure, board
+view, or draft PR approval substitutes for Maintainer acceptance and release authority.
