@@ -184,6 +184,7 @@ also address this; Velocity should contribute tested authority and proof mapping
 
 The following moves look attractive and should be resisted.
 
+- *More lifecycle docs.* The current doc mass is already at the edge of intelligibility. New mass costs adoption. Future additions belong in templates, examples, overlays, or this manifesto — not in `docs/`.
 - *Unnecessary lifecycle machinery.* New concepts need a clear contract and a small adoption
   path. Keep reusable rules compact; put optional record shapes in templates and populated
   records in project overlays. Do not make a small effort imitate a portfolio office merely
