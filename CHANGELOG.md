@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.9.1
+## [1.9.1] — 2026-09-24
 
 ### Fixed — Times with a UTC offset no longer crash either renderer
 
@@ -24,7 +24,8 @@ rather than a moving branch. Versions are canon releases, not software:
 **PATCH**: a crash fix and a clarification. No file that passed `--check` before fails now, and
 every page that rendered before renders byte-for-byte the same.
 
-Pending the maintainer's approval. See the
+Approved by Mike as Velocity Maintainer on 2026-09-24 (desk CK-55 A) and merged via PR #17 by the
+CPO session under Delegated Mechanics, for release as `v1.9.1`. See the
 [proposal record](proposals/2026-09-24-naive-local-times.md).
 
 ## [1.9.0] — 2026-09-24
@@ -513,6 +514,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.9.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.1
 [1.9.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.0
 [1.8.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.8.0
 [1.7.2]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.2

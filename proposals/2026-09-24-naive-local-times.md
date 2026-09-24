@@ -1,6 +1,6 @@
 # Times Read as Written: the UTC-Offset Crash Fix
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-09-24
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution — patch
@@ -9,8 +9,9 @@
   render crashed comparing the two kinds of time, wrote no page, and never reached the repair
   block. The project normalized its own file and reported the defect to Velocity rather than
   working around it locally. The Work Board renderer had the same defect.
-- Disposition: Velocity repo proposal; pending the maintainer's approval.
-- Proposed version: v1.9.1 (patch)
+- Disposition: Velocity repo proposal; merged via PR #17 and released as v1.9.1 on 2026-09-24
+  (see Proof and Disposition).
+- Accepted version: v1.9.1 (patch)
 
 ## Change
 
@@ -48,4 +49,9 @@ proof obligation changes.
 - Every real project desk and board on this machine (six desks, three boards) and every example
   renders byte-identical to v1.9.0, and every one that passed `--check` still passes.
 
-Branch disposition: `proposal/naive-local-times`, via pull request.
+Approved by Mike as Velocity Maintainer on 2026-09-24, answering the Velocity Check-in Desk ask
+CK-55 ("approve"). Merged via PR #17 and stamped `v1.9.1` by the CPO session under Delegated
+Mechanics. The stamp sets the renderers' version string to v1.9.1 and regenerates the example
+pages.
+
+Branch disposition: `proposal/naive-local-times` merged via PR #17 and deleted.

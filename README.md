@@ -27,7 +27,7 @@ Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
 The guide explains the method; it does not create a second source of lifecycle policy.
 
-Current canon: **v1.9.0 — the reconciled trunk: experimental templates by scope, starting with the
+Current canon: **v1.9.1 — the reconciled trunk: experimental templates by scope, starting with the
 Work Board**.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
 projects evaluate development agents, qualify automated handoffs, and measure delivery results;
