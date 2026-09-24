@@ -1,6 +1,6 @@
 # Reconciled Trunk: the 2.0 Experimental Line Released as 1.9.0
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-09-24
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
@@ -10,9 +10,9 @@
   ruled on 2026-09-24, on the Velocity Check-in Desk, that the 2.0 line becomes the trunk,
   reconciled with 1.8.0 (CK-45 A), and then ruled on the three questions the reconciliation
   raised (CK-48 A, CK-49 A, CK-50 A).
-- Disposition: Velocity repo proposal, PR #16 (`proposal/2.0-trunk` into `main`); pending the
-  maintainer's merge.
-- Accepted version: planned v1.9.0 (minor)
+- Disposition: Velocity repo proposal; merged via PR #16 and released as v1.9.0 on 2026-09-24
+  (see Proof and Disposition).
+- Accepted version: v1.9.0 (minor)
 
 ## Change
 
@@ -90,4 +90,10 @@ On `proposal/2.0-trunk` at the commit that adds this record:
   dated records. No proprietary scaled-agile framework name or vocabulary appears.
 - `git diff --check` clean.
 
-Branch disposition: `proposal/2.0-trunk` merges via PR #16, which supersedes PR #14.
+Approved by Mike as Velocity Maintainer on 2026-09-24, answering the Velocity Check-in Desk ask
+CK-52 ("ck-52 A"). Merged via PR #16 and stamped `v1.9.0` by the CPO session under Delegated
+Mechanics (governance, Delegated Mechanics). The stamp sets the renderers' version string to
+v1.9.0, regenerates the example pages, and updates the status lines that named the prerelease.
+
+Branch disposition: `proposal/2.0-trunk` merged via PR #16 and deleted; PR #14 closed as
+superseded by it.

@@ -1,6 +1,7 @@
 # ADR-0002: Decision Context and Work Bindings
 
-- Status: Accepted for experimental adoption in v2.0.0-experimental.1; stable integration pending
+- Status: Accepted for experimental adoption; first published in v2.0.0-experimental.1, released in
+  v1.9.0
 - Date: 2026-09-21
 - Authority owner: Velocity Maintainer
 - Proposal: [Decision-aware work and portable records](../proposals/2026-09-21-portable-project-records.md)

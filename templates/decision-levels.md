@@ -1,7 +1,8 @@
 # Decision Levels
 
 Experimental contract for the opt-in [Portable Project Records](portable-project-records.md)
-profile, accepted for `v2.0.0-experimental.1`. Earlier adopters are not re-judged.
+profile, first published in `v2.0.0-experimental.1` and released in v1.9.0. Earlier adopters are
+not re-judged.
 
 Velocity's direction is to accelerate evidence-backed decision-making throughout an entity's
 work: establishing direction, choosing investments, developing outcomes, and executing work.

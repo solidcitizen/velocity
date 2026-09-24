@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.9.0
+## [1.9.0] — 2026-09-24
 
 ### Added — Experimental templates by adoption scope, from the reconciled 2.0 line
 
@@ -89,7 +89,10 @@ Rulings by Mike as Velocity Maintainer on 2026-09-24: the 2.0 line becomes the t
 (desk CK-45); decision levels are an optional tag with the strict check as a declared opt-in
 (CK-48); PMI and Stage-Gate are credited in the lineage only (CK-49); the version follows the
 SemVer rule, so 1.9.0 (CK-50). See the
-[proposal record](proposals/2026-09-24-reconciled-trunk.md). Pending the maintainer's merge.
+[proposal record](proposals/2026-09-24-reconciled-trunk.md).
+
+Approved by Mike as Velocity Maintainer on 2026-09-24 (desk CK-52 A) and merged via PR #16 by the
+CPO session under Delegated Mechanics, for release as `v1.9.0`.
 
 ## [1.8.0] — 2026-09-23
 
@@ -492,6 +495,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.9.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.0
 [1.8.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.8.0
 [1.7.2]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.2
 [1.7.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.1

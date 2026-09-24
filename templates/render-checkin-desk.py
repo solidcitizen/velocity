@@ -22,7 +22,7 @@ import re
 import sys
 from datetime import datetime, timedelta
 
-CANON = "v2.0.0-experimental.1"
+CANON = "v1.9.0"
 KINDS = ("decide", "do", "team")
 STATES = ("open", "answered", "withdrawn")
 TEAM_STATUS = ("done", "in motion", "blocked", "reversed")

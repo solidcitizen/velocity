@@ -5,7 +5,7 @@ initiative, and portfolio records, their reviews, and where their decisions go. 
 required at any adoption scope.
 
 The standing reference method for the experimental [Portable Project Records](../../templates/portable-project-records.md)
-profile, accepted for `v2.0.0-experimental.1`. See [experimental adoption](../../templates/portable-project-records.md#adopting-the-profile-in-a-project). This defines the
+profile, released in v1.9.0. See [experimental adoption](../../templates/portable-project-records.md#adopting-the-profile-in-a-project). This defines the
 baseline for that profile's adopters, not a new requirement for prior conformant projects.
 
 Work, initiative, and portfolio are **management levels** under [Decision Levels](../../templates/decision-levels.md).

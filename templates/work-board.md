@@ -1,8 +1,8 @@
 # Work Board — `<project>`
 
-> **Experimental pilot.** Included in `v2.0.0-experimental.1` for explicit project adoption;
-> not part of stable v1.8.0. Its contract may change on pilot evidence. Pin the experimental
-> version and review changes before upgrading; no existing project is automatically migrated.
+> **Experimental pilot.** Released in v1.9.0 for explicit project adoption; not a requirement at
+> any scope. Its contract may change on pilot evidence. Pin a release and review changes before
+> upgrading; no existing project is automatically migrated.
 >
 > A **living page** of a project's active work, for projects that have no issue tracker or board of
 > their own and want one their delivery agent keeps current. It is the standing answer to "what is

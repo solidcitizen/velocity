@@ -1,16 +1,18 @@
 # Decision-Aware Work and Portable Project Records
 
-- Status: Accepted for experimental publication; stable integration pending
+- Status: Accepted; published as v2.0.0-experimental.1, then released on the stable line in v1.9.0
 - Date: 2026-09-21
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
 - Affected control planes: Shared authority/proof rules and reusable automation support;
   project decision ownership remains with the declared project/upstream authorities.
-- Accepted version: v2.0.0-experimental.1 (opt-in prerelease); stable canon remains v1.7.2
+- Accepted version: v2.0.0-experimental.1 (opt-in prerelease); v1.9.0 (stable, reconciled)
 - Branch: `codex/portable-project-records`, [draft PR #14](https://github.com/solidcitizen/velocity/pull/14)
 - Release channel: `codex/2.0-experimental`; fixed tag `v2.0.0-experimental.1`
 - Disposition: v2.0.0-experimental.1 published and remotely verified; see the
-  [publication receipt](../examples/portable-records/RELEASE-RECEIPT.md). Stable integration remains pending.
+  [publication receipt](../examples/portable-records/RELEASE-RECEIPT.md). Reconciled with v1.8.0,
+  merged via PR #16, and released as v1.9.0 on 2026-09-24; see the
+  [reconciled trunk record](2026-09-24-reconciled-trunk.md). PR #14 closed as superseded.
 
 ## Problem and resulting behavior
 
