@@ -123,7 +123,20 @@ class ProjectRecordsTests(unittest.TestCase):
         self.assertEqual(self.data()["work"]["items"][0]["state"], "backlog")
         self.assertIn("Decision level: Work", (self.root / "views/desk.html").read_text())
 
+    def declare_levels(self):
+        config = records.load_config(self.root)
+        config["desk_requires_decision_levels"] = True
+        records.write(self.root / "records.json", config)
+
+    def test_levels_are_optional_unless_the_project_declares_them(self):
+        ask = {"id": 1, "kind": "decide", "state": "open", "title": "Plain question",
+               "what": "A decision with no level", "waits": "Nothing yet",
+               "options": ["A", "B"], "lean": "A", "lean_why": "Simplest"}
+        self.apply(self.request(desk=[ask]))
+        self.assertNotIn("Decision level", (self.root / "views/desk.html").read_text())
+
     def test_decision_qualification_and_closure_cannot_lose_its_level(self):
+        self.declare_levels()
         ask = {"id": 1, "kind": "decide", "state": "open", "title": "Investment choice",
                "what": "Owner must decide the capacity envelope", "waits": "Discovery waits",
                "options": ["Invest", "Defer"], "lean": "Defer", "lean_why": "Missing evidence"}
@@ -290,6 +303,13 @@ class ProjectRecordsTests(unittest.TestCase):
         for items in ([], [row, row], [dict(row, disposition="archived")]):
             snapshot["items"] = items
             with self.assertRaises(records.RecordError): records.check_handoff(bundle, snapshot)
+
+    def test_declaration_must_be_a_boolean(self):
+        config = records.load_config(self.root)
+        config["desk_requires_decision_levels"] = "yes"
+        records.write(self.root / "records.json", config)
+        with self.assertRaises(records.RecordError):
+            records.load_config(self.root)
 
     def test_duplicate_json_keys_and_unsafe_bindings_refused(self):
         invalid = self.base / "invalid.json"

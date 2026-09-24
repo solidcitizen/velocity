@@ -72,7 +72,9 @@ class DecisionLevelTests(unittest.TestCase):
                                  "--check", "--require-decision-levels"], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         sample = json.loads((ROOT / "templates/executive-checkin-desk.example.json").read_text())
-        self.assertEqual(desk.validate(sample, require_decision_levels=True), [])
+        self.assertEqual(desk.validate(sample), [])
+        self.assertEqual(sample["entries"][0]["decision_level"], "work")
+        self.assertTrue(all("decision_level" not in e for e in sample["entries"][1:]))
         self.assertEqual(desk.render(sample), (ROOT / "templates/executive-checkin-desk.html").read_text())
 
 

@@ -124,6 +124,8 @@ def load_config(root):
         raise RecordError("source/view/config paths must be distinct")
     if config["mode"] == "external-tracker":
         required_text(config.get("tracker_binding"), "tracker_binding")
+    if not isinstance(config.get("desk_requires_decision_levels", False), bool):
+        raise RecordError("records.json: desk_requires_decision_levels must be true or false")
     return config
 
 
@@ -158,9 +160,10 @@ def tool_revision():
                    [Path(__file__).resolve()] + [BASE / v[0] for v in RESOURCE_TYPES.values()]})
 
 
-def validate(name, data):
+def validate(name, data, config=None):
     try:
-        options = {"require_decision_levels": True} if name == "desk" else {}
+        strict = bool(config and config.get("desk_requires_decision_levels"))
+        options = {"require_decision_levels": True} if name == "desk" and strict else {}
         errors = renderer(name).validate(data, **options)
     except (TypeError, ValueError, KeyError, AttributeError) as exc:
         raise RecordError(f"{name}: invalid record shape: {exc}")
@@ -303,7 +306,7 @@ def apply(root, config, request):
             raise RecordError(f"{name}: candidate must be an object")
         after[name] = dict(value, updated=stamp)
     for name, value in after.items():
-        validate(name, value)
+        validate(name, value, config)
         field = RESOURCE_TYPES[name][1]
         old_ids = {entry["id"] for entry in before[name][field]}
         new_ids = {entry["id"] for entry in value[field]}
@@ -349,7 +352,7 @@ def initialize(root, args):
         if any(path.name != ".records" for path in root.iterdir()):
             raise RecordError("workspace was populated by another initializer; refusing overwrite")
         for name, value in data.items():
-            validate(name, value)
+            validate(name, value, config)
             write(inside(root, config["resources"][name]["source"]), value)
         write(root / "records.json", config)
         publish(root, config, data)
@@ -364,7 +367,7 @@ def export_bundle(root, config, output):
         raise RecordError("recover pending operations before export")
     data = sources(root, config)
     for name, value in data.items():
-        validate(name, value)
+        validate(name, value, config)
     bundle = {"format_version": 1, "project_id": config["project_id"],
               "exported_at": datetime.now(timezone.utc).isoformat(), "mode": config["mode"],
               "config": config, "tool_revision": tool_revision(), "records": data,
@@ -460,7 +463,7 @@ def main():
                     if pending(root):
                         raise RecordError("recover pending operations before refresh")
                     data = sources(root, config)
-                    for name, value in data.items(): validate(name, value)
+                    for name, value in data.items(): validate(name, value, config)
                     publish(root, config, data)
                     result = status(root, config)
                 else: result = export_bundle(root, config, args.output)

@@ -104,21 +104,24 @@ beyond the five things that vary. The renderer enforces every rule it can check.
 Keep populated data in the consuming project's operational workspace, separate from reusable
 templates. Under the optional [Portable Project Records profile](../docs/PORTABLE-PROJECT-RECORDS.md),
 declare that location in the shared artifact index, outside agent session/cache storage.
-The development [management reference method](../docs/MANAGEMENT-REFERENCE.md) uses one
-Desk across work, initiative, and portfolio within its declared ownership/access scope.
-Every open Decide entry, including a pointer, has `decision_level` set to `work`, `initiative`,
-or `portfolio`. The field qualifies the ruling requested, not the originating task or execution
-lane. State the affected record, decision owner's hat, and authority basis in `what`; the
-Desk's declared operator remains the decision owner. Keep the field when answered or withdrawn;
-a pointer uses the owning ask's level. Do and team entries may carry it too.
+**Decision levels (optional).** A Decide entry may carry `decision_level`: `work`, `initiative`,
+or `portfolio`. It names the level of the ruling requested, not the originating task or execution
+lane. It is an optional tag: a desk without levels is complete, and a level appears as a row only
+on the entries that carry one. Every supplied level is validated. State the affected record, the
+decision owner's hat, and the authority basis in `what`; the desk's declared operator remains the
+decision owner. Do and team entries may carry a level too. One desk can hold decisions at every
+level within its ownership and access boundary; see the
+[management reference](../docs/MANAGEMENT-REFERENCE.md) example.
 
-This is required only for adopters of the development management profile. Legacy standalone
-desks render unchanged when the field is absent; do not infer a level for historical rulings.
-At adoption, qualify open decisions, then use `--require-decision-levels` when checking or
-rendering. The flag checks open Decide entries, including pointers; every supplied level is
-validated even without the flag. The file helper always uses the profile check and refuses
-to drop an existing level or change it while closing/closed. To correct an open ask's
-classification, record the reason and retain the earlier revision before answering it.
+A project that wants every open decision labeled declares that in its overlay. Its checks then run
+the renderer with `--require-decision-levels`, which covers open Decide entries including
+pointers; a project that uses the [file helper](project-records.md) also sets
+`"desk_requires_decision_levels": true` in its `records.json`. The requirement is the project's
+declared choice, so a desk's validity never depends on who happens to run the check. Keep a level
+when an ask is answered or withdrawn; a pointer uses the owning ask's level; do not infer a level
+for historical rulings. The file helper refuses to drop an existing level or change it while
+closing; to correct an open ask's classification, record the reason and retain the earlier
+revision before answering it.
 
 Separate desks require ownership/access boundaries that prevent a shared source; a change of
 level, hat, or cadence alone does not create another board. Use the existing `owned_by` pointer
