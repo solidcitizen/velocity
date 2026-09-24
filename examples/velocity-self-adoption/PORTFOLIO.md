@@ -31,7 +31,7 @@ development stage, and permission to spend or release.
 - Strategic relationship: groundwork for faster, evidence-backed decisions across the entity.
 - Posture: **invest**, limited to the requested framework design, proof, and experimental publication.
 - Decision status/authority: implementation authorized by the Maintainer's 2026-09-21 request
-  in the [proposal](proposals/2026-09-21-portable-project-records.md). The subsequent Maintainer
+  in the [proposal](../../proposals/2026-09-21-portable-project-records.md). The subsequent Maintainer
   ruling accepts opt-in experimental publication as `v2.0.0-experimental.1`; stable acceptance
   and consuming-project migration remain separate.
 - Stage/evidence: development and local qualification. The standing-method follow-up is part
@@ -45,9 +45,9 @@ development stage, and permission to spend or release.
   separately scoped. This keeps the contract useful before every adapter exists.
 - Next decision/owner/trigger: Maintainer selects a bounded pilot or stable integration after
   experimental publication and evidence review. Neither follows automatically from this release.
-- Work/proof: [execution queue](TODO.md), [proposed ADR](adrs/0002-decision-context-and-work-bindings.md),
-  [decision walkthrough](examples/decision-levels/README.md),
-  [JSON qualification](examples/portable-records/QUALIFICATION.md).
+- Work/proof: [execution queue](TODO.md), [proposed ADR](../../adrs/0002-decision-context-and-work-bindings.md),
+  [decision walkthrough](../../examples/decision-levels/README.md),
+  [JSON qualification](../../examples/portable-records/QUALIFICATION.md).
 - History: 2026-09-21, Coordinator recorded the Maintainer-authorized foundation and its limits.
   The follow-up request makes the standing reference method and initiative record explicit.
   The Maintainer then selected one Desk with qualified requests and authorized experimental

@@ -56,4 +56,5 @@ Not part of any adoption scope yet, and not core. Each is placed by scope in the
 - [Policy and Project Mapping](../examples/project-overlay/policy-mapping.md)
 - [Measured Automation Worked Example](../examples/measured-automation/README.md)
 - [Portable Records Worked Example](../examples/portable-records/README.md) — synthetic command-line continuation and mapping, with explicit proof limits
-- [Decision-Level Walkthrough](../examples/decision-levels/README.md) — synthetic cases and explicit review limits
+- [Decision-Level Walkthrough](../examples/decision-levels/README.md)
+- [Velocity Self-Adoption Snapshot](../examples/velocity-self-adoption/README.md) — Velocity's own trial records as of 2026-09-21; a dated example, not a work queue — synthetic cases and explicit review limits

@@ -116,7 +116,7 @@ An expressly delegated decision still has a scope, evidence requirement, and acc
 find ways to achieve them. It is not a claim about model consciousness or a delegation rule.
 Strategic goal formation, competing values, outcome evaluation, and goal revision require
 their own future design and qualification. Velocity records that opportunity at the portfolio
-level in [VEL-PF-2](../PORTFOLIO.md#vel-pf-2--strategic-goal-setting), with no execution commitment.
+level in [VEL-PF-2](../examples/velocity-self-adoption/PORTFOLIO.md#vel-pf-2--strategic-goal-setting), with no execution commitment.
 
 Evaluate acceleration through a bounded [measured pilot](../templates/automation-pilot.md):
 time to a usable decision, active human effort, waiting, rework, decision quality, and resource

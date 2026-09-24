@@ -138,15 +138,15 @@ review duties. No filter or new board section is added.
 
 ## Velocity's own trial
 
-[ARTIFACTS.md](../ARTIFACTS.md) declares this branch's scope, authority, audience, Markdown
-binding, revision handling, and recovery. [TODO.md](../TODO.md) carries bounded execution and
-uncommitted qualification work. [PORTFOLIO.md](../PORTFOLIO.md) separates:
+[ARTIFACTS.md](../examples/velocity-self-adoption/ARTIFACTS.md) declares this branch's scope, authority, audience, Markdown
+binding, revision handling, and recovery. [TODO.md](../examples/velocity-self-adoption/TODO.md) carries bounded execution and
+uncommitted qualification work. [PORTFOLIO.md](../examples/velocity-self-adoption/PORTFOLIO.md) separates:
 
 - `VEL-PF-1`: the currently authorized foundation, with local proof and a Maintainer review gate;
 - `VEL-PF-2`: strategic goal-setting, captured as a future portfolio candidate with no execution
   envelope, deadline, automatic start, or corresponding committed task.
 
-[INITIATIVES.md](../INITIATIVES.md) carries the current effort's outcome plan and assessment as
+[INITIATIVES.md](../examples/velocity-self-adoption/INITIATIVES.md) carries the current effort's outcome plan and assessment as
 `VEL-INI-1`. Its authority comes from `VEL-PF-1`; work stays in TODO. The existing proposal/PR
 records remain this scoped trial's review and ruling route, without creating another Desk.
 

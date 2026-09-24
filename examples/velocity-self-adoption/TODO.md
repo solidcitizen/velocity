@@ -8,7 +8,7 @@ All items inherit `VEL-PF-1` and its declared authority; their outcome plan is
 [VEL-INI-1](INITIATIVES.md#vel-ini-1--decision-aware-work-and-portable-continuity).
 Queue order within a state gives the next-work preference, without granting new authority.
 
-States and update discipline: [work contract](docs/WORK-MANAGEMENT.md) and
+States and update discipline: [work contract](../../docs/WORK-MANAGEMENT.md) and
 [binding/history/recovery](ARTIFACTS.md#update-history-and-recovery). No checkbox or board
 snapshot overrides an explicit state. Dates below are records of events, not deadlines.
 
@@ -29,7 +29,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
   is published, with tag resolving to `aa9462b784416f1db1e743e0f0a8f5041d95d0d4` and the
   experimental branch published. Public HTTPS clone, six release-file byte comparisons,
   remote tag/branch identity, and stable v1.7.2 read-back passed. See the
-  [publication receipt](examples/portable-records/RELEASE-RECEIPT.md).
+  [publication receipt](../../examples/portable-records/RELEASE-RECEIPT.md).
 - History: 2026-09-21, Coordinator prepared and published the release under the explicit
   ruling, verified it remotely, then recorded this closeout without moving the fixed tag.
 
@@ -42,7 +42,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Source: Maintainer's 2026-09-21 agreement to one board with qualified decision requests.
 - Context: `VEL-PF-1`, `VEL-INI-1`; implementation and local proof within existing capacity.
 - Completion: 2026-09-21; shared contract/schema/renderer, strict open-decision profile check,
-  helper retention guard, and [three-level example](examples/decision-levels/desk.json).
+  helper retention guard, and [three-level example](../../examples/decision-levels/desk.json).
   25 local tests passed, including classification, pointers, closure/history/export, and
   prior file-workflow scenarios. This does not qualify a live project migration or AI vendor.
 - History: 2026-09-21, Coordinator implemented the agreed semantics; Architect review kept
@@ -60,9 +60,9 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Research scope: includes the follow-up question about PMI's adaptation for AI entities;
   distinguish verified public guidance from unreviewed full-standard coverage.
 - Context: `VEL-PF-1`; current documentation/review scope and capacity from the artifact index.
-- Completion: 2026-09-21; [reference method](docs/MANAGEMENT-REFERENCE.md), expanded templates,
+- Completion: 2026-09-21; [reference method](../../docs/MANAGEMENT-REFERENCE.md), expanded templates,
   [initiative record](INITIATIVES.md), and
-  [eight-case review](examples/decision-levels/README.md#reference-method-review). Local links,
+  [eight-case review](../../examples/decision-levels/README.md#reference-method-review). Local links,
   whitespace and public-source checks passed. This closes definition/review preparation;
   it does not accept policy, qualify a new UI, or claim full PMI-standard coverage.
 - History: 2026-09-21, Coordinator researched primary sources, defined the method, then
@@ -76,9 +76,9 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
   integration, compatibility, and lineage are reviewable, with synthetic decision scenarios.
 - Source: Maintainer's 2026-09-21 instruction to formalize the broader vision.
 - Context: [VEL-PF-1](PORTFOLIO.md#vel-pf-1--decision-aware-work-and-portable-records).
-- Completion: 2026-09-21; [proposed contract](docs/DECISION-LEVELS.md),
-  [ADR](adrs/0002-decision-context-and-work-bindings.md), and
-  [review walkthrough](examples/decision-levels/README.md). This closes preparation of the
+- Completion: 2026-09-21; [proposed contract](../../docs/DECISION-LEVELS.md),
+  [ADR](../../adrs/0002-decision-context-and-work-bindings.md), and
+  [review walkthrough](../../examples/decision-levels/README.md). This closes preparation of the
   proposal, not Maintainer acceptance of policy.
 - History: 2026-09-21, Coordinator started the authorized tranche, then closed its drafting
   scope after the named Architect/Tester review passes.
@@ -92,8 +92,8 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Source: Maintainer clarification that TODO carries work management, followed by the request
   to use Velocity's own framework for future strategic goal-setting.
 - Context: [VEL-PF-1](PORTFOLIO.md#vel-pf-1--decision-aware-work-and-portable-records).
-- Completion: 2026-09-21; [work semantics](docs/WORK-MANAGEMENT.md),
-  [Markdown binding](templates/work-tracker.md), this queue, [artifact index](ARTIFACTS.md),
+- Completion: 2026-09-21; [work semantics](../../docs/WORK-MANAGEMENT.md),
+  [Markdown binding](../../templates/work-tracker.md), this queue, [artifact index](ARTIFACTS.md),
   and [VEL-PF-2](PORTFOLIO.md#vel-pf-2--strategic-goal-setting), checked in the review walkthrough.
 - History: 2026-09-21, Coordinator implemented and reviewed the requested records;
   goal-setting execution remains excluded.
@@ -107,7 +107,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
   Maintainer acceptance, merge, release, and live pilots are separate outcomes.
 - Source: framework proof and closeout obligations for the authorized change.
 - Context: [VEL-PF-1](PORTFOLIO.md#vel-pf-1--decision-aware-work-and-portable-records).
-- Completion: 2026-09-21; [review and proof](examples/decision-levels/README.md), 17 passing
+- Completion: 2026-09-21; [review and proof](../../examples/decision-levels/README.md), 17 passing
   file-support tests, local link/anchor and whitespace checks, and
   [draft PR #14](https://github.com/solidcitizen/velocity/pull/14) updated and read back with
   foundation commit `edbeb54`. No policy acceptance or release is claimed.
@@ -122,7 +122,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Owner: Coordinator; Maintainer selects pilot scope and responsible operator.
 - Scope / done when: two named AI integrations continue from a shared project entry point and
   demonstrate authorized changes, interruption/recovery, conflicts, and current views.
-- Source / uncertainty: [existing qualification gap](examples/portable-records/QUALIFICATION.md);
+- Source / uncertainty: [existing qualification gap](../../examples/portable-records/QUALIFICATION.md);
   pilot project/configurations, access boundary, capacity, and dates are not selected.
 - Context: `VEL-PF-1`; outside the present implementation tranche's execution authorization.
 
@@ -132,7 +132,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Owner: Coordinator; Maintainer selects destination and migration owner.
 - Scope / done when: real destination reads/authorized writes, mapping, cutover, evidence
   access, and recovery after a destination update are proven within a selected pilot.
-- Source / uncertainty: [tracker handoff contract](templates/tracker-binding-and-handoff.md);
+- Source / uncertainty: [tracker handoff contract](../../templates/tracker-binding-and-handoff.md);
   destination, credentials/access, project, capacity, and dates are not selected.
 - Context: `VEL-PF-1`; no live migration is authorized by this backlog entry.
 

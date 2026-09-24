@@ -104,10 +104,9 @@ standard and human–agent responsibility guidance. See the
 This development support does not change the current canon release or qualify an AI provider
 or external tracker without its scenario evidence.
 
-Velocity is trying this structure in its own scoped [artifact index](ARTIFACTS.md),
-[work queue](TODO.md), [initiative plan](INITIATIVES.md), and [portfolio](PORTFOLIO.md).
-Strategic goal-setting is recorded there as a future portfolio opportunity, not committed
-delivery work.
+A dated snapshot of Velocity's own trial of this structure is kept as a
+[worked example](examples/velocity-self-adoption/README.md). Strategic goal-setting is recorded
+there as a future portfolio opportunity, not committed delivery work.
 
 ## Feedback
 

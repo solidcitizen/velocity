@@ -94,7 +94,7 @@ across AI vendors. Task throughput alone is not evidence of better decisions.
 Self-actualization, as a direction for this framework, means helping a governed entity
 establish goals and find ways to achieve them. It does not give an agent permission to adopt
 its own goals or rewrite the standards used to evaluate its work. Strategic goal-setting is
-the next proposed frontier, recorded as [VEL-PF-2](PORTFOLIO.md#vel-pf-2--strategic-goal-setting)
+the next proposed frontier, recorded as [VEL-PF-2](examples/velocity-self-adoption/PORTFOLIO.md#vel-pf-2--strategic-goal-setting)
 in Velocity's portfolio. It remains a future candidate until the Maintainer selects a bounded
 discovery effort with an authority and evidence contract.
 

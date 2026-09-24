@@ -195,4 +195,4 @@ that PMI supplies, or lacks, a complete lifecycle for entities forming and pursu
 goals. Keep that question open in the future discovery scope.
 
 See the [scenario review](../examples/decision-levels/README.md#reference-method-review) and
-Velocity's [own artifact mapping](../ARTIFACTS.md) for the worked application and proof limits.
+Velocity's [own artifact mapping](../examples/velocity-self-adoption/ARTIFACTS.md) for the worked application and proof limits.

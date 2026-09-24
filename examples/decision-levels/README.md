@@ -24,14 +24,14 @@ No private project records are needed to inspect them.
 
 ## Velocity's own application
 
-[ARTIFACTS.md](../../ARTIFACTS.md) declares the inherited context, scope, authority, Markdown
-binding, and recovery procedure. [TODO.md](../../TODO.md) tracks the bounded implementation
-and its proof obligations. [PORTFOLIO.md](../../PORTFOLIO.md) records the currently authorized
+[ARTIFACTS.md](../velocity-self-adoption/ARTIFACTS.md) declares the inherited context, scope, authority, Markdown
+binding, and recovery procedure. [TODO.md](../velocity-self-adoption/TODO.md) tracks the bounded implementation
+and its proof obligations. [PORTFOLIO.md](../velocity-self-adoption/PORTFOLIO.md) records the currently authorized
 foundation separately from future strategic goal-setting. `VEL-PF-2` is a candidate with no
 execution capacity, date, or corresponding committed task. The proposal branch's source files
 are its current view; the earlier local HTML snapshot is not an adopted source for this queue.
 
-[INITIATIVES.md](../../INITIATIVES.md) now carries `VEL-INI-1`'s outcome brief, plan, assessment,
+[INITIATIVES.md](../velocity-self-adoption/INITIATIVES.md) now carries `VEL-INI-1`'s outcome brief, plan, assessment,
 risks and review trigger. Portfolio selection and work execution remain in their respective
 sources. The artifact index maps all three levels to the existing proposal/PR decision route.
 
