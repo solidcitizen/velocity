@@ -7,6 +7,7 @@ Velocity template support. Dependency-free: Python 3.9+ standard library only.
     python3 render-checkin-desk.py desk.json --out desk.html
     python3 render-checkin-desk.py desk.json --fragment      # title+style+main only (artifact hosting)
     python3 render-checkin-desk.py desk.json --check         # validate only, no output
+    python3 render-checkin-desk.py desk.json --check --require-decision-levels  # management profile
 
 The data file is the single source of truth; the page is derived from it. Totals, ordering,
 reply examples, and the header stamp are computed here, never typed by hand. Validation
@@ -21,10 +22,11 @@ import re
 import sys
 from datetime import datetime, timedelta
 
-CANON = "v1.7.1"
+CANON = "v2.0.0-experimental.1"
 KINDS = ("decide", "do", "team")
 STATES = ("open", "answered", "withdrawn")
 TEAM_STATUS = ("done", "in motion", "blocked", "reversed")
+DECISION_LEVELS = ("work", "initiative", "portfolio")
 TOKENS = {
     "bg": "#f7f7f8", "surface": "#ffffff", "border": "#e2e2e6", "text": "#1b1c1f",
     "text-muted": "#5b5d66", "accent": "#2f5fd6",
@@ -43,6 +45,12 @@ TOKENS_DARK = {
     "answered": "#6bc796", "answered-bg": "#142a1f", "answered-border": "#234d35",
     "mono-bg": "#26282e",
 }
+
+REPAIR_CSS = """  .repair { background: var(--decide-bg); border: 1px solid var(--decide-border); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; }
+  .repair h2 { font-size: 1rem; margin: 0 0 6px; color: var(--decide); }
+  .repair ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
+  .missing { color: var(--decide); }
+"""
 
 CSS = """
   * { box-sizing: border-box; }
@@ -108,7 +116,9 @@ def parse_dt(value):
         return None
 
 
-def validate(d):
+def validate(d, require_decision_levels=False):
+    if not isinstance(d, dict):
+        return ["top level: expected an object"]
     errs = []
     for key in ("project", "operator", "tz_label", "maintainer", "updated"):
         if not isinstance(d.get(key), str) or not d[key].strip():
@@ -116,12 +126,15 @@ def validate(d):
     if parse_dt(d.get("updated")) is None:
         errs.append("top level: 'updated' must be an ISO datetime, e.g. 2026-09-19T21:21")
     entries = d.get("entries")
-    if not isinstance(entries, list) or not entries:
-        return errs + ["top level: 'entries' must be a non-empty list"]
+    if not isinstance(entries, list):
+        return errs + ["top level: 'entries' must be a list (an empty desk is valid)"]
     ids = []
     for i, e in enumerate(entries):
+        if not isinstance(e, dict):
+            errs.append(f"entry {i}: expected an object")
+            continue
         tag = f"entry {i} (id {e.get('id')!r})"
-        if not isinstance(e.get("id"), int) or e["id"] < 1:
+        if type(e.get("id")) is not int or e["id"] < 1:
             errs.append(f"{tag}: 'id' must be a positive integer")
             continue
         ids.append(e["id"])
@@ -131,6 +144,10 @@ def validate(d):
             continue
         if not isinstance(e.get("title"), str) or not e["title"].strip():
             errs.append(f"{tag}: 'title' is required")
+        if "decision_level" in e and e["decision_level"] not in DECISION_LEVELS:
+            errs.append(f"{tag}: 'decision_level' must be one of {DECISION_LEVELS}")
+        if require_decision_levels and kind == "decide" and e.get("state") == "open" and "decision_level" not in e:
+            errs.append(f"{tag}: open Decide needs 'decision_level' in the management profile")
         if kind == "team":
             for key in ("date", "owner", "why"):
                 if not isinstance(e.get(key), str) or not e[key].strip():
@@ -178,8 +195,14 @@ def validate(d):
         missing = sorted(set(range(1, max(ids) + 1)) - set(ids))
         if missing:
             errs.append(f"ids: missing {missing}; ids are never renumbered or dropped (record a withdrawn entry instead)")
-    theme = d.get("theme", {})
-    for name in list(theme.keys()) + list(d.get("theme_dark", {}).keys()):
+    names = []
+    for key in ("theme", "theme_dark"):
+        value = d.get(key, {})
+        if isinstance(value, dict):
+            names += list(value.keys())
+        else:
+            errs.append(f"top level: '{key}' must be an object of color tokens")
+    for name in names:
         if name not in TOKENS:
             errs.append(f"theme: unknown token '{name}'; only these vary per project: {sorted(TOKENS)}")
     return errs
@@ -213,48 +236,86 @@ def ck(n):
     return f"CK-{n}"
 
 
+def level_label(e):
+    return e["decision_level"].capitalize() if e.get("decision_level") in DECISION_LEVELS else ""
+
+
+def ledger_level(e):
+    return f' <span class="date">· Decision level: {level_label(e)}</span>' if level_label(e) else ""
+
+
 def render_open(e, tz):
     kind = e["kind"]
     badge = "Decide" if kind == "decide" else "Do"
     head = f'<h3><span class="id">{ck(e["id"])}</span> {inline(e["title"])} <span class="badge">{badge}</span></h3>'
-    if e.get("owned_by"):
+    if valid_pointer(e.get("owned_by")):
         ob = e["owned_by"]
+        level = f'<p class="owned">Decision level: {level_label(e)}</p>' if level_label(e) else ""
         return (f'<article class="ask {kind}">{head}'
+                f'{level}'
                 f'<p class="owned">Owned by {inline(ob["project"])} {ck(ob["id"])}. Answer it there; this entry closes with it.</p></article>')
-    rows = [("What it is", inline(e["what"]))]
+    rows = [("Decision level", level_label(e))] if level_label(e) else []
+    rows.append(("What it is", field(e, "what")))
     if kind == "decide":
-        rows.append(("Options", "<ul>" + "".join(f"<li>{inline(o)}</li>" for o in e["options"]) + "</ul>"))
-        rows.append(("Lean", f'<span class="lean">{inline(e["lean"])}</span> — {inline(e["lean_why"])}'))
-    nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
+        opts = e.get("options")
+        opts = "<ul>" + "".join(f"<li>{inline(o)}</li>" for o in opts) + "</ul>" if isinstance(opts, list) and opts else MISSING
+        rows.append(("Options", opts))
+        rows.append(("Lean", f'<span class="lean">{field(e, "lean")}</span> — {field(e, "lean_why")}'))
+    nb = parse_dt(e.get("needed_by"))
     when = fmt_dt(nb, tz) if nb else "no date"
-    rows.append(("Needed by", f"{when} — {inline(e['waits'])}"))
+    rows.append(("Needed by", f"{when} — {field(e, 'waits')}"))
     dl = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows)
     return f'<article class="ask {kind}">{head}<dl>{dl}</dl></article>'
 
 
 def render_team(e):
-    status = inline(e["status"]) + (f": {inline(e['status_text'])}" if e.get("status_text") else "")
-    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["date"])}, {inline(e["owner"])})</span> '
-            f'— {inline(e["title"])} — <strong>Why:</strong> {inline(e["why"])} — <strong>Status:</strong> {status}</li>')
+    status = field(e, "status") + (f": {inline(e['status_text'])}" if e.get("status_text") else "")
+    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["date"])}, {field(e, "owner")})</span>{ledger_level(e)} '
+            f'— {inline(e["title"])} — <strong>Why:</strong> {field(e, "why")} — <strong>Status:</strong> {status}</li>')
 
 
 def render_answered(e):
-    text = e["ruling"]
+    text = e.get("ruling") if isinstance(e.get("ruling"), str) else ""
     if e["state"] == "withdrawn":
         text = re.sub(r"^\s*withdrawn\s*[—–:-]\s*", "", text, flags=re.I)  # tolerate a repeated leading word
         text = "withdrawn — " + text
-    ruling = inline(text)
+    ruling = inline(text) if text.strip() else MISSING
     owner = ""
-    if e.get("owned_by"):
+    if valid_pointer(e.get("owned_by")):
         ob = e["owned_by"]
         owner = f' <span class="date">(owned by {inline(ob["project"])} {ck(ob["id"])})</span>'
-    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["answered_on"])})</span> '
+    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["answered_on"])})</span>{ledger_level(e)} '
             f'— {inline(e["title"])} — <strong>Ruling:</strong> {ruling}{owner}</li>')
+
+
+MISSING = '<em class="missing">missing; see Needs repair</em>'
+
+
+def field(e, key):
+    v = e.get(key)
+    return inline(v) if isinstance(v, str) and v.strip() else MISSING
+
+
+def valid_pointer(ob):
+    return isinstance(ob, dict) and isinstance(ob.get("project"), str) and isinstance(ob.get("id"), int)
+
+
+def renderable(e):
+    """An entry the page can place: identity, kind, title, and the date or state that places it."""
+    if not isinstance(e, dict) or type(e.get("id")) is not int or e["id"] < 1:
+        return False
+    if e.get("kind") not in KINDS or not isinstance(e.get("title"), str):
+        return False
+    if e["kind"] == "team":
+        return parse_dt(e.get("date")) is not None
+    if e.get("state") not in STATES:
+        return False
+    return e["state"] == "open" or parse_dt(e.get("answered_on")) is not None
 
 
 def sort_open(entries):
     def key(e):
-        nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
+        nb = parse_dt(e.get("needed_by"))
         return (nb is None, nb or datetime.max, e["id"])
     return sorted(entries, key=key)
 
@@ -263,25 +324,29 @@ def css_block(tokens):
     return "".join(f"    --{k}: {v};\n" for k, v in tokens.items())
 
 
-def render(d, fragment=False):
-    tz = html.escape(d["tz_label"], quote=True)
-    updated = parse_dt(d["updated"])
-    entries = d["entries"]
-    open_decide = [e for e in entries if e["kind"] == "decide" and e.get("state") == "open" and not e.get("owned_by")]
-    open_do = [e for e in entries if e["kind"] == "do" and e.get("state") == "open" and not e.get("owned_by")]
-    pointers = [e for e in entries if e["kind"] in ("decide", "do") and e.get("state") == "open" and e.get("owned_by")]
+def render(d, fragment=False, errors=()):
+    tz = html.escape(str(d.get("tz_label", "")), quote=True)
+    updated = parse_dt(d.get("updated")) or datetime.now().replace(second=0, microsecond=0)
+    raw = d.get("entries") if isinstance(d.get("entries"), list) else []
+    entries = [e for e in raw if renderable(e)]
+    skipped = len(raw) - len(entries)
+    open_decide = [e for e in entries if e["kind"] == "decide" and e["state"] == "open" and not valid_pointer(e.get("owned_by"))]
+    open_do = [e for e in entries if e["kind"] == "do" and e["state"] == "open" and not valid_pointer(e.get("owned_by"))]
+    pointers = [e for e in entries if e["kind"] in ("decide", "do") and e["state"] == "open" and valid_pointer(e.get("owned_by"))]
     team = sorted([e for e in entries if e["kind"] == "team"], key=lambda e: (parse_dt(e["date"]), e["id"]), reverse=True)
     answered = sorted([e for e in entries if e["kind"] in ("decide", "do") and e.get("state") in ("answered", "withdrawn")],
                       key=lambda e: (parse_dt(e["answered_on"]), e["id"]), reverse=True)
     week_end = updated + timedelta(days=7)
     deadlines = sum(1 for e in open_decide + open_do
-                    if e.get("needed_by") and updated <= parse_dt(e["needed_by"]) <= week_end)
+                    if parse_dt(e.get("needed_by")) and updated <= parse_dt(e["needed_by"]) <= week_end)
 
-    light = dict(TOKENS, **d.get("theme", {}))
-    dark = dict(TOKENS_DARK, **d.get("theme_dark", {}))
+    theme = d.get("theme") if isinstance(d.get("theme"), dict) else {}
+    theme_dark = d.get("theme_dark") if isinstance(d.get("theme_dark"), dict) else {}
+    light = dict(TOKENS, **{k: v for k, v in theme.items() if k in TOKENS})
+    dark = dict(TOKENS_DARK, **{k: v for k, v in theme_dark.items() if k in TOKENS})
     style = (f"<style>\n  :root {{\n    color-scheme: light dark;\n{css_block(light)}  }}\n"
              f"  @media (prefers-color-scheme: dark) {{\n    :root:not([data-theme=\"light\"]) {{\n{css_block(dark)}    }}\n  }}\n"
-             f"  :root[data-theme=\"dark\"] {{\n{css_block(dark)}  }}\n{CSS}</style>")
+             f"  :root[data-theme=\"dark\"] {{\n{css_block(dark)}  }}\n{CSS}{REPAIR_CSS if errors else ''}</style>")
 
     def section(sid, heading, note, body):
         return (f'<section class="group" aria-labelledby="{sid}-heading"><h2 id="{sid}-heading">{heading}</h2>'
@@ -305,10 +370,18 @@ def render(d, fragment=False):
     reply_body = ('<div class="how-to-reply"><p>Reply by ID, in chat. Examples:</p><ul>'
                   + "".join(f"<li>{x}</li>" for x in examples) + "</ul></div>")
 
-    title = f"{d['project']} Check-in Desk"
+    repair = ""
+    if errors:
+        lines = "".join(f"<li>{inline(x)}</li>" for x in errors)
+        skip_note = f" {skipped} entr{'y' if skipped == 1 else 'ies'} could not be placed on the page at all." if skipped else ""
+        repair = (f'<div class="repair" role="alert"><h2>Needs repair ({len(errors)})</h2><p class="group-note">'
+                  f'The data file breaks the contract. The page is shown best-effort so no open ask is hidden; '
+                  f'the maintainer fixes the file, not the page.{skip_note}</p><ul>{lines}</ul></div>\n')
+    title = f"{d.get('project') or '<Project>'} Check-in Desk"
     main = (
         f"<main>\n<header class=\"page-head\"><h1>{inline(title)}</h1>"
-        f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · operator {inline(d['operator'])} · maintained by {inline(d['maintainer'])}</p></header>\n"
+        f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · operator {inline(d.get('operator', ''))} · maintained by {inline(d.get('maintainer', ''))}</p></header>\n"
+        + repair +
         f"<div class=\"totals\" aria-label=\"Header totals\">"
         f"<div class=\"stat decide\"><strong>{len(open_decide)}</strong><span>Decisions waiting</span></div>"
         f"<div class=\"stat do\"><strong>{len(open_do)}</strong><span>Actions only you can take</span></div>"
@@ -335,26 +408,30 @@ def main(argv=None):
     ap.add_argument("--out", help="write HTML here instead of stdout")
     ap.add_argument("--fragment", action="store_true", help="emit title+style+main only (for artifact hosting)")
     ap.add_argument("--check", action="store_true", help="validate only")
+    ap.add_argument("--require-decision-levels", action="store_true",
+                    help="require work/initiative/portfolio qualification on every open Decide, including pointers")
     args = ap.parse_args(argv)
     with open(args.data, encoding="utf-8") as f:
         d = json.load(f)
-    errs = validate(d)
+    errs = validate(d, require_decision_levels=args.require_decision_levels)
     if errs:
         print("Desk data does not satisfy the contract:", file=sys.stderr)
         for e in errs:
             print("  - " + e, file=sys.stderr)
-        return 1
+        if args.check or not isinstance(d, dict):
+            return 1
+        print("Rendering best-effort with a repair block; fix the data file. Exit code 1.", file=sys.stderr)
     if args.check:
         n = len(d["entries"])
-        print(f"ok: {d['project']} Check-in Desk, {n} entries, highest id CK-{max(e['id'] for e in d['entries'])}")
+        print(f"ok: {d['project']} Check-in Desk, {n} entries, highest id CK-{max((e['id'] for e in d['entries']), default=0)}")
         return 0
-    out = render(d, fragment=args.fragment)
+    out = render(d, fragment=args.fragment, errors=errs)
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             f.write(out)
     else:
         sys.stdout.write(out)
-    return 0
+    return 1 if errs else 0
 
 
 if __name__ == "__main__":

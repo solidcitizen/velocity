@@ -60,6 +60,42 @@ authority over goals, criteria, and rules with a human. Neither work is a method
 implements, and neither author has reviewed this standard. See the
 [manifesto](MANIFESTO.md#one-core-two-lifecycles) for the direction those influences inform.
 
+## Management and AI Practice Reviewed 2026-09-21
+
+Velocity's experimental decision-level and portable-records templates, and the
+[management reference](examples/management-reference/README.md) example, were informed by
+established management practice. These sources are credited rather than adapted: Velocity
+describes its own method in its own words, implements none of them, and claims no certification
+or compliance with any of them.
+
+Separating project and portfolio decisions, and staging investment decisions, are long-standing
+practice. Jean Miller's
+[2002 PMI conference paper on portfolio management](https://www.pmi.org/learning/library/proven-project-portfolio-management-process-8503)
+discusses selection, strategic alignment, and capacity. The Stage-Gate model's
+[Discovery-to-Launch description](https://www.stage-gate.com/about/stage-gate-innovation-performance-framework/discovery-to-launch-process/)
+separates evidence-producing stages from resource and continuation decisions. Stage-Gate is a
+trademark of its owners; Velocity uses the generic word "gate" for its own decision points.
+
+PMI publications reviewed as public overviews, 2026-09-21:
+
+| Source | Supported point | How it informed Velocity's reference design |
+| --- | --- | --- |
+| [PMBOK Guide, Eighth Edition (2025)](https://www.pmi.org/standards/pmbok) | PMI's public overview emphasizes organizational value, accountability, and adapting practices/tools to context. | Keep the baseline useful at small scale; tailor the machinery. |
+| [Governance of Portfolios, Programs, and Projects: A Practice Guide (2016)](https://www.pmi.org/standards/governance) | Its stated purpose distinguishes governance levels while identifying common elements. | Shared decision discipline with level-specific responsibilities. |
+| [The Standard for Program Management, Fifth Edition (2024)](https://www.pmi.org/standards/program-management-fifth-edition) | Related projects are coordinated toward benefits beyond their individual contributions. | Initiative/program reviews assess outcomes and dependencies, not just task counts. |
+| [The Standard for Portfolio Management, Fourth Edition (2017)](https://www.pmi.org/standards/for-portfolio-management) | Portfolios group projects, programs, and other activities around strategic objectives; the standard is principle-based. | Portfolio decisions concern the mix of efforts and strategic contribution. |
+| [The Standard for Artificial Intelligence in Portfolio, Program and Project Management (2026)](https://www.pmi.org/standards/artificial-intelligence) | Its overview covers applying AI and managing AI initiatives, with technology-independent guidance and human oversight. | AI governance is established adjacent work that this method must acknowledge. |
+| [PMI's human–agent RACI guidance (2026)](https://www.pmi.org/blog/stakeholder-management-raci) | Agents may perform bounded work; humans retain accountability, approval and escalation ownership. | Separate executor identity from accountable ownership and document decision rights. |
+
+These are public publication overviews and practitioner guidance, not a clause-by-clause review
+of the full standards. They support differentiated governance and tailoring; they do not
+establish a requirement for three software boards. AI governance and adapting management
+practice for agents are established adjacent work, not an empty field: a complete comparison with
+PMI's AI standard is needed before claiming that Velocity fills an uncovered gap in autonomous
+entity governance or strategic goal-setting, and the public sources reviewed do not establish
+that PMI supplies, or lacks, a complete lifecycle for entities forming and pursuing their own
+goals.
+
 ## What Velocity Does Not Provide
 
 Velocity does not provide:
@@ -70,7 +106,7 @@ Velocity does not provide:
 - subagent communication protocols
 - a universal benchmark, project-specific graders, or measured performance guarantees
 - tracing, telemetry, or observability infrastructure
-- planning cadence, estimation, or roadmap process
+- a mandatory planning cadence, estimation system, or roadmap process
 
 Those belong to the project overlay, the chosen toolchain, or the team's delivery method.
 Velocity v1.4.0 adds optional evaluation and measurement templates, not an execution engine.

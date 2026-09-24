@@ -52,6 +52,12 @@ Shared-control-plane changes need explicit ownership and disposition. Do not rel
 
 ## Evaluating Automation Changes
 
+The optional [decision-level profile](../templates/decision-levels.md) concerns the level of a decision,
+not a new control plane. Project goals, investment decisions, and operating plans stay with
+their named project or upstream authorities. Reusable rules for how AI reads, proposes, and
+acts on them remain Velocity process evolution. A delivery Coordinator can route a portfolio
+decision without gaining the authority to make it.
+
 Product proof and automation proof answer different questions: whether the delivered system
 works, and whether the agent configuration still performs its assigned work correctly. Projects
 can use the [Agent Evaluation Pack](../templates/agent-evaluation-pack.md) to compare model,

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>&lt;Project&gt; Work Board</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f8;
+    --surface: #ffffff;
+    --border: #e2e2e6;
+    --text: #1b1c1f;
+    --text-muted: #5b5d66;
+    --accent: #2f5fd6;
+    --doing: #2f5fd6;
+    --doing-bg: #eaf0fc;
+    --doing-border: #c5d4f5;
+    --committed: #4b5563;
+    --committed-bg: #f0f1f4;
+    --committed-border: #d5d8df;
+    --blocked: #b0281f;
+    --blocked-bg: #fbeceb;
+    --blocked-border: #f0c6c2;
+    --held: #a15c00;
+    --held-bg: #fdf3e2;
+    --held-border: #f0d9ad;
+    --backlog: #6b7280;
+    --backlog-bg: #f7f7f8;
+    --backlog-border: #e2e2e6;
+    --control: #5b3fb5;
+    --control-bg: #f0ecfb;
+    --control-border: #d6ccf2;
+    --done: #1f7a4d;
+    --done-bg: #eaf6ef;
+    --done-border: #c7e8d5;
+    --dropped: #6b7280;
+    --dropped-bg: #f3f4f6;
+    --dropped-border: #e2e2e6;
+    --mono-bg: #eef0f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+    --bg: #16171a;
+    --surface: #1e1f23;
+    --border: #303239;
+    --text: #eceef2;
+    --text-muted: #a3a6b0;
+    --accent: #7fa2f7;
+    --doing: #7fa2f7;
+    --doing-bg: #161f33;
+    --doing-border: #26365a;
+    --committed: #b3b8c4;
+    --committed-bg: #23252b;
+    --committed-border: #3a3d46;
+    --blocked: #e8827a;
+    --blocked-bg: #2c1917;
+    --blocked-border: #4a2521;
+    --held: #e3a94a;
+    --held-bg: #2c2413;
+    --held-border: #4a3a17;
+    --backlog: #9aa0ad;
+    --backlog-bg: #1c1d21;
+    --backlog-border: #303239;
+    --control: #b9a3f0;
+    --control-bg: #211b33;
+    --control-border: #3b2f5c;
+    --done: #6bc796;
+    --done-bg: #142a1f;
+    --done-border: #234d35;
+    --dropped: #9aa0ad;
+    --dropped-bg: #1f2024;
+    --dropped-border: #303239;
+    --mono-bg: #26282e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16171a;
+    --surface: #1e1f23;
+    --border: #303239;
+    --text: #eceef2;
+    --text-muted: #a3a6b0;
+    --accent: #7fa2f7;
+    --doing: #7fa2f7;
+    --doing-bg: #161f33;
+    --doing-border: #26365a;
+    --committed: #b3b8c4;
+    --committed-bg: #23252b;
+    --committed-border: #3a3d46;
+    --blocked: #e8827a;
+    --blocked-bg: #2c1917;
+    --blocked-border: #4a2521;
+    --held: #e3a94a;
+    --held-bg: #2c2413;
+    --held-border: #4a3a17;
+    --backlog: #9aa0ad;
+    --backlog-bg: #1c1d21;
+    --backlog-border: #303239;
+    --control: #b9a3f0;
+    --control-bg: #211b33;
+    --control-border: #3b2f5c;
+    --done: #6bc796;
+    --done-bg: #142a1f;
+    --done-border: #234d35;
+    --dropped: #9aa0ad;
+    --dropped-bg: #1f2024;
+    --dropped-border: #303239;
+    --mono-bg: #26282e;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  main { max-width: 820px; margin: 0 auto; padding-block: 24px 64px; padding-inline: 16px; }
+  header.page-head h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .updated { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 16px; }
+  .totals { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 12px; }
+  .counts { color: var(--text-muted); font-size: 0.86rem; margin: 0 0 28px; }
+  .counts b { color: var(--text); font-weight: 600; }
+  h3.grp { font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin: 14px 0 8px; }
+  .ledger li.unproven { background: var(--surface); border-style: dashed; color: var(--text-muted); }
+  .totals .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; text-align: center; }
+  .totals .stat strong { display: block; font-size: 1.6rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .totals .stat span { color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .totals .stat.doing strong { color: var(--doing); }
+  .totals .stat.waiting strong { color: var(--blocked); }
+  .totals .stat.due strong { color: var(--held); }
+  .totals .stat.never strong { color: var(--blocked); }
+  section.group { margin-bottom: 32px; }
+  section.group > h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  section.group > .group-note { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 14px; }
+  .item { background: var(--surface); border: 1px solid var(--border); border-left-width: 4px; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+  .item.doing { border-left-color: var(--doing); }
+  .item.committed { border-left-color: var(--committed); }
+  .item.blocked { border-left-color: var(--blocked); }
+  .item.held { border-left-color: var(--held); }
+  .item.backlog { border-left-color: var(--backlog); }
+  .item h3 { font-size: 1rem; margin: 0 0 8px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .id { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; padding: 1px 6px; border-radius: 5px; background: var(--mono-bg); color: var(--text-muted); }
+  .item dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 10px; }
+  .item dt { color: var(--text-muted); font-size: 0.82rem; white-space: nowrap; padding-top: 1px; }
+  .item dd { margin: 0; font-size: 0.94rem; }
+  .badge { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 999px; margin-left: auto; }
+  .item.doing .badge { background: var(--doing-bg); color: var(--doing); border: 1px solid var(--doing-border); }
+  .item.committed .badge { background: var(--committed-bg); color: var(--committed); border: 1px solid var(--committed-border); }
+  .item.blocked .badge { background: var(--blocked-bg); color: var(--blocked); border: 1px solid var(--blocked-border); }
+  .item.held .badge { background: var(--held-bg); color: var(--held); border: 1px solid var(--held-border); }
+  .item.backlog .badge { background: var(--backlog-bg); color: var(--backlog); border: 1px solid var(--backlog-border); }
+  .tag { display: inline-block; font-size: 0.72rem; padding: 1px 7px; border-radius: 999px; background: var(--mono-bg); color: var(--text-muted); margin-left: 6px; }
+  .tag.warn { background: var(--held-bg); color: var(--held); border: 1px solid var(--held-border); }
+  .tag.benefit { background: var(--done-bg); color: var(--done); border: 1px solid var(--done-border); }
+  .repair { background: var(--blocked-bg); border: 1px solid var(--blocked-border); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; }
+  .repair h2 { font-size: 1rem; margin: 0 0 6px; color: var(--blocked); }
+  .repair ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
+  .ledger { list-style: none; margin: 0; padding: 0; }
+  .ledger li { border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 0.92rem; }
+  .ledger.controls li { background: var(--control-bg); border-color: var(--control-border); }
+  .ledger.controls .id { color: var(--control); background: transparent; padding-left: 0; }
+  .ledger.done li { background: var(--done-bg); border-color: var(--done-border); }
+  .ledger.done .id { color: var(--done); background: transparent; padding-left: 0; }
+  .ledger.dropped li { background: var(--dropped-bg); border-color: var(--dropped-border); }
+  .ledger.dropped .id { color: var(--dropped); background: transparent; padding-left: 0; }
+  .ledger .date { color: var(--text-muted); font-size: 0.85rem; }
+  .overdue { color: var(--blocked); font-weight: 600; }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88rem; background: var(--mono-bg); border-radius: 5px; padding: 1px 5px; }
+  footer.page-foot { color: var(--text-muted); font-size: 0.8rem; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 12px; }
+  @media (max-width: 560px) {
+    .totals { grid-template-columns: 1fr 1fr; }
+    .totals .stat:last-child { grid-column: span 2; }
+    .item dl { grid-template-columns: 1fr; gap: 2px 0; }
+    .item dt { padding-top: 8px; }
+  }
+</style>
+</head>
+<body>
+<main>
+<header class="page-head"><h1>&lt;Project&gt; Work Board</h1><p class="updated">Last updated: Mon 2026-01-05 09:00 &lt;PT&gt; · maintained by &lt;role that keeps this board current&gt; · desk: &lt;Project&gt; Check-in Desk</p></header>
+<div class="totals" aria-label="Header totals"><div class="stat doing"><strong>2</strong><span>In motion</span></div><div class="stat waiting"><strong>2</strong><span>Waiting</span></div><div class="stat"><strong>1</strong><span>Backlog</span></div><div class="stat due"><strong>2</strong><span>Due this week</span></div><div class="stat never"><strong>0</strong><span>Controls never run</span></div></div>
+<p class="counts">Open work by initiative: <b>no initiative</b> 4 · <b>&lt;optional initiative&gt;</b> 1 · <b>1</b> from peers · <b>1</b> run by software · <b>0</b> agent-scheduled · <b>0</b> person-triggered</p>
+<section class="group" aria-labelledby="motion-heading"><h2 id="motion-heading">In motion (2)</h2><p class="group-note">Doing now, then committed to a date or a week. Ordered by needed-by.</p><article class="item doing"><h3><span class="id">WI-1</span> &lt;what is being done&gt;<span class="tag">&lt;optional initiative&gt;</span> <span class="badge">doing</span></h3><dl><dt>Owner</dt><dd>&lt;role&gt;</dd><dt>Belongs to</dt><dd>&lt;tranche or issue record, e.g. issues/0042.md&gt;</dd><dt>Needed by</dt><dd>Fri 2026-01-09 17:00 &lt;PT&gt;</dd><dt>Unblocks</dt><dd>WI-2 (&lt;what is next&gt;)</dd></dl></article><article class="item committed"><h3><span class="id">WI-2</span> &lt;what is next&gt; <span class="badge">committed</span></h3><dl><dt>Owner</dt><dd>&lt;role&gt;</dd><dt>Belongs to</dt><dd>&lt;tranche&gt;</dd><dt>Depends on</dt><dd>WI-1 (&lt;what is being done&gt;)</dd><dt>Needed by</dt><dd>Fri 2026-01-16</dd></dl></article></section>
+<section class="group" aria-labelledby="waiting-heading"><h2 id="waiting-heading">Waiting (2)</h2><p class="group-note">Blocked on a desk ask or another item, or held for an event with a date. Nothing here is forgotten; each names what it waits on.</p><article class="item blocked"><h3><span class="id">WI-3</span> &lt;what cannot move until the Operator answers&gt; <span class="badge">blocked</span></h3><dl><dt>Owner</dt><dd>&lt;role&gt;</dd><dt>Belongs to</dt><dd>&lt;tranche&gt;</dd><dt>Waits on</dt><dd>the Operator's answer to &lt;project&gt; CK-7</dd></dl></article><article class="item held"><h3><span class="id">WI-4</span> &lt;what waits for an outside event&gt; <span class="badge">held</span></h3><dl><dt>Owner</dt><dd>&lt;role&gt;</dd><dt>Waits on</dt><dd>&lt;peer read-back or statement date&gt; — by Mon 2026-01-12</dd></dl></article></section>
+<section class="group" aria-labelledby="backlog-heading"><h2 id="backlog-heading">Backlog (1)</h2><p class="group-note">Wanted, not yet committed, by initiative.</p><article class="item backlog"><h3><span class="id">WI-5</span> &lt;wanted, not scheduled&gt;<span class="tag">size M</span><span class="tag benefit" title="&lt;what risk this retires&gt;">benefit M: risk retired</span> <span class="badge">backlog</span></h3><dl><dt>Owner</dt><dd>&lt;role&gt;</dd><dt>Origin</dt><dd>asked by &lt;peer project&gt;, their item 3</dd></dl></article></section>
+<section class="group" aria-labelledby="controls-heading"><h2 id="controls-heading">Controls (2)</h2><p class="group-note">Recurring assurance work. A control never leaves the board; its next due date is computed from its cadence. Daily controls are always due and are not counted in the week.</p><ul class="ledger controls"><li><span class="id">WI-6</span> &lt;recurring assurance work, e.g. monthly reconcile&gt; <span class="tag">monthly</span> <span class="tag">runs by software</span> <span class="date">(&lt;role&gt;)</span> — <strong>Last:</strong> 2025-12-31, proof &lt;receipt id or record path&gt; — <strong>Evidence:</strong> <code>&lt;path pattern where each completion&#x27;s receipt lives&gt;</code> — <strong>Next due:</strong> 2026-01-31</li><li><span class="id">WI-9</span> &lt;a control defined but not yet built&gt; <span class="tag">quarterly</span> <span class="date">(&lt;role&gt;)</span> — <strong>Not yet built</strong> — not counted as due until it exists</li></ul></section>
+<section class="group" aria-labelledby="done-heading"><h2 id="done-heading">Done (1)</h2><p class="group-note">Closed with proof, newest first, by initiative. The proof is cited, not judged here; a close without an artifact is shown lighter.</p><ul class="ledger done"><li><span class="id">WI-7</span> <span class="date">(2026-01-02, &lt;role&gt;)</span> — &lt;what was finished&gt; <span class="date">(&lt;tranche&gt;)</span><span class="tag warn" title="closed_on: &lt;why the date could not be confirmed&gt;">unconfirmed: closed_on</span> — <strong>Proof:</strong> &lt;review pack, handoff packet, closeout disposition, receipt or record path&gt;</li></ul></section>
+<section class="group" aria-labelledby="dropped-heading"><h2 id="dropped-heading">Dropped (1)</h2><p class="group-note">Closed without doing, newest first, with the reason. IDs never reused.</p><ul class="ledger dropped"><li><span class="id">WI-8</span> <span class="date">(2026-01-03)</span> — &lt;what was not done&gt; — <strong>Reason:</strong> &lt;why it no longer needs doing&gt;</li></ul></section>
+<footer class="page-foot">Built on the Velocity Work Board template (v2.0.0-experimental.1), rendered from the board data file. IDs are assigned once and never renumbered. Operator decisions live on the Check-in Desk, never here.</footer>
+</main>
+</body>
+</html>

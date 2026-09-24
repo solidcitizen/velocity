@@ -1,0 +1,48 @@
+{
+  "project": "Three-level example (synthetic)",
+  "operator": "Example owner",
+  "tz_label": "UTC",
+  "maintainer": "Example coordinator",
+  "updated": "2026-09-21T12:00",
+  "entries": [
+    {
+      "id": 1,
+      "kind": "decide",
+      "state": "open",
+      "decision_level": "work",
+      "title": "Choose which approved fix goes first",
+      "what": "WI-1 and WI-2 are authorized within INI-1. As work priority owner, the operator has reserved this customer priority choice; either order fits the current capacity.",
+      "options": ["WI-1 first: repair the export", "WI-2 first: repair the search"],
+      "lean": "WI-1 first",
+      "lean_why": "The example customer needs the export before using search.",
+      "needed_by": null,
+      "waits": "The two fixes wait for their order; no extra capacity is requested."
+    },
+    {
+      "id": 2,
+      "kind": "decide",
+      "state": "open",
+      "decision_level": "initiative",
+      "title": "Accept a narrower pilot outcome",
+      "what": "INI-1 could validate one workflow instead of two within the existing PF-1 envelope. The operator, acting as sponsor, owns changes to the accepted pilot outcome.",
+      "options": ["Validate one workflow with stronger evidence", "Retain the two-workflow outcome"],
+      "lean": "Validate one workflow",
+      "lean_why": "The narrower scope tests the highest-uncertainty outcome without new investment.",
+      "needed_by": null,
+      "waits": "The proposed scope change waits; already authorized work remains authorized."
+    },
+    {
+      "id": 3,
+      "kind": "decide",
+      "state": "open",
+      "decision_level": "portfolio",
+      "title": "Select whether to invest in the next discovery effort",
+      "what": "PF-2 is an unselected opportunity discovered while doing WI-3. The operator, acting as portfolio owner, must decide whether to allocate existing capacity to bounded discovery at the expense of another candidate.",
+      "options": ["Select PF-2 and allocate the proposed discovery capacity", "Defer PF-2 and retain the present allocation"],
+      "lean": "Defer until the tradeoff evidence is ready",
+      "lean_why": "The candidate has no accepted capacity envelope or comparative benefit evidence yet.",
+      "needed_by": null,
+      "waits": "PF-2 discovery cannot start without a recorded selection and capacity decision."
+    }
+  ]
+}

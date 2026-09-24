@@ -71,4 +71,3 @@ For workflow or operator-trust defects, closeout must state:
 - who had authority for the change
 
 If the direct scenario proof is missing, the work is not behavior-proven.
-

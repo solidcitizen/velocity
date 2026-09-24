@@ -13,6 +13,7 @@ Velocity is adopted through a thin project overlay.
 - templates for packets, tranches, closeout, review packs, role briefs, and the executive
   check-in desk
 - optional evaluation, automated-transition, and measured-pilot templates
+- optional development contracts for decision context, work semantics, and portable records
 
 ## Choose Your Scope
 
@@ -39,17 +40,24 @@ need nothing else.
 [enforcement field](../templates/adr-enforcement-field.md),
 [architecture decision records](../templates/architecture-decision-record.md), and
 [Control Planes](CONTROL-PLANES.md). Adopt it when an agent's output reaches a lane a person
-would otherwise have gated.
+would otherwise have gated. Experimental, opt-in: the
+[portable project records profile](../templates/portable-project-records.md) with its
+[artifact index](../templates/artifact-index.md), for continuing a project across agents and tools.
 
 **Entity.** Adds the operator's standing surfaces for a function or a company rather than a
 single project, beginning with the [Executive Check-in Desk](../templates/executive-checkin-desk.md).
 Adopt it where an operator sits outside day-to-day delivery and decisions would otherwise live in
-chat history.
+chat history. Experimental, opt-in: the [Work Board](../templates/work-board.md) or a
+[Markdown work tracker](../templates/work-tracker.md) under the [work contract](../templates/work-management.md),
+and the [file helper](../templates/project-records.md) that keeps desk and board data safe.
 
 **Portfolio** is emerging and is not yet a scope. One operator across several entities is a real
 position, and the only rule Velocity has for it today is the desk's cross-desk pointer. It is
 named in the [manifesto](../MANIFESTO.md#one-core-two-lifecycles) as direction so the gap is
-visible.
+visible. The experimental [decision levels](../templates/decision-levels.md),
+[management reference](../examples/management-reference/README.md), [decision records](../templates/decision-records.md)
+and [tracker binding](../templates/tracker-binding-and-handoff.md) are its first explorations; none
+of them is a scope or a requirement.
 
 ## What Stays In The Project Repo
 
@@ -94,6 +102,44 @@ A project overlay must define:
 Project overlays may specialize Velocity. They may not silently override core lifecycle governance.
 
 If a project needs to change a core Velocity rule, open a Velocity process-change proposal.
+
+## Pin a Release
+
+A project consumes Velocity at a released tag, never at a moving branch. Pick the release
+(`<tag>`, for example the current canon named in the README), record the resolved commit in the
+overlay, and upgrade only by a reviewed change to that pin.
+
+For a new project integration, from the consuming repository root (choose an unused path):
+
+```sh
+git submodule add https://github.com/solidcitizen/velocity.git vendor/velocity
+git -C vendor/velocity fetch origin tag <tag>
+git -C vendor/velocity checkout --detach <tag>
+git -C vendor/velocity rev-parse HEAD
+git add .gitmodules vendor/velocity
+```
+
+Commit the submodule pin with the project's overlay and entry-point changes after review.
+Use the project's established dependency location if it already has one. To update an
+existing clean Velocity submodule, first record its current commit and preserve local edits,
+then fetch the tag and check it out detached:
+
+```sh
+git -C vendor/velocity rev-parse HEAD
+git -C vendor/velocity fetch origin tag <tag>
+git -C vendor/velocity checkout --detach <tag>
+git add vendor/velocity
+```
+
+A project without submodules can clone the same fixed release into an unused location:
+
+```sh
+git clone --branch <tag> --depth 1 \
+  https://github.com/solidcitizen/velocity.git velocity-standard
+```
+
+Record the resolved commit. Reuse the whole pinned `templates/` directory; mixing helper,
+renderer, schema, and contract revisions is unsupported.
 
 ## Scaling The Role Split
 
@@ -149,6 +195,44 @@ time-zone label, and color tokens vary per project. An operator who runs several
 several desks, so the desk is a shared surface: a project that needs something the data file
 cannot express raises a Velocity proposal rather than building a local variant. Adopt it only where an operator genuinely sits outside day-to-day delivery
 and would otherwise have no single place to find what is still open.
+
+## Adopting Portable Project Records
+
+These profiles are experimental and opt-in. [Pin a release](#pin-a-release) first, then follow
+the profile's [adoption steps](../templates/portable-project-records.md#adopting-the-profile-in-a-project) and
+qualification limits. A project that adopts none of them stays exactly where it is.
+
+For the optional [Portable Project Records profile](../templates/portable-project-records.md), name a
+project-owned operational workspace and link one [artifact index](../templates/artifact-index.md)
+from the overlay and all agent entry files. Record responsible roles, audience, source/view
+locations, tool pin, update commands, writer coordination, and recovery. Public code and private
+operational records can have separate homes. Git/GitHub are optional storage/collaboration choices.
+
+A project can retain an authoritative [Markdown TODO](../templates/work-tracker.md), choose
+the structured [Work Board](../templates/work-board.md), or bind an existing tracker through the
+[Tracker Binding and Handoff](../templates/tracker-binding-and-handoff.md) record. Keep one
+authoritative backlog per declared scope. The [work contract](../templates/work-management.md) supplies
+state and completion meanings; import/retirement is necessary only for a chosen migration.
+The Desk remains the operator decision/action surface and can stay in
+place when work migrates. The [file helper](../templates/project-records.md) supplies a shared
+procedure for authorized AI sessions using JSON; it does not parse Markdown. Native panels
+remain optional views. Check the profile's
+qualification record before claiming cross-vendor or tracker-migration support.
+
+Declare the [decision context](../templates/decision-levels.md) in the existing overlay or index: purpose,
+selection/initiative owners, current authority and capacity assumptions, escalation, and review.
+The profile asks an adopting effort to acknowledge these levels; separate portfolio,
+business-case, resource, and gate records are conditional on the decisions involved. Use the
+[management record templates](../templates/decision-records.md) only where useful. Small projects
+can combine ownership and inherit a short context block; larger efforts link upstream systems.
+Existing work within its authority can proceed while unrelated upstream unknowns are resolved.
+This development profile is optional and does not change earlier conformance.
+
+Use the [standing management reference](../examples/management-reference/README.md) to map baseline work,
+initiative, and portfolio artifacts, their review triggers, and their decision route. Coverage
+can be combined in existing records. Default to a shared Check-in Desk within aligned
+ownership/access; split it for distinct authorities, accountable leads, or access/review needs.
+Status belongs in the management views. No new Desk filters or synchronization are implied.
 
 ## Overlay Experiments
 

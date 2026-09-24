@@ -100,4 +100,3 @@ Keep a tranche together when:
 - the same authority owner can accept the scope
 - the same branch can carry the work cleanly
 - the implementation and verification support one claim
-

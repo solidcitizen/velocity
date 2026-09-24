@@ -9,7 +9,7 @@ way most projects meet them, and they are written so that nothing stops at the e
 codebase.
 
 **Start with one project.** Adopt the [Delivery scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope),
-which is a handful of rules and two templates, on one bounded change. Nothing here limits you to
+which is a handful of rules and three short templates, on one bounded change. Nothing here limits you to
 one project, or to software: the scopes above it carry the same core outward to an automated
 handoff, to a function, and to a company. Take the scope you need and leave the rest.
 
@@ -78,6 +78,28 @@ artifacts and never re-teaches what you already run.
 Whichever you pick: read the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define a
 thin local overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded
 change. Velocity works with your chosen AI tools and delivery cadence.
+
+## Beyond the Delivery Scope: Experimental Templates
+
+Opt-in templates for projects that outgrow one project and one operator, placed by
+[scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope). None is required at any scope.
+
+- **Automation:** [portable project records](templates/portable-project-records.md) and an
+  [artifact index](templates/artifact-index.md), for continuing a project across agents and tools.
+- **Entity:** the [Work Board](templates/work-board.md), piloted on real work; the
+  [work-management contract](templates/work-management.md) that gives every way of keeping work
+  the same state meanings; a [Markdown work tracker](templates/work-tracker.md); and the
+  [file helper](templates/project-records.md) that keeps desk and board data safe.
+- **Portfolio, emerging:** [decision levels](templates/decision-levels.md),
+  [decision records](templates/decision-records.md), and
+  [tracker binding and handoff](templates/tracker-binding-and-handoff.md).
+
+What has and has not been proven is stated in the
+[decision-level walkthrough](examples/decision-levels/README.md) and the
+[portable-records worked example](examples/portable-records/README.md). The
+[management reference](examples/management-reference/README.md) is one worked design, and a dated
+[snapshot of Velocity's own trial](examples/velocity-self-adoption/README.md) shows the records in
+use.
 
 ## Feedback
 

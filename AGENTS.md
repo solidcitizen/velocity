@@ -40,3 +40,11 @@ For any repo mutation, closeout must state:
 
 Use a feature branch for substantive changes. Keep project-specific migration work separate from Velocity core-policy changes unless the operator explicitly requests a combined tranche.
 
+## Velocity's Own Work Records
+
+Velocity's own trial of the experimental decision-level and portable-records profile, as recorded
+on 2026-09-21, is kept as a worked example in
+[examples/velocity-self-adoption](examples/velocity-self-adoption/README.md). It is a dated
+snapshot, not a work queue, and it binds no agent working in this repository. Velocity's live
+work is tracked by the maintainer outside this public repository. No task closure, board view,
+or draft pull request approval substitutes for Maintainer acceptance and release authority.

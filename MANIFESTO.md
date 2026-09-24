@@ -37,7 +37,10 @@ delivery is the first system Velocity was applied to. It is not the definition.
 **The same five questions recur at every scale.** What are we trying to do; who decides; what is
 being done now; how do we know it is done; what did we learn. From one project, to a function, to
 a company, to a portfolio of them, the actors change and the questions do not. That recurrence is
-the evidence that the substrate is real rather than domain-specific.
+the evidence that the substrate is real rather than domain-specific. At the scale of an entity the
+same questions become decisions at several levels, from strategic goals and portfolio investment
+through initiative development to execution and ongoing operations; a small project simply holds
+all of them in one owner.
 
 **Relationship to the build-measure-learn loop.** Eric Ries's *The Lean Startup* (2011) describes
 a proof loop: a hypothesis is a claim, an experiment is its proof, and persevere-or-pivot is an
@@ -51,12 +54,19 @@ how much of themselves they can redesign. Applied to an organization the questio
 the company rewrite its own process, and may its agents? Velocity already answers it, and the
 answer does not change with scope. The system may learn and rewrite its process, through the
 proposal path that exists today. Write authority over goals, criteria, and rules stays with a
-human operator, and urgency never grants it.
+human operator, and urgency never grants it. Helping a governed entity establish its goals and find
+ways to reach them is part of the direction; it never gives an agent permission to adopt goals of
+its own or to rewrite the standards used to evaluate its work.
 
 **Structure: one core, two lifecycles.** The authority, proof, and decision-ownership rules stay
 one shared core. Software delivery and entity development are two lifecycles that consume it.
 This protects the delivery half from dilution and stops the entity half from reinventing rules
 that already exist. There is never a second core.
+
+**What the groundwork has to do.** Connect purpose, authority, evidence, resources, and the next
+action in a way that works for an ordinary TODO file and for a program governed through investment
+gates alike, connects to the management systems people already use, and continues across AI
+vendors. Task throughput alone is not evidence of better decisions.
 
 **What earns a place in the core.** Five tests, and a candidate must pass all five:
 
@@ -69,9 +79,14 @@ that already exist. There is never a second core.
    never as a local variant.
 5. It adds a lifecycle that consumes the core, rather than a core of its own.
 
-**The third scope is emerging, not claimed.** One operator across many entities is a real
+**A fourth scope is emerging, not claimed.** One operator across many entities is a real
 position, and the only rule Velocity has for it today is the cross-desk pointer. It is named here
-as direction so the gap is visible, not as something the standard currently supports.
+as direction so the gap is visible, not as something the standard currently supports. Its first
+explorations are the experimental decision-level and portfolio-record templates. Strategic
+goal-setting lies beyond it: a future candidate until the maintainer selects a bounded discovery
+effort with its own authority and evidence contract. The separately owned Entity Development
+Lifecycle proposal, which explores entity-level views, remains open; this statement of direction
+does not accept it.
 
 This section records direction. The practice behind it is the maintainer's own reported
 experience across private projects, described in the
@@ -160,6 +175,10 @@ also address this; Velocity should contribute tested authority and proof mapping
 The following moves look attractive and should be resisted.
 
 - *More lifecycle docs.* The current doc mass is already at the edge of intelligibility. New mass costs adoption. Future additions belong in templates, examples, overlays, or this manifesto — not in `docs/`.
+- *Unnecessary lifecycle machinery.* New concepts need a clear contract and a small adoption
+  path. Keep reusable rules compact; put optional record shapes in templates and populated
+  records in project overlays. Do not make a small effort imitate a portfolio office merely
+  to express its governing context.
 - *More roles.* Seven is at the limit of useful separation. Sub-roles belong in overlays.
 - *Vocabulary refactors.* The current vocabulary is one of the framework's strengths. Churning it adds friction without unlocking capability.
 - *Specific-framework reference implementations published as Velocity.* Coupling to CrewAI, LangGraph, or any single agent runtime trades the framework's portability for short-term adoption. Substrate-agnostic is the durable position.

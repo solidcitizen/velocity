@@ -10,7 +10,7 @@
 >
 > **Build it from the data file and the renderer, never by hand.** The page is derived from
 > `desk.json` by [`render-checkin-desk.py`](render-checkin-desk.py), which validates the file
-> against this contract and refuses to render a desk that breaks it. Only the project name, the
+> against this contract and marks every violation at the top of the page. Only the project name, the
 > operator, the maintainer, the time-zone label, and the color tokens vary from one project to
 > the next. Start from [`executive-checkin-desk.example.json`](executive-checkin-desk.example.json);
 > the field definitions are in [`executive-checkin-desk.schema.json`](executive-checkin-desk.schema.json).
@@ -91,6 +91,12 @@ beyond the five things that vary. The renderer enforces every rule it can check.
     project repository — is the project's choice; what it contains is not. A need the data file
     cannot express is a template gap: raise it as a Velocity proposal, and keep the desk
     conformant meanwhile.
+11. **A broken file still shows every ask.** Validation lists every violation and the renderer
+    exits non-zero, but the page is still produced with a **Needs repair** block at the top and
+    each missing field marked where it belongs, so one bad field never hides the other open asks
+    from the operator. An entry the page cannot place at all (no usable id, kind, title, state, or
+    date) is counted in that block, never guessed. `--check` alone reports and stops. The
+    maintainer fixes the file, never the page.
 
 ## Data file and renderer
 
@@ -101,12 +107,42 @@ beyond the five things that vary. The renderer enforces every rule it can check.
 | `templates/render-checkin-desk.py` | Validates and renders. Python 3.9+, standard library only. |
 | `templates/executive-checkin-desk.html` | What the example renders to. Generated; do not edit. |
 
-Keep the data file in the project's own overlay, never in Velocity. Render with:
+Keep populated data in the consuming project's operational workspace, separate from reusable
+templates. Under the optional [Portable Project Records profile](portable-project-records.md),
+declare that location in the shared artifact index, outside agent session/cache storage.
+
+**Decision levels (optional).** A Decide entry may carry `decision_level`: `work`, `initiative`,
+or `portfolio`. It names the level of the ruling requested, not the originating task or execution
+lane. It is an optional tag: a desk without levels is complete, and a level appears as a row only
+on the entries that carry one. Every supplied level is validated. State the affected record, the
+decision owner's hat, and the authority basis in `what`; the desk's declared operator remains the
+decision owner. Do and team entries may carry a level too. One desk can hold decisions at every
+level within its ownership and access boundary; see the
+[management reference](../examples/management-reference/README.md) example.
+
+A project that wants every open decision labeled declares that in its overlay. Its checks then run
+the renderer with `--require-decision-levels`, which covers open Decide entries including
+pointers; a project that uses the [file helper](project-records.md) also sets
+`"desk_requires_decision_levels": true` in its `records.json`. The requirement is the project's
+declared choice, so a desk's validity never depends on who happens to run the check. Keep a level
+when an ask is answered or withdrawn; a pointer uses the owning ask's level; do not infer a level
+for historical rulings. The file helper refuses to drop an existing level or change it while
+closing; to correct an open ask's classification, record the reason and retain the earlier
+revision before answering it.
+
+Separate desks require ownership/access boundaries that prevent a shared source; a change of
+level, hat, or cadence alone does not create another board. Use the existing `owned_by` pointer
+contract where separate desks are necessary. This introduces no new sections, level filter,
+automatic synchronization, or committee approval mechanism.
+
+An empty `entries` list is valid for a new Desk. The
+[shared file helper](project-records.md) provides coordinated updates and recovery. Render with:
 
 ```
 python3 render-checkin-desk.py desk.json --check              # validate; exit code 1 lists every violation
-python3 render-checkin-desk.py desk.json --out desk.html      # standalone page for any static host
+python3 render-checkin-desk.py desk.json --out desk.html      # standalone page for any static host (best-effort, exit 1, if the file breaks the contract)
 python3 render-checkin-desk.py desk.json --fragment           # title, style, and main only, for artifact hosting
+python3 render-checkin-desk.py desk.json --check --require-decision-levels  # management profile
 ```
 
 What the renderer prints, so every desk reads the same:
@@ -118,6 +154,7 @@ What the renderer prints, so every desk reads the same:
 | Do entry | `What it is` · `Needed by` |
 | Team entry | `(date, owner)` · `Why:` · `Status:` |
 | Answered entry | `(date)` · `Ruling:` (withdrawn entries read `Ruling: withdrawn — reason`) |
+| Any entry with `decision_level` | `Decision level` · `Work`, `Initiative`, or `Portfolio`; retained with the ruling |
 | How to reply | examples computed from the open asks, e.g. `CK-2 fine`, `CK-2 no, use <alternative>`, `CK-4 done`, `CK-3 revisit` |
 
 Only these vary per project: `project`, `operator`, `tz_label`, `maintainer`, and the color

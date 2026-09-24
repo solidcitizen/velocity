@@ -30,3 +30,4 @@ Before substantive work, read the project overlay and identify:
 - protected artifacts affected
 - whether lifecycle-rule changes are only recommendations or requested repo mutations
 
+Agent memory is not the authority, and changing models or tools does not change role authority.

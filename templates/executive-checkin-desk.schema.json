@@ -15,12 +15,16 @@
     "theme": { "$ref": "#/$defs/theme" },
     "theme_dark": { "$ref": "#/$defs/theme" },
     "entries": {
-      "type": "array", "minItems": 1,
+      "type": "array", "minItems": 0,
       "description": "Every CK id ever assigned. Ids are positive integers, unique, contiguous from 1, never renumbered or dropped.",
       "items": { "oneOf": [ { "$ref": "#/$defs/openAsk" }, { "$ref": "#/$defs/pointerAsk" }, { "$ref": "#/$defs/closedAsk" }, { "$ref": "#/$defs/teamDecision" } ] }
     }
   },
   "$defs": {
+    "decisionLevel": {
+      "enum": ["work", "initiative", "portfolio"],
+      "description": "Level of the ruling requested, not the originating task or execution lane. Required on open Decide entries in the optional management profile; retained on closure. Optional here for legacy compatibility; use the renderer's --require-decision-levels check for profile adoption."
+    },
     "theme": {
       "type": "object", "additionalProperties": false,
       "description": "Color token overrides. The only visual customization a project may make.",
@@ -30,6 +34,7 @@
       "type": "object",
       "required": ["id", "kind", "state", "title", "what", "waits"],
       "properties": {
+        "decision_level": { "$ref": "#/$defs/decisionLevel" },
         "id": { "type": "integer", "minimum": 1 },
         "kind": { "enum": ["decide", "do"] },
         "state": { "const": "open" },
@@ -47,6 +52,7 @@
       "required": ["id", "kind", "state", "title", "owned_by"],
       "description": "An open pointer. When the owning ask closes, the pointer closes too: it becomes a closedAsk that keeps owned_by, with the same answered_on and a ruling that names the owner's decision.",
       "properties": {
+        "decision_level": { "$ref": "#/$defs/decisionLevel" },
         "id": { "type": "integer", "minimum": 1 },
         "kind": { "enum": ["decide", "do"] },
         "state": { "const": "open" },
@@ -58,6 +64,7 @@
       "type": "object",
       "required": ["id", "kind", "state", "title", "answered_on", "ruling"],
       "properties": {
+        "decision_level": { "$ref": "#/$defs/decisionLevel" },
         "id": { "type": "integer", "minimum": 1 },
         "kind": { "enum": ["decide", "do"] },
         "state": { "enum": ["answered", "withdrawn"] },
@@ -71,6 +78,7 @@
       "type": "object",
       "required": ["id", "kind", "title", "date", "owner", "why", "status"],
       "properties": {
+        "decision_level": { "$ref": "#/$defs/decisionLevel" },
         "id": { "type": "integer", "minimum": 1 },
         "kind": { "const": "team" },
         "title": { "type": "string", "description": "What was decided." },

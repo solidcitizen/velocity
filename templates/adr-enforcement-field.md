@@ -31,5 +31,5 @@ Enforcement: PREVENT|DETECT|RUNTIME_GUARD + <file:line>
 ## Adopting
 
 - Add the field when an ADR is written or when an invariant is later bound; do not change the ADR's status or decision to add an `Enforcement:` line — it is an annotation of how the existing decision is enforced.
-- Keep the inline annotation consistent with the project's standing [System Invariant Register](./system-invariant-register.md): the register is the cross-ADR roll-up; the inline field is the in-context binding.
+- Keep the inline annotation consistent with the project's standing [System Invariant Register](system-invariant-register.md): the register is the cross-ADR roll-up; the inline field is the in-context binding.
 - An ADR that already has a prose `## Enforcement` section should keep it; the inline field is a per-invariant summary pointer, not a replacement for that section.
