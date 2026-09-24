@@ -30,7 +30,7 @@
     },
     "updated": {
       "type": "string",
-      "description": "ISO datetime of this version. Rewritten in the same edit as any content change."
+      "description": "ISO datetime of this version, in the operator's zone (a UTC offset, if present, is ignored). Rewritten in the same edit as any content change."
     },
     "desk": {
       "type": "string",
@@ -190,7 +190,7 @@
             "string",
             "null"
           ],
-          "description": "ISO date or datetime. Informs the Due this week count; never changes a state on its own."
+          "description": "ISO date or datetime, in the operator's zone (a UTC offset, if present, is ignored). Informs the Due this week count; never changes a state on its own."
         },
         "closed_on": {
           "type": "string",

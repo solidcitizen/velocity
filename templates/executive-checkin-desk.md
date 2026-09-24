@@ -157,6 +157,11 @@ What the renderer prints, so every desk reads the same:
 | Any entry with `decision_level` | `Decision level` · `Work`, `Initiative`, or `Portfolio`; retained with the ruling |
 | How to reply | examples computed from the open asks, e.g. `CK-2 fine`, `CK-2 no, use <alternative>`, `CK-4 done`, `CK-3 revisit` |
 
+Every date and time in the data file is the operator's local time; `tz_label` names the zone.
+Write it without a UTC offset. If a value carries one, the renderer reads the time as written
+and ignores the offset, so `2026-10-09T17:00-07:00` and `2026-10-09T17:00` show the same on
+the page.
+
 Only these vary per project: `project`, `operator`, `tz_label`, `maintainer`, and the color
 tokens under `theme` and `theme_dark`. The renderer rejects any other token.
 

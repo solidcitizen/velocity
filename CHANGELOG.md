@@ -9,6 +9,24 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.9.1
+
+### Fixed — Times with a UTC offset no longer crash either renderer
+
+- A desk or board file that mixed a time with a UTC offset (`2026-10-09T17:00-07:00`) and one
+  without passed `--check`, then crashed the render with no page and no repair block. Both
+  renderers now read every time as written in the operator's zone and ignore any offset, so the
+  two forms show the same on the page. The contracts and schemas say so; write local times
+  without an offset. Reported by a pilot project the day 1.9.0 shipped.
+- Upgrade note for projects moving from `v2.0.0-experimental.1`: the only change in rendered pages
+  is the footer's version line. Reported by the same pilot after its re-pin.
+
+**PATCH**: a crash fix and a clarification. No file that passed `--check` before fails now, and
+every page that rendered before renders byte-for-byte the same.
+
+Pending the maintainer's approval. See the
+[proposal record](proposals/2026-09-24-naive-local-times.md).
+
 ## [1.9.0] — 2026-09-24
 
 ### Added — Experimental templates by adoption scope, from the reconciled 2.0 line

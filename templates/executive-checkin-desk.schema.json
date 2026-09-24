@@ -11,7 +11,7 @@
     "operator": { "type": "string", "minLength": 1, "description": "The person whose decisions gate the work." },
     "tz_label": { "type": "string", "minLength": 1, "description": "Time-zone label shown after every time, e.g. PT. All times in the file are in this zone." },
     "maintainer": { "type": "string", "minLength": 1, "description": "The role that keeps the page current." },
-    "updated": { "type": "string", "description": "ISO datetime of this version, in the operator's zone. Rewritten in the same edit as any content change." },
+    "updated": { "type": "string", "description": "ISO datetime of this version, in the operator's zone (a UTC offset, if present, is ignored). Rewritten in the same edit as any content change." },
     "theme": { "$ref": "#/$defs/theme" },
     "theme_dark": { "$ref": "#/$defs/theme" },
     "entries": {
@@ -43,7 +43,7 @@
         "options": { "type": "array", "items": { "type": "string" }, "minItems": 2, "description": "Decide only." },
         "lean": { "type": "string", "description": "Decide only. The recommendation." },
         "lean_why": { "type": "string", "description": "Decide only. One-line reason." },
-        "needed_by": { "type": ["string", "null"], "description": "ISO datetime or null. Never converts a non-answer into a yes." },
+        "needed_by": { "type": ["string", "null"], "description": "ISO datetime in the operator's zone (a UTC offset, if present, is ignored), or null. Never converts a non-answer into a yes." },
         "waits": { "type": "string", "description": "What waits, or stays blocked, until the operator answers." }
       }
     },
