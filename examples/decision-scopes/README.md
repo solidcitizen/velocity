@@ -63,9 +63,9 @@ Architecture findings and disposition:
 
 Local verification:
 
-- `python3 -m unittest discover -s tests -v`: **17 passed** on 2026-09-21. This includes the
-  copied artifact-index startup and existing JSON update/recovery/export behavior. The
-  decision additions change documentation and record shapes, not the helper/renderer code.
+- `python3 -m unittest discover -s tests -v`: **17 passed** on 2026-09-21, before the decision-level
+  renderer change. After it, the suite is 25 tests, passing on Python 3.9 and 3.14 (2026-09-24),
+  including the eight decision-level checks; the renderer and the file helper did change.
 - Local Markdown link/anchor check over changed and new documents: passed. This checks
   source navigation, not the truth of a linked ruling or the quality of a management decision.
 - `git diff --check`: passed. Public-source review found no copied private operational data

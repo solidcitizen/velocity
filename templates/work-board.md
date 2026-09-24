@@ -121,6 +121,9 @@ tokens under `theme` and `theme_dark`.
   and contract from the same pin, never another project's working tree or a moving branch.
   Review release notes and requalify affected behavior before upgrading; existing pins do not
   change when the experimental branch advances.
+- **Consuming projects are told before a change can fail them.** While this template is
+  experimental, Velocity notifies each consuming project, before or with the change, when a change
+  lands that could fail a board that validated before, naming the commit and the change.
 - **A project's wrapper stamps and publishes; it implements nothing.** A project may automate the
   workflow around the board (set `updated`, run the renderer with `--check` and then `--fragment`,
   publish the output unmodified). It may not validate, order, total, or render on its own; any of
@@ -144,6 +147,10 @@ tokens under `theme` and `theme_dark`.
   check belongs to the project, because only the project knows its evidence.
 
 ## Pilot record
+
+The entries below are maintainer-reported experience from private consuming projects. The
+projects are not public reference implementations, and the findings are not independently
+reproducible evidence.
 
 - 2026-09-21, second consuming project adopts the pilot (19 items: 15 work, 4 controls) as a
   recorded pin exception. Its first gap report: an external party with no return date. The code

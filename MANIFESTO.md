@@ -69,7 +69,7 @@ that already exist. There is never a second core.
    never as a local variant.
 5. It adds a lifecycle that consumes the core, rather than a core of its own.
 
-**The third scope is emerging, not claimed.** One operator across many entities is a real
+**A fourth scope is emerging, not claimed.** One operator across many entities is a real
 position, and the only rule Velocity has for it today is the cross-desk pointer. It is named here
 as direction so the gap is visible, not as something the standard currently supports.
 

@@ -9,7 +9,7 @@ way most projects meet them, and they are written so that nothing stops at the e
 codebase.
 
 **Start with one project.** Adopt the [Delivery scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope),
-which is a handful of rules and two templates, on one bounded change. Nothing here limits you to
+which is a handful of rules and three short templates, on one bounded change. Nothing here limits you to
 one project, or to software: the scopes above it carry the same core outward to an automated
 handoff, to a function, and to a company. Take the scope you need and leave the rest.
 

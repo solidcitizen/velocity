@@ -18,7 +18,7 @@
 
 - [Governance](../governance/GOVERNANCE.md)
 - [ADR-0001: Independent Lifecycle Repository](../adrs/0001-independent-lifecycle-repo.md)
-- [ADR-0002: Decision Context and Work Bindings](../adrs/0002-decision-context-and-work-bindings.md) — proposed
+- [ADR-0002: Decision Context and Work Bindings](../adrs/0002-decision-context-and-work-bindings.md) — accepted for experimental adoption only
 
 ## Templates
 
