@@ -42,7 +42,9 @@ maintainer's rulings:
    trial records move from the repository root to a dated example that binds no agent.
 6. **The desk renderer shows a broken desk best-effort.** Parity with the Work Board's rule 11:
    every violation is listed in a Needs repair block, missing fields are marked in place, and the
-   renderer exits 1. A desk that conformed renders byte-for-byte as before.
+   renderer exits 1. A desk that conformed renders byte-for-byte as before. The Work Board
+   renderer, which already promised this, is hardened to keep the promise: a malformed field
+   degrades one card, never the page.
 7. **Version by rule (CK-50 A).** Nothing here makes prior conformance non-conformant, so the
    release is 1.9.0. The prerelease keeps its 2.0 name as history.
 
@@ -75,14 +77,15 @@ rule, role, approval boundary, or proof obligation changes.
 
 On `proposal/2.0-trunk` at the commit that adds this record:
 
-- 32 of 32 tests pass (desk levels, desk repair, file helper).
+- 34 of 34 tests pass (desk levels, desk repair, file helper, and fault injection: every field of
+  every example entry in both renderers removed or mistyped one at a time, and a page still renders).
 - All 455 relative links and anchors resolve (checked by script against GitHub's slug rule).
 - Both-parents check: every file present in `v1.8.0` or `v2.0.0-experimental.1` is present,
   moved, or retired as listed in the CHANGELOG; every line that differs from 1.8.0's approved
   text is an intentional change listed above.
 - The template's example, the decision-level example, and the Work Board example regenerate
-  byte-identical to their committed HTML. Six real project desks render byte-identical under the
-  new desk renderer; the pilot desk that declares levels passes with `--require-decision-levels`.
+  byte-identical to their committed HTML. Six real project desks and three real boards render
+  byte-identical under the new renderers; the pilot desk that declares levels passes with `--require-decision-levels`.
 - PMI, Stage-Gate, and the Project Management Institute appear only in the lineage document and
   dated records. No proprietary scaled-agile framework name or vocabulary appears.
 - `git diff --check` clean.

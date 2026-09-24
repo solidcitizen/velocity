@@ -46,7 +46,8 @@ placed by the scope it serves; none is a requirement at any scope.
   `--require-decision-levels` (or `"desk_requires_decision_levels": true` for the file helper).
 - A broken desk file still shows every ask: the renderer lists every violation in a **Needs
   repair** block at the top, marks each missing field in place, and exits 1. Before, it produced
-  no page. `--check` is unchanged. A desk that conformed renders byte-for-byte as before.
+  no page. `--check` is unchanged. A desk that conformed renders byte-for-byte as before. Both
+  renderers are tested against every single-field fault in their examples.
 
 ### Clarified — Direction
 

@@ -195,8 +195,14 @@ def validate(d, require_decision_levels=False):
         missing = sorted(set(range(1, max(ids) + 1)) - set(ids))
         if missing:
             errs.append(f"ids: missing {missing}; ids are never renumbered or dropped (record a withdrawn entry instead)")
-    theme = d.get("theme", {})
-    for name in list(theme.keys()) + list(d.get("theme_dark", {}).keys()):
+    names = []
+    for key in ("theme", "theme_dark"):
+        value = d.get(key, {})
+        if isinstance(value, dict):
+            names += list(value.keys())
+        else:
+            errs.append(f"top level: '{key}' must be an object of color tokens")
+    for name in names:
         if name not in TOKENS:
             errs.append(f"theme: unknown token '{name}'; only these vary per project: {sorted(TOKENS)}")
     return errs

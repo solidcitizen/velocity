@@ -283,7 +283,14 @@ def validate(d):
         if dupes: errs.append(f"ids: duplicated {dupes}; an id identifies one item forever")
         missing = sorted(set(range(1, max(ids) + 1)) - idset)
         if missing: errs.append(f"ids: missing {missing}; ids are never renumbered or dropped (record a dropped item instead)")
-    for name in list(d.get("theme", {}).keys()) + list(d.get("theme_dark", {}).keys()):
+    names = []
+    for key in ("theme", "theme_dark"):
+        value = d.get(key, {})
+        if isinstance(value, dict):
+            names += list(value.keys())
+        else:
+            errs.append(f"top level: '{key}' must be an object of color tokens")
+    for name in names:
         if name not in TOKENS:
             errs.append(f"theme: unknown token '{name}'; only these vary per project: {sorted(TOKENS)}")
     return errs
@@ -399,6 +406,26 @@ def css_block(tokens):
     return "".join(f"    --{k}: {v};\n" for k, v in tokens.items())
 
 
+PARTIAL = '<span class="tag warn">not shown in full; see Needs repair</span>'
+
+
+def shown(fn, e, *args, ledger=False):
+    """Render one entry; a malformed field degrades that entry, never the page."""
+    try:
+        return fn(e, *args)
+    except (KeyError, TypeError, ValueError, AttributeError, IndexError):
+        text = f'<span class="id">{wi(e["id"])}</span> {inline(e["title"])} {PARTIAL}'
+        if ledger:
+            return f"<li>{text}</li>"
+        state = e.get("state") if e.get("state") in STATES else ""
+        return f'<article class="item {state}"><h3>{text}</h3></article>'
+
+
+def init_of(e):
+    name = e.get("initiative")
+    return name if isinstance(name, str) and name else "no initiative"
+
+
 def renderable(e):
     if not isinstance(e, dict) or not isinstance(e.get("id"), int) or not isinstance(e.get("title"), str) or not isinstance(e.get("owner"), str):
         return False
@@ -411,37 +438,41 @@ def renderable(e):
 def render(d, fragment=False, errors=(), archive_binding=None):
     tz = html.escape(str(d.get("tz_label", "")), quote=True)
     updated = parse_dt(d.get("updated")) or datetime.now()
-    items = [e for e in d.get("items", []) if renderable(e)]
-    skipped = len(d.get("items", [])) - len(items)
+    raw = d.get("items") if isinstance(d.get("items"), list) else []
+    items = [e for e in raw if renderable(e)]
+    skipped = len(raw) - len(items)
     titles = {e["id"]: e["title"] for e in items}
     work = [e for e in items if e.get("kind", "work") == "work"]
     controls = [e for e in items if e.get("kind") == "control"]
     by_state = lambda *s: [e for e in work if e["state"] in s]
 
     def order(entries):
-        return sorted(entries, key=lambda e: (e.get("needed_by") is None, parse_dt(e["needed_by"]) if e.get("needed_by") else datetime.max, e["id"]))
+        return sorted(entries, key=lambda e: (parse_dt(e.get("needed_by")) is None, parse_dt(e.get("needed_by")) or datetime.max, e["id"]))
 
     doing, committed = order(by_state("doing")), order(by_state("committed"))
     waiting = order(by_state("blocked", "held"))
     def rank(e):
-        b = e.get("benefit"); nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
-        return (-(RANK[b["scale"]] if b else 0), RANK.get(e.get("size"), 4), nb is None, nb or datetime.max, e["id"])
+        b = e.get("benefit") if isinstance(e.get("benefit"), dict) else {}
+        scale, size = b.get("scale"), e.get("size")
+        nb = parse_dt(e.get("needed_by"))
+        return (-(RANK.get(scale, 0) if isinstance(scale, str) else 0), RANK.get(size, 4) if isinstance(size, str) else 4,
+                nb is None, nb or datetime.max, e["id"])
     backlog = sorted(by_state("backlog"), key=rank)
-    done = sorted(by_state("done"), key=lambda e: (parse_dt(e["closed_on"]), e["id"]), reverse=True)
-    dropped = sorted(by_state("dropped"), key=lambda e: (parse_dt(e["closed_on"]), e["id"]), reverse=True)
+    done = sorted(by_state("done"), key=lambda e: (parse_dt(e.get("closed_on")) or datetime.min, e["id"]), reverse=True)
+    dropped = sorted(by_state("dropped"), key=lambda e: (parse_dt(e.get("closed_on")) or datetime.min, e["id"]), reverse=True)
     controls_sorted = sorted(controls, key=lambda e: (bool(e.get("suspended")), bool(e.get("planned")), e["id"]))
 
     week_end = updated + timedelta(days=7)
     due = 0
     for e in doing + committed + waiting + backlog:
-        nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
+        nb = parse_dt(e.get("needed_by"))
         if nb and nb <= week_end: due += 1
-        w = e.get("waits_on") or {}
-        if e["state"] == "held" and w.get("by") and parse_dt(w["by"]) <= week_end: due += 1
+        w = e.get("waits_on") if isinstance(e.get("waits_on"), dict) else {}
+        if e["state"] == "held" and parse_dt(w.get("by")) and parse_dt(w["by"]) <= week_end: due += 1
     never_run = 0
     for e in controls:
         if e.get("suspended") or e.get("planned"): continue
-        last = parse_dt(e["last_completed"]) if e.get("last_completed") else None
+        last = parse_dt(e.get("last_completed"))
         if last is None:
             never_run += 1; continue
         if e["cadence"] == "daily": continue  # always due; would swamp the count
@@ -449,16 +480,19 @@ def render(d, fragment=False, errors=(), archive_binding=None):
     open_items = doing + committed + waiting + backlog
     unblocks = {}
     for e in open_items:
-        for x in e.get("depends_on") or []:
-            unblocks.setdefault(x, []).append(e["id"])
+        for x in e.get("depends_on") if isinstance(e.get("depends_on"), list) else []:
+            if isinstance(x, int):
+                unblocks.setdefault(x, []).append(e["id"])
     inits = {}
     for e in open_items:
-        inits[e.get("initiative") or "no initiative"] = inits.get(e.get("initiative") or "no initiative", 0) + 1
+        inits[init_of(e)] = inits.get(init_of(e), 0) + 1
     peers = sum(1 for e in open_items if e.get("origin"))
     auto = {k: sum(1 for e in open_items + controls if e.get("automated") == k) for k in AUTOMATED}
 
-    light = dict(TOKENS, **d.get("theme", {}))
-    dark = dict(TOKENS_DARK, **d.get("theme_dark", {}))
+    theme = d.get("theme") if isinstance(d.get("theme"), dict) else {}
+    theme_dark = d.get("theme_dark") if isinstance(d.get("theme_dark"), dict) else {}
+    light = dict(TOKENS, **{k: v for k, v in theme.items() if k in TOKENS})
+    dark = dict(TOKENS_DARK, **{k: v for k, v in theme_dark.items() if k in TOKENS})
     style = (f"<style>\n  :root {{\n    color-scheme: light dark;\n{css_block(light)}  }}\n"
              f"  @media (prefers-color-scheme: dark) {{\n    :root:not([data-theme=\"light\"]) {{\n{css_block(dark)}    }}\n  }}\n"
              f"  :root[data-theme=\"dark\"] {{\n{css_block(dark)}  }}\n{CSS}</style>")
@@ -472,22 +506,22 @@ def render(d, fragment=False, errors=(), archive_binding=None):
             return f'<p class="group-note">{empty}</p>'
         if grouped and any(e.get("initiative") for e in entries):
             out = ""
-            for name in sorted({e.get("initiative") or "no initiative" for e in entries}, key=lambda n: (n == "no initiative", n)):
-                grp = [e for e in entries if (e.get("initiative") or "no initiative") == name]
-                out += f'<h3 class="grp">{inline(name)} ({len(grp)})</h3>' + "".join(render_item(e, tz, titles, unblocks.get(e["id"], ())) for e in grp)
+            for name in sorted({init_of(e) for e in entries}, key=lambda n: (n == "no initiative", n)):
+                grp = [e for e in entries if init_of(e) == name]
+                out += f'<h3 class="grp">{inline(name)} ({len(grp)})</h3>' + "".join(shown(render_item, e, tz, titles, unblocks.get(e["id"], ())) for e in grp)
             return out
-        return "".join(render_item(e, tz, titles, unblocks.get(e["id"], ())) for e in entries)
+        return "".join(shown(render_item, e, tz, titles, unblocks.get(e["id"], ())) for e in entries)
 
     def ledger(cls, entries, fn, empty, grouped=False):
         if not entries:
             return f'<p class="group-note">{empty}</p>'
         if grouped and any(e.get("initiative") for e in entries):
             out = ""
-            for name in sorted({e.get("initiative") or "no initiative" for e in entries}, key=lambda n: (n == "no initiative", n)):
-                grp = [e for e in entries if (e.get("initiative") or "no initiative") == name]
-                out += f'<h3 class="grp">{inline(name)} ({len(grp)})</h3><ul class="ledger {cls}">' + "".join(fn(e) for e in grp) + "</ul>"
+            for name in sorted({init_of(e) for e in entries}, key=lambda n: (n == "no initiative", n)):
+                grp = [e for e in entries if init_of(e) == name]
+                out += f'<h3 class="grp">{inline(name)} ({len(grp)})</h3><ul class="ledger {cls}">' + "".join(shown(fn, e, ledger=True) for e in grp) + "</ul>"
             return out
-        return f'<ul class="ledger {cls}">' + "".join(fn(e) for e in entries) + "</ul>"
+        return f'<ul class="ledger {cls}">' + "".join(shown(fn, e, ledger=True) for e in entries) + "</ul>"
 
     repair = ""
     if errors:
@@ -543,7 +577,7 @@ def main(argv=None):
         print("Board data does not satisfy the contract:", file=sys.stderr)
         for e in errs:
             print("  - " + e, file=sys.stderr)
-        if args.check:
+        if args.check or not isinstance(d, dict):
             return 1
         print("Rendering best-effort with a repair block; fix the data file. Exit code 1.", file=sys.stderr)
     if args.check:
