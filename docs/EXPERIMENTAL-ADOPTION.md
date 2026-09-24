@@ -3,7 +3,7 @@
 `v2.0.0-experimental.1` is an opt-in prerelease of the decision-aware work and portable-records
 profile. [Release notes](https://github.com/solidcitizen/velocity/releases/tag/v2.0.0-experimental.1)
 identify the fixed source tag. `codex/2.0-experimental` is the evolving channel; pin the tag or
-its commit in a project. Stable canon remains `v1.7.2`. A finalized 2.0 compatibility contract
+its commit in a project. Stable canon remains `v1.8.0`. A finalized 2.0 compatibility contract
 and automatic migration are not supplied.
 
 ## Get a fixed copy

@@ -4,7 +4,7 @@ Velocity is adopted through a thin project overlay.
 
 For the opt-in `v2.0.0-experimental.1` profile, start with
 [experimental adoption](EXPERIMENTAL-ADOPTION.md) for the fixed pin, record choices, and
-qualification limits. Stable projects can retain v1.7.2.
+qualification limits. Stable projects can retain v1.8.0.
 
 ## What Stays In Velocity
 
