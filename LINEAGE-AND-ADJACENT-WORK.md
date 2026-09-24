@@ -52,6 +52,14 @@ Velocity borrows deliberately from older software and governance traditions:
 
 Velocity does not claim novelty for these pieces. Its contribution is integrating them for one human working with fluent agents, where the main failure is not lack of automation but loss of role separation.
 
+Two named influences on the September 2026 direction, credited rather than adapted: Eric Ries's
+*The Lean Startup* (2011), whose build-measure-learn loop Velocity reads as a proof loop that
+predates the need for an authority layer; and Max Tegmark's *Life 3.0* (2017), whose framing of
+what a system may redesign about itself is the question Velocity answers when it keeps write
+authority over goals, criteria, and rules with a human. Neither work is a method Velocity
+implements, and neither author has reviewed this standard. See the
+[manifesto](MANIFESTO.md#one-core-two-lifecycles) for the direction those influences inform.
+
 ## What Velocity Does Not Provide
 
 Velocity does not provide:

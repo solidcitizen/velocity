@@ -1,12 +1,27 @@
 # Velocity
 
-Velocity is a reusable software delivery lifecycle for AI-assisted engineering.
+**Build anything with agents, and keep authority over what you build.**
 
-It is intentionally project-independent. Product repositories consume Velocity through a project overlay; they do not own the general lifecycle rules.
+Velocity is a standard for work done with AI agents: who may change the goal, what bounds a piece
+of work, what counts as proof that it is done, and how automation is allowed to expand. None of
+those rules name a kind of system. They were written for software delivery, which is still the
+way most projects meet them, and they are written so that nothing stops at the edge of a
+codebase.
+
+**Start with one project.** Adopt the [Delivery scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope),
+which is a handful of rules and two templates, on one bounded change. Nothing here limits you to
+one project, or to software: the scopes above it carry the same core outward to an automated
+handoff, to a function, and to a company. Take the scope you need and leave the rest.
+
+Velocity is intentionally project-independent. Repositories consume it through a project overlay;
+they do not own the general rules.
 
 ## Purpose
 
-Velocity exists to make agent-assisted delivery repeatable across projects while preserving human authority over goals, risk, and process evolution.
+Velocity exists to make agent-assisted work repeatable while preserving human authority over
+goals, risk, and process evolution. Where it is applied is the adopter's choice; the
+[manifesto](MANIFESTO.md#one-core-two-lifecycles) records how far that is meant to reach and what
+has to be true before a rule follows it there.
 
 Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
@@ -19,7 +34,7 @@ they do not activate automation or change existing approval boundaries.
 
 Core goals:
 
-- manage SDLC best practices independent of any one product repo
+- manage delivery best practice independent of any one repository, product, or function
 - separate delivery authority from lifecycle-rule authority
 - let specialist roles share context without allowing them to rewrite the criteria that judge their work
 - make proof expectations explicit and portable across local, staging, host-qualified, and production lanes
@@ -54,9 +69,15 @@ Not lifecycle policy, and not part of the governed `docs/` set:
 
 ## Put It Into Practice
 
-Start with the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define a thin local
-overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded change.
-Velocity works with your chosen AI tools and delivery cadence.
+Pick a scope, then start small. [Choose Your Scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope)
+sets out three: **Delivery** for one project with one lead and one operator, **Automation** when an
+agent's output reaches a lane a person would otherwise have gated, and **Entity** when an operator
+sits outside day-to-day delivery. Each contains the one before it, so moving outward adds
+artifacts and never re-teaches what you already run.
+
+Whichever you pick: read the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUIDE.md), define a
+thin local overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded
+change. Velocity works with your chosen AI tools and delivery cadence.
 
 ## Feedback
 
