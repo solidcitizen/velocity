@@ -221,7 +221,7 @@ qualification record before claiming cross-vendor or tracker-migration support.
 
 Declare the [decision context](../templates/decision-levels.md) in the existing overlay or index: purpose,
 selection/initiative owners, current authority and capacity assumptions, escalation, and review.
-The profile asks an adopting effort to acknowledge these scopes; separate portfolio,
+The profile asks an adopting effort to acknowledge these levels; separate portfolio,
 business-case, resource, and gate records are conditional on the decisions involved. Use the
 [management record templates](../templates/decision-records.md) only where useful. Small projects
 can combine ownership and inherit a short context block; larger efforts link upstream systems.

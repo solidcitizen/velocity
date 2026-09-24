@@ -9,6 +9,87 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.9.0
+
+### Added — Experimental templates by adoption scope, from the reconciled 2.0 line
+
+The 2.0 experimental line becomes the trunk, reconciled with 1.8.0. Its content ships in the 1.x
+series because none of it makes prior conformance non-conformant. Every addition is opt-in and is
+placed by the scope it serves; none is a requirement at any scope.
+
+- **Entity.** The [Work Board](templates/work-board.md): a data file, schema, and renderer for an
+  agent-maintained work list, with controls for recurring assurance work and a repair block when
+  the file is broken, piloted on real work. The [work contract](templates/work-management.md)
+  gives every way of keeping work the same state meanings; a
+  [Markdown work tracker](templates/work-tracker.md) is a first-class alternative; the
+  [file helper](templates/project-records.md) makes guarded, recoverable updates to desk and
+  board data.
+- **Automation.** The [portable project records profile](templates/portable-project-records.md)
+  and [artifact index](templates/artifact-index.md), for continuing a project across agents,
+  tools, and vendors.
+- **Portfolio, emerging.** [Decision levels](templates/decision-levels.md) (work, initiative,
+  portfolio), [decision and management records](templates/decision-records.md), and
+  [tracker binding and handoff](templates/tracker-binding-and-handoff.md).
+  [ADR-0002](adrs/0002-decision-context-and-work-bindings.md) is accepted for experimental adoption
+  only.
+- Examples: portable records, a decision-level walkthrough, a
+  [management reference](examples/management-reference/README.md) design, and a dated
+  [snapshot of Velocity's own trial](examples/velocity-self-adoption/README.md), each with its
+  proof limits stated.
+- The adoption guide gains [Pin a Release](docs/PROJECT-ADOPTION-GUIDE.md#pin-a-release) and a
+  section on adopting the portable-records profiles; the docs index lists templates by scope.
+
+### Changed — Check-in Desk
+
+- A desk entry may carry an optional `decision_level`. A desk without levels is complete. A project
+  that wants every open decision labeled declares it in its overlay and checks with
+  `--require-decision-levels` (or `"desk_requires_decision_levels": true` for the file helper).
+- A broken desk file still shows every ask: the renderer lists every violation in a **Needs
+  repair** block at the top, marks each missing field in place, and exits 1. Before, it produced
+  no page. `--check` is unchanged. A desk that conformed renders byte-for-byte as before.
+
+### Clarified — Direction
+
+- The manifesto's direction section states the decision levels an entity holds, that helping an
+  entity set its goals never lets an agent adopt goals of its own, what the groundwork has to do,
+  and where strategic goal-setting and the open Entity Development Lifecycle proposal stand. The
+  1.8.0 guard against new mass under `docs/` is kept, and a companion guard against unnecessary
+  lifecycle machinery is added.
+- The lineage document records the PMI and Stage-Gate material reviewed on 2026-09-21. Velocity
+  credits them there and describes its own method in its own words; it implements neither.
+- The agent guide fragment adds one sentence: agent memory is not the authority, and changing
+  models or tools does not change role authority.
+
+**MINOR**: additive, opt-in templates and clarifications. No lifecycle rule, role, approval
+boundary, or proof obligation changes, and prior conformance is unchanged. The published
+`v2.0.0-experimental.1` prerelease stays as history.
+
+### Upgrading from `v2.0.0-experimental.1`
+
+Every template, schema, renderer, and example in the prerelease is present. These paths moved, so
+update links to them:
+
+| Prerelease path | In this release |
+|---|---|
+| `docs/DECISION-SCOPES.md` | [`templates/decision-levels.md`](templates/decision-levels.md) |
+| `docs/WORK-MANAGEMENT.md` | [`templates/work-management.md`](templates/work-management.md) |
+| `docs/PORTABLE-PROJECT-RECORDS.md` | [`templates/portable-project-records.md`](templates/portable-project-records.md) |
+| `examples/decision-scopes/` | [`examples/decision-levels/`](examples/decision-levels/README.md) |
+| `docs/MANAGEMENT-REFERENCE.md` | [`examples/management-reference/README.md`](examples/management-reference/README.md) |
+| `docs/EXPERIMENTAL-ADOPTION.md` | retired: [Pin a Release](docs/PROJECT-ADOPTION-GUIDE.md#pin-a-release), and each profile's own "Adopting the profile in a project" section |
+| `ARTIFACTS.md`, `TODO.md`, `INITIATIVES.md`, `PORTFOLIO.md` | [`examples/velocity-self-adoption/`](examples/velocity-self-adoption/README.md), as a dated snapshot |
+
+The data contracts are unchanged: `decision_level` keeps its name and values, and
+`--require-decision-levels` keeps its meaning. One behavior changed: the file helper no longer
+requires levels on every desk. A project that relied on that sets
+`"desk_requires_decision_levels": true` in its `records.json`.
+
+Rulings by Mike as Velocity Maintainer on 2026-09-24: the 2.0 line becomes the trunk, reconciled
+(desk CK-45); decision levels are an optional tag with the strict check as a declared opt-in
+(CK-48); PMI and Stage-Gate are credited in the lineage only (CK-49); the version follows the
+SemVer rule, so 1.9.0 (CK-50). See the
+[proposal record](proposals/2026-09-24-reconciled-trunk.md). Pending the maintainer's merge.
+
 ## [1.8.0] — 2026-09-23
 
 ### Added — Direction: one core, two lifecycles, and adoption scopes
