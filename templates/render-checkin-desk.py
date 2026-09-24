@@ -46,6 +46,12 @@ TOKENS_DARK = {
     "mono-bg": "#26282e",
 }
 
+REPAIR_CSS = """  .repair { background: var(--decide-bg); border: 1px solid var(--decide-border); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; }
+  .repair h2 { font-size: 1rem; margin: 0 0 6px; color: var(--decide); }
+  .repair ul { margin: 0; padding-left: 18px; font-size: 0.9rem; }
+  .missing { color: var(--decide); }
+"""
+
 CSS = """
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
@@ -225,7 +231,7 @@ def ck(n):
 
 
 def level_label(e):
-    return e["decision_level"].capitalize() if "decision_level" in e else ""
+    return e["decision_level"].capitalize() if e.get("decision_level") in DECISION_LEVELS else ""
 
 
 def ledger_level(e):
@@ -236,47 +242,74 @@ def render_open(e, tz):
     kind = e["kind"]
     badge = "Decide" if kind == "decide" else "Do"
     head = f'<h3><span class="id">{ck(e["id"])}</span> {inline(e["title"])} <span class="badge">{badge}</span></h3>'
-    if e.get("owned_by"):
+    if valid_pointer(e.get("owned_by")):
         ob = e["owned_by"]
         level = f'<p class="owned">Decision level: {level_label(e)}</p>' if level_label(e) else ""
         return (f'<article class="ask {kind}">{head}'
                 f'{level}'
                 f'<p class="owned">Owned by {inline(ob["project"])} {ck(ob["id"])}. Answer it there; this entry closes with it.</p></article>')
     rows = [("Decision level", level_label(e))] if level_label(e) else []
-    rows.append(("What it is", inline(e["what"])))
+    rows.append(("What it is", field(e, "what")))
     if kind == "decide":
-        rows.append(("Options", "<ul>" + "".join(f"<li>{inline(o)}</li>" for o in e["options"]) + "</ul>"))
-        rows.append(("Lean", f'<span class="lean">{inline(e["lean"])}</span> — {inline(e["lean_why"])}'))
-    nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
+        opts = e.get("options")
+        opts = "<ul>" + "".join(f"<li>{inline(o)}</li>" for o in opts) + "</ul>" if isinstance(opts, list) and opts else MISSING
+        rows.append(("Options", opts))
+        rows.append(("Lean", f'<span class="lean">{field(e, "lean")}</span> — {field(e, "lean_why")}'))
+    nb = parse_dt(e.get("needed_by"))
     when = fmt_dt(nb, tz) if nb else "no date"
-    rows.append(("Needed by", f"{when} — {inline(e['waits'])}"))
+    rows.append(("Needed by", f"{when} — {field(e, 'waits')}"))
     dl = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows)
     return f'<article class="ask {kind}">{head}<dl>{dl}</dl></article>'
 
 
 def render_team(e):
-    status = inline(e["status"]) + (f": {inline(e['status_text'])}" if e.get("status_text") else "")
-    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["date"])}, {inline(e["owner"])})</span>{ledger_level(e)} '
-            f'— {inline(e["title"])} — <strong>Why:</strong> {inline(e["why"])} — <strong>Status:</strong> {status}</li>')
+    status = field(e, "status") + (f": {inline(e['status_text'])}" if e.get("status_text") else "")
+    return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["date"])}, {field(e, "owner")})</span>{ledger_level(e)} '
+            f'— {inline(e["title"])} — <strong>Why:</strong> {field(e, "why")} — <strong>Status:</strong> {status}</li>')
 
 
 def render_answered(e):
-    text = e["ruling"]
+    text = e.get("ruling") if isinstance(e.get("ruling"), str) else ""
     if e["state"] == "withdrawn":
         text = re.sub(r"^\s*withdrawn\s*[—–:-]\s*", "", text, flags=re.I)  # tolerate a repeated leading word
         text = "withdrawn — " + text
-    ruling = inline(text)
+    ruling = inline(text) if text.strip() else MISSING
     owner = ""
-    if e.get("owned_by"):
+    if valid_pointer(e.get("owned_by")):
         ob = e["owned_by"]
         owner = f' <span class="date">(owned by {inline(ob["project"])} {ck(ob["id"])})</span>'
     return (f'<li><span class="id">{ck(e["id"])}</span> <span class="date">({inline(e["answered_on"])})</span>{ledger_level(e)} '
             f'— {inline(e["title"])} — <strong>Ruling:</strong> {ruling}{owner}</li>')
 
 
+MISSING = '<em class="missing">missing; see Needs repair</em>'
+
+
+def field(e, key):
+    v = e.get(key)
+    return inline(v) if isinstance(v, str) and v.strip() else MISSING
+
+
+def valid_pointer(ob):
+    return isinstance(ob, dict) and isinstance(ob.get("project"), str) and isinstance(ob.get("id"), int)
+
+
+def renderable(e):
+    """An entry the page can place: identity, kind, title, and the date or state that places it."""
+    if not isinstance(e, dict) or type(e.get("id")) is not int or e["id"] < 1:
+        return False
+    if e.get("kind") not in KINDS or not isinstance(e.get("title"), str):
+        return False
+    if e["kind"] == "team":
+        return parse_dt(e.get("date")) is not None
+    if e.get("state") not in STATES:
+        return False
+    return e["state"] == "open" or parse_dt(e.get("answered_on")) is not None
+
+
 def sort_open(entries):
     def key(e):
-        nb = parse_dt(e["needed_by"]) if e.get("needed_by") else None
+        nb = parse_dt(e.get("needed_by"))
         return (nb is None, nb or datetime.max, e["id"])
     return sorted(entries, key=key)
 
@@ -285,25 +318,29 @@ def css_block(tokens):
     return "".join(f"    --{k}: {v};\n" for k, v in tokens.items())
 
 
-def render(d, fragment=False):
-    tz = html.escape(d["tz_label"], quote=True)
-    updated = parse_dt(d["updated"])
-    entries = d["entries"]
-    open_decide = [e for e in entries if e["kind"] == "decide" and e.get("state") == "open" and not e.get("owned_by")]
-    open_do = [e for e in entries if e["kind"] == "do" and e.get("state") == "open" and not e.get("owned_by")]
-    pointers = [e for e in entries if e["kind"] in ("decide", "do") and e.get("state") == "open" and e.get("owned_by")]
+def render(d, fragment=False, errors=()):
+    tz = html.escape(str(d.get("tz_label", "")), quote=True)
+    updated = parse_dt(d.get("updated")) or datetime.now().replace(second=0, microsecond=0)
+    raw = d.get("entries") if isinstance(d.get("entries"), list) else []
+    entries = [e for e in raw if renderable(e)]
+    skipped = len(raw) - len(entries)
+    open_decide = [e for e in entries if e["kind"] == "decide" and e["state"] == "open" and not valid_pointer(e.get("owned_by"))]
+    open_do = [e for e in entries if e["kind"] == "do" and e["state"] == "open" and not valid_pointer(e.get("owned_by"))]
+    pointers = [e for e in entries if e["kind"] in ("decide", "do") and e["state"] == "open" and valid_pointer(e.get("owned_by"))]
     team = sorted([e for e in entries if e["kind"] == "team"], key=lambda e: (parse_dt(e["date"]), e["id"]), reverse=True)
     answered = sorted([e for e in entries if e["kind"] in ("decide", "do") and e.get("state") in ("answered", "withdrawn")],
                       key=lambda e: (parse_dt(e["answered_on"]), e["id"]), reverse=True)
     week_end = updated + timedelta(days=7)
     deadlines = sum(1 for e in open_decide + open_do
-                    if e.get("needed_by") and updated <= parse_dt(e["needed_by"]) <= week_end)
+                    if parse_dt(e.get("needed_by")) and updated <= parse_dt(e["needed_by"]) <= week_end)
 
-    light = dict(TOKENS, **d.get("theme", {}))
-    dark = dict(TOKENS_DARK, **d.get("theme_dark", {}))
+    theme = d.get("theme") if isinstance(d.get("theme"), dict) else {}
+    theme_dark = d.get("theme_dark") if isinstance(d.get("theme_dark"), dict) else {}
+    light = dict(TOKENS, **{k: v for k, v in theme.items() if k in TOKENS})
+    dark = dict(TOKENS_DARK, **{k: v for k, v in theme_dark.items() if k in TOKENS})
     style = (f"<style>\n  :root {{\n    color-scheme: light dark;\n{css_block(light)}  }}\n"
              f"  @media (prefers-color-scheme: dark) {{\n    :root:not([data-theme=\"light\"]) {{\n{css_block(dark)}    }}\n  }}\n"
-             f"  :root[data-theme=\"dark\"] {{\n{css_block(dark)}  }}\n{CSS}</style>")
+             f"  :root[data-theme=\"dark\"] {{\n{css_block(dark)}  }}\n{CSS}{REPAIR_CSS if errors else ''}</style>")
 
     def section(sid, heading, note, body):
         return (f'<section class="group" aria-labelledby="{sid}-heading"><h2 id="{sid}-heading">{heading}</h2>'
@@ -327,10 +364,18 @@ def render(d, fragment=False):
     reply_body = ('<div class="how-to-reply"><p>Reply by ID, in chat. Examples:</p><ul>'
                   + "".join(f"<li>{x}</li>" for x in examples) + "</ul></div>")
 
-    title = f"{d['project']} Check-in Desk"
+    repair = ""
+    if errors:
+        lines = "".join(f"<li>{inline(x)}</li>" for x in errors)
+        skip_note = f" {skipped} entr{'y' if skipped == 1 else 'ies'} could not be placed on the page at all." if skipped else ""
+        repair = (f'<div class="repair" role="alert"><h2>Needs repair ({len(errors)})</h2><p class="group-note">'
+                  f'The data file breaks the contract. The page is shown best-effort so no open ask is hidden; '
+                  f'the maintainer fixes the file, not the page.{skip_note}</p><ul>{lines}</ul></div>\n')
+    title = f"{d.get('project') or '<Project>'} Check-in Desk"
     main = (
         f"<main>\n<header class=\"page-head\"><h1>{inline(title)}</h1>"
-        f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · operator {inline(d['operator'])} · maintained by {inline(d['maintainer'])}</p></header>\n"
+        f"<p class=\"updated\">Last updated: {fmt_dt(updated, tz)} · operator {inline(d.get('operator', ''))} · maintained by {inline(d.get('maintainer', ''))}</p></header>\n"
+        + repair +
         f"<div class=\"totals\" aria-label=\"Header totals\">"
         f"<div class=\"stat decide\"><strong>{len(open_decide)}</strong><span>Decisions waiting</span></div>"
         f"<div class=\"stat do\"><strong>{len(open_do)}</strong><span>Actions only you can take</span></div>"
@@ -367,18 +412,20 @@ def main(argv=None):
         print("Desk data does not satisfy the contract:", file=sys.stderr)
         for e in errs:
             print("  - " + e, file=sys.stderr)
-        return 1
+        if args.check or not isinstance(d, dict):
+            return 1
+        print("Rendering best-effort with a repair block; fix the data file. Exit code 1.", file=sys.stderr)
     if args.check:
         n = len(d["entries"])
         print(f"ok: {d['project']} Check-in Desk, {n} entries, highest id CK-{max((e['id'] for e in d['entries']), default=0)}")
         return 0
-    out = render(d, fragment=args.fragment)
+    out = render(d, fragment=args.fragment, errors=errs)
     if args.out:
         with open(args.out, "w", encoding="utf-8") as f:
             f.write(out)
     else:
         sys.stdout.write(out)
-    return 0
+    return 1 if errs else 0
 
 
 if __name__ == "__main__":
