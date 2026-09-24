@@ -37,7 +37,10 @@ delivery is the first system Velocity was applied to. It is not the definition.
 **The same five questions recur at every scale.** What are we trying to do; who decides; what is
 being done now; how do we know it is done; what did we learn. From one project, to a function, to
 a company, to a portfolio of them, the actors change and the questions do not. That recurrence is
-the evidence that the substrate is real rather than domain-specific.
+the evidence that the substrate is real rather than domain-specific. At the scale of an entity the
+same questions become decisions at several levels, from strategic goals and portfolio investment
+through initiative development to execution and ongoing operations; a small project simply holds
+all of them in one owner.
 
 **Relationship to the build-measure-learn loop.** Eric Ries's *The Lean Startup* (2011) describes
 a proof loop: a hypothesis is a claim, an experiment is its proof, and persevere-or-pivot is an
@@ -51,12 +54,19 @@ how much of themselves they can redesign. Applied to an organization the questio
 the company rewrite its own process, and may its agents? Velocity already answers it, and the
 answer does not change with scope. The system may learn and rewrite its process, through the
 proposal path that exists today. Write authority over goals, criteria, and rules stays with a
-human operator, and urgency never grants it.
+human operator, and urgency never grants it. Helping a governed entity establish its goals and find
+ways to reach them is part of the direction; it never gives an agent permission to adopt goals of
+its own or to rewrite the standards used to evaluate its work.
 
 **Structure: one core, two lifecycles.** The authority, proof, and decision-ownership rules stay
 one shared core. Software delivery and entity development are two lifecycles that consume it.
 This protects the delivery half from dilution and stops the entity half from reinventing rules
 that already exist. There is never a second core.
+
+**What the groundwork has to do.** Connect purpose, authority, evidence, resources, and the next
+action in a way that works for an ordinary TODO file and for a program governed through investment
+gates alike, connects to the management systems people already use, and continues across AI
+vendors. Task throughput alone is not evidence of better decisions.
 
 **What earns a place in the core.** Five tests, and a candidate must pass all five:
 
@@ -71,37 +81,17 @@ that already exist. There is never a second core.
 
 **A fourth scope is emerging, not claimed.** One operator across many entities is a real
 position, and the only rule Velocity has for it today is the cross-desk pointer. It is named here
-as direction so the gap is visible, not as something the standard currently supports.
+as direction so the gap is visible, not as something the standard currently supports. Its first
+explorations are the experimental decision-level and portfolio-record templates. Strategic
+goal-setting lies beyond it: a future candidate until the maintainer selects a bounded discovery
+effort with its own authority and evidence contract. The separately owned Entity Development
+Lifecycle proposal, which explores entity-level views, remains open; this statement of direction
+does not accept it.
 
 This section records direction. The practice behind it is the maintainer's own reported
 experience across private projects, described in the
 [development history](LINEAGE-AND-ADJACENT-WORK.md#development-history-and-historical-claims);
 it is not independently reproducible evidence, and it authorizes no rule change on its own.
-
-## Decision-Making Throughout an Entity
-
-Software delivery is Velocity's established starting point. Its broader purpose is to
-accelerate sound decisions at every level of an entity's work: strategic goals, portfolio
-investments, initiative and program development, execution, and ongoing operations. All
-efforts have this context, even when a small project combines the decisions in one owner and
-assumes existing capacity instead of running a formal investment process.
-
-The groundwork is a common connection between purpose, authority, evidence, resources, and
-next action. It should support an ordinary TODO file as well as a program governed through
-investment gates. It should connect to the management systems people choose and continue
-across AI vendors. Task throughput alone is not evidence of better decisions.
-
-Self-actualization, as a direction for this framework, means helping a governed entity
-establish goals and find ways to achieve them. It does not give an agent permission to adopt
-its own goals or rewrite the standards used to evaluate its work. Strategic goal-setting is
-the next proposed frontier, recorded as [VEL-PF-2](examples/velocity-self-adoption/PORTFOLIO.md#vel-pf-2--strategic-goal-setting)
-in Velocity's portfolio. It remains a future candidate until the Maintainer selects a bounded
-discovery effort with an authority and evidence contract.
-
-The current [development proposal](proposals/2026-09-21-portable-project-records.md) formalizes
-decision levels and lightweight tracking first. The separately owned Entity Development
-Lifecycle proposal explores related entity-level views; neither proposal becomes accepted
-canon through this statement of direction.
 
 ## Frontier Velocity Is Built To Address
 

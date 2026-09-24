@@ -23,20 +23,11 @@ goals, risk, and process evolution. Where it is applied is the adopter's choice;
 [manifesto](MANIFESTO.md#one-core-two-lifecycles) records how far that is meant to reach and what
 has to be true before a rule follows it there.
 
-Its broader direction is to accelerate decisions from strategy and portfolio investment
-through initiative development, execution, and ongoing operations. The
-[manifesto](MANIFESTO.md#decision-making-throughout-an-entity) describes that ambition;
-the experimental profile below lays the groundwork; strategic goal-setting remains future work.
-
 Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
 The guide explains the method; it does not create a second source of lifecycle policy.
 
 Current canon: **v1.8.0 — build anything: one core, two lifecycles, and adoption scopes**.
-Experimental channel: **[v2.0.0-experimental.1](https://github.com/solidcitizen/velocity/releases/tag/v2.0.0-experimental.1)**
-on `codex/2.0-experimental`. Start with the [experimental adoption guide](docs/PROJECT-ADOPTION-GUIDE.md#pin-a-release)
-and pin the tag or its commit; the branch may advance. This opt-in prerelease does not replace
-stable v1.8.0 or establish a finalized 2.0 compatibility contract.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
 projects evaluate development agents, qualify automated handoffs, and measure delivery results;
 they do not activate automation or change existing approval boundaries.
@@ -88,24 +79,27 @@ Whichever you pick: read the [Project Adoption Guide](docs/PROJECT-ADOPTION-GUID
 thin local overlay, and use the [Tranche Template](templates/tranche-template.md) on one bounded
 change. Velocity works with your chosen AI tools and delivery cadence.
 
-## Decision-Aware Work and Portable Records (experimental)
+## Beyond the Delivery Scope: Experimental Templates
 
-An optional [Portable Project Records profile](templates/portable-project-records.md) is available
-in the experimental release with the lightweight Work Board pilot. [Decision levels](templates/decision-levels.md)
-connect each effort to its purpose, selection authority, capacity, and escalation path.
-[Lightweight work management](templates/work-management.md) defines the common semantics:
-`TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
-One Check-in Desk routes decisions qualified as Work, Initiative, or Portfolio. See the
-[standing reference method](examples/management-reference/README.md) for baseline artifacts, reviews,
-and the ownership/access boundary for that shared surface. See the
-[decision walkthrough](examples/decision-levels/README.md) and
-[file-support qualification limits](examples/portable-records/README.md).
-This development support does not change the current canon release or qualify an AI provider
-or external tracker without its scenario evidence.
+Opt-in templates for projects that outgrow one project and one operator, placed by
+[scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope). None is required at any scope.
 
-A dated snapshot of Velocity's own trial of this structure is kept as a
-[worked example](examples/velocity-self-adoption/README.md). Strategic goal-setting is recorded
-there as a future portfolio opportunity, not committed delivery work.
+- **Automation:** [portable project records](templates/portable-project-records.md) and an
+  [artifact index](templates/artifact-index.md), for continuing a project across agents and tools.
+- **Entity:** the [Work Board](templates/work-board.md), piloted on real work; the
+  [work-management contract](templates/work-management.md) that gives every way of keeping work
+  the same state meanings; a [Markdown work tracker](templates/work-tracker.md); and the
+  [file helper](templates/project-records.md) that keeps desk and board data safe.
+- **Portfolio, emerging:** [decision levels](templates/decision-levels.md),
+  [decision records](templates/decision-records.md), and
+  [tracker binding and handoff](templates/tracker-binding-and-handoff.md).
+
+What has and has not been proven is stated in the
+[decision-level walkthrough](examples/decision-levels/README.md) and the
+[portable-records worked example](examples/portable-records/README.md). The
+[management reference](examples/management-reference/README.md) is one worked design, and a dated
+[snapshot of Velocity's own trial](examples/velocity-self-adoption/README.md) shows the records in
+use.
 
 ## Feedback
 

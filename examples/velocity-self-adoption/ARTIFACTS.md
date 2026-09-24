@@ -14,7 +14,7 @@ Desk. The Maintainer subsequently authorized opt-in experimental publication as
   initiative development, and execution while preserving accountable authority.
 - Strategy source: the Maintainer's 2026-09-21 direction, recorded in the
   [proposal](../../proposals/2026-09-21-portable-project-records.md) and
-  [manifesto](../../MANIFESTO.md#decision-making-throughout-an-entity). A strategic goal-setting
+  [manifesto](../../MANIFESTO.md#one-core-two-lifecycles). A strategic goal-setting
   method is future work, not an accepted capability.
 - Portfolio/selection authority: Velocity Maintainer. [PORTFOLIO.md](PORTFOLIO.md) distinguishes
   the currently authorized effort from an unselected future opportunity.

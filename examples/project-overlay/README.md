@@ -24,7 +24,7 @@ Velocity supplies the [lifecycle model](../../docs/LIFECYCLE-MODEL.md),
 [role authority](../../docs/ROLE-AUTHORITY.md),
 [proof model](../../docs/PROOF-MODEL.md),
 [branch hygiene](../../docs/BRANCH-HYGIENE.md), and
-[reusable templates](../../docs/INDEX.md#templates). Link to those rules; do not maintain
+[reusable templates](../../docs/INDEX.md#templates-by-adoption-scope). Link to those rules; do not maintain
 competing copies in the project overlay.
 
 ## Example Lane Map
