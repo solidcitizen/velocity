@@ -1,6 +1,6 @@
 # TODO — `<project>`
 
-Markdown binding for [Lightweight Work Management](../docs/WORK-MANAGEMENT.md). Replace these
+Markdown binding for [Lightweight Work Management](work-management.md). Replace these
 examples with real work or an empty queue. This file can remain the authoritative tracker;
 no JSON conversion, rendered board, or external service is required.
 

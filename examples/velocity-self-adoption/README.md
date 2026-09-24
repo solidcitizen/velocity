@@ -13,8 +13,8 @@ work queue, and nothing in them binds an agent or a project.
 | [PORTFOLIO.md](PORTFOLIO.md) | A portfolio record that keeps investment posture separate from work state |
 
 Read them as an illustration of the record shapes in the
-[decision levels](../../docs/DECISION-LEVELS.md) and
-[portable project records](../../docs/PORTABLE-PROJECT-RECORDS.md) documents, not as current
+[decision levels](../../templates/decision-levels.md) and
+[portable project records](../../templates/portable-project-records.md) documents, not as current
 status. They name the agent that did the work as the Coordinator's executor; that is a record of
 who acted on that day, not a role assignment. Statements in them about the current stable release
 were true when written. Velocity's live work is tracked by the maintainer outside this public

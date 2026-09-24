@@ -3,7 +3,7 @@
 An opt-in profile for decision context, lightweight work management, the Check-in Desk, and
 bindings to a project's chosen tracker. This profile and its file support are development
 additions accepted for `v2.0.0-experimental.1`; the Work Board remains a pilot. See
-[experimental adoption](EXPERIMENTAL-ADOPTION.md). Qualification is specific to the
+[adoption steps](#adopting-the-profile-in-a-project). Qualification is specific to the
 tested tools and scope.
 
 ## Purpose and authority
@@ -13,15 +13,15 @@ of truth, a responsible role, an explicit audience, and a documented update and 
 An authorized successor can continue without the originating AI session. Vendor displays are
 replaceable views. A tracker handoff preserves identity, meaning, decisions, and evidence.
 
-The existing [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md),
-[Role Authority](ROLE-AUTHORITY.md), and [Proof Model](PROOF-MODEL.md) apply. Reading a file,
+The existing [Artifact Authority Boundaries](../docs/ARTIFACT-AUTHORITY-BOUNDARIES.md),
+[Role Authority](../docs/ROLE-AUTHORITY.md), and [Proof Model](../docs/PROOF-MODEL.md) apply. Reading a file,
 using another model, or possessing a connector grants no new authority. An update command's
 actor field is attribution, not authentication or proof of approval. Mandatory controls belong
 outside the evaluated agent's write authority where the project requires enforcement.
 
 ## Record ownership and discovery
 
-The project overlay links one artifact index, using the [Artifact Index](../templates/artifact-index.md)
+The project overlay links one artifact index, using the [Artifact Index](artifact-index.md)
 template or an equivalent existing index. Every supported agent entry file points there. The
 index identifies stable project/artifact identity, canonical location, responsible role,
 audience/access, format and tool pin, read/update/validate/display procedures, history, and recovery.
@@ -38,13 +38,13 @@ includes its project scope. Renames and moves preserve that identity or a durabl
 
 ## Decision context and work meaning
 
-[Decision Levels](DECISION-LEVELS.md) connects strategy, portfolio investment, initiative
+[Decision Levels](decision-levels.md) connects strategy, portfolio investment, initiative
 development, and execution. An adopter declares its governing purpose, owners, capacity
 assumptions/envelope, and escalation path once. Work inherits that context. Separate business
 cases, portfolio tools, and stage gates are used only where the decisions require them.
 Completion, development stage, and investment authority remain distinct.
 
-[Lightweight Work Management](WORK-MANAGEMENT.md) defines common work semantics independently
+[Lightweight Work Management](work-management.md) defines common work semantics independently
 of file format. The queue tracks actions; upstream records own direction and investment.
 Recurring obligations retain occurrence history and do not close when one run completes.
 
@@ -53,20 +53,20 @@ Recurring obligations retain occurrence history and do not close when one run co
 - **File mode:** a Markdown queue such as `TODO.md`, or the structured JSON Work Board, is the
   authoritative lightweight tracker. The common minimum is ID, title, owner, and state, with
   context inherited and additional fields required by the claim. The
-  [Markdown template](../templates/work-tracker.md) supplies a versioned manual workflow;
+  [Markdown template](work-tracker.md) supplies a versioned manual workflow;
   the JSON pilot supplies guarded commands and HTML. Choose the binding explicitly.
 - **External-tracker mode:** the project maps its existing/chosen tracker through the
-  [Tracker Binding and Handoff](../templates/tracker-binding-and-handoff.md) record. Native
+  [Tracker Binding and Handoff](tracker-binding-and-handoff.md) record. Native
   fields, linked records, or an adapter preserve the same meanings. No second writable backlog
   is created to satisfy Velocity. A continuing Work Board is a derived view of that authority.
 
 A project may start in either mode or stay in file mode indefinitely. Distinguish wanted work
 from committed work, held/blocked work from active work, and dropped work from completed work.
-The [common work contract](WORK-MANAGEMENT.md) and [Work Board](../templates/work-board.md) share
+The [common work contract](work-management.md) and [Work Board](work-board.md) share
 the seven state meanings. An external tracker may use different labels if its mapping
 preserves these distinctions and the proof.
 
-The Work Board describes work; the [Check-in Desk](../templates/executive-checkin-desk.md)
+The Work Board describes work; the [Check-in Desk](executive-checkin-desk.md)
 records operator asks and decisions under its existing contract, at any decision level. Work
 links to the relevant Desk ask. A ruling remains in its authoritative ledger; when an upstream
 system owns it, the Desk closes with a pointer, rather than becoming a second editable approval.
@@ -98,7 +98,7 @@ is standalone HTML in an ordinary browser. AI side panels and hosted pages are o
 Where adopted, shared renderers own validation, content, totals, and layout;
 project wrappers locate storage, coordinate writes, perform project evidence preflights, and
 publish/open views. They do not fork the content rules. The
-[file helper](../templates/project-records.md) supplies local cooperating-writer mechanics;
+[file helper](project-records.md) supplies local cooperating-writer mechanics;
 its documented limitations remain part of the qualification claim. It supports JSON sources,
 not Markdown parsing/editing. This profile supplies no TODO-to-HTML adapter.
 
@@ -122,6 +122,64 @@ decision; update the index and every supported agent integration. Archive the ol
 stop its writes. Rehearse recovery that retains changes made after cutover. Back up tracker
 data separately from source-code Git history. Export alone is not a qualified migration.
 
+## Adopting the profile in a project
+
+Pin a release first (see the adoption guide's [Pin a Release](../docs/PROJECT-ADOPTION-GUIDE.md#pin-a-release)).
+Reuse the whole pinned `templates/` directory; mixing helper, renderer, schema, and contract
+revisions is unsupported.
+
+### Adopt the smallest useful records
+
+1. Read the [standing method](../examples/management-reference/README.md), [decision levels](decision-levels.md),
+   and [work contract](work-management.md). Record opt-in scope, accountable owner, executing
+   lead, authority/capacity, review triggers, and the pin in the project's lifecycle overlay.
+2. Create a project-owned artifact index from [the template](artifact-index.md).
+   Declare one authoritative work binding: existing `TODO.md`, structured JSON, or an external
+   tracker. Keep TODO when it already does the job. Preserve existing identities and history.
+3. Cover the three levels using the [decision-record baseline](decision-records.md):
+   a work queue; initiative purpose/plan/outcome evidence; portfolio direction, selected work,
+   capacity assumptions, and decisions. These can be sections in existing files. Small efforts
+   can name one owner and an assumed capacity; they need no invented business case or budget.
+4. Use one [Check-in Desk](executive-checkin-desk.md) within its ownership/access
+   scope. Qualify each open decision as `work`, `initiative`, or `portfolio` and retain that
+   field with its ruling. Qualify existing open asks on adoption; leave unknown historical
+   levels unknown. Use `--require-decision-levels` when validating/rendering a standalone Desk.
+5. Point every AI entry file or integration at the same artifact index and overlay. Use the
+   [agent fragment](AGENTS.fragment.md) as guidance. Sessions read the current
+   source and revision before writing; model-specific memory and panels are optional views.
+6. Rehearse one bounded workflow: create work, route a decision, record an actual authorized
+   ruling, release only its covered dependency, and verify history and view freshness. Name
+   the actual tools and proof. Do not call a fixture run a cross-vendor qualification.
+
+If selecting JSON, the [file helper](project-records.md) initializes an empty
+project-owned workspace and provides cooperating-writer safeguards on a local POSIX filesystem.
+Python 3.9+ is required; local qualification used Python 3.14.6 on macOS. The helper does not
+parse or render Markdown and does not enforce real role/approval authority. The standalone
+HTML can be displayed in a browser or any AI tool that supports a local web view.
+
+Keep operational/private records in their declared audience boundary. Publishing the standard
+does not require publishing a project's work records. Adopting the standard does not adopt
+Velocity's own [self-adoption snapshot](../examples/velocity-self-adoption/README.md).
+
+### Upgrade, handoff, and recovery
+
+Keep the prior pin and a versioned snapshot/backup of operational records before adoption.
+Resolve pending helper operations using the exact tool/configuration revision that created
+them before upgrading. Qualify changed contracts and renderers, then regenerate views and
+verify their receipts. Never repoint a project's dependency to the moving branch as an
+unreviewed automatic upgrade.
+
+To roll back, preserve all new rulings and work history, restore the prior tool pin, and
+reconcile record compatibility before resuming writes. Do not restore an old record snapshot
+over decisions made since adoption. If the project selects a larger tracker later, use the
+[binding and handoff contract](tracker-binding-and-handoff.md) and qualify that
+destination before retiring the file as writable authority.
+
+See [qualification](../examples/portable-records/QUALIFICATION.md) for tested scope. Actual
+two-vendor continuation, live tracker integration, distributed writers, automated Markdown
+views, committee workflow, and measured decision acceleration remain unqualified or unsupplied.
+Strategic goal-setting is a future portfolio candidate, not an experimental runtime capability.
+
 ## Instructions for agents in an adopting project
 
 Add this to the project's agent guide when the profile is adopted; it was moved here from the
@@ -137,7 +195,7 @@ shared agent fragment so that a project at the Delivery scope never meets it:
 
 ## Qualification and compatibility
 
-Use the [Agent Evaluation Pack](../templates/agent-evaluation-pack.md) for model, prompt, tool,
+Use the [Agent Evaluation Pack](agent-evaluation-pack.md) for model, prompt, tool,
 or integration changes. Name the tested configurations. Qualify each claimed capability with
 the applicable scenarios; a file-only adopter need not qualify an unused external tracker:
 

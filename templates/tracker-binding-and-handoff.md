@@ -1,6 +1,6 @@
 # Tracker Binding and Handoff — `<project>`
 
-Use with [Portable Project Records](../docs/PORTABLE-PROJECT-RECORDS.md). This record describes
+Use with [Portable Project Records](portable-project-records.md). This record describes
 an existing tracker binding or a bounded migration. Filling it out does not approve cutover.
 
 ## Authority, scope, and discovery

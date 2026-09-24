@@ -34,7 +34,7 @@ The guide explains the method; it does not create a second source of lifecycle p
 
 Current canon: **v1.8.0 — build anything: one core, two lifecycles, and adoption scopes**.
 Experimental channel: **[v2.0.0-experimental.1](https://github.com/solidcitizen/velocity/releases/tag/v2.0.0-experimental.1)**
-on `codex/2.0-experimental`. Start with the [experimental adoption guide](docs/EXPERIMENTAL-ADOPTION.md)
+on `codex/2.0-experimental`. Start with the [experimental adoption guide](docs/PROJECT-ADOPTION-GUIDE.md#pin-a-release)
 and pin the tag or its commit; the branch may advance. This opt-in prerelease does not replace
 stable v1.8.0 or establish a finalized 2.0 compatibility contract.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
@@ -90,13 +90,13 @@ change. Velocity works with your chosen AI tools and delivery cadence.
 
 ## Decision-Aware Work and Portable Records (experimental)
 
-An optional [Portable Project Records profile](docs/PORTABLE-PROJECT-RECORDS.md) is available
-in the experimental release with the lightweight Work Board pilot. [Decision levels](docs/DECISION-LEVELS.md)
+An optional [Portable Project Records profile](templates/portable-project-records.md) is available
+in the experimental release with the lightweight Work Board pilot. [Decision levels](templates/decision-levels.md)
 connect each effort to its purpose, selection authority, capacity, and escalation path.
-[Lightweight work management](docs/WORK-MANAGEMENT.md) defines the common semantics:
+[Lightweight work management](templates/work-management.md) defines the common semantics:
 `TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
 One Check-in Desk routes decisions qualified as Work, Initiative, or Portfolio. See the
-[standing reference method](docs/MANAGEMENT-REFERENCE.md) for baseline artifacts, reviews,
+[standing reference method](examples/management-reference/README.md) for baseline artifacts, reviews,
 and the ownership/access boundary for that shared surface. Its PMI comparison includes the 2026 AI
 standard and human–agent responsibility guidance. See the
 [decision walkthrough](examples/decision-levels/README.md) and

@@ -1,6 +1,6 @@
 # Decision Levels
 
-Experimental contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
+Experimental contract for the opt-in [Portable Project Records](portable-project-records.md)
 profile, accepted for `v2.0.0-experimental.1`. Earlier adopters are not re-judged.
 
 Velocity's direction is to accelerate evidence-backed decision-making throughout an entity's
@@ -15,7 +15,7 @@ and obligations come from its charter and accountable owners, not from this voca
 | Strategy | What outcomes should we pursue, for whom, and within which values and constraints? | Charter, mission, accepted goals | Link the existing purpose and goal owner. Goal-setting methods are future work. |
 | Portfolio / investment | Which efforts merit starting, continuing, changing, or stopping, and what capacity may they consume? | Portfolio decisions, investment envelopes, business cases where needed | Name the selection authority and existing capacity assumption; a separate portfolio system is optional. |
 | Initiative / program / project | How will this effort achieve its outcome, across stages, dependencies, and risks? | Initiative plan, roadmap, program plan, gate decisions | A bounded project goal and next review can be sufficient. |
-| Work execution | What action is ready, who owns it, what blocks it, and what proves completion? | `TODO.md`, structured Work Board, or a chosen tracker | Use the [work-management contract](WORK-MANAGEMENT.md) in one authoritative queue. |
+| Work execution | What action is ready, who owns it, what blocks it, and what proves completion? | `TODO.md`, structured Work Board, or a chosen tracker | Use the [work-management contract](work-management.md) in one authoritative queue. |
 
 These are decision levels, not mandatory organizational tiers. A small project may combine
 their ownership and records. A large program may have several nested initiatives and an
@@ -23,7 +23,7 @@ upstream portfolio outside its own workspace. Cross-cutting work may link severa
 it still names one accountable owner and its applicable constraints. Do not invent a parent
 initiative merely to fill a hierarchy.
 
-Decision levels do not replace the [L0–L5 abstraction layers, lanes, or modes](LIFECYCLE-MODEL.md).
+Decision levels do not replace the [L0–L5 abstraction layers, lanes, or modes](../docs/LIFECYCLE-MODEL.md).
 For example, architecture work is still L1 whether its consequences concern one project or
 an entire portfolio. No new Velocity role or control plane is introduced. A CFO, PMO, sponsor,
 or committee can be a project's named decision authority without becoming a universal role.
@@ -32,7 +32,7 @@ Recurring operations are an additional work pattern across these levels, not ano
 in this hierarchy. A continuing service or function may have a mandate, an operating envelope,
 improvement initiatives, and recurring obligations alongside discrete projects.
 
-The [standing reference method](MANAGEMENT-REFERENCE.md) defines baseline artifacts and the
+The [standing reference method](../examples/management-reference/README.md) defines baseline artifacts and the
 review loop for work, initiatives, and portfolios. It requires decision coverage at each
 level, with one shared Desk whose requests name their decision level within its ownership/access scope.
 
@@ -40,7 +40,7 @@ level, with one shared Desk whose requests name their decision level within its 
 
 Every adopting effort declares its decision context once in its overlay, charter, or artifact
 index. Work inherits that context and links a more specific record only when needed. Use the
-[decision-record templates](../templates/decision-records.md), or equivalent existing records,
+[decision-record templates](decision-records.md), or equivalent existing records,
 to identify:
 
 - purpose or accepted outcome and its accountable owner;
@@ -94,7 +94,7 @@ authorized obligations. A goal change cannot retroactively rewrite completion ev
 
 ## Decisions and the Check-in Desk
 
-The [Check-in Desk](../templates/executive-checkin-desk.md) is an attention and decision surface
+The [Check-in Desk](executive-checkin-desk.md) is an attention and decision surface
 at any level. An ask links the affected goal, investment, initiative, gate, or work record and
 states the exact decision/action, owner, consequence, and next disposition. The Desk does not
 select strategy, compute business cases, or grant additional authority.
@@ -118,7 +118,7 @@ Strategic goal formation, competing values, outcome evaluation, and goal revisio
 their own future design and qualification. Velocity records that opportunity at the portfolio
 level in [VEL-PF-2](../examples/velocity-self-adoption/PORTFOLIO.md#vel-pf-2--strategic-goal-setting), with no execution commitment.
 
-Evaluate acceleration through a bounded [measured pilot](../templates/automation-pilot.md):
+Evaluate acceleration through a bounded [measured pilot](automation-pilot.md):
 time to a usable decision, active human effort, waiting, rework, decision quality, and resource
 use, as relevant to the selected level. More completed tasks or more autonomous actions alone
 do not establish better decisions. This profile makes no measured acceleration claim.
@@ -132,9 +132,9 @@ project starting at the Delivery scope never meets it.
 
 **Where it sits relative to the lifecycle.** This profile adds the question
 "which level of decision does this work serve?" Strategy, portfolio investment, initiative
-development, and execution are a separate axis from the [abstraction layers](LIFECYCLE-MODEL.md#abstraction-layers). An adopter
+development, and execution are a separate axis from the [abstraction layers](../docs/LIFECYCLE-MODEL.md#abstraction-layers). An adopter
 links its governing decision context; it does not renumber L0–L5 or treat a task state as an
-investment approval. The [work tracker](WORK-MANAGEMENT.md) records execution state separately
+investment approval. The [work tracker](work-management.md) records execution state separately
 from this lifecycle's maturity, lane, and mode.
 
 **Task frame additions.** When adopting this profile, add `Decision level` and `Governing context` to the
@@ -150,7 +150,7 @@ adds a short block:
 These fields are optional outside that profile and do not replace the existing frame.
 
 **Authority over goals and investment decisions (experimental).** For adopters of this profile, the
-core rule in [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md), that agents may not
+core rule in [Artifact Authority Boundaries](../docs/ARTIFACT-AUTHORITY-BOUNDARIES.md), that agents may not
 freely rewrite the requirements and criteria that judge their work, extends to goals, portfolio selections, investment envelopes, and stage-gate rulings. Their
 authority is the owner named in the project charter or upstream governance, not automatically
 the work item's editor or Coordinator. Agents may prepare evidence and recommendations;

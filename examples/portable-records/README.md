@@ -16,7 +16,7 @@ synthetic answer and release only the referenced blocker. It exports the full re
 and compares a normalized destination fixture. All outputs stay in the chosen directory.
 
 This example exercises a chosen conversion to the JSON binding. An existing TODO can instead
-remain authoritative under the [Markdown work contract](../../docs/WORK-MANAGEMENT.md); this
+remain authoritative under the [Markdown work contract](../../templates/work-management.md); this
 demo is not a required adoption path or a Markdown parser.
 
 Two items come from [the synthetic TODO snapshot](TODO.snapshot.md). The example copies that
@@ -42,7 +42,7 @@ retention, duplicate retries, local Desk references, interrupted coupled writes,
 recovery, stale views, external-mode write retirement, and exact snapshot comparisons.
 See [Qualification](QUALIFICATION.md) for evidence boundaries and remaining acceptance work.
 
-The [profile](../../docs/PORTABLE-PROJECT-RECORDS.md),
+The [profile](../../templates/portable-project-records.md),
 [file helper](../../templates/project-records.md), and
 [tracker handoff template](../../templates/tracker-binding-and-handoff.md) define the intended
 project workflow. The existing Work Board pilot remains the single shared board implementation.

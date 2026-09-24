@@ -31,9 +31,9 @@ assessment. It is not an inventory of all Velocity initiatives.
 | Checkpoint | Current evidence / disposition | Execution or decision reference |
 | --- | --- | --- |
 | Decision scopes and portable work foundation | Draft prepared; 17 JSON support tests and documentary review recorded. | `VEL-WI-1` through `VEL-WI-3`; foundation `edbeb54`, closeout `ec4a5af` |
-| Standing reference method | Proposed method prepared; eight documentary cases and source/contract navigation reviewed. | `VEL-WI-6`; [reference](../../docs/MANAGEMENT-REFERENCE.md) |
-| Single Desk with qualified requests | Defined and locally tested; Work, Initiative, and Portfolio share the existing sections. | `VEL-WI-7`; [qualification](../../examples/portable-records/QUALIFICATION.md) |
-| Experimental acceptance and publication | v2.0.0-experimental.1 published and remotely verified; fixed pin aa9462b. | `VEL-WI-8`; [publication receipt](../../examples/portable-records/RELEASE-RECEIPT.md) |
+| Standing reference method | Proposed method prepared; eight documentary cases and source/contract navigation reviewed. | `VEL-WI-6`; [reference](../management-reference/README.md) |
+| Single Desk with qualified requests | Defined and locally tested; Work, Initiative, and Portfolio share the existing sections. | `VEL-WI-7`; [qualification](../portable-records/QUALIFICATION.md) |
+| Experimental acceptance and publication | v2.0.0-experimental.1 published and remotely verified; fixed pin aa9462b. | `VEL-WI-8`; [publication receipt](../portable-records/RELEASE-RECEIPT.md) |
 | Stable acceptance and integration | Pending, separately scoped from the experimental release. | [Draft PR #14](https://github.com/solidcitizen/velocity/pull/14) |
 | Actual cross-vendor and external-tracker pilots | Candidates, not selected or resourced. | `VEL-WI-4` and `VEL-WI-5` |
 | Outcome/benefit review after a qualified pilot | Not run; a pilot would define its baseline and measures before claiming acceleration. | [Measured-pilot template](../../templates/automation-pilot.md) |

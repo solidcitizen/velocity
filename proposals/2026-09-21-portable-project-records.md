@@ -76,11 +76,11 @@ remains development support, not released canon.
 
 ## Proposed contracts
 
-1. **Decision awareness.** [Decision Scopes](../docs/DECISION-LEVELS.md) names the four
+1. **Decision awareness.** [Decision Scopes](../templates/decision-levels.md) names the four
    connected scopes, inherited purpose/authority/capacity, conditional management records,
    escalation, parent-change review, and AI participation boundaries. These are separate
    from L0–L5, lanes, modes, and control planes. Recurring operations are an additional pattern.
-2. **Common work meaning.** [Lightweight Work Management](../docs/WORK-MANAGEMENT.md)
+2. **Common work meaning.** [Lightweight Work Management](../templates/work-management.md)
    defines stable identity, ownership, priority, the seven state meanings, bounded scope,
    dependencies, appropriate completion evidence, reopening, history, and uncertainty.
    A future portfolio opportunity is not a delivery commitment.
@@ -88,7 +88,7 @@ remains development support, not released canon.
    pilot and an external tracker are alternatives. One authoritative source owns work in a
    declared scope; derived views do not create another queue. Import is optional and retires
    a source only after a chosen, reconciled cutover.
-4. **Portable records.** [Portable Project Records](../docs/PORTABLE-PROJECT-RECORDS.md)
+4. **Portable records.** [Portable Project Records](../templates/portable-project-records.md)
    defines discovery, audience, source ownership, updates, writer coordination, recovery,
    view freshness, qualification, and handoff. Git/GitHub are useful choices, not requirements.
    Public code may coexist with private operational records.
@@ -101,7 +101,7 @@ remains development support, not released canon.
 enforcement limits, and consequences. The core authority/proof model is retained. Record
 access, actor metadata, a task state, or a model change cannot grant approval authority.
 
-The [standing reference method](../docs/MANAGEMENT-REFERENCE.md) makes those contracts
+The [standing reference method](../examples/management-reference/README.md) makes those contracts
 operational: baseline artifacts, a frame/select/execute/assess/adjust loop, tailored review
 triggers, and decision coverage at each level. A shared Desk is the compact default within
 aligned authority, lead ownership, and access; separate decision rights can require separate

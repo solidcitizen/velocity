@@ -62,7 +62,7 @@ implements, and neither author has reviewed this standard. See the
 
 ## Management and AI Practice Reviewed 2026-09-21
 
-The proposed [management reference method](docs/MANAGEMENT-REFERENCE.md) draws on PMI's
+The proposed [management reference method](examples/management-reference/README.md) draws on PMI's
 project, program, portfolio, and governance guidance. PMI also publishes a
 [2026 AI standard](https://www.pmi.org/standards/artificial-intelligence) and concrete
 [human–agent role guidance](https://www.pmi.org/blog/stakeholder-management-raci). AI governance

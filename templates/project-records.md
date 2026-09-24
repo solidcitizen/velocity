@@ -1,6 +1,6 @@
 # Project Records File Support
 
-Development support for the opt-in [Portable Project Records profile](../docs/PORTABLE-PROJECT-RECORDS.md).
+Development support for the opt-in [Portable Project Records profile](portable-project-records.md).
 The Work Board remains a pilot. A tool installation does not adopt the profile or migrate a
 live project. Pin the whole template directory at a reviewed revision.
 

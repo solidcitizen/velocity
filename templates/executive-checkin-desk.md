@@ -102,7 +102,7 @@ beyond the five things that vary. The renderer enforces every rule it can check.
 | `templates/executive-checkin-desk.html` | What the example renders to. Generated; do not edit. |
 
 Keep populated data in the consuming project's operational workspace, separate from reusable
-templates. Under the optional [Portable Project Records profile](../docs/PORTABLE-PROJECT-RECORDS.md),
+templates. Under the optional [Portable Project Records profile](portable-project-records.md),
 declare that location in the shared artifact index, outside agent session/cache storage.
 **Decision levels (optional).** A Decide entry may carry `decision_level`: `work`, `initiative`,
 or `portfolio`. It names the level of the ruling requested, not the originating task or execution
@@ -111,7 +111,7 @@ on the entries that carry one. Every supplied level is validated. State the affe
 decision owner's hat, and the authority basis in `what`; the desk's declared operator remains the
 decision owner. Do and team entries may carry a level too. One desk can hold decisions at every
 level within its ownership and access boundary; see the
-[management reference](../docs/MANAGEMENT-REFERENCE.md) example.
+[management reference](../examples/management-reference/README.md) example.
 
 A project that wants every open decision labeled declares that in its overlay. Its checks then run
 the renderer with `--require-decision-levels`, which covers open Decide entries including

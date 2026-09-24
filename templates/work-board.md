@@ -21,7 +21,9 @@
 1. **Stable IDs, never renumbered.** Every item gets `WI-<n>` once: positive integers, unique,
    contiguous from 1, never reused. An item that will not be done is not deleted; it closes as
    **dropped**, with the reason, and keeps its id.
-2. **Seven states, and the state says what the item waits on.** *backlog* (wanted, not scheduled),
+2. **Seven states, and the state says what the item waits on.** What each state means is defined
+   once, for every way of keeping work, in the [work-management contract](work-management.md); this
+   rule adds what the JSON board requires. *backlog* (wanted, not scheduled),
    *committed* (named for a week or a date), *doing*, *blocked* (waits on a desk ask or another
    item, named in `waits_on`), *held* (waits on an external event or party, named in `waits_on`,
    with a date when one is known), *done* (closed with proof), *dropped* (closed without doing,
@@ -99,16 +101,16 @@ tokens under `theme` and `theme_dark`.
 ## Adoption notes
 
 - **One work binding, not the definition of work management.** The development
-  [work-management contract](../docs/WORK-MANAGEMENT.md) also permits an authoritative Markdown
+  [work-management contract](work-management.md) also permits an authoritative Markdown
   TODO or a mapped external tracker. This JSON renderer does not read Markdown. A richer view
   alone is not a reason to migrate a queue. Inherit the project's
-  [decision context](../docs/DECISION-LEVELS.md) through its artifact index; use existing
+  [decision context](decision-levels.md) through its artifact index; use existing
   `initiative` and `belongs_to` references for more specific scope. Do not add undeclared JSON
   fields. Benefit/size and initiative totals support attention; they do not constitute a
   business case, investment authorization, or gate decision. Unsupported management and control
   lifecycle semantics remain in linked authoritative records, not inferred from board totals.
 
-- **Portable project records.** The optional [shared profile](../docs/PORTABLE-PROJECT-RECORDS.md)
+- **Portable project records.** The optional [shared profile](portable-project-records.md)
   adds project-owned discovery, guarded file updates, history, and export. Its
   [file helper](project-records.md) invokes this renderer; it does not reimplement content rules.
   Empty `items` is valid for a new board. Existing TODO imports preserve their source and
@@ -117,7 +119,7 @@ tokens under `theme` and `theme_dark`.
   labels a retained HTML snapshot with its successor authority. Staying in file mode is valid.
 
 - **Pinning the pilot.** Adopt a fixed experimental tag or commit using the
-  [experimental adoption guide](../docs/EXPERIMENTAL-ADOPTION.md). Keep the renderer, schema,
+  [experimental adoption guide](../docs/PROJECT-ADOPTION-GUIDE.md#pin-a-release). Keep the renderer, schema,
   and contract from the same pin, never another project's working tree or a moving branch.
   Review release notes and requalify affected behavior before upgrading; existing pins do not
   change when the experimental branch advances.

@@ -1,10 +1,10 @@
 # Decision Context and Management Records
 
-Optional record support for [Decision Levels](../docs/DECISION-LEVELS.md). Use existing records
+Optional record support for [Decision Levels](decision-levels.md). Use existing records
 where they already carry this information. Start with the context block; create portfolio,
 initiative, or gate records only when the decision needs them. Empty example fields are not
 approvals. Populated records belong in the adopting project's declared workspace/system.
-The [standing reference method](../docs/MANAGEMENT-REFERENCE.md) defines the baseline coverage
+The [standing reference method](../examples/management-reference/README.md) defines the baseline coverage
 and how records can be combined. Artifact coverage does not require a separate file or Desk
 for every level.
 

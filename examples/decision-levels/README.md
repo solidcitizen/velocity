@@ -1,7 +1,7 @@
 # Decision-Level Walkthrough
 
-Synthetic, public examples for the proposed [decision levels](../../docs/DECISION-LEVELS.md)
-and [work contract](../../docs/WORK-MANAGEMENT.md). These are documentary walkthroughs, not
+Synthetic, public examples for the proposed [decision levels](../../templates/decision-levels.md)
+and [work contract](../../templates/work-management.md). These are documentary walkthroughs, not
 executed management decisions, independent acceptance, or runtime authorization tests.
 No private project records are needed to inspect them.
 
@@ -83,7 +83,7 @@ rendering is not implemented; the existing JSON support keeps its separately doc
 
 The standing-method follow-up is a documentary Architect/Tester review on 2026-09-21, not an
 executed committee, operational Desk migration, or independent acceptance. It uses the
-[reference method](../../docs/MANAGEMENT-REFERENCE.md) and the scoped Velocity records.
+[reference method](../management-reference/README.md) and the scoped Velocity records.
 
 | Case | Reviewed disposition |
 | --- | --- |

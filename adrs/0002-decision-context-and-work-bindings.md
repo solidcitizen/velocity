@@ -23,8 +23,8 @@ Velocity needs this context without turning a lightweight queue into a portfolio
 
 ## Proposed decision
 
-Adopt [Decision Levels](../docs/DECISION-LEVELS.md) and
-[Lightweight Work Management](../docs/WORK-MANAGEMENT.md) within the opt-in portability profile.
+Adopt [Decision Levels](../templates/decision-levels.md) and
+[Lightweight Work Management](../templates/work-management.md) within the opt-in portability profile.
 Keep strategy, portfolio investment, initiative development, and work execution connected but
 distinct. Let work inherit an explicit context. Keep operations recurrence orthogonal.
 

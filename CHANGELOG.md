@@ -37,7 +37,7 @@ him the same day by merging PR #15, for release as `v1.8.0`. See the
 **Experimental prerelease**, explicitly available for opt-in project adoption on
 `codex/2.0-experimental`. Stable canon remains v1.7.2. The 2.0 prefix identifies the experimental
 direction; it does not yet declare a final major-version compatibility change. Pin this tag
-or its commit and follow the [adoption guide](docs/EXPERIMENTAL-ADOPTION.md).
+or its commit and follow the [adoption guide](https://github.com/solidcitizen/velocity/blob/v2.0.0-experimental.1/docs/EXPERIMENTAL-ADOPTION.md).
 
 - Define the standing reference method and baseline artifacts at work, initiative, and portfolio
   levels, with a shared review loop. One Desk is the default within its ownership/access scope;

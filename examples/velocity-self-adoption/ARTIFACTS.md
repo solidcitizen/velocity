@@ -45,7 +45,7 @@ Desk. The Maintainer subsequently authorized opt-in experimental publication as
 | Execution queue | [TODO.md](TODO.md) | Coordinator within declared authority | Markdown; serialized editor and Git review/read-back |
 | Initiative mandate, plan, and assessment | [INITIATIVES.md](INITIATIVES.md) | Maintainer accountable; Coordinator maintains | Markdown; link work proof and portfolio rulings |
 | Reusable design proposal | [Process proposal](../../proposals/2026-09-21-portable-project-records.md), [ADR-0002](../../adrs/0002-decision-context-and-work-bindings.md) | Maintainer acceptance; Architect review | Proposed text and draft PR; acceptance recorded separately |
-| Proof and limitations | [Decision walkthrough](../../examples/decision-levels/README.md), [JSON qualification](../../examples/portable-records/QUALIFICATION.md) | Tester responsibility | Review/test results; no unsupported live claims |
+| Proof and limitations | [Decision walkthrough](../decision-levels/README.md), [JSON qualification](../portable-records/QUALIFICATION.md) | Tester responsibility | Review/test results; no unsupported live claims |
 | Other proposals | Their existing proposal files and owner branches | Existing owners | References only; no ownership transfer |
 
 No new Check-in Desk is adopted by this index. Existing operational asks remain with their
@@ -57,7 +57,7 @@ presented as a view of this queue.
 
 ## Reference-method mapping
 
-The [reference method](../../docs/MANAGEMENT-REFERENCE.md) is applied to this scoped trial through
+The [reference method](../management-reference/README.md) is applied to this scoped trial through
 the three source files above. Shared purpose/mandate and the role map live in this index;
 portfolio selection principles and resource outlook live in the portfolio introduction;
 the initiative record owns milestones, assessment, risks, and outcome evidence. Work history
@@ -76,7 +76,7 @@ decision names its actual scope; no meeting or scheduled automation is created.
 
 ## Update, history, and recovery
 
-The binding is Markdown under [Lightweight Work Management](../../docs/WORK-MANAGEMENT.md). The
+The binding is Markdown under [Lightweight Work Management](../../templates/work-management.md). The
 working revision is the Git base commit plus the reviewed working diff; committed revisions
 are identified by SHA. Read the current branch, worktree, and source before editing. One
 coordinating editor owns this worktree at a time; Git does not lock concurrent live editors.

@@ -1,6 +1,6 @@
 # Lightweight Work Management
 
-Experimental contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
+Experimental contract for the opt-in [Portable Project Records](portable-project-records.md)
 profile. The contract defines work meaning; a binding defines how it is stored and updated.
 `TODO.md` can carry the complete lightweight work-management responsibility indefinitely.
 It is not merely an inbox to be emptied into another system.
@@ -9,12 +9,12 @@ It is not merely an inbox to be emptied into another system.
 
 Each work item has stable identity within a project, a title, a responsible work owner, and an
 explicit state. Preserve its source, history, and any uncertainty. The project declares its
-[decision context](DECISION-LEVELS.md) once; items inherit it or link their more specific parent,
+[decision context](decision-levels.md) once; items inherit it or link their more specific parent,
 outcome, and authority. Known ownership can be a named role. Imported unknown ownership is
 marked unconfirmed and must be resolved before making a delivery commitment. For AI-executed
 work, the inherited role map also identifies the accountable human owner and escalation path;
 an agent assignment does not itself confer accountability or approval authority. See the
-[reference method](MANAGEMENT-REFERENCE.md) for coverage at the other management levels.
+[reference method](../examples/management-reference/README.md) for coverage at the other management levels.
 
 Use the existing issue, plan, tranche, or a short inline statement to bound the work and say
 what done means. Link dependencies and the decision that governs any protected action. Keep
@@ -52,15 +52,15 @@ if durable fields or linked records preserve these distinctions.
 
 Completion evidence scales with the claim. A short verified result can close a small document
 edit; an operator-facing behavior claim needs the applicable scenario proof. A citation's
-presence does not establish its adequacy. Existing [proof rules](PROOF-MODEL.md) still govern.
+presence does not establish its adequacy. Existing [proof rules](../docs/PROOF-MODEL.md) still govern.
 
 ## File and external bindings
 
 | Binding | Authoritative work source | Update and presentation |
 | --- | --- | --- |
-| Markdown file | `TODO.md` or an existing named Markdown queue | Use the [work-tracker template](../templates/work-tracker.md) or equivalent fields. A serialized editor, version history, and review/read-back maintain the contract. The Markdown itself is a usable view. |
-| Structured file | A project-owned Work Board JSON source | The [Work Board pilot](../templates/work-board.md) supplies a schema and shared renderer; the [file helper](../templates/project-records.md) coordinates local cooperating writers. |
-| External tracker | The declared system/project and mapped records | The [tracker binding](../templates/tracker-binding-and-handoff.md) preserves meaning, identity, authority, and recovery through qualified native fields or linked records. |
+| Markdown file | `TODO.md` or an existing named Markdown queue | Use the [work-tracker template](work-tracker.md) or equivalent fields. A serialized editor, version history, and review/read-back maintain the contract. The Markdown itself is a usable view. |
+| Structured file | A project-owned Work Board JSON source | The [Work Board pilot](work-board.md) supplies a schema and shared renderer; the [file helper](project-records.md) coordinates local cooperating writers. |
+| External tracker | The declared system/project and mapped records | The [tracker binding](tracker-binding-and-handoff.md) preserves meaning, identity, authority, and recovery through qualified native fields or linked records. |
 
 Choose one authoritative work source per declared scope. Different scopes can have different
 owners/systems; record their boundaries and cross-references rather than duplicating the same

@@ -1,10 +1,14 @@
-# Work, Initiative, and Portfolio Reference Method
+# Management Reference (worked example)
 
-The standing reference method for the experimental [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
-profile, accepted for `v2.0.0-experimental.1`. See [experimental adoption](EXPERIMENTAL-ADOPTION.md). This defines the
+A worked reference design, kept as an example rather than as policy: one way to lay out work,
+initiative, and portfolio records, their reviews, and where their decisions go. Nothing here is
+required at any adoption scope.
+
+The standing reference method for the experimental [Portable Project Records](../../templates/portable-project-records.md)
+profile, accepted for `v2.0.0-experimental.1`. See [experimental adoption](../../templates/portable-project-records.md#adopting-the-profile-in-a-project). This defines the
 baseline for that profile's adopters, not a new requirement for prior conformant projects.
 
-Work, initiative, and portfolio are **management levels** under [Decision Levels](DECISION-LEVELS.md).
+Work, initiative, and portfolio are **management levels** under [Decision Levels](../../templates/decision-levels.md).
 They do not rename Velocity's execution lanes or L0–L5 layers. Strategy supplies accepted
 direction to these levels; strategic goal-setting remains a separate future design effort.
 
@@ -50,8 +54,8 @@ records its owner, authority, affected scope, rationale/evidence, conditions, da
 and affected next actions. Routine actions already governed by that ruling do not need new
 decision records for every execution step.
 
-Use the [work template](../templates/work-tracker.md) and
-[decision/management record templates](../templates/decision-records.md). Typical file homes
+Use the [work template](../../templates/work-tracker.md) and
+[decision/management record templates](../../templates/decision-records.md). Typical file homes
 are `TODO.md`, `INITIATIVES.md` (or one file per initiative), and `PORTFOLIO.md`. Context may live
 in a charter or artifact index. Rulings may live in the existing Desk ledger, an external
 governance system, or a declared Decisions section. These names are defaults, not a prescribed
@@ -73,7 +77,7 @@ Each level needs a readable management view of its baseline records. Markdown ca
 three additional dashboards are not required. A Work Board shows execution, an initiative
 view shows outcome progress, and a portfolio view shows choices and resource/value tradeoffs.
 
-The [Check-in Desk](../templates/executive-checkin-desk.md) is the action/decision surface for
+The [Check-in Desk](../../templates/executive-checkin-desk.md) is the action/decision surface for
 its declared operator and responsible lead. It presents what needs an answer or an operator
 action, plus the decision history. Keep ordinary status narrative in the management views,
 as the existing Desk contract requires.
@@ -101,7 +105,7 @@ In JSON, use `decision_level: work | initiative | portfolio`; the shared rendere
 and preserves it with the ruling. Do and team entries may also carry it. In a Markdown or
 external decision record, carry the same explicit field and values. Without a Desk adoption,
 use a durable pending-decision section and ruling history in the existing records. Chat alone
-is never the standing record. See the [synthetic unified Desk](../examples/decision-levels/desk.json).
+is never the standing record. See the [synthetic unified Desk](../decision-levels/desk.json).
 
 Different hats, review cadences, or record levels alone do not call for additional boards.
 Separate desks are appropriate only where authority ownership or access boundaries prevent
@@ -115,7 +119,7 @@ the ruling, keep its actual approval evidence in the declared governance record 
 
 For human–agent work, distinguish the executor from the accountable owner. Map an agent's
 role to a named human owner and escalation route in the context or
-[role brief](../templates/role-brief.md); retain the agent's own identity in execution history.
+[role brief](../../templates/role-brief.md); retain the agent's own identity in execution history.
 State what it may recommend, execute within delegation, or route for approval, and how to
 pause or recover its work. This does not require a fresh approval for each authorized action.
 
@@ -194,5 +198,5 @@ entity governance or strategic goal-setting. The public sources reviewed here do
 that PMI supplies, or lacks, a complete lifecycle for entities forming and pursuing their own
 goals. Keep that question open in the future discovery scope.
 
-See the [scenario review](../examples/decision-levels/README.md#reference-method-review) and
-Velocity's [own artifact mapping](../examples/velocity-self-adoption/ARTIFACTS.md) for the worked application and proof limits.
+See the [scenario review](../decision-levels/README.md#reference-method-review) and
+Velocity's [own artifact mapping](../velocity-self-adoption/ARTIFACTS.md) for the worked application and proof limits.
