@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.8.0
+## [1.8.0] — 2026-09-23
 
 ### Added — Direction: one core, two lifecycles, and adoption scopes
 
@@ -28,10 +28,9 @@ rather than a moving branch. Versions are canon releases, not software:
 **MINOR**: additive direction and adoption guidance. No lifecycle rule, role, approval boundary,
 proof obligation, or prior conformance changes; every scope is a view of rules that already exist.
 
-Approved by Mike as Velocity Maintainer on 2026-09-23 as the framing to write down. Merge and
-release await explicit maintainer approval; see the
-[proposal](proposals/2026-09-23-goal-framing-and-scopes.md). If more than one proposal is
-accepted before the next release is stamped, they ship together under one version.
+Approved by Mike as Velocity Maintainer on 2026-09-23 as the framing to write down, and accepted by
+him the same day by merging PR #15, for release as `v1.8.0`. See the
+[proposal and acceptance record](proposals/2026-09-23-goal-framing-and-scopes.md).
 
 ## [1.7.2] — 2026-09-20
 
@@ -364,6 +363,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.8.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.8.0
 [1.7.2]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.2
 [1.7.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.1
 [1.7.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.0

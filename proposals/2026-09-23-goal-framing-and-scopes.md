@@ -1,6 +1,6 @@
 # Goal Framing and Adoption Scopes
 
-- Status: Proposed; awaiting maintainer review and merge approval
+- Status: Accepted
 - Date: 2026-09-23
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
@@ -11,8 +11,9 @@
   session keep that evolution grounded. He approved this framing on 2026-09-23 as the text to
   write down. The scoped-adoption idea is his ("Velocity can offer the user what scope they
   adopt"), with his own constraint that it carry no tie to any proprietary framework.
-- Disposition: Velocity repo proposal; branch and pull request prepared for maintainer review.
-- Proposed version: v1.8.0 (minor)
+- Disposition: Velocity repo proposal; merged via PR #15 and released as v1.8.0 on 2026-09-23
+  (see Proof and Disposition).
+- Accepted version: v1.8.0 (minor)
 
 ## Change
 
@@ -70,4 +71,9 @@ new cross-document anchors. Every template and document named in the scopes was 
 at the path given. The repository was grepped for any proprietary-framework name or vocabulary;
 none appears. `git diff --check` clean.
 
-Branch: `proposal/goal-framing`. Opened as a pull request for review.
+Accepted by Mike as Velocity Maintainer on 2026-09-23 by merging PR #15 himself ("merged"),
+answering the Velocity Check-in Desk ask CK-43. Stamped `v1.8.0` on this acceptance commit by the
+CPO session under the stamping delegation (governance, Delegated Mechanics). The publication
+site's charter, prepared in advance, was deployed at this tag the same day.
+
+Branch disposition: `proposal/goal-framing` merged via PR #15.

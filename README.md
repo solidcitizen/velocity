@@ -27,7 +27,7 @@ Read the [Velocity field guide](https://velocitystandard.org) for a practical,
 AI-agnostic introduction, then use this repository for the authoritative rules and templates.
 The guide explains the method; it does not create a second source of lifecycle policy.
 
-Current canon: **v1.7.2 — documentation currency and delegated release mechanics**.
+Current canon: **v1.8.0 — build anything: one core, two lifecycles, and adoption scopes**.
 See the [Changelog](CHANGELOG.md) for compatibility and release status. The additive templates help
 projects evaluate development agents, qualify automated handoffs, and measure delivery results;
 they do not activate automation or change existing approval boundaries.
