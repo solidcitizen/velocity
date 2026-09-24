@@ -9,6 +9,28 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.8.0
+
+### Added — Direction: one core, two lifecycles, and adoption scopes
+
+- The manifesto gains a second axis alongside the autonomy thesis: what kind of system Velocity
+  governs. The core rule is stated without naming software; the same five questions are shown to
+  recur from a project to a portfolio; the relationship to the build-measure-learn loop and to the
+  question of what a system may redesign about itself is made explicit; and five tests state what
+  earns a place in the core.
+- The adoption guide gains "Choose Your Scope": Delivery, Automation, and Entity, each a bundle of
+  rules and templates that already exist, each containing the one before it. A scope holds no rule
+  of its own. Portfolio is named as emerging and is not a scope.
+- The lineage document credits the two named influences on this direction.
+
+**MINOR**: additive direction and adoption guidance. No lifecycle rule, role, approval boundary,
+proof obligation, or prior conformance changes; every scope is a view of rules that already exist.
+
+Approved by Mike as Velocity Maintainer on 2026-09-23 as the framing to write down. Merge and
+release await explicit maintainer approval; see the
+[proposal](proposals/2026-09-23-goal-framing-and-scopes.md). If more than one proposal is
+accepted before the next release is stamped, they ship together under one version.
+
 ## [1.7.2] — 2026-09-20
 
 ### Clarified — Documentation currency and delegated release mechanics
