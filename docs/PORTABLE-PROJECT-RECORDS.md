@@ -122,6 +122,19 @@ decision; update the index and every supported agent integration. Archive the ol
 stop its writes. Rehearse recovery that retains changes made after cutover. Back up tracker
 data separately from source-code Git history. Export alone is not a qualified migration.
 
+## Instructions for agents in an adopting project
+
+Add this to the project's agent guide when the profile is adopted; it was moved here from the
+shared agent fragment so that a project at the Delivery scope never meets it:
+
+> If the project adopts Portable Project Records, read the artifact index linked from its
+> overlay before locating or updating work and Desk records. Use its authoritative locations,
+> role boundaries, pinned shared commands, current revisions, and recovery procedure. Agent
+> memory is not the authority. Do not create a second backlog, bypass a pending operation, or
+> report a view current without checking the selected display. External-tracker mode routes work
+> to its declared binding; the retained local board is an archive. Changing models/tools does
+> not change role authority.
+
 ## Qualification and compatibility
 
 Use the [Agent Evaluation Pack](../templates/agent-evaluation-pack.md) for model, prompt, tool,

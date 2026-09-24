@@ -9,6 +9,13 @@
 - [Proof Model](PROOF-MODEL.md)
 - [Branch Hygiene](BRANCH-HYGIENE.md)
 - [Project Adoption Guide](PROJECT-ADOPTION-GUIDE.md)
+
+## Experimental (2.0 channel, opt-in)
+
+Not part of any adoption scope yet, and not core. Each is placed by scope in the
+[adoption guide](PROJECT-ADOPTION-GUIDE.md#choose-your-scope).
+
+- [Experimental Adoption](EXPERIMENTAL-ADOPTION.md) — fixed 2.0 prerelease pin, record setup, and qualification
 - [Portable Project Records](PORTABLE-PROJECT-RECORDS.md) — opt-in development profile; qualification scope stated explicitly
 - [Decision Scopes](DECISION-SCOPES.md) — development contract for strategy, portfolio, initiative, and execution context
 - [Standing Management Reference](MANAGEMENT-REFERENCE.md) — baseline artifacts, review loop, and decision surfaces by level; PMI-informed development method
@@ -28,7 +35,6 @@
 - [Review Pack Template](../templates/review-pack-template.md)
 - [Executive Check-in Desk](../templates/executive-checkin-desk.md) — with its data-file schema, example, and renderer
 - [Work Board](../templates/work-board.md) — experimental tracker pilot, with data schema and renderer
-- [Experimental Adoption](EXPERIMENTAL-ADOPTION.md) — fixed 2.0 prerelease pin, record setup, and qualification
 - [Artifact Index](../templates/artifact-index.md) — shared discovery and ownership
 - [Markdown Work Tracker](../templates/work-tracker.md) — lightweight TODO semantics and manual update discipline
 - [Decision and Management Records](../templates/decision-records.md) — inherited context, portfolio opportunities, initiatives, and gates

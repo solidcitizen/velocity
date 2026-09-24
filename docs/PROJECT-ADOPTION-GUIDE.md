@@ -2,10 +2,6 @@
 
 Velocity is adopted through a thin project overlay.
 
-For the opt-in `v2.0.0-experimental.1` profile, start with
-[experimental adoption](EXPERIMENTAL-ADOPTION.md) for the fixed pin, record choices, and
-qualification limits. Stable projects can retain v1.8.0.
-
 ## What Stays In Velocity
 
 - reusable role definitions
@@ -44,17 +40,24 @@ need nothing else.
 [enforcement field](../templates/adr-enforcement-field.md),
 [architecture decision records](../templates/architecture-decision-record.md), and
 [Control Planes](CONTROL-PLANES.md). Adopt it when an agent's output reaches a lane a person
-would otherwise have gated.
+would otherwise have gated. Experimental, opt-in: the
+[portable project records profile](PORTABLE-PROJECT-RECORDS.md) with its
+[artifact index](../templates/artifact-index.md), for continuing a project across agents and tools.
 
 **Entity.** Adds the operator's standing surfaces for a function or a company rather than a
 single project, beginning with the [Executive Check-in Desk](../templates/executive-checkin-desk.md).
 Adopt it where an operator sits outside day-to-day delivery and decisions would otherwise live in
-chat history.
+chat history. Experimental, opt-in: the [Work Board](../templates/work-board.md) or a
+[Markdown work tracker](../templates/work-tracker.md) under the [work contract](WORK-MANAGEMENT.md),
+and the [file helper](../templates/project-records.md) that keeps desk and board data safe.
 
 **Portfolio** is emerging and is not yet a scope. One operator across several entities is a real
 position, and the only rule Velocity has for it today is the desk's cross-desk pointer. It is
 named in the [manifesto](../MANIFESTO.md#one-core-two-lifecycles) as direction so the gap is
-visible.
+visible. The experimental [decision scopes](DECISION-SCOPES.md),
+[management reference](MANAGEMENT-REFERENCE.md), [decision records](../templates/decision-records.md)
+and [tracker binding](../templates/tracker-binding-and-handoff.md) are its first explorations; none
+of them is a scope or a requirement.
 
 ## What Stays In The Project Repo
 
@@ -157,6 +160,10 @@ and would otherwise have no single place to find what is still open.
 
 ## Adopting Portable Project Records
 
+These profiles are experimental and opt-in, on the 2.0 channel. Start with
+[experimental adoption](EXPERIMENTAL-ADOPTION.md) for the fixed pin, record choices, and
+qualification limits. A project that adopts none of them stays exactly where it is.
+
 For the optional [Portable Project Records profile](PORTABLE-PROJECT-RECORDS.md), name a
 project-owned operational workspace and link one [artifact index](../templates/artifact-index.md)
 from the overlay and all agent entry files. Record responsible roles, audience, source/view
@@ -176,8 +183,8 @@ qualification record before claiming cross-vendor or tracker-migration support.
 
 Declare the [decision context](DECISION-SCOPES.md) in the existing overlay or index: purpose,
 selection/initiative owners, current authority and capacity assumptions, escalation, and review.
-All adopting efforts acknowledge these scopes; separate portfolio, business-case, resource,
-and gate records are conditional on the decisions involved. Use the
+The profile asks an adopting effort to acknowledge these scopes; separate portfolio,
+business-case, resource, and gate records are conditional on the decisions involved. Use the
 [management record templates](../templates/decision-records.md) only where useful. Small projects
 can combine ownership and inherit a short context block; larger efforts link upstream systems.
 Existing work within its authority can proceed while unrelated upstream unknowns are resolved.

@@ -123,6 +123,51 @@ time to a usable decision, active human effort, waiting, rework, decision qualit
 use, as relevant to the selected scope. More completed tasks or more autonomous actions alone
 do not establish better decisions. This profile makes no measured acceleration claim.
 
+## Adopting the profile in a project
+
+This section collects what the profile asks of an adopting project. It is experimental guidance
+for this profile only. It is not core policy, it does not bind a project that has not adopted the
+profile, and it was moved here from the core documents and the Delivery templates so that a
+project starting at the Delivery scope never meets it.
+
+**Where it sits relative to the lifecycle.** This profile adds the question
+"which level of decision does this work serve?" Strategy, portfolio investment, initiative
+development, and execution are a separate axis from the [abstraction layers](LIFECYCLE-MODEL.md#abstraction-layers). An adopter
+links its governing decision context; it does not renumber L0–L5 or treat a task state as an
+investment approval. The [work tracker](WORK-MANAGEMENT.md) records execution state separately
+from this lifecycle's maturity, lane, and mode.
+
+**Task frame additions.** When adopting this profile, add `Decision scope` and `Governing context` to the
+task frame, normally as a link to inherited project/initiative authority and capacity. Add
+`Next management decision` only where a gate or escalation applies. These are not new fields
+required of earlier adopters. A project that records this in its tranche
+adds a short block:
+
+- Decision scope:
+- Governing context: `<purpose, initiative/portfolio authority, capacity; current record revision>`
+- Next management decision: `<only if a gate or escalation applies>`
+
+These fields are optional outside that profile and do not replace the existing frame.
+
+**Authority over goals and investment decisions (experimental).** For adopters of this profile, the
+core rule in [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md), that agents may not
+freely rewrite the requirements and criteria that judge their work, extends to goals, portfolio selections, investment envelopes, and stage-gate rulings. Their
+authority is the owner named in the project charter or upstream governance, not automatically
+the work item's editor or Coordinator. Agents may prepare evidence and recommendations;
+changing an accepted goal, commitment, gate criterion, or envelope requires that owner's
+authority. Link the authoritative ruling rather than copying an editable approval into a
+work queue. This optional extension does not transfer any existing role's authority. This
+extension is experimental. It is not part of the core authority rules, and making it core would
+need its own proposal and proof on a real system.
+
+**Instructions for agents in an adopting project.** Add this to the project's agent guide when
+the profile is adopted: Read the declared decision context before committing or starting
+work. Inherit purpose, owner, capacity/authority, and escalation boundaries; link more specific
+initiative or investment decisions when needed. Keep work state, development stage, and
+investment posture distinct. Revalidate affected work when a governing decision changes.
+`TODO.md` may be the authoritative tracker. A rendered board is a view, and a future portfolio
+opportunity is not a task commitment. Routine work within existing authority needs no new gate.
+
 ## Lineage and compatibility
 
 Project/portfolio separation and staged investment decisions are established management
