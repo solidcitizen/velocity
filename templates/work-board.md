@@ -102,7 +102,7 @@ tokens under `theme` and `theme_dark`.
   [work-management contract](../docs/WORK-MANAGEMENT.md) also permits an authoritative Markdown
   TODO or a mapped external tracker. This JSON renderer does not read Markdown. A richer view
   alone is not a reason to migrate a queue. Inherit the project's
-  [decision context](../docs/DECISION-SCOPES.md) through its artifact index; use existing
+  [decision context](../docs/DECISION-LEVELS.md) through its artifact index; use existing
   `initiative` and `belongs_to` references for more specific scope. Do not add undeclared JSON
   fields. Benefit/size and initiative totals support attention; they do not constitute a
   business case, investment authorization, or gate decision. Unsupported management and control

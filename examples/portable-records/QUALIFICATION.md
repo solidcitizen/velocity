@@ -17,7 +17,7 @@ syntax and JSON syntax pass; no Python 3.9 runtime run is claimed. Legacy Desk a
 output matches the pre-follow-up renderer byte for byte except for the experimental version
 in the footer. The qualified Desk example and shared Work example reproduce from their sources.
 
-The [three-level Desk](../decision-scopes/desk.html), rendered unmodified from its JSON source,
+The [three-level Desk](../decision-levels/desk.html), rendered unmodified from its JSON source,
 was inspected in Codex's in-app browser at its desktop viewport: the shared Decide section
 contains Work, Initiative, and Portfolio labels, with a total of three pending decisions.
 This is local synthetic UI proof, not a migration of an operational board. No mobile or other
@@ -59,7 +59,7 @@ the tested scope. The Desk/Work templates remain usable independently of the gua
 
 The 17 local tests were rerun and passed for the decision-context/Markdown-contract additions
 on 2026-09-21. The JSON helper and renderer code are unchanged by that tranche. The separate
-[decision walkthrough](../decision-scopes/README.md) records documentary scenario review and
+[decision walkthrough](../decision-levels/README.md) records documentary scenario review and
 Velocity's own scoped Markdown adoption. It does not add a Markdown parser/renderer or extend
 the live integration qualifications above.
 

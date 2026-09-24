@@ -45,7 +45,7 @@ Desk. The Maintainer subsequently authorized opt-in experimental publication as
 | Execution queue | [TODO.md](TODO.md) | Coordinator within declared authority | Markdown; serialized editor and Git review/read-back |
 | Initiative mandate, plan, and assessment | [INITIATIVES.md](INITIATIVES.md) | Maintainer accountable; Coordinator maintains | Markdown; link work proof and portfolio rulings |
 | Reusable design proposal | [Process proposal](proposals/2026-09-21-portable-project-records.md), [ADR-0002](adrs/0002-decision-context-and-work-bindings.md) | Maintainer acceptance; Architect review | Proposed text and draft PR; acceptance recorded separately |
-| Proof and limitations | [Decision walkthrough](examples/decision-scopes/README.md), [JSON qualification](examples/portable-records/QUALIFICATION.md) | Tester responsibility | Review/test results; no unsupported live claims |
+| Proof and limitations | [Decision walkthrough](examples/decision-levels/README.md), [JSON qualification](examples/portable-records/QUALIFICATION.md) | Tester responsibility | Review/test results; no unsupported live claims |
 | Other proposals | Their existing proposal files and owner branches | Existing owners | References only; no ownership transfer |
 
 No new Check-in Desk is adopted by this index. Existing operational asks remain with their

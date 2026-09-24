@@ -1,6 +1,6 @@
-# Decision-Scope Walkthrough
+# Decision-Level Walkthrough
 
-Synthetic, public examples for the proposed [decision scopes](../../docs/DECISION-SCOPES.md)
+Synthetic, public examples for the proposed [decision levels](../../docs/DECISION-LEVELS.md)
 and [work contract](../../docs/WORK-MANAGEMENT.md). These are documentary walkthroughs, not
 executed management decisions, independent acceptance, or runtime authorization tests.
 No private project records are needed to inspect them.
@@ -47,7 +47,7 @@ or permission-enforcement test is implied.
 
 Architecture findings and disposition:
 
-- The four decision scopes are an additional context axis. Existing L0–L5, lanes, modes,
+- The four decision levels are an additional context axis. Existing L0–L5, lanes, modes,
   control planes, and protected acceptance authority retain their meanings.
 - Markdown and JSON bind the same work semantics, but their enforcement differs. The manual
   procedure now explicitly records request identity, actor, revisions, retry reconciliation,

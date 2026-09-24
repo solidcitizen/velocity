@@ -81,7 +81,7 @@ it is not independently reproducible evidence, and it authorizes no rule change 
 ## Decision-Making Throughout an Entity
 
 Software delivery is Velocity's established starting point. Its broader purpose is to
-accelerate sound decisions at every scope of an entity's work: strategic goals, portfolio
+accelerate sound decisions at every level of an entity's work: strategic goals, portfolio
 investments, initiative and program development, execution, and ongoing operations. All
 efforts have this context, even when a small project combines the decisions in one owner and
 assumes existing capacity instead of running a formal investment process.
@@ -99,7 +99,7 @@ in Velocity's portfolio. It remains a future candidate until the Maintainer sele
 discovery effort with an authority and evidence contract.
 
 The current [development proposal](proposals/2026-09-21-portable-project-records.md) formalizes
-decision scopes and lightweight tracking first. The separately owned Entity Development
+decision levels and lightweight tracking first. The separately owned Entity Development
 Lifecycle proposal explores related entity-level views; neither proposal becomes accepted
 canon through this statement of direction.
 

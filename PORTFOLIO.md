@@ -46,7 +46,7 @@ development stage, and permission to spend or release.
 - Next decision/owner/trigger: Maintainer selects a bounded pilot or stable integration after
   experimental publication and evidence review. Neither follows automatically from this release.
 - Work/proof: [execution queue](TODO.md), [proposed ADR](adrs/0002-decision-context-and-work-bindings.md),
-  [decision walkthrough](examples/decision-scopes/README.md),
+  [decision walkthrough](examples/decision-levels/README.md),
   [JSON qualification](examples/portable-records/QUALIFICATION.md).
 - History: 2026-09-21, Coordinator recorded the Maintainer-authorized foundation and its limits.
   The follow-up request makes the standing reference method and initiative record explicit.

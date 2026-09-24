@@ -17,7 +17,7 @@ Not part of any adoption scope yet, and not core. Each is placed by scope in the
 
 - [Experimental Adoption](EXPERIMENTAL-ADOPTION.md) — fixed 2.0 prerelease pin, record setup, and qualification
 - [Portable Project Records](PORTABLE-PROJECT-RECORDS.md) — opt-in development profile; qualification scope stated explicitly
-- [Decision Scopes](DECISION-SCOPES.md) — development contract for strategy, portfolio, initiative, and execution context
+- [Decision Levels](DECISION-LEVELS.md) — development contract for strategy, portfolio, initiative, and execution context
 - [Standing Management Reference](MANAGEMENT-REFERENCE.md) — baseline artifacts, review loop, and decision surfaces by level; PMI-informed development method
 - [Lightweight Work Management](WORK-MANAGEMENT.md) — development contract; Markdown TODO is a first-class tracker binding
 
@@ -56,4 +56,4 @@ Not part of any adoption scope yet, and not core. Each is placed by scope in the
 - [Policy and Project Mapping](../examples/project-overlay/policy-mapping.md)
 - [Measured Automation Worked Example](../examples/measured-automation/README.md)
 - [Portable Records Worked Example](../examples/portable-records/README.md) — synthetic command-line continuation and mapping, with explicit proof limits
-- [Decision-Scope Walkthrough](../examples/decision-scopes/README.md) — synthetic cases and explicit review limits
+- [Decision-Level Walkthrough](../examples/decision-levels/README.md) — synthetic cases and explicit review limits

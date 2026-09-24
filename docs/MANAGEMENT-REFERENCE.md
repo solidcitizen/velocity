@@ -4,7 +4,7 @@ The standing reference method for the experimental [Portable Project Records](PO
 profile, accepted for `v2.0.0-experimental.1`. See [experimental adoption](EXPERIMENTAL-ADOPTION.md). This defines the
 baseline for that profile's adopters, not a new requirement for prior conformant projects.
 
-Work, initiative, and portfolio are **management levels** under [Decision Scopes](DECISION-SCOPES.md).
+Work, initiative, and portfolio are **management levels** under [Decision Levels](DECISION-LEVELS.md).
 They do not rename Velocity's execution lanes or L0–L5 layers. Strategy supplies accepted
 direction to these levels; strategic goal-setting remains a separate future design effort.
 
@@ -101,7 +101,7 @@ In JSON, use `decision_level: work | initiative | portfolio`; the shared rendere
 and preserves it with the ruling. Do and team entries may also carry it. In a Markdown or
 external decision record, carry the same explicit field and values. Without a Desk adoption,
 use a durable pending-decision section and ruling history in the existing records. Chat alone
-is never the standing record. See the [synthetic unified Desk](../examples/decision-scopes/desk.json).
+is never the standing record. See the [synthetic unified Desk](../examples/decision-levels/desk.json).
 
 Different hats, review cadences, or record levels alone do not call for additional boards.
 Separate desks are appropriate only where authority ownership or access boundaries prevent
@@ -194,5 +194,5 @@ entity governance or strategic goal-setting. The public sources reviewed here do
 that PMI supplies, or lacks, a complete lifecycle for entities forming and pursuing their own
 goals. Keep that question open in the future discovery scope.
 
-See the [scenario review](../examples/decision-scopes/README.md#reference-method-review) and
+See the [scenario review](../examples/decision-levels/README.md#reference-method-review) and
 Velocity's [own artifact mapping](../ARTIFACTS.md) for the worked application and proof limits.

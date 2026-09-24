@@ -76,7 +76,7 @@ remains development support, not released canon.
 
 ## Proposed contracts
 
-1. **Decision awareness.** [Decision Scopes](../docs/DECISION-SCOPES.md) names the four
+1. **Decision awareness.** [Decision Scopes](../docs/DECISION-LEVELS.md) names the four
    connected scopes, inherited purpose/authority/capacity, conditional management records,
    escalation, parent-change review, and AI participation boundaries. These are separate
    from L0–L5, lanes, modes, and control planes. Recurring operations are an additional pattern.
@@ -172,7 +172,7 @@ There is no consuming-project data migration or replacement of an existing live 
 
 ## Proof and review
 
-The [decision walkthrough](../examples/decision-scopes/README.md) reviews a retained TODO,
+The [decision walkthrough](../examples/decision-levels/README.md) reviews a retained TODO,
 unknown history, capacity escalation, a capital gate, delegated work, changed parent authority,
 recurring obligations, upstream rulings, concurrent writers, migration, a future candidate,
 and an agent-proposed goal. It includes the actual Velocity trial records and states the
@@ -205,7 +205,7 @@ documentation or local test success closes those claims.
 
 - Classification: reusable proposed policy and template support, synthetic examples, and
   Velocity's scoped trial records. No private project material is published.
-- Protected artifacts: `docs/MANAGEMENT-REFERENCE.md`, `docs/DECISION-SCOPES.md`, `docs/WORK-MANAGEMENT.md`,
+- Protected artifacts: `docs/MANAGEMENT-REFERENCE.md`, `docs/DECISION-LEVELS.md`, `docs/WORK-MANAGEMENT.md`,
   `docs/PORTABLE-PROJECT-RECORDS.md`, `docs/LIFECYCLE-MODEL.md`,
   `docs/CONTROL-PLANES.md`, `docs/ARTIFACT-AUTHORITY-BOUNDARIES.md`,
   `docs/PROJECT-ADOPTION-GUIDE.md`, `docs/INDEX.md`, the linked record/adoption/tranche and

@@ -1,4 +1,4 @@
-# Decision Scopes
+# Decision Levels
 
 Experimental contract for the opt-in [Portable Project Records](PORTABLE-PROJECT-RECORDS.md)
 profile, accepted for `v2.0.0-experimental.1`. Earlier adopters are not re-judged.
@@ -8,27 +8,27 @@ work: establishing direction, choosing investments, developing outcomes, and exe
 An entity can be a product, organization, household, or other governed effort. Its authority
 and obligations come from its charter and accountable owners, not from this vocabulary.
 
-## Four connected scopes
+## Four connected levels
 
-| Decision scope | Question it owns | Typical authoritative record | Lightweight participation |
+| Decision level | Question it owns | Typical authoritative record | Lightweight participation |
 | --- | --- | --- | --- |
 | Strategy | What outcomes should we pursue, for whom, and within which values and constraints? | Charter, mission, accepted goals | Link the existing purpose and goal owner. Goal-setting methods are future work. |
 | Portfolio / investment | Which efforts merit starting, continuing, changing, or stopping, and what capacity may they consume? | Portfolio decisions, investment envelopes, business cases where needed | Name the selection authority and existing capacity assumption; a separate portfolio system is optional. |
 | Initiative / program / project | How will this effort achieve its outcome, across stages, dependencies, and risks? | Initiative plan, roadmap, program plan, gate decisions | A bounded project goal and next review can be sufficient. |
 | Work execution | What action is ready, who owns it, what blocks it, and what proves completion? | `TODO.md`, structured Work Board, or a chosen tracker | Use the [work-management contract](WORK-MANAGEMENT.md) in one authoritative queue. |
 
-These are decision scopes, not mandatory organizational tiers. A small project may combine
+These are decision levels, not mandatory organizational tiers. A small project may combine
 their ownership and records. A large program may have several nested initiatives and an
 upstream portfolio outside its own workspace. Cross-cutting work may link several outcomes;
 it still names one accountable owner and its applicable constraints. Do not invent a parent
 initiative merely to fill a hierarchy.
 
-Scopes do not replace the [L0–L5 abstraction layers, lanes, or modes](LIFECYCLE-MODEL.md).
+Decision levels do not replace the [L0–L5 abstraction layers, lanes, or modes](LIFECYCLE-MODEL.md).
 For example, architecture work is still L1 whether its consequences concern one project or
 an entire portfolio. No new Velocity role or control plane is introduced. A CFO, PMO, sponsor,
 or committee can be a project's named decision authority without becoming a universal role.
 
-Recurring operations are an additional work pattern across these scopes, not another rung
+Recurring operations are an additional work pattern across these levels, not another rung
 in this hierarchy. A continuing service or function may have a mandate, an operating envelope,
 improvement initiatives, and recurring obligations alongside discrete projects.
 
@@ -95,7 +95,7 @@ authorized obligations. A goal change cannot retroactively rewrite completion ev
 ## Decisions and the Check-in Desk
 
 The [Check-in Desk](../templates/executive-checkin-desk.md) is an attention and decision surface
-at any scope. An ask links the affected goal, investment, initiative, gate, or work record and
+at any level. An ask links the affected goal, investment, initiative, gate, or work record and
 states the exact decision/action, owner, consequence, and next disposition. The Desk does not
 select strategy, compute business cases, or grant additional authority.
 
@@ -115,12 +115,12 @@ An expressly delegated decision still has a scope, evidence requirement, and acc
 “Self-actualization” here describes a desired organizational capability to establish goals and
 find ways to achieve them. It is not a claim about model consciousness or a delegation rule.
 Strategic goal formation, competing values, outcome evaluation, and goal revision require
-their own future design and qualification. Velocity records that opportunity at portfolio
-scope in [VEL-PF-2](../PORTFOLIO.md#vel-pf-2--strategic-goal-setting), with no execution commitment.
+their own future design and qualification. Velocity records that opportunity at the portfolio
+level in [VEL-PF-2](../PORTFOLIO.md#vel-pf-2--strategic-goal-setting), with no execution commitment.
 
 Evaluate acceleration through a bounded [measured pilot](../templates/automation-pilot.md):
 time to a usable decision, active human effort, waiting, rework, decision quality, and resource
-use, as relevant to the selected scope. More completed tasks or more autonomous actions alone
+use, as relevant to the selected level. More completed tasks or more autonomous actions alone
 do not establish better decisions. This profile makes no measured acceleration claim.
 
 ## Adopting the profile in a project
@@ -137,13 +137,13 @@ links its governing decision context; it does not renumber L0–L5 or treat a ta
 investment approval. The [work tracker](WORK-MANAGEMENT.md) records execution state separately
 from this lifecycle's maturity, lane, and mode.
 
-**Task frame additions.** When adopting this profile, add `Decision scope` and `Governing context` to the
+**Task frame additions.** When adopting this profile, add `Decision level` and `Governing context` to the
 task frame, normally as a link to inherited project/initiative authority and capacity. Add
 `Next management decision` only where a gate or escalation applies. These are not new fields
 required of earlier adopters. A project that records this in its tranche
 adds a short block:
 
-- Decision scope:
+- Decision level:
 - Governing context: `<purpose, initiative/portfolio authority, capacity; current record revision>`
 - Next management decision: `<only if a gate or escalation applies>`
 

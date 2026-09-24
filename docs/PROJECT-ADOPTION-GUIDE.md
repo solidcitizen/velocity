@@ -54,7 +54,7 @@ and the [file helper](../templates/project-records.md) that keeps desk and board
 **Portfolio** is emerging and is not yet a scope. One operator across several entities is a real
 position, and the only rule Velocity has for it today is the desk's cross-desk pointer. It is
 named in the [manifesto](../MANIFESTO.md#one-core-two-lifecycles) as direction so the gap is
-visible. The experimental [decision scopes](DECISION-SCOPES.md),
+visible. The experimental [decision levels](DECISION-LEVELS.md),
 [management reference](MANAGEMENT-REFERENCE.md), [decision records](../templates/decision-records.md)
 and [tracker binding](../templates/tracker-binding-and-handoff.md) are its first explorations; none
 of them is a scope or a requirement.
@@ -181,7 +181,7 @@ procedure for authorized AI sessions using JSON; it does not parse Markdown. Nat
 remain optional views. Check the profile's
 qualification record before claiming cross-vendor or tracker-migration support.
 
-Declare the [decision context](DECISION-SCOPES.md) in the existing overlay or index: purpose,
+Declare the [decision context](DECISION-LEVELS.md) in the existing overlay or index: purpose,
 selection/initiative owners, current authority and capacity assumptions, escalation, and review.
 The profile asks an adopting effort to acknowledge these scopes; separate portfolio,
 business-case, resource, and gate records are conditional on the decisions involved. Use the

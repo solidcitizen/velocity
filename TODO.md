@@ -42,7 +42,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Source: Maintainer's 2026-09-21 agreement to one board with qualified decision requests.
 - Context: `VEL-PF-1`, `VEL-INI-1`; implementation and local proof within existing capacity.
 - Completion: 2026-09-21; shared contract/schema/renderer, strict open-decision profile check,
-  helper retention guard, and [three-level example](examples/decision-scopes/desk.json).
+  helper retention guard, and [three-level example](examples/decision-levels/desk.json).
   25 local tests passed, including classification, pointers, closure/history/export, and
   prior file-workflow scenarios. This does not qualify a live project migration or AI vendor.
 - History: 2026-09-21, Coordinator implemented the agreed semantics; Architect review kept
@@ -62,7 +62,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
 - Context: `VEL-PF-1`; current documentation/review scope and capacity from the artifact index.
 - Completion: 2026-09-21; [reference method](docs/MANAGEMENT-REFERENCE.md), expanded templates,
   [initiative record](INITIATIVES.md), and
-  [eight-case review](examples/decision-scopes/README.md#reference-method-review). Local links,
+  [eight-case review](examples/decision-levels/README.md#reference-method-review). Local links,
   whitespace and public-source checks passed. This closes definition/review preparation;
   it does not accept policy, qualify a new UI, or claim full PMI-standard coverage.
 - History: 2026-09-21, Coordinator researched primary sources, defined the method, then
@@ -76,9 +76,9 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
   integration, compatibility, and lineage are reviewable, with synthetic decision scenarios.
 - Source: Maintainer's 2026-09-21 instruction to formalize the broader vision.
 - Context: [VEL-PF-1](PORTFOLIO.md#vel-pf-1--decision-aware-work-and-portable-records).
-- Completion: 2026-09-21; [proposed contract](docs/DECISION-SCOPES.md),
+- Completion: 2026-09-21; [proposed contract](docs/DECISION-LEVELS.md),
   [ADR](adrs/0002-decision-context-and-work-bindings.md), and
-  [review walkthrough](examples/decision-scopes/README.md). This closes preparation of the
+  [review walkthrough](examples/decision-levels/README.md). This closes preparation of the
   proposal, not Maintainer acceptance of policy.
 - History: 2026-09-21, Coordinator started the authorized tranche, then closed its drafting
   scope after the named Architect/Tester review passes.
@@ -107,7 +107,7 @@ snapshot overrides an explicit state. Dates below are records of events, not dea
   Maintainer acceptance, merge, release, and live pilots are separate outcomes.
 - Source: framework proof and closeout obligations for the authorized change.
 - Context: [VEL-PF-1](PORTFOLIO.md#vel-pf-1--decision-aware-work-and-portable-records).
-- Completion: 2026-09-21; [review and proof](examples/decision-scopes/README.md), 17 passing
+- Completion: 2026-09-21; [review and proof](examples/decision-levels/README.md), 17 passing
   file-support tests, local link/anchor and whitespace checks, and
   [draft PR #14](https://github.com/solidcitizen/velocity/pull/14) updated and read back with
   foundation commit `edbeb54`. No policy acceptance or release is claimed.

@@ -38,7 +38,7 @@ includes its project scope. Renames and moves preserve that identity or a durabl
 
 ## Decision context and work meaning
 
-[Decision Scopes](DECISION-SCOPES.md) connects strategy, portfolio investment, initiative
+[Decision Levels](DECISION-LEVELS.md) connects strategy, portfolio investment, initiative
 development, and execution. An adopter declares its governing purpose, owners, capacity
 assumptions/envelope, and escalation path once. Work inherits that context. Separate business
 cases, portfolio tools, and stage gates are used only where the decisions require them.
@@ -67,7 +67,7 @@ the seven state meanings. An external tracker may use different labels if its ma
 preserves these distinctions and the proof.
 
 The Work Board describes work; the [Check-in Desk](../templates/executive-checkin-desk.md)
-records operator asks and decisions under its existing contract, at any decision scope. Work
+records operator asks and decisions under its existing contract, at any decision level. Work
 links to the relevant Desk ask. A ruling remains in its authoritative ledger; when an upstream
 system owns it, the Desk closes with a pointer, rather than becoming a second editable approval.
 Answering one ask releases only its covered dependency and scope. Migrating work does not

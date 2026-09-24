@@ -23,7 +23,7 @@ Velocity needs this context without turning a lightweight queue into a portfolio
 
 ## Proposed decision
 
-Adopt [Decision Scopes](../docs/DECISION-SCOPES.md) and
+Adopt [Decision Levels](../docs/DECISION-LEVELS.md) and
 [Lightweight Work Management](../docs/WORK-MANAGEMENT.md) within the opt-in portability profile.
 Keep strategy, portfolio investment, initiative development, and work execution connected but
 distinct. Let work inherit an explicit context. Keep operations recurrence orthogonal.
@@ -70,6 +70,6 @@ and executive views before accepting overlapping contracts.
 
 Architect review is a named responsibility in this implementation session, separate from the
 drafting pass; it is not independent acceptance. The final review and scenario evidence are in
-the [decision-scope walkthrough](../examples/decision-scopes/README.md). Experimental acceptance
+the [decision-level walkthrough](../examples/decision-levels/README.md). Experimental acceptance
 and publication authority are recorded in the proposal; stable-main merge is not authorized
 by that experimental-release ruling.

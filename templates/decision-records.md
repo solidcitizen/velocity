@@ -1,6 +1,6 @@
 # Decision Context and Management Records
 
-Optional record support for [Decision Scopes](../docs/DECISION-SCOPES.md). Use existing records
+Optional record support for [Decision Levels](../docs/DECISION-LEVELS.md). Use existing records
 where they already carry this information. Start with the context block; create portfolio,
 initiative, or gate records only when the decision needs them. Empty example fields are not
 approvals. Populated records belong in the adopting project's declared workspace/system.

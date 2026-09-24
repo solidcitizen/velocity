@@ -91,7 +91,7 @@ change. Velocity works with your chosen AI tools and delivery cadence.
 ## Decision-Aware Work and Portable Records (experimental)
 
 An optional [Portable Project Records profile](docs/PORTABLE-PROJECT-RECORDS.md) is available
-in the experimental release with the lightweight Work Board pilot. [Decision scopes](docs/DECISION-SCOPES.md)
+in the experimental release with the lightweight Work Board pilot. [Decision levels](docs/DECISION-LEVELS.md)
 connect each effort to its purpose, selection authority, capacity, and escalation path.
 [Lightweight work management](docs/WORK-MANAGEMENT.md) defines the common semantics:
 `TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
@@ -99,7 +99,7 @@ One Check-in Desk routes decisions qualified as Work, Initiative, or Portfolio. 
 [standing reference method](docs/MANAGEMENT-REFERENCE.md) for baseline artifacts, reviews,
 and the ownership/access boundary for that shared surface. Its PMI comparison includes the 2026 AI
 standard and human–agent responsibility guidance. See the
-[decision walkthrough](examples/decision-scopes/README.md) and
+[decision walkthrough](examples/decision-levels/README.md) and
 [file-support qualification limits](examples/portable-records/README.md).
 This development support does not change the current canon release or qualify an AI provider
 or external tracker without its scenario evidence.

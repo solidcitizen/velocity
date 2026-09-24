@@ -42,7 +42,7 @@ renderer, schema, and contract revisions is unsupported.
 
 ## Adopt the smallest useful records
 
-1. Read the [standing method](MANAGEMENT-REFERENCE.md), [decision scopes](DECISION-SCOPES.md),
+1. Read the [standing method](MANAGEMENT-REFERENCE.md), [decision levels](DECISION-LEVELS.md),
    and [work contract](WORK-MANAGEMENT.md). Record opt-in scope, accountable owner, executing
    lead, authority/capacity, review triggers, and the pin in the project's lifecycle overlay.
 2. Create a project-owned artifact index from [the template](../templates/artifact-index.md).

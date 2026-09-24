@@ -16,7 +16,7 @@ spec.loader.exec_module(desk)
 
 class DecisionLevelTests(unittest.TestCase):
     def setUp(self):
-        self.data = json.loads((ROOT / "examples/decision-scopes/desk.json").read_text())
+        self.data = json.loads((ROOT / "examples/decision-levels/desk.json").read_text())
 
     def test_three_levels_share_one_decide_section_and_one_total(self):
         self.assertEqual(desk.validate(self.data, require_decision_levels=True), [])
@@ -68,7 +68,7 @@ class DecisionLevelTests(unittest.TestCase):
         self.assertIn('<strong>3</strong><span>Decisions waiting</span>', page)
 
     def test_cli_profile_and_reproducible_shared_example(self):
-        result = subprocess.run([sys.executable, str(TOOL), str(ROOT / "examples/decision-scopes/desk.json"),
+        result = subprocess.run([sys.executable, str(TOOL), str(ROOT / "examples/decision-levels/desk.json"),
                                  "--check", "--require-decision-levels"], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         sample = json.loads((ROOT / "templates/executive-checkin-desk.example.json").read_text())
