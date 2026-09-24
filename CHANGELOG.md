@@ -21,6 +21,8 @@ rather than a moving branch. Versions are canon releases, not software:
 - The adoption guide gains "Choose Your Scope": Delivery, Automation, and Entity, each a bundle of
   rules and templates that already exist, each containing the one before it. A scope holds no rule
   of its own. Portfolio is named as emerging and is not a scope.
+- The README opens on the standard's reach rather than on software delivery alone, and sends a new
+  reader to a scope: start with one project, and be limited to neither one project nor to software.
 - The lineage document credits the two named influences on this direction.
 
 **MINOR**: additive direction and adoption guidance. No lifecycle rule, role, approval boundary,

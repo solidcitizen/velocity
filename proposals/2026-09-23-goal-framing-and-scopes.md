@@ -4,7 +4,9 @@
 - Date: 2026-09-23
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
-- Source: The maintainer's direction of 2026-09-19, that Velocity should broaden from a software
+- Source: The maintainer's direction of 2026-09-19 and 2026-09-23 ("the vision is really build
+  anything"; readers should "get started with velocity on their projects but not feel limited in
+  its ability to build companies"), that Velocity should broaden from a software
   delivery lifecycle toward the lifecycle of building a company, and his instruction that the CPO
   session keep that evolution grounded. He approved this framing on 2026-09-23 as the text to
   write down. The scoped-adoption idea is his ("Velocity can offer the user what scope they
@@ -26,6 +28,13 @@ Add "Choose Your Scope" to `docs/PROJECT-ADOPTION-GUIDE.md`: Delivery, Automatio
 bundle of rules and templates that already exist, each containing the previous one, with Portfolio
 named as emerging. Credit the two named influences in `LINEAGE-AND-ADJACENT-WORK.md`.
 
+Rewrite the README's opening so a reader meets the standard as the maintainer intends it: build
+anything with agents and keep authority over it; the rules name no kind of system; start with one
+project at Delivery scope and be limited to neither one project nor to software. Point the
+"Put It Into Practice" section at the scopes. The publication site's charter is refreshed to match
+when this release is stamped, so the site never describes a scope the released standard does not
+document.
+
 ## Why
 
 The direction exists today only in conversation and in the maintainer's own practice. A standard
@@ -41,8 +50,9 @@ repository, at the maintainer's explicit instruction.
 ## Scope and Authority
 
 - Protected artifacts changed: `docs/PROJECT-ADOPTION-GUIDE.md` (one new section).
-- Other artifacts: `MANIFESTO.md` (one new section, direction), `LINEAGE-AND-ADJACENT-WORK.md`
-  (one attribution paragraph), `CHANGELOG.md`.
+- Other artifacts: `MANIFESTO.md` (one new section, direction), `README.md` (opening, purpose, one
+  goal, and the practice section), `LINEAGE-AND-ADJACENT-WORK.md` (one attribution paragraph),
+  `CHANGELOG.md`.
 - Classification: additive direction and adoption guidance. No lifecycle stage, role, approval
   boundary, proof obligation, template, or conformance rule changes. Every scope is a view of
   rules that already exist; no scope introduces one.
