@@ -107,11 +107,13 @@ CSS = """
 # ---------- validation ----------
 
 def parse_dt(value):
-    """ISO date or datetime (naive, in the operator's own time zone). Returns datetime or None."""
+    """ISO date or datetime (naive, in the operator's own time zone). Returns datetime or None.
+    A UTC offset, if present, is ignored: the time is read as written, so a file that mixes the
+    two forms never compares incompatible times."""
     if not isinstance(value, str):
         return None
     try:
-        return datetime.fromisoformat(value)
+        return datetime.fromisoformat(value).replace(tzinfo=None)
     except ValueError:
         return None
 

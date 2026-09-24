@@ -19,7 +19,7 @@ def load(name, path):
 
 desk = load("desk", "templates/render-checkin-desk.py")
 board = load("board", "templates/render-work-board.py")
-WRONG = (None, 7, "", "x", [], {}, ["x"], {"x": 1})
+WRONG = (None, 7, "", "x", [], {}, ["x"], {"x": 1}, "2026-10-09T17:00:00-07:00")
 IDENTITY = {"id", "title", "kind", "state", "owner", "cadence", "date", "answered_on"}
 
 
@@ -67,6 +67,36 @@ class BestEffortTests(unittest.TestCase):
     def test_board_survives_every_single_field_fault(self):
         data = json.loads((ROOT / "templates/work-board.example.json").read_text())
         self.check(board, data, "items", "WI-")
+
+
+class UtcOffsetTests(unittest.TestCase):
+    """Reported by a pilot: a file with a naive `updated` and an offset-bearing `needed_by` passed
+    --check, then crashed the render. The offset is ignored and the time read as written."""
+    OFFSET = "2026-10-09T17:00:00-07:00"
+
+    def check(self, module, data, entry):
+        entry["needed_by"] = self.OFFSET
+        self.assertEqual(module.validate(data), [])
+        page = module.render(data)
+        entry["needed_by"] = "2026-10-09T17:00:00"
+        self.assertEqual(page, module.render(data))
+        self.assertIn("Fri 2026-10-09 17:00", page)
+
+    def test_desk_reads_an_offset_as_written(self):
+        data = json.loads((ROOT / "templates/executive-checkin-desk.example.json").read_text())
+        entry = next(e for e in data["entries"] if e["kind"] == "decide" and e["state"] == "open")
+        self.check(desk, data, entry)
+
+    def test_board_reads_an_offset_as_written(self):
+        data = json.loads((ROOT / "templates/work-board.example.json").read_text())
+        entry = next(e for e in data["items"] if e.get("kind", "work") == "work" and e["state"] in ("doing", "committed"))
+        self.check(board, data, entry)
+
+    def test_offset_on_updated_alone_still_renders(self):
+        data = json.loads((ROOT / "templates/executive-checkin-desk.example.json").read_text())
+        data["updated"] = data["updated"][:16] + "-07:00"
+        self.assertEqual(desk.validate(data), [])
+        self.assertIn("</main>", desk.render(data))
 
 
 if __name__ == "__main__":

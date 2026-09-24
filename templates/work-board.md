@@ -95,6 +95,11 @@ python3 render-work-board.py board.json --out board.html     # standalone page f
 python3 render-work-board.py board.json --fragment           # title, style, and main only, for artifact hosting
 ```
 
+Every date and time in the data file is the operator's local time; `tz_label` names the zone.
+Write it without a UTC offset. If a value carries one, the renderer reads the time as written
+and ignores the offset, so `2026-10-09T17:00-07:00` and `2026-10-09T17:00` show the same on
+the page.
+
 Only these vary per project: `project`, `maintainer`, `tz_label`, `desk`, `adopted`, and the color
 tokens under `theme` and `theme_dark`.
 
