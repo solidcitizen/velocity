@@ -36,7 +36,7 @@ risks and review trigger. Portfolio selection and work execution remain in their
 sources. The artifact index maps all three levels to the existing proposal/PR decision route.
 
 These records exercise discovery and representation in a real repository. They do not prove
-portfolio decision quality, business benefit, stage-gate enforcement, or a cross-vendor runtime.
+portfolio decision quality, business benefit, gate enforcement, or a cross-vendor runtime.
 
 ## Architecture and proof review
 
@@ -94,12 +94,13 @@ executed committee, operational Desk migration, or independent acceptance. It us
 | Confidential portfolio material and public work queue | Keep the ruling at its authorized source; provide an access-appropriate reference or summary. A consolidated view does not expose restricted details or silently grant access. |
 | Work done, benefit unmeasured | TODO closure remains valid for its bounded work. Initiative outcome and portfolio value remain unverified until their own evidence is available. |
 | Agent performs work or proposes a decision | Execution identity is separate from the accountable human role. Its tools or assignment do not expand decision rights. |
-| Future goal-setting candidate | `VEL-PF-2` stays outside initiative execution. PMI AI coverage remains an explicit research consideration; no claim that PMI lacks the proposed capability. |
+| Future goal-setting candidate | `VEL-PF-2` stays outside initiative execution. How established management standards cover AI remains an explicit research question; no claim is made that they lack the proposed capability. |
 
-Source review: current official PMI publication overviews for project, program, portfolio,
-governance and AI; PMI's human–agent RACI guidance. Full standards were not inspected. The
-references support the stated comparison, not a certification/compliance claim or the claim
-that PMI prescribes Velocity's filenames, review cadence, or Desk layout.
+Source review: public overviews of established project, program, portfolio, governance, and AI
+management standards, credited in the
+[lineage document](../../LINEAGE-AND-ADJACENT-WORK.md#management-and-ai-practice-reviewed-2026-09-21).
+Full standards were not inspected. They support the stated comparison, not a certification or
+compliance claim, and they do not prescribe Velocity's filenames, review cadence, or desk layout.
 
 The follow-up changes only Markdown contracts, templates and trial records. Local links/anchors,
 whitespace, artifact coverage and public-source hygiene were checked successfully before closing

@@ -41,7 +41,7 @@ includes its project scope. Renames and moves preserve that identity or a durabl
 [Decision Levels](decision-levels.md) connects strategy, portfolio investment, initiative
 development, and execution. An adopter declares its governing purpose, owners, capacity
 assumptions/envelope, and escalation path once. Work inherits that context. Separate business
-cases, portfolio tools, and stage gates are used only where the decisions require them.
+cases, portfolio tools, and gates are used only where the decisions require them.
 Completion, development stage, and investment authority remain distinct.
 
 [Lightweight Work Management](work-management.md) defines common work semantics independently

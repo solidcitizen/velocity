@@ -69,7 +69,8 @@ operating mandate and obligation register alongside its improvement initiatives.
 
 For programs, coordinate related projects and their combined benefits. For a single project,
 one initiative brief can carry its mandate and plan. “Initiative” is Velocity's convenient
-umbrella here, not a claim that every initiative is a PMI program or that a work item is a project.
+umbrella here, not a claim that every initiative is a program or that a work item is a project in
+any external standard's sense.
 
 ## A management view and a Check-in Desk have different jobs
 
@@ -95,7 +96,7 @@ Management levels do not create three boards or three approval queues.
 | Portfolio | Which efforts merit selection, resources, continuation, or a changed investment envelope? | Fund discovery, reallocate capacity, hold, or stop an investment. |
 
 Classify the **ruling requested**, not the task that discovered the need. A work item needing
-additional investment raises a Portfolio request. A stage gate may be Initiative or Portfolio
+additional investment raises a Portfolio request. A gate between stages may be Initiative or Portfolio
 depending on the authority exercised. Each ask names one primary level, its affected record,
 the decision owner/hat and authority basis, options/recommendation, and what waits. Link other
 affected levels; the label neither grants authority nor creates a new gate for delegated work.
@@ -156,7 +157,7 @@ and resulting actions are recorded. A lightweight starting cadence is:
 | Initiative | At milestones/gates or material changes; a weekly review is a starting option for active efforts. | Updated outcome forecast, risk response, change/gate decision, or a specific upstream ask. |
 | Portfolio | At selection/resource decisions or material changes; a monthly review is a starting option for an active portfolio. | Revalidated selection, priority, allocation, continuation posture, and benefit/risk outlook. |
 
-Cadences are tailoring defaults, not PMI-prescribed intervals or scheduled automations.
+Cadences are tailoring defaults, not intervals prescribed by any external standard, and not scheduled automations.
 Do not wait for the next meeting when an authority boundary, material risk, or imminent
 commitment needs action. A small owner-led project may combine all reviews in one check-in.
 No-change reviews can record the reviewed revision and unchanged disposition succinctly.
@@ -172,31 +173,12 @@ commitments, actual use, and forecasts; they can link the financial/resource sys
 ordinal task sizes into a budget or infer benefits from the percentage of tasks closed.
 Refresh affected views after decisions; preserve unrelated authorized work and obligations.
 
-## What PMI informs, and what Velocity defines
+## Sources
 
-Primary sources reviewed 2026-09-21:
-
-| PMI source | Supported point | Use here |
-| --- | --- | --- |
-| [PMBOK Guide, Eighth Edition (2025)](https://www.pmi.org/standards/pmbok) | PMI's public overview emphasizes organizational value, accountability, and adapting practices/tools to context. | Keep the baseline useful at small scale; tailor the machinery. |
-| [Governance of Portfolios, Programs, and Projects: A Practice Guide (2016)](https://www.pmi.org/standards/governance) | Its stated purpose distinguishes governance levels while identifying common elements. | Shared decision discipline with level-specific responsibilities. |
-| [The Standard for Program Management, Fifth Edition (2024)](https://www.pmi.org/standards/program-management-fifth-edition) | Related projects are coordinated toward benefits beyond their individual contributions. | Initiative/program reviews assess outcomes and dependencies, not just task counts. |
-| [The Standard for Portfolio Management, Fourth Edition (2017)](https://www.pmi.org/standards/for-portfolio-management) | Portfolios group projects, programs, and other activities around strategic objectives; the standard is principle-based. | Portfolio decisions concern the mix of efforts and strategic contribution. |
-| [The Standard for Artificial Intelligence in Portfolio, Program and Project Management (2026)](https://www.pmi.org/standards/artificial-intelligence) | Its overview covers applying AI and managing AI initiatives, with technology-independent guidance and human oversight. | AI governance is established adjacent work that this method must acknowledge. |
-| [PMI's human–agent RACI guidance (2026)](https://www.pmi.org/blog/stakeholder-management-raci) | Agents may perform bounded work; humans retain accountability, approval and escalation ownership. | Separate executor identity from accountable ownership and document decision rights. |
-
-The standards references above are public publication overviews, supplemented by PMI's
-practitioner guidance, not a clause-by-clause review of the full standards. They support
-differentiated governance and tailoring; they do not establish a
-requirement for three software boards. The artifact baseline, review loop, filenames, cadence
-options, and shared-Desk default above are **Velocity's reference design**, informed by those
-sources. No PMI compliance or certification claim is made.
-
-PMI is already adapting practice for teams containing AI agents. A complete comparison with
-its AI standard is needed before claiming that Velocity fills an uncovered gap in autonomous
-entity governance or strategic goal-setting. The public sources reviewed here do not establish
-that PMI supplies, or lacks, a complete lifecycle for entities forming and pursuing their own
-goals. Keep that question open in the future discovery scope.
+The established management practice that informed this reference design is credited in the
+[lineage document](../../LINEAGE-AND-ADJACENT-WORK.md#management-and-ai-practice-reviewed-2026-09-21).
+The artifact baseline, review loop, filenames, cadence options, and shared-desk default are
+Velocity's own design; no certification or compliance with any external standard is claimed.
 
 See the [scenario review](../decision-levels/README.md#reference-method-review) and
 Velocity's [own artifact mapping](../velocity-self-adoption/ARTIFACTS.md) for the worked application and proof limits.

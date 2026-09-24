@@ -75,7 +75,7 @@ Labels can differ by project. Preserve the meanings and link to the current deci
 In particular, a future portfolio opportunity is not an executable commitment, a high-ranked
 backlog item is not funded, and completing all tasks does not prove the intended benefit.
 
-Where a stage gate applies, identify the decision owner, the evidence needed, available
+Where a gate between stages applies, identify the decision owner, the evidence needed, available
 options, and the proposed next scope and resource envelope before the gate. Record the actual
 decision, rationale, conditions, authority, and review trigger afterward. Go, hold, redirect,
 and stop are meaningful outcomes; passing a technical test does not make the decision.
@@ -151,7 +151,7 @@ These fields are optional outside that profile and do not replace the existing f
 
 **Authority over goals and investment decisions (experimental).** For adopters of this profile, the
 core rule in [Artifact Authority Boundaries](../docs/ARTIFACT-AUTHORITY-BOUNDARIES.md), that agents may not
-freely rewrite the requirements and criteria that judge their work, extends to goals, portfolio selections, investment envelopes, and stage-gate rulings. Their
+freely rewrite the requirements and criteria that judge their work, extends to goals, portfolio selections, investment envelopes, and gate rulings. Their
 authority is the owner named in the project charter or upstream governance, not automatically
 the work item's editor or Coordinator. Agents may prepare evidence and recommendations;
 changing an accepted goal, commitment, gate criterion, or envelope requires that owner's
@@ -170,13 +170,10 @@ opportunity is not a task commitment. Routine work within existing authority nee
 
 ## Lineage and compatibility
 
-Project/portfolio separation and staged investment decisions are established management
-practice. Jean Miller's [2002 PMI conference paper on portfolio management](https://www.pmi.org/learning/library/proven-project-portfolio-management-process-8503)
-discusses selection, strategic alignment, and capacity. Stage-Gate's
-[Discovery-to-Launch description](https://www.stage-gate.com/about/stage-gate-innovation-performance-framework/discovery-to-launch-process/)
-separates evidence-producing stages from resource and continuation decisions. These sources
-inform this design; this is not a claim of PMI certification, compliance, or a complete
-Stage-Gate implementation. Source review: 2026-09-21.
+Separating project and portfolio decisions, and staging investment decisions, are established
+management practice. The sources that informed this template are credited in the
+[lineage document](../LINEAGE-AND-ADJACENT-WORK.md#management-and-ai-practice-reviewed-2026-09-21);
+they are not methods Velocity implements, and no certification or compliance with them is claimed.
 
 Velocity contributes the explicit connection to role authority, proof, portable records, and
 AI continuation. The [architecture proposal](../adrs/0002-decision-context-and-work-bindings.md)

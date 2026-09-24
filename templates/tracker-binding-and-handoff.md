@@ -42,7 +42,7 @@ A Markdown TODO is a valid source and can remain the tracker until the owner cho
 Record its actual state/field mapping; the supplied JSON helper is not a Markdown importer.
 Preserve the distinction among work state, development stage, investment posture, and decision
 status even if the destination offers only one status field. Linked records may supply the
-missing context. A tracker migration does not delegate portfolio or stage-gate authority.
+missing context. A tracker migration does not delegate portfolio or gate authority.
 
 ## Rehearsal and reconciliation
 

@@ -97,8 +97,7 @@ connect each effort to its purpose, selection authority, capacity, and escalatio
 `TODO.md` can remain the tracker, with structured JSON and external systems as alternative bindings.
 One Check-in Desk routes decisions qualified as Work, Initiative, or Portfolio. See the
 [standing reference method](examples/management-reference/README.md) for baseline artifacts, reviews,
-and the ownership/access boundary for that shared surface. Its PMI comparison includes the 2026 AI
-standard and human–agent responsibility guidance. See the
+and the ownership/access boundary for that shared surface. See the
 [decision walkthrough](examples/decision-levels/README.md) and
 [file-support qualification limits](examples/portable-records/README.md).
 This development support does not change the current canon release or qualify an AI provider
