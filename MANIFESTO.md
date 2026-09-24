@@ -22,6 +22,62 @@ and to seek a human decision when they do not. Existing policy already permits e
 delegation; how much time it saves must be measured. The v1/v2 framing here describes a
 direction, not a released semantic version or an authorization to bypass current policy.
 
+## One Core, Two Lifecycles
+
+The thesis above moves along one axis: how much autonomy an agent is granted. There is a second
+axis, and it is the direction the maintainer set in September 2026: what kind of system Velocity
+governs at all.
+
+**The core rule was never about software.** Read Velocity's substrate without the word "code" in
+it and what remains is a set of rules for any productive system that includes autonomous agents:
+who may change the goal, who may change the criteria, what bounds a piece of work, what counts as
+proof that it is done, who owns a decision, and how automation is allowed to expand. Software
+delivery is the first system Velocity was applied to. It is not the definition.
+
+**The same five questions recur at every scale.** What are we trying to do; who decides; what is
+being done now; how do we know it is done; what did we learn. From one project, to a function, to
+a company, to a portfolio of them, the actors change and the questions do not. That recurrence is
+the evidence that the substrate is real rather than domain-specific.
+
+**Relationship to the build-measure-learn loop.** Eric Ries's *The Lean Startup* (2011) describes
+a proof loop: a hypothesis is a claim, an experiment is its proof, and persevere-or-pivot is an
+operator decision. That loop never needed an authority layer, because humans did all the
+building. Once agents do the building, a loop with no separated write authority will quietly
+rewrite its own hypotheses. Velocity is that loop plus the rule about who may change the claim
+and the criteria.
+
+**What the system may redesign about itself.** Max Tegmark's *Life 3.0* (2017) sorts systems by
+how much of themselves they can redesign. Applied to an organization the question becomes: may
+the company rewrite its own process, and may its agents? Velocity already answers it, and the
+answer does not change with scope. The system may learn and rewrite its process, through the
+proposal path that exists today. Write authority over goals, criteria, and rules stays with a
+human operator, and urgency never grants it.
+
+**Structure: one core, two lifecycles.** The authority, proof, and decision-ownership rules stay
+one shared core. Software delivery and entity development are two lifecycles that consume it.
+This protects the delivery half from dilution and stops the entity half from reinventing rules
+that already exist. There is never a second core.
+
+**What earns a place in the core.** Five tests, and a candidate must pass all five:
+
+1. It can be stated without naming a kind of system. If it cannot, it is an overlay.
+2. It governs a boundary — who may change what, or what proves what — not a practice. Practices
+   belong in the field guide and the examples.
+3. It has run on at least one real system before it becomes canon. Direction may be written
+   ahead of proof; rules may not.
+4. It keeps the operator's surface one shape. A new operator-facing page arrives as a proposal,
+   never as a local variant.
+5. It adds a lifecycle that consumes the core, rather than a core of its own.
+
+**The third scope is emerging, not claimed.** One operator across many entities is a real
+position, and the only rule Velocity has for it today is the cross-desk pointer. It is named here
+as direction so the gap is visible, not as something the standard currently supports.
+
+This section records direction. The practice behind it is the maintainer's own reported
+experience across private projects, described in the
+[development history](LINEAGE-AND-ADJACENT-WORK.md#development-history-and-historical-claims);
+it is not independently reproducible evidence, and it authorizes no rule change on its own.
+
 ## Decision-Making Throughout an Entity
 
 Software delivery is Velocity's established starting point. Its broader purpose is to

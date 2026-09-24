@@ -19,6 +19,43 @@ qualification limits. Stable projects can retain v1.7.2.
 - optional evaluation, automated-transition, and measured-pilot templates
 - optional development contracts for decision context, work semantics, and portable records
 
+## Choose Your Scope
+
+Velocity is adopted in scopes. Each scope is a bundle of rules and templates that already exist
+here; a scope holds no rule of its own, and a rule that lives only in a scope's description has
+become a second core. Each scope contains the one before it, so a project moves outward without
+re-learning what it already runs, and "conformant at Delivery scope" is a claim a team can make
+honestly.
+
+**Delivery.** One project, one delivery lead, one operator. The [Lifecycle Model](LIFECYCLE-MODEL.md),
+[Role Authority](ROLE-AUTHORITY.md), [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md),
+[Proof Model](PROOF-MODEL.md) and [Branch Hygiene](BRANCH-HYGIENE.md), with the
+[tranche](../templates/tranche-template.md), [issue record](../templates/issue-record-template.md)
+and [agent guide fragment](../templates/AGENTS.fragment.md) templates. Start here. Most projects
+need nothing else.
+
+**Automation.** Adds the artifacts that let work cross a boundary without a person carrying it:
+[role briefs](../templates/role-brief.md), [handoff packets](../templates/handoff-packet.md),
+[review packs](../templates/review-pack-template.md), the
+[agent evaluation pack](../templates/agent-evaluation-pack.md),
+[automation transition contract](../templates/automation-transition-contract.md) and
+[measured automation pilot](../templates/automation-pilot.md), the
+[system invariant register](../templates/system-invariant-register.md) with its
+[enforcement field](../templates/adr-enforcement-field.md),
+[architecture decision records](../templates/architecture-decision-record.md), and
+[Control Planes](CONTROL-PLANES.md). Adopt it when an agent's output reaches a lane a person
+would otherwise have gated.
+
+**Entity.** Adds the operator's standing surfaces for a function or a company rather than a
+single project, beginning with the [Executive Check-in Desk](../templates/executive-checkin-desk.md).
+Adopt it where an operator sits outside day-to-day delivery and decisions would otherwise live in
+chat history.
+
+**Portfolio** is emerging and is not yet a scope. One operator across several entities is a real
+position, and the only rule Velocity has for it today is the desk's cross-desk pointer. It is
+named in the [manifesto](../MANIFESTO.md#one-core-two-lifecycles) as direction so the gap is
+visible.
+
 ## What Stays In The Project Repo
 
 - project architecture

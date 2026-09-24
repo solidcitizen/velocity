@@ -9,6 +9,29 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.8.0] — 2026-09-23
+
+### Added — Direction: one core, two lifecycles, and adoption scopes
+
+- The manifesto gains a second axis alongside the autonomy thesis: what kind of system Velocity
+  governs. The core rule is stated without naming software; the same five questions are shown to
+  recur from a project to a portfolio; the relationship to the build-measure-learn loop and to the
+  question of what a system may redesign about itself is made explicit; and five tests state what
+  earns a place in the core.
+- The adoption guide gains "Choose Your Scope": Delivery, Automation, and Entity, each a bundle of
+  rules and templates that already exist, each containing the one before it. A scope holds no rule
+  of its own. Portfolio is named as emerging and is not a scope.
+- The README opens on the standard's reach rather than on software delivery alone, and sends a new
+  reader to a scope: start with one project, and be limited to neither one project nor to software.
+- The lineage document credits the two named influences on this direction.
+
+**MINOR**: additive direction and adoption guidance. No lifecycle rule, role, approval boundary,
+proof obligation, or prior conformance changes; every scope is a view of rules that already exist.
+
+Approved by Mike as Velocity Maintainer on 2026-09-23 as the framing to write down, and accepted by
+him the same day by merging PR #15, for release as `v1.8.0`. See the
+[proposal and acceptance record](proposals/2026-09-23-goal-framing-and-scopes.md).
+
 ## [2.0.0-experimental.1] — 2026-09-21
 
 **Experimental prerelease**, explicitly available for opt-in project adoption on
@@ -387,6 +410,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.8.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.8.0
 [1.7.2]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.2
 [1.7.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.1
 [1.7.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.7.0
