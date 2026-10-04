@@ -79,9 +79,8 @@ through the review gate, after the evidence period, by the normal proposal path.
 
 ## Capacity and time
 
-- Discovery runs from the organization's plan ratification in mid-October 2026 to the review
-  gate. The gate is no earlier than December 2026, after at least one full cycle of operating
-  reviews.
+- Discovery runs from the day the organization ratifies its plan to the review gate. The gate is
+  no earlier than December 2026, and only after at least one full cycle of operating reviews.
 - Velocity capacity: the CPO session's drafting and review time. There is no other budget,
   staffing, or delivery date.
 
