@@ -67,6 +67,24 @@ through the review gate, after the evidence period, by the normal proposal path.
    key result achieved.
 6. What does an initiative record carry when naming its accountable owner is itself an open
    decision (issue #19)?
+7. **Who classifies?** Test that a classification is never made by the party it would benefit:
+   a decision's level, how much freedom a piece of work gets, or the measure a function is judged
+   by. An agent does not grade its own autonomy, and a function does not set its own measure.
+   Component measures derive from the organization's goals, never the reverse.
+8. **Does declaring the situation help?** Where the organization chooses to, each initiative
+   declares its situation: settled (apply the accepted procedure), analyzable (find the answer by
+   expert analysis), emergent (run small, safe-to-fail probes and amplify what works), unstable
+   (stabilize within existing authority), or unclassified (decompose until it can be classified).
+   The declaration sets how much experimentation is allowed. Test whether it changes any posture,
+   and how often situations are misclassified. This is optional, so it adds no required work.
+9. **What earns more authority?** Test that only observed behavior counts as evidence for giving
+   any party more authority: a denied action declined, or a self-correction placed on the record.
+   What a party says about its own intent, deference, or confidence counts for nothing.
+
+Questions 7 to 9 come from a proposal the maintainer requested from a separate research thread.
+They enter the trial as questions, not rules. Question 8 draws on Dave Snowden's Cynefin framework
+(Snowden and Boone, *Harvard Business Review*, 2007); Velocity uses its own names for the
+situations and implements none of Cynefin's methods.
 
 ## Exclusions
 
@@ -112,6 +130,13 @@ At the gate, the maintainer decides one of four outcomes:
 
 Inputs to the decision are the evidence summary, an outside methodology review, and the
 manifesto's five admission tests.
+
+The gate also takes up a deeper question raised in drafting: whether authority over a goal rests
+on who bears the consequences if the goal is wrong, together with having no conflict of interest,
+rather than on whether the party is a person or an agent. If so, the prohibition on agents holding
+goal authority has a stated ground, and any future path to shared goal authority would run through
+coupling an agent's consequences to the organization's. The standard cannot express that today.
+Until the gate decides, the rule stands: people own goals.
 
 Stop conditions: the organization stops running the cascade; an agent is found setting or
 rewriting a goal; or the evidence cannot be summarized without identifying the organization.
