@@ -9,6 +9,26 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.10.0
+
+### Clarified — Work Board: two weeks of pilot evidence
+
+- Rule 2: a held item's `event` names the observable trigger and what brings it, not the work that
+  follows; an item waiting on two events is two items. The schema description says the same.
+  Reported by an operator who could not tell what held items were waiting on.
+- Adoption notes: a wrapper may refresh a control's `last_completed` and `proof` from the newest
+  receipt matching its `evidence` pattern. That is stamping, not a local variant, and it keeps a
+  board current where the project is most automated. The receipt pre-flight stays as the
+  backstop, and publishing to the operator's surface is still an agent step.
+- Pilot record: three boards after two weeks (94, 26, and 42 items, with nearly every close
+  carrying proof), the renderer fixes of v1.9.0 and v1.9.1, and one open observation on how the
+  page shows the load of work in motion.
+
+**MINOR**: clarification and adoption guidance. No renderer, schema rule, or validation change. A
+board that validated before still validates, and the template's example renders unchanged.
+
+See the [proposal record](proposals/2026-10-04-work-board-pilot-evidence.md).
+
 ## [1.9.1] — 2026-09-24
 
 ### Fixed — Times with a UTC offset no longer crash either renderer

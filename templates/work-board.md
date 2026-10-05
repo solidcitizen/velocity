@@ -31,7 +31,11 @@
    on. An undated hold is legitimate: the page marks it "no date" and leaves it out of the
    due-this-week count, and it is the maintainer's job to give it a date or turn it into an
    operator ask when the wait becomes the operator's to end. "Blocked on the operator" and "held
-   until Monday's read-back" are an ask and a calendar; the board keeps them apart.
+   until Monday's read-back" are an ask and a calendar; the board keeps them apart. A held item's
+   `event` names the observable thing that ends the wait and what brings it, such as "the September
+   statement downloads; it arrives in the daily control's new-transactions list". It does not
+   describe the work that follows; that is the item's title. An item waiting on two events is two
+   items.
 3. **Work in hand belongs to bounded work.** A *doing* or *done* item names what bounds it: a
    tranche, an issue record, a control document, an ADR, a decision (`CK` id), or an evidence
    folder. A project that adopts the board with history sets `adopted` to the day its discipline
@@ -135,7 +139,9 @@ tokens under `theme` and `theme_dark`.
   workflow around the board (set `updated`, run the renderer with `--check` and then `--fragment`,
   publish the output unmodified). It may not validate, order, total, or render on its own; any of
   those in project code is the local variant the standard forbids. Pin the renderer from the
-  project's Velocity checkout so the board and the standard move together.
+  project's Velocity checkout so the board and the standard move together. Refreshing data from
+  evidence is stamping, not a local variant: a wrapper may set a control's `last_completed` and
+  `proof` from the newest receipt that matches its `evidence` pattern.
 - **`automated` is a cost line and a quality profile, not a taxonomy.** The three values are
   three ways the same work gets done, each with its own cost per occurrence and its own likelihood
   of leaving a receipt: software costs cents and leaves a receipt every time; an agent costs
@@ -148,16 +154,44 @@ tokens under `theme` and `theme_dark`.
 - **The board is kept by the delivery agent.** Every move is an edit to the data file and a
   republish the same turn. That cost is small for an agent-kept queue and heavy for a person;
   a project whose queue is kept by hand should keep its existing tracker and adopt only the desk.
-- **Controls trust `last_completed` as entered.** The renderer reads the data file and nothing
-  else. A project whose control receipts live at a known path can add a pre-flight to its wrapper
-  that compares the newest receipt to `last_completed` and refuses to publish on a mismatch; that
-  check belongs to the project, because only the project knows its evidence.
+- **Controls trust `last_completed` as entered, so let the evidence enter it.** The renderer reads
+  the data file and nothing else, and an agent-kept board goes stale exactly where the project is
+  most automated: a control that runs unattended advances while no agent session is open to record
+  it. The structural fix is a control's `evidence` path. The wrapper refreshes `last_completed`
+  and `proof` from the newest matching receipt, and the control calls the wrapper as its last
+  step. A pre-flight that compares receipts to `last_completed` and refuses to publish on a
+  mismatch remains the backstop for a claimed run with no receipt. Both belong to the project,
+  because only the project knows its evidence. One limit stays: an unattended run advances the
+  data file and the local page, but publishing to the operator's surface is still an agent step.
 
 ## Pilot record
 
 The entries below are maintainer-reported experience from private consuming projects. The
 projects are not public reference implementations, and the findings are not independently
 reproducible evidence.
+
+- 2026-10-04, two weeks in, three boards. The first consuming project grew from 52 items to 94
+  (83 work, 11 controls). 40 items closed, 38 of them with proof; the other 2 closed before its
+  `adopted` date and show as operator-reported. 9 were dropped with reasons, and 6 controls run by
+  software. 20 items still carry `uncertain`, so extraction gaps stay visible instead of being
+  guessed away. The second project has 26 items, and all 9 of its closes carry proof. Velocity's
+  own board has 42 items, and all 25 of its closes carry proof. The validator caught every
+  malformed entry its maintainer wrote. Open observation, no change proposed: the first project
+  shows 29 items in motion against 5 in backlog, and the page reports in-motion load only as a
+  total.
+- 2026-09-24, Velocity's own board crashed the renderer with one malformed `waits_on`, despite rule
+  11's promise. Both renderers now degrade a single bad entry, never the page, and are tested
+  against every single-field fault (v1.9.0). The same day, the first project found that a time
+  written with a UTC offset crashed the page (fixed in v1.9.1).
+- 2026-09-23, first project, an operator reading the page: "held, but not clear what it is waiting
+  on." Each `event` had mixed the trigger, the value expected, and the work that would follow.
+  Rewritten so the title carries the work and `event` carries only the observable trigger, and
+  one item that waited on two events was split in two. Taken into rule 2.
+- 2026-09-23, first project: two unattended days of a daily control advanced three controls with
+  no agent session open; the wrapper's pre-flight refused to publish the stale board. Fixed in the
+  project's wrapper by refreshing control completions from receipts, with the control calling the
+  wrapper as its last step. Taken into the adoption notes, with the limit that publishing is
+  still an agent step.
 
 - 2026-09-21, second consuming project adopts the pilot (19 items: 15 work, 4 controls) as a
   recorded pin exception. Its first gap report: an external party with no return date. The code
