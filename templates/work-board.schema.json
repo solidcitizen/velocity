@@ -169,7 +169,7 @@
         },
         "waits_on": {
           "type": "object",
-          "description": "blocked: {ask: {project, id}} (a Check-in Desk ask) or {item: WI id}. held: {event, by?} (an external event; by is an ISO date). Absent on every other state.",
+          "description": "blocked: {ask: {project, id}} (a Check-in Desk ask) or {item: WI id}. held: {event, by?} (an external event; by is an ISO date). `event` names the observable trigger and what brings it, not the work that follows; an item waiting on two events is two items. Absent on every other state.",
           "properties": {
             "ask": {
               "$ref": "#/$defs/ref"

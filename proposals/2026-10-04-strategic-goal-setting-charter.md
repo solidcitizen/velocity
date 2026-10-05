@@ -11,7 +11,7 @@
   and its entry names what a charter must state: decision rights, exclusions, capacity and time
   limits, research questions, proof, and a review gate.
 - Disposition: Velocity repo proposal; pending the maintainer's approval.
-- Proposed version: planned v1.10.0 (minor)
+- Proposed version: planned v1.11.0 (minor)
 
 ## Why
 

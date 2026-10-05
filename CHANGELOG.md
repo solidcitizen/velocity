@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.10.0
+## [Unreleased] — planned 1.11.0
 
 ### Added — A discovery charter for strategic goal-setting
 
@@ -22,6 +22,28 @@ rather than a moving branch. Versions are canon releases, not software:
 
 **MINOR**: an additive direction record. No lifecycle rule, role, approval boundary, proof
 obligation, or schema changes.
+
+## [1.10.0] — 2026-10-04
+
+### Clarified — Work Board: two weeks of pilot evidence
+
+- Rule 2: a held item's `event` names the observable trigger and what brings it, not the work that
+  follows; an item waiting on two events is two items. The schema description says the same.
+  Reported by an operator who could not tell what held items were waiting on.
+- Adoption notes: a wrapper may refresh a control's `last_completed` and `proof` from the newest
+  receipt matching its `evidence` pattern. That is stamping, not a local variant, and it keeps a
+  board current where the project is most automated. The receipt pre-flight stays as the
+  backstop, and publishing to the operator's surface is still an agent step.
+- Pilot record: three boards after two weeks (102, 26, and 42 items; 81 of 83 closes carry proof,
+  and the other 2 predate adoption), the renderer fixes of v1.9.0 and v1.9.1, and the first project's finding that
+  its in-motion count drifted when moves were not republished in the same turn.
+
+**MINOR**: clarification and adoption guidance. No renderer, schema rule, or validation change. A
+board that validated before still validates, and the template's example renders unchanged.
+
+Approved by Mike as Velocity Maintainer on 2026-10-04 (desk CK-68 A) and merged via PR #22 by the
+CPO session under Delegated Mechanics, for release as `v1.10.0`. See the
+[proposal record](proposals/2026-10-04-work-board-pilot-evidence.md).
 
 ## [1.9.1] — 2026-09-24
 
@@ -528,6 +550,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.10.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.10.0
 [1.9.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.1
 [1.9.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.0
 [1.8.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.8.0
