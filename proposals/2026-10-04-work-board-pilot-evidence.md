@@ -23,8 +23,8 @@
    structural fix and keeps the receipt pre-flight as the backstop. It states the limit: an
    unattended run updates the data and the local page, not the operator's published page.
 3. **Pilot record.** Four dated entries: the two 2026-09-23 findings, the v1.9.0 and v1.9.1 renderer
-   fixes, and a two-week summary of three boards, including one open observation on how the page
-   shows the load of work in motion.
+   fixes, and a two-week summary of three boards, including the first project's finding that its
+   in-motion count misread its load.
 
 ## Why
 
@@ -40,10 +40,17 @@ wording proposed back to Velocity rather than kept as a local variant.
 | Second consuming project | 26 | 9 | 9 | 0 | 4 |
 | Velocity's own board | 42 | 25 | 25 | 1 | 4 |
 
-The first project still carries `uncertain` on 20 items. Open observation, with no change
-proposed: it shows 29 items in motion (13 doing, 16 committed) against 5 in backlog, and the page
-reports in-motion load only as a total. Whether that misled anyone is for the project to say;
-nothing here claims it did.
+The first project still carries `uncertain` on 20 items. It showed 29 items in motion (13 doing,
+16 committed) against 5 in backlog. Asked on 2026-10-04, its maintainer reported that the count
+misread its load. Several "doing" items had finished or been superseded, and a week's substantial
+work never reached the board, because the agent moving items did not republish in the same turn
+(rule 9). The project names that its own discipline failure, not a template defect, and is grooming
+its board.
+
+Its suggestion is not in this change because it needs a schema field and a renderer change: show
+each in-motion item's age in its state, and count in-motion items untouched for more than seven
+days. That would have exposed the drift. It is a candidate for a later release, with the usual
+notice to consuming projects.
 
 ## Scope and Authority
 

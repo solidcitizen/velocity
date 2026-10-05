@@ -21,8 +21,8 @@ rather than a moving branch. Versions are canon releases, not software:
   board current where the project is most automated. The receipt pre-flight stays as the
   backstop, and publishing to the operator's surface is still an agent step.
 - Pilot record: three boards after two weeks (94, 26, and 42 items, with nearly every close
-  carrying proof), the renderer fixes of v1.9.0 and v1.9.1, and one open observation on how the
-  page shows the load of work in motion.
+  carrying proof), the renderer fixes of v1.9.0 and v1.9.1, and the first project's finding that
+  its in-motion count drifted when moves were not republished in the same turn.
 
 **MINOR**: clarification and adoption guidance. No renderer, schema rule, or validation change. A
 board that validated before still validates, and the template's example renders unchanged.
