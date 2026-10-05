@@ -170,19 +170,22 @@ The entries below are maintainer-reported experience from private consuming proj
 projects are not public reference implementations, and the findings are not independently
 reproducible evidence.
 
-- 2026-10-04, two weeks in, three boards. The first consuming project grew from 52 items to 94
-  (83 work, 11 controls). 40 items closed, 38 of them with proof; the other 2 closed before its
-  `adopted` date and show as operator-reported. 9 were dropped with reasons, and 6 controls run by
-  software. 20 items still carry `uncertain`, so extraction gaps stay visible instead of being
+- 2026-10-04, two weeks in, three boards. The first consuming project grew from 52 items to 102
+  (91 work, 11 controls). 49 items closed, 47 of them with proof; the other 2 closed before its
+  `adopted` date and show as operator-reported. 10 were dropped with reasons, and 6 controls run
+  by software. 20 items still carry `uncertain`, so extraction gaps stay visible instead of being
   guessed away. The second project has 26 items, and all 9 of its closes carry proof. Velocity's
   own board has 42 items, and all 25 of its closes carry proof. The validator caught every
   malformed entry its maintainer wrote. The first project's page showed 29 items in motion against
   5 in backlog, and its maintainer found that the count misread the real load. Several "doing"
   items had finished or been superseded, while a week's substantial new work never reached the
   board, because the agent moving items did not republish in the same turn. The project names that
-  its own lapse of rule 9, not a template defect. Its suggestion, held for a later release because
-  it needs a new field: show each in-motion item's age in its state, and count in-motion items
-  untouched for more than seven days.
+  its own lapse of rule 9, not a template defect. It groomed the board the same day, using the
+  evidence: 2 items closed with proof, 1 dropped as superseded, and 7 added for the week's
+  unrecorded work, all done with commit proof. That left 27 in motion, mostly genuinely open or
+  awaiting evidence. Its suggestion, held for a later release because it needs a new field: show
+  each in-motion item's age in its state, and count in-motion items untouched for more than seven
+  days.
 - 2026-09-24, Velocity's own board crashed the renderer with one malformed `waits_on`, despite rule
   11's promise. Both renderers now degrade a single bad entry, never the page, and are tested
   against every single-field fault (v1.9.0). The same day, the first project found that a time

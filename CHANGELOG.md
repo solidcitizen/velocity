@@ -20,8 +20,8 @@ rather than a moving branch. Versions are canon releases, not software:
   receipt matching its `evidence` pattern. That is stamping, not a local variant, and it keeps a
   board current where the project is most automated. The receipt pre-flight stays as the
   backstop, and publishing to the operator's surface is still an agent step.
-- Pilot record: three boards after two weeks (94, 26, and 42 items, with nearly every close
-  carrying proof), the renderer fixes of v1.9.0 and v1.9.1, and the first project's finding that
+- Pilot record: three boards after two weeks (102, 26, and 42 items; 81 of 83 closes carry proof,
+  and the other 2 predate adoption), the renderer fixes of v1.9.0 and v1.9.1, and the first project's finding that
   its in-motion count drifted when moves were not republished in the same turn.
 
 **MINOR**: clarification and adoption guidance. No renderer, schema rule, or validation change. A

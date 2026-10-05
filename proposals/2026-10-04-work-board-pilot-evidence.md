@@ -36,7 +36,7 @@ wording proposed back to Velocity rather than kept as a local variant.
 
 | Board | Items | Closed | Closed with proof | Dropped | Controls |
 |---|---|---|---|---|---|
-| First consuming project | 94 (from 52 on 2026-09-21) | 40 | 38 (2 before `adopted`) | 9 | 11, 6 run by software |
+| First consuming project | 102 (from 52 on 2026-09-21) | 49 | 47 (2 before `adopted`) | 10 | 11, 6 run by software |
 | Second consuming project | 26 | 9 | 9 | 0 | 4 |
 | Velocity's own board | 42 | 25 | 25 | 1 | 4 |
 
@@ -44,8 +44,11 @@ The first project still carries `uncertain` on 20 items. It showed 29 items in m
 16 committed) against 5 in backlog. Asked on 2026-10-04, its maintainer reported that the count
 misread its load. Several "doing" items had finished or been superseded, and a week's substantial
 work never reached the board, because the agent moving items did not republish in the same turn
-(rule 9). The project names that its own discipline failure, not a template defect, and is grooming
-its board.
+(rule 9). The project names that its own discipline failure, not a template defect. It groomed
+the board the same day, using the evidence: 2 items closed with proof, 1 dropped as superseded,
+and 7 added for the week's unrecorded work, all done with commit proof. In motion is now 27 (10
+doing, 17 committed), mostly genuinely open or awaiting evidence. The table shows the groomed board,
+re-read and re-validated on 2026-10-04.
 
 Its suggestion is not in this change because it needs a schema field and a renderer change: show
 each in-motion item's age in its state, and count in-motion items untouched for more than seven
