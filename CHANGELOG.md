@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.10.0
+## [1.10.0] — 2026-10-04
 
 ### Clarified — Work Board: two weeks of pilot evidence
 
@@ -27,7 +27,9 @@ rather than a moving branch. Versions are canon releases, not software:
 **MINOR**: clarification and adoption guidance. No renderer, schema rule, or validation change. A
 board that validated before still validates, and the template's example renders unchanged.
 
-See the [proposal record](proposals/2026-10-04-work-board-pilot-evidence.md).
+Approved by Mike as Velocity Maintainer on 2026-10-04 (desk CK-68 A) and merged via PR #22 by the
+CPO session under Delegated Mechanics, for release as `v1.10.0`. See the
+[proposal record](proposals/2026-10-04-work-board-pilot-evidence.md).
 
 ## [1.9.1] — 2026-09-24
 
@@ -534,6 +536,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.10.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.10.0
 [1.9.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.1
 [1.9.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.0
 [1.8.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.8.0

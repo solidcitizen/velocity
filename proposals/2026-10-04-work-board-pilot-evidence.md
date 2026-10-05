@@ -1,6 +1,6 @@
 # Work Board: Two Weeks of Pilot Evidence
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-10-04
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
@@ -9,8 +9,9 @@
   2026-09-23. The first project left two findings dated 2026-09-23 for the Velocity CPO session,
   and its board data was read on 2026-10-04 (read-only). The fold was due 2026-09-28, slipped twice,
   and the maintainer asked for it on 2026-10-04.
-- Disposition: Velocity repo proposal; pending the maintainer's approval.
-- Proposed version: planned v1.10.0 (minor)
+- Disposition: Velocity repo proposal; merged via PR #22 and released as v1.10.0 on 2026-10-04
+  (see Proof and Disposition).
+- Accepted version: v1.10.0 (minor)
 
 ## Change
 
@@ -68,4 +69,9 @@ validation change, so no consuming board can fail because of this change.
 - If PR #21 (the goal-setting charter) merges first, this branch's CHANGELOG block joins its
   `[Unreleased] — planned 1.10.0` block.
 
-Branch disposition: `proposal/work-board-pilot-evidence`, via pull request.
+Approved by Mike as Velocity Maintainer on 2026-10-04, answering the Velocity Check-in Desk ask
+CK-68 ("ck-68 A"). Merged via PR #22 and stamped `v1.10.0` by the CPO session under Delegated
+Mechanics. The stamp sets the renderers' version string to v1.10.0 and regenerates the example
+pages.
+
+Branch disposition: `proposal/work-board-pilot-evidence` merged via PR #22 and deleted.
