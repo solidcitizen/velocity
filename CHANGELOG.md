@@ -9,6 +9,20 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.11.0
+
+### Added — A discovery charter for strategic goal-setting
+
+- The maintainer selected strategic goal-setting (`VEL-PF-2`) for bounded discovery, with a
+  consuming organization's planning cascade as the system it is proven on. The
+  [charter](proposals/2026-10-04-strategic-goal-setting-charter.md) states the decision rights
+  (agents never set or rewrite a goal), the research questions, the exclusions, an evidence
+  contract on the measured-pilot template, and a review gate no earlier than December 2026.
+  The manifesto and the decision-levels template now point to it. Requested in issue #20.
+
+**MINOR**: an additive direction record. No lifecycle rule, role, approval boundary, proof
+obligation, or schema changes.
+
 ## [1.10.0] — 2026-10-04
 
 ### Clarified — Work Board: two weeks of pilot evidence
