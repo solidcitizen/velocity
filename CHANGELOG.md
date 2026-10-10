@@ -9,6 +9,21 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [Unreleased] — planned 1.11.0
+
+### Clarified — Desk pointers and initiative owners
+
+- Desk rule 8: `owned_by.project` carries the owning desk's `project` string exactly as that desk
+  writes it, so a pointer matches the owner's page header. No schema rule, renderer, or validation
+  change, and every conforming desk renders unchanged. Requested in issue #18.
+- Initiative record: the owner line holds one accountable human or `Blocked: <decision>` with the
+  candidates. While it is blocked, no initiative-level stage or investment decision for that record
+  is recorded as `accepted`. Posture is unaffected. Requested in issue #19, from a register in which
+  two of seven initiatives could not honestly name an owner.
+
+**MINOR**: template support in experimental and desk templates. Nothing that conformed before stops
+conforming.
+
 ## [1.10.0] — 2026-10-04
 
 ### Clarified — Work Board: two weeks of pilot evidence
