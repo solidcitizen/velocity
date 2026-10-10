@@ -21,7 +21,9 @@ and obligations come from its charter and accountable owners, not from this voca
 These are decision levels, not mandatory organizational tiers. A small project may combine
 their ownership and records. A large program may have several nested initiatives and an
 upstream portfolio outside its own workspace. Cross-cutting work may link several outcomes;
-it still names one accountable owner and its applicable constraints. Do not invent a parent
+it still names one accountable owner and its applicable constraints. When naming that owner is
+itself an open decision, the record says so instead of inventing a name; see the initiative
+record's owner line in the [decision records](decision-records.md). Do not invent a parent
 initiative merely to fill a hierarchy.
 
 Decision levels do not replace the [L0–L5 abstraction layers, lanes, or modes](../docs/LIFECYCLE-MODEL.md).
