@@ -43,12 +43,18 @@ through the review gate, after the evidence period, by the normal proposal path.
 
 ## Decision rights
 
-- **The organization's goals** belong to its accountable humans. Agents gather evidence, draft
-  registers, propose goals and alternatives, and tag decision levels. They never adopt, set,
-  score, rank, or rewrite a goal or its success criteria.
+- **The organization's goals.** Each goal names one accountable human; a group owns nothing.
+  Agents gather evidence, draft registers, propose goals and alternatives, and tag decision
+  levels. They may propose a ranking when it is labeled as proposed. They never adopt, set, or
+  score a goal, never rewrite a goal or its success criteria, and never change the criteria a
+  proposal is ranked by.
 - **The goal-setting method under trial** belongs to the organization's chief executive.
 - **What Velocity absorbs** belongs to the Velocity Maintainer, decided at the review gate through
   the proposal path. The CPO session drafts proposals; reviewers propose; the maintainer decides.
+- **Every ruling names its hat.** The maintainer rules here both as the organization's chief
+  executive and as Velocity's maintainer, sometimes on the same day. Each ruling in the trial says
+  which hat it was made under. A session that sequences work across hats does not weigh one hat's
+  decided agenda against another hat's priorities.
 - None of these transfers write authority over goals, criteria, or rules to an agent (manifesto,
   "One Core, Two Lifecycles"; [decision levels](../templates/decision-levels.md#ai-participation-and-future-goal-setting)).
 
@@ -66,31 +72,45 @@ through the review gate, after the evidence period, by the normal proposal path.
 5. What counts as outcome evidence, as distinct from delivered output? A milestone met is not a
    key result achieved.
 6. What does an initiative record carry when naming its accountable owner is itself an open
-   decision (issue #19)?
-7. **Who classifies?** Test that a classification is never made by the party it would benefit:
-   a decision's level, how much freedom a piece of work gets, or the measure a function is judged
-   by. An agent does not grade its own autonomy, and a function does not set its own measure.
-   Component measures derive from the organization's goals, never the reverse.
+   decision (issue #19)? The `Blocked:` owner form is already in use, and one blocked owner has
+   cleared. Observe whether the rest clear, and how long they take.
+7. **Who classifies?** The party closest to the work may classify first: a decision's level, how
+   much freedom a piece of work gets, or the measure a function is judged by. Test that every
+   classification is recorded with the classifier's name and can be reviewed by a party it does
+   not benefit, and that a classification widening the classifier's own autonomy takes effect only
+   after that review. Component measures derive from the organization's goals, never the reverse.
 8. **Does declaring the situation help?** Where the organization chooses to, each initiative
    declares its situation: settled (apply the accepted procedure), analyzable (find the answer by
    expert analysis), emergent (run small, safe-to-fail probes and amplify what works), unstable
    (stabilize within existing authority), or unclassified (decompose until it can be classified).
-   The declaration sets how much experimentation is allowed. Test whether it changes any posture,
-   and how often situations are misclassified. This is optional, so it adds no required work.
+   The declaration sets how much experimentation is allowed. It is made at initiative level only,
+   by the organization's chief executive, and is optional for each initiative. Test whether it
+   changes any posture, and how often situations are misclassified.
 9. **What earns more authority?** Test that only observed behavior counts as evidence for giving
    any party more authority: a denied action declined, or a self-correction placed on the record.
-   What a party says about its own intent, deference, or confidence counts for nothing.
+   What a party says about its own intent, deference, or confidence counts for nothing toward more
+   authority. A reviewer may still read a party's stated reasoning as information.
+10. **What can we afford?** How does a capacity envelope (people, money, runway, and AI usage)
+    attach to each level, and how is a goal's affordability tested before the goal is adopted?
+11. **What are we not doing?** How are explicit holds, declined candidates, and the order in which
+    things get cut held as goal artifacts, each with an owner?
+12. **What forces closure?** What ageing rule and closing cadence apply to an open goal decision,
+    and who owns the silence while it sits?
+13. **Who must be told?** What communication obligation comes with adopting, changing, or retiring
+    a goal, and who owns it?
 
 Questions 7 to 9 come from a proposal the maintainer requested from a separate research thread.
 They enter the trial as questions, not rules. Question 8 draws on Dave Snowden's Cynefin framework
 (Snowden and Boone, *Harvard Business Review*, 2007); Velocity uses its own names for the
-situations and implements none of Cynefin's methods.
+situations and implements none of Cynefin's methods. Questions 10 to 13 come from the outside
+methodology review of this charter.
 
 ## Exclusions
 
 - No new mass under `docs/`, and no new role.
 - No goal-setting method enters the canon before the review gate, whatever the interim results.
-- No agent sets, scores, ranks, or rewrites a goal or its criteria at any point in the trial.
+- No agent adopts, sets, scores, or rewrites a goal or its criteria at any point in the trial. A
+  ranking may be proposed only when it is labeled as proposed.
 - No new Check-in Desk sections, filters, or synchronization.
 - No acceleration or benefit claim without measured evidence.
 - No organization-identifying information in this repository.
@@ -98,7 +118,9 @@ situations and implements none of Cynefin's methods.
 ## Capacity and time
 
 - Discovery runs from the day the organization ratifies its plan to the review gate. The gate is
-  no earlier than December 2026, and only after at least one full cycle of operating reviews.
+  the first monthly operating review after ratification has been followed by at least one full
+  month of weekly reviews and one monthly operating review. It is never earlier than December
+  2026. The date follows from that rule, so if ratification comes late, the gate moves with it.
 - Velocity capacity: the CPO session's drafting and review time. There is no other budget,
   staffing, or delivery date.
 
@@ -111,8 +133,10 @@ Before the first operating review, the organization pre-declares the following, 
   running and whether they were reconciled.
 - **Measures, at minimum:** time from vision to an approved plan; the share of initiatives with a
   named accountable owner; the share of key results with a baseline, target, and evidence source;
-  the number of decisions re-opened without new evidence; goal rework; and active human effort on
-  planning.
+  the number of decisions re-opened without new evidence; goal rework; work items that carry no
+  initiative; and time from an ask to its ruling on the operator's desk. Active human effort on
+  planning is measured once it is defined. Until then the organization reports agent effort from
+  its spend logs, labeled as a proxy.
 - **What is not measured yet:** realized benefit. It is reported only when its evidence source
   produces it.
 - **Reporting:** a summary to the maintainer at each operating review, through the private
@@ -128,14 +152,17 @@ At the gate, the maintainer decides one of four outcomes:
 - **Retain as an overlay:** the practice stays in the organization and the canon is unchanged.
 - **Decline.**
 
-Inputs to the decision are the evidence summary, an outside methodology review, and the
-manifesto's five admission tests.
+Inputs to the decision are the evidence summary, the first evidence from the organization's own
+records pilot (its desk and board, which start after ratification), an outside methodology
+review, and the manifesto's five admission tests.
 
 The gate also takes up a deeper question raised in drafting: whether authority over a goal rests
 on who bears the consequences if the goal is wrong, together with having no conflict of interest,
 rather than on whether the party is a person or an agent. If so, the prohibition on agents holding
 goal authority has a stated ground, and any future path to shared goal authority would run through
-coupling an agent's consequences to the organization's. The standard cannot express that today.
+coupling an agent's consequences to the organization's. The test would also need accountability
+for the outcome joined to exposure to it, since exposure alone would give standing to anyone whose
+livelihood depends on the goal. The standard cannot express that today.
 Until the gate decides, the rule stands: people own goals.
 
 Stop conditions: the organization stops running the cascade; an agent is found setting or
