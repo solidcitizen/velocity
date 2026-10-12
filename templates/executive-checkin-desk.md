@@ -75,6 +75,8 @@ beyond the five things that vary. The renderer enforces every rule it can check.
    question is open on two desks — two of one operator's desks, or the desks of two entities whose
    leads work together — one desk owns it and the other carries a pointer entry (`owned_by`)
    naming the owning project and its ID, rendered as "Owned by *project* CK-n. Answer it there."
+   `owned_by.project` carries the owning desk's `project` string exactly as that desk's own data
+   file writes it, so the pointer matches the owner's page header, "*project* Check-in Desk".
    Pointers keep their own ID and are excluded from the totals. When the owning ask closes, the
    pointer closes with it: same `answered_on`, state `answered` or `withdrawn`, a ruling that names
    the owner's decision, and `owned_by` kept, so the pointer is a pointer for its whole life and the

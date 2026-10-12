@@ -53,7 +53,10 @@ initiative plans or execution queues here.
 
 ## Initiative or program
 
-- Stable ID / title / owner:
+- Stable ID / title / owner: `<one accountable human, or Blocked: <decision id and text> with the
+  candidates the sources name>`. While the owner is `Blocked:`, no initiative-level stage or
+  investment decision for this record may be recorded as `accepted`; it stays `proposed` until the
+  blocking decision closes. Posture is a portfolio fact and is unaffected.
 - Mandate / accountable sponsor / executing lead:
 - Outcome, intended beneficiary, and evidence of success:
 - Parent goals / portfolio decisions and revisions:

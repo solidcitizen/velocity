@@ -20,8 +20,19 @@ rather than a moving branch. Versions are canon releases, not software:
   contract on the measured-pilot template, and a review gate no earlier than December 2026.
   The manifesto and the decision-levels template now point to it. Requested in issue #20.
 
-**MINOR**: an additive direction record. No lifecycle rule, role, approval boundary, proof
-obligation, or schema changes.
+### Clarified — Desk pointers and initiative owners
+
+- Desk rule 8: `owned_by.project` carries the owning desk's `project` string exactly as that desk
+  writes it, so a pointer matches the owner's page header. No schema rule, renderer, or validation
+  change, and every conforming desk renders unchanged. Requested in issue #18.
+- Initiative record: the owner line holds one accountable human or `Blocked: <decision>` with the
+  candidates. While it is blocked, no initiative-level stage or investment decision for that record
+  is recorded as `accepted`. Posture is unaffected. Requested in issue #19, from a register in which
+  two of seven initiatives could not honestly name an owner.
+
+**MINOR**: an additive direction record, and template support in the desk and experimental templates. No
+lifecycle rule, role, approval boundary, proof obligation, or schema rule changes, and nothing that conformed
+before stops conforming.
 
 ## [1.10.0] — 2026-10-04
 
