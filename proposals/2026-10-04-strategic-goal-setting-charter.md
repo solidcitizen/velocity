@@ -1,6 +1,6 @@
 # Strategic Goal-Setting: Discovery Charter (VEL-PF-2)
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-10-04
 - Authority owner: Mike, Velocity Maintainer
 - Mode: Process evolution
@@ -10,8 +10,9 @@
   same. The opportunity was captured as `VEL-PF-2` on 2026-09-21 with no execution commitment,
   and its entry names what a charter must state: decision rights, exclusions, capacity and time
   limits, research questions, proof, and a review gate.
-- Disposition: Velocity repo proposal; pending the maintainer's approval.
-- Proposed version: planned v1.11.0 (minor)
+- Disposition: Velocity repo proposal; merged via PR #21 and released as v1.11.0 on 2026-10-12
+  (see Proof and Disposition).
+- Accepted version: v1.11.0 (minor)
 
 ## Why
 
@@ -180,7 +181,16 @@ No lifecycle rule, role, approval boundary, proof obligation, or schema changes.
 
 ## Proof and Disposition
 
-To be completed at acceptance: links checked, `git diff --check` clean, and no organization
-named anywhere in the repository.
+- An outside methodology reviewer reviewed the charter on 2026-10-07 through the maintainer's private
+  channel; every point it raised is folded into this text. Because the changes were substantive, the
+  charter went back to the maintainer before merge.
+- 466 relative links resolve; 37 of 37 tests pass; `git diff --check` clean; no organization is
+  named in the repository.
+- The organization's plan had not been ratified at acceptance. The discovery period starts when it
+  is.
 
-Branch disposition: `proposal/goal-setting-charter`, via pull request.
+Approved by Mike as Velocity Maintainer on 2026-10-12, answering the Velocity Check-in Desk ask
+CK-71 ("ck-71 A"). Merged via PR #21 and stamped `v1.11.0` by the CPO session under Delegated
+Mechanics, with PR #23 (issues #18 and #19) in the same release.
+
+Branch disposition: `proposal/goal-setting-charter` merged via PR #21 and deleted.

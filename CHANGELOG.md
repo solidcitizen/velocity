@@ -9,7 +9,7 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
-## [Unreleased] — planned 1.11.0
+## [1.11.0] — 2026-10-12
 
 ### Added — A discovery charter for strategic goal-setting
 
@@ -17,8 +17,10 @@ rather than a moving branch. Versions are canon releases, not software:
   consuming organization's planning cascade as the system it is proven on. The
   [charter](proposals/2026-10-04-strategic-goal-setting-charter.md) states the decision rights
   (agents never set or rewrite a goal), the research questions, the exclusions, an evidence
-  contract on the measured-pilot template, and a review gate no earlier than December 2026.
-  The manifesto and the decision-levels template now point to it. Requested in issue #20.
+  contract on the measured-pilot template, and a review gate derived from a rule and never earlier
+  than December 2026. Each goal names one accountable human. An outside methodology review shaped
+  the final text. The manifesto and the decision-levels template now point to it. Requested in
+  issue #20.
 
 ### Clarified — Desk pointers and initiative owners
 
@@ -33,6 +35,10 @@ rather than a moving branch. Versions are canon releases, not software:
 **MINOR**: an additive direction record, and template support in the desk and experimental templates. No
 lifecycle rule, role, approval boundary, proof obligation, or schema rule changes, and nothing that conformed
 before stops conforming.
+
+Approved by Mike as Velocity Maintainer on 2026-10-12 (desk CK-71 A) and merged via PR #21 and PR #23
+by the CPO session under Delegated Mechanics, for release as `v1.11.0`. See the
+[charter record](proposals/2026-10-04-strategic-goal-setting-charter.md).
 
 ## [1.10.0] — 2026-10-04
 
@@ -561,6 +567,7 @@ Proposal of record: [`proposals/2026-06-27-invariant-binding-doctrine.md`](propo
 Initial canon: lifecycle model, role authority, artifact-authority boundaries, control planes,
 proof model, branch hygiene, project-adoption guide, governance, and the core template set.
 
+[1.11.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.11.0
 [1.10.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.10.0
 [1.9.1]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.1
 [1.9.0]: https://github.com/solidcitizen/velocity/releases/tag/v1.9.0
