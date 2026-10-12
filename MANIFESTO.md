@@ -83,8 +83,10 @@ vendors. Task throughput alone is not evidence of better decisions.
 position, and the only rule Velocity has for it today is the cross-desk pointer. It is named here
 as direction so the gap is visible, not as something the standard currently supports. Its first
 explorations are the experimental decision-level and portfolio-record templates. Strategic
-goal-setting lies beyond it: a future candidate until the maintainer selects a bounded discovery
-effort with its own authority and evidence contract. The separately owned Entity Development
+goal-setting lies beyond it. On 2026-10-04 the maintainer selected it for a bounded discovery
+effort with its own authority and evidence contract, recorded in its
+[charter](proposals/2026-10-04-strategic-goal-setting-charter.md); nothing it finds enters the core
+before that charter's review gate. The separately owned Entity Development
 Lifecycle proposal, which explores entity-level views, remains open; this statement of direction
 does not accept it.
 

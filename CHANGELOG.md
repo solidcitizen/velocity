@@ -11,6 +11,15 @@ rather than a moving branch. Versions are canon releases, not software:
 
 ## [Unreleased] — planned 1.11.0
 
+### Added — A discovery charter for strategic goal-setting
+
+- The maintainer selected strategic goal-setting (`VEL-PF-2`) for bounded discovery, with a
+  consuming organization's planning cascade as the system it is proven on. The
+  [charter](proposals/2026-10-04-strategic-goal-setting-charter.md) states the decision rights
+  (agents never set or rewrite a goal), the research questions, the exclusions, an evidence
+  contract on the measured-pilot template, and a review gate no earlier than December 2026.
+  The manifesto and the decision-levels template now point to it. Requested in issue #20.
+
 ### Clarified — Desk pointers and initiative owners
 
 - Desk rule 8: `owned_by.project` carries the owning desk's `project` string exactly as that desk
@@ -21,8 +30,9 @@ rather than a moving branch. Versions are canon releases, not software:
   is recorded as `accepted`. Posture is unaffected. Requested in issue #19, from a register in which
   two of seven initiatives could not honestly name an owner.
 
-**MINOR**: template support in experimental and desk templates. Nothing that conformed before stops
-conforming.
+**MINOR**: an additive direction record, and template support in the desk and experimental templates. No
+lifecycle rule, role, approval boundary, proof obligation, or schema rule changes, and nothing that conformed
+before stops conforming.
 
 ## [1.10.0] — 2026-10-04
 
