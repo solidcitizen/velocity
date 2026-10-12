@@ -13,7 +13,7 @@ and obligations come from its charter and accountable owners, not from this voca
 
 | Decision level | Question it owns | Typical authoritative record | Lightweight participation |
 | --- | --- | --- | --- |
-| Strategy | What outcomes should we pursue, for whom, and within which values and constraints? | Charter, mission, accepted goals | Link the existing purpose and goal owner. Goal-setting methods are future work. |
+| Strategy | What outcomes should we pursue, for whom, and within which values and constraints? | Charter, mission, accepted goals | Link the existing purpose and goal owner. Goal-setting methods are under bounded discovery; see the [charter](../proposals/2026-10-04-strategic-goal-setting-charter.md). |
 | Portfolio / investment | Which efforts merit starting, continuing, changing, or stopping, and what capacity may they consume? | Portfolio decisions, investment envelopes, business cases where needed | Name the selection authority and existing capacity assumption; a separate portfolio system is optional. |
 | Initiative / program / project | How will this effort achieve its outcome, across stages, dependencies, and risks? | Initiative plan, roadmap, program plan, gate decisions | A bounded project goal and next review can be sufficient. |
 | Work execution | What action is ready, who owns it, what blocks it, and what proves completion? | `TODO.md`, structured Work Board, or a chosen tracker | Use the [work-management contract](work-management.md) in one authoritative queue. |
@@ -116,8 +116,11 @@ An expressly delegated decision still has a scope, evidence requirement, and acc
 “Self-actualization” here describes a desired organizational capability to establish goals and
 find ways to achieve them. It is not a claim about model consciousness or a delegation rule.
 Strategic goal formation, competing values, outcome evaluation, and goal revision require
-their own future design and qualification. Velocity records that opportunity at the portfolio
-level in [VEL-PF-2](../examples/velocity-self-adoption/PORTFOLIO.md#vel-pf-2--strategic-goal-setting), with no execution commitment.
+their own design and qualification. Velocity captured that opportunity at the portfolio level as
+[VEL-PF-2](../examples/velocity-self-adoption/PORTFOLIO.md#vel-pf-2--strategic-goal-setting), and the
+maintainer selected it for bounded discovery on 2026-10-04 under a
+[charter](../proposals/2026-10-04-strategic-goal-setting-charter.md) with decision rights, exclusions,
+an evidence contract, and a review gate. Nothing it finds becomes a rule before that gate.
 
 Evaluate acceleration through a bounded [measured pilot](automation-pilot.md):
 time to a usable decision, active human effort, waiting, rework, decision quality, and resource
