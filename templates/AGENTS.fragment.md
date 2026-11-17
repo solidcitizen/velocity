@@ -34,6 +34,6 @@ Agent memory is not the authority, and changing models or tools does not change 
 
 ## Checks And Corrections
 
-Adding a test or check is ordinary work. Deleting, skipping, loosening, or suppressing a check that carries acceptance or proof evidence is a protected change: propose it with evidence, and do not apply it yourself. A comment explaining why some code may skip a check is not an exemption.
+Adding a test or check is ordinary work. Deleting, skipping, loosening, or suppressing a check that carries acceptance or proof evidence is a protected change: propose it with evidence, and let it take effect only after the check's owner has accepted it. A comment explaining why some code may skip a check is not an exemption.
 
 When the operator corrects you, prefer a design change or an automatic check over a new line of instructions, and say which one you made.

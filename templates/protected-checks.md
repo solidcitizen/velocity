@@ -36,6 +36,8 @@ provide this through path ownership rules and required reviews on the protected 
   or a decision record), not the same working session that made the change. See
   [Project Adoption Guide](../docs/PROJECT-ADOPTION-GUIDE.md): never self-approve a protected change in
   the same breath that produced it.
+- Path ownership cannot tell adding a check from weakening one, so the owner also sees additions.
+  Keep that review light; the detector in step 3 is what tells the two apart.
 
 ## 3. Fail Weakening Automatically
 
@@ -46,11 +48,13 @@ carries an approval only the owner can give, when it finds any of these in a pro
 - a new skip, focus, expected-failure, or disabled marker in a protected test
 - a new suppression for a protected rule: an inline disable comment, an ignore-file entry, or an
   exemption list entry
-- a protected configuration value or threshold changed
-- the gate definition changed
+- a protected threshold lowered, or a protected scope narrowed
+- a change to a protected configuration file or to the gate definition that the step cannot
+  classify as strengthening
 
-The failure message names what was weakened and who can approve it. The approval record names the
-approver and the reason.
+A change that only adds checks, raises a threshold, or widens a scope passes. Where the step cannot
+tell which way a change goes, it fails closed. The failure message names what was weakened and who
+can approve it. The approval record names the approver and the reason.
 
 ## 4. Guard The Guard
 
