@@ -169,6 +169,27 @@ The register format and the inline ADR `Enforcement:` field are reusable templat
 
 A `PREVENT` mechanism that exists but has no test guarding its *removal* is one careless migration away from silent un-binding. A `DROP TRIGGER`, a dropped constraint, or a deleted RLS policy can quietly demote an invariant from `PREVENT` to `HOPE`. Where the cost is reasonable, add a `DETECT` test that asserts the structural mechanism is present, so removing the prevention fails a test. Track such mechanisms in the register as `PREVENT` with a noted test gap until that test exists.
 
+### Protect The Checks From The Change They Judge
+
+A check is a binding too, and the role whose work it judges is the role best placed to unbind it. A test can be deleted, skipped, or loosened until it passes. A lint or type rule can be switched off, or suppressed one line at a time. A gate's threshold can be lowered, and a verifier can be pointed at a smaller surface. Each of these demotes an invariant toward `HOPE` while the closeout still reports green.
+
+- **Adding a check is ordinary work. Weakening one is a protected change.** Weakening means deleting, skipping, or disabling a check; loosening an assertion, threshold, or scope; adding a suppression or exemption; or changing gate configuration so that less is checked. Weakening a check that carries acceptance or proof-mapping evidence is a change to that protected artifact (see [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md#rules)): the builder may propose it, and someone other than the builder accepts it.
+- **A written justification is not an exemption.** A code comment, note, or instruction-file line explaining why some code may skip a check is a weakening and is handled as one. Fix the cause, or propose the exemption.
+- **Put the protection outside the builder's write authority.** For the checks a project relies on, the protection should itself be mechanical: an owner other than the builder whose review is required before a weakening merges, and an automatic step that fails any change that weakens a check without a recorded approval. The [Protected Checks](../templates/protected-checks.md) template gives a reference pattern.
+- **Guard the guard.** The step that detects weakening is itself a check. Keep it on the protected list, or removing it becomes the cheapest weakening of all.
+
+Where one agent session holds write access to the code, the tests, and the gate together, the protection of the checks rests on the role rules and the closeout declaration alone. Record that protection as `HOPE` in the register until a mechanism exists.
+
+### Turn Corrections Into Bindings
+
+A correction an operator gives an agent states an invariant: *do not do that again.* Bind it at the highest rung it can reach, in this order:
+
+1. **Design it out** (`PREVENT`): change the structure, interface, or layout so the mistake cannot be expressed.
+2. **Check it automatically** (`DETECT` or `RUNTIME_GUARD`): a lint rule, type, test, or guard whose failure message names the cause to fix, not a way around it.
+3. **Write it down** (`HOPE`) only when neither is possible yet, with the reason, and only under the usual `HOPE` test above.
+
+When a written correction later becomes a check, retire the prose version so that two statements of one rule cannot drift apart. Agents tend to apply prose corrections more broadly and more permanently than they were meant, and a growing list of them is a signal that bindings are being deferred. The Process Reviewer's distinction between memory-only and policy-worthy learning applies after this question, not in place of it.
+
 ### A Gate Must Run The Guard It Fronts
 
 A *gate* is any pre-flight check that decides whether an operation may proceed: a preview, a "can I do this?" validation, a precondition checked before a commit. A *guard* is the enforcement the operation will actually hit at runtime. When a gate fronts a guard, the gate must answer the **same** question the guard will — ideally by **running the guard's own predicate** (one shared check both call) or by **dry-running the real operation without persisting**. It must never approximate the guard with a *proxy signal*.

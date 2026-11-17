@@ -39,6 +39,7 @@ of any scope's requirements.
 - [System Invariant Register](../templates/system-invariant-register.md)
 - [Architecture Decision Record](../templates/architecture-decision-record.md)
 - [ADR `Enforcement:` Field Convention](../templates/adr-enforcement-field.md)
+- [Protected Checks](../templates/protected-checks.md)
 - [Portable Project Records](../templates/portable-project-records.md) — *experimental*; continuing a project across agents and tools
 - [Artifact Index](../templates/artifact-index.md) — *experimental*; shared discovery and ownership
 
