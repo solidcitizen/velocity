@@ -31,3 +31,9 @@ Before substantive work, read the project overlay and identify:
 - whether lifecycle-rule changes are only recommendations or requested repo mutations
 
 Agent memory is not the authority, and changing models or tools does not change role authority.
+
+## Checks And Corrections
+
+Adding a test or check is ordinary work. Deleting, skipping, loosening, or suppressing a check that carries acceptance or proof evidence is a protected change: propose it with evidence, and do not apply it yourself. A comment explaining why some code may skip a check is not an exemption.
+
+When the operator corrects you, prefer a design change or an automatic check over a new line of instructions, and say which one you made.

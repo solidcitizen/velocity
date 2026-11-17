@@ -38,6 +38,7 @@ need nothing else.
 [measured automation pilot](../templates/automation-pilot.md), the
 [system invariant register](../templates/system-invariant-register.md) with its
 [enforcement field](../templates/adr-enforcement-field.md),
+[protected checks](../templates/protected-checks.md),
 [architecture decision records](../templates/architecture-decision-record.md), and
 [Control Planes](CONTROL-PLANES.md). Adopt it when an agent's output reaches a lane a person
 would otherwise have gated. Experimental, opt-in: the
@@ -256,7 +257,8 @@ delegation grades. Start with one workflow and prove its behavior before widenin
 3. **Qualify the development agent.** Instantiate the
    [Agent Evaluation Pack](../templates/agent-evaluation-pack.md). Include successful work,
    authority denials, scenario-proof failures, and incident regressions. Protect the checks
-   from the candidate, compare against the baseline, and retain all attempted-run outcomes.
+   from the candidate ([Protected Checks](../templates/protected-checks.md)), compare against
+   the baseline, and retain all attempted-run outcomes.
 4. **Qualify one handoff.** Fill the
    [Transition Contract](../templates/automation-transition-contract.md). Bind the accepted
    artifact revision to the next action, verify authorization at execution, and test stale,

@@ -29,6 +29,7 @@ Protected artifacts make this drift visible.
 | Issue invariant and operator sentence | Coordinator, with operator evidence | Fixer/Tester may propose clarifications with evidence | silent rewrite to match implementation |
 | Acceptance criteria | Coordinator; Architect when semantic | Fixer may propose implementation-informed changes; Tester may challenge adequacy | unilateral weakening by implementation role |
 | Proof mapping | Coordinator owns; Tester validates | Fixer supplies internal proof candidates | mechanism proof replacing scenario proof |
+| Checks that carry acceptance or proof-mapping evidence (tests, lint and type rules, gate configuration, verifier scope) | Coordinator owns; Tester validates acceptance checks | Fixer adds checks freely and may propose weakening one, with evidence | weakening by the role whose work the check judges |
 | Implementation code/tests | Fixer | Tester/Coordinator may identify gaps | unrelated policy edits hidden in code tranche |
 | Independent acceptance evidence | Tester | Fixer may provide reproduction notes | retesting only the implementation mechanism |
 | Architecture invariants and authority boundaries | Architect | Coordinator routes decisions; Fixer proposes constraints | routine implementation changing contracts |
@@ -56,6 +57,8 @@ Tester may challenge proof adequacy, but should not silently rewrite the require
 
 Coordinator should explicitly record when acceptance criteria or proof mapping changes, including who accepted the change and why.
 
+A check that carries acceptance or proof-mapping evidence is part of that protected artifact. Adding a check is ordinary implementation work. Deleting, skipping, loosening, or suppressing one is a change to the artifact: Fixer may propose it, but should not unilaterally apply it. See [Protect The Checks From The Change They Judge](PROOF-MODEL.md#protect-the-checks-from-the-change-they-judge).
+
 Architect should approve changes that alter invariants, ownership, authority boundaries, proof contracts, or SDLC process contracts.
 
 Velocity Maintainer should approve changes to reusable lifecycle policy.
@@ -67,7 +70,7 @@ For workflow or operator-trust defects, closeout must state:
 - the original operator sentence or invariant
 - the scenario proof that directly maps to it
 - any mechanism proof that only supports the design
-- whether acceptance criteria or proof mapping changed
+- whether acceptance criteria or proof mapping changed, including any check that carries them being weakened, skipped, or removed
 - who had authority for the change
 
 If the direct scenario proof is missing, the work is not behavior-proven.

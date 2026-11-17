@@ -48,6 +48,7 @@ Owns:
 Must not:
 
 - rewrite issue evidence into a more convenient story
+- weaken, skip, or delete a check that carries acceptance or proof-mapping evidence without acceptance by its owner
 - silently broaden scope into architecture change
 - claim staging, host-qualified, or production truth from repo/local proof
 - directly change Velocity lifecycle policy while fixing product work
@@ -95,6 +96,7 @@ Owns:
 - pattern detection across recent work
 - recommendations for better skills, prompts, templates, and process
 - distinction between memory-only learning and policy-worthy learning
+- for each repeated correction, whether it can be designed out or checked automatically before it is kept as memory or proposed as policy (see [Turn Corrections Into Bindings](PROOF-MODEL.md#turn-corrections-into-bindings))
 
 Must not:
 

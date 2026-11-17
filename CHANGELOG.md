@@ -9,6 +9,35 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.12.0] — planned
+
+### Added — Protect the checks from the change they judge
+
+- Proof model: adding a check is ordinary work, and weakening one is a protected change. The new
+  section defines weakening (delete, skip, disable, loosen, suppress, exempt, narrow the gate),
+  treats a written justification as a weakening rather than an exemption, and puts the protection
+  outside the builder's write authority, with the detector guarding itself. Where one session can
+  change code, tests, and gate together, the protection is recorded as `HOPE`.
+- Proof model: an operator's correction to an agent is an invariant. It is designed out first,
+  checked automatically second, and written down only when neither is possible yet, with the
+  reason. The prose is retired once a check replaces it.
+- New opt-in template, [Protected Checks](templates/protected-checks.md): protected-check list with
+  owners, required owner review, an automatic weakening detector, enforcement level in the register,
+  a correction record, and the solo-operator case. Names no tool.
+- Agent entry fragment: a short *Checks And Corrections* section.
+
+### Clarified — Weakening a check is a change to the artifact it carries
+
+- Artifact authority boundaries: a check that carries acceptance or proof-mapping evidence is part
+  of that protected artifact, so the Fixer may propose weakening it but should not apply that change
+  alone. The closeout line on changed criteria or proof mapping names a weakened, skipped, or removed
+  check. Role authority carries the matching Fixer line and a Process Reviewer duty for repeated
+  corrections. No new closeout field.
+
+**MINOR**: additive doctrine, a new opt-in template, and clarifications of existing protections.
+Nothing that conformed before stops conforming. See the
+[proposal](proposals/2026-11-16-protect-the-checks.md).
+
 ## [1.11.0] — 2026-10-12
 
 ### Added — A discovery charter for strategic goal-setting
