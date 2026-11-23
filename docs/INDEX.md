@@ -2,6 +2,7 @@
 
 ## Core
 
+- [Your First Hour With Velocity](FIRST-HOUR.md) — start here: one real change, about an hour
 - [Lifecycle Model](LIFECYCLE-MODEL.md)
 - [Role Authority](ROLE-AUTHORITY.md)
 - [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md)
