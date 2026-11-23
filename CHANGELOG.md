@@ -9,6 +9,19 @@ rather than a moving branch. Versions are canon releases, not software:
   invalidate prior conformance.
 - **PATCH** — clarifications, typos, link fixes, non-normative edits.
 
+## [1.12.0] — planned
+
+### Added — A first-hour start page
+
+- [Your First Hour With Velocity](docs/FIRST-HOUR.md): one page for a person or small team building
+  software with an AI coding agent. It takes one real change through pinning, agent instructions,
+  framing before code, building, acceptance in a separate moment, and closeout, in about an hour.
+  It restates existing Delivery-scope rules and adds none. Linked from the README, the docs index,
+  and the adoption guide's Delivery scope.
+
+**MINOR**: new guidance only. No rule, role, approval boundary, proof obligation, template field, or
+schema changes. See the [proposal](proposals/2026-11-22-first-hour-guide.md).
+
 ## [1.11.0] — 2026-10-12
 
 ### Added — A discovery charter for strategic goal-setting

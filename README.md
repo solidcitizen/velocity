@@ -69,6 +69,9 @@ Not lifecycle policy, and not part of the governed `docs/` set:
 
 ## Put It Into Practice
 
+New here and building software with an AI agent? [Your First Hour With Velocity](docs/FIRST-HOUR.md)
+walks one real change through the method in about an hour, with no reading list first.
+
 Pick a scope, then start small. [Choose Your Scope](docs/PROJECT-ADOPTION-GUIDE.md#choose-your-scope)
 sets out three: **Delivery** for one project with one lead and one operator, **Automation** when an
 agent's output reaches a lane a person would otherwise have gated, and **Entity** when an operator

@@ -27,8 +27,9 @@ honestly.
 [Role Authority](ROLE-AUTHORITY.md), [Artifact Authority Boundaries](ARTIFACT-AUTHORITY-BOUNDARIES.md),
 [Proof Model](PROOF-MODEL.md) and [Branch Hygiene](BRANCH-HYGIENE.md), with the
 [tranche](../templates/tranche-template.md), [issue record](../templates/issue-record-template.md)
-and [agent guide fragment](../templates/AGENTS.fragment.md) templates. Start here. Most projects
-need nothing else.
+and [agent guide fragment](../templates/AGENTS.fragment.md) templates. Start here, with
+[Your First Hour With Velocity](FIRST-HOUR.md) as a one-hour walkthrough. Most projects need
+nothing else.
 
 **Automation.** Adds the artifacts that let work cross a boundary without a person carrying it:
 [role briefs](../templates/role-brief.md), [handoff packets](../templates/handoff-packet.md),
