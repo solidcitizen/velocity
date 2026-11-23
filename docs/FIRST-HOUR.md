@@ -29,23 +29,29 @@ git add .gitmodules vendor/velocity
 
 No submodules? Clone the tag instead. Both routes are in [Pin a Release](PROJECT-ADOPTION-GUIDE.md#pin-a-release).
 
-## 2. Tell Your Agent (5 minutes)
+## 2. Tell Your Agent (10 minutes)
 
 Copy [`templates/AGENTS.fragment.md`](../templates/AGENTS.fragment.md) into the instruction file your
-agent reads (often `AGENTS.md`). Under it, add a few lines of your own. This is the start of your
-project's *overlay*:
+agent reads (often `AGENTS.md`). Under it, write your project's *overlay*. One line per item is
+enough to start, and "none yet" is an honest answer:
 
 ```md
-## This Project
-- Build / test / run: `<your commands>`
-- Lanes used today: repo and local only. Nothing touches staging or production.
-- Production changes need my explicit sentence: "Deploy <sha> to production."
-- Roles: I am Operator, Coordinator, and Tester. The agent is Fixer.
+## This Project (Velocity overlay)
+- Lanes and authority: repo and local only. Nothing touches staging or production.
+- Commands: build `<cmd>`, test `<cmd>`, run `<cmd>`. No deploy command for agents.
+- Production approval: only my sentence "Deploy <sha> to production." "Ship it" does not count.
+- Proof harness: the test command, plus running the app locally and using it.
+- Issues: numbered ISSUE-1, ISSUE-2, … in docs/issues.md, Minimal profile by default;
+  Standard for anything touching data or security.
 - Branches: `<your naming>`. One branch per change.
+- Roles: I am Operator, Coordinator, and Tester. The building agent is Fixer.
+- Cadence: none; changes are taken one at a time.
+- Incidents: stop and tell me.
+- Local exceptions to Velocity: none.
 ```
 
-The [overlay requirements](PROJECT-ADOPTION-GUIDE.md#overlay-requirements) list everything a full
-overlay covers. Fill them in later.
+Each line answers one of the [overlay requirements](PROJECT-ADOPTION-GUIDE.md#overlay-requirements).
+Grow the answers as the project needs them.
 
 ## 3. Frame The Change Before Any Code (10 minutes)
 
@@ -84,8 +90,8 @@ four rules:
 
 Switch from directing to checking. Do not accept the agent's summary as proof.
 
-- Run each acceptance scenario yourself in the running app, or have a separate agent session do it
-  from the tranche alone, without the builder's notes.
+- Run each acceptance scenario yourself in the running app. Or start a separate agent session, tell
+  it that it is the Tester, and give it the tranche alone, without the builder's notes.
 - The agent's unit tests are *mechanism* proof: useful, but they show the parts work, not that the
   user sees the right thing. The scenario you ran is the *scenario* proof.
 - Check whether the acceptance criteria or the proof mapping changed during the work, and who agreed.
@@ -93,9 +99,10 @@ Switch from directing to checking. Do not accept the agent's summary as proof.
 Implementation and acceptance are separate moments even when one person does both. See
 [Scaling The Role Split](PROJECT-ADOPTION-GUIDE.md#scaling-the-role-split).
 
-## 6. Close It Out (10 minutes)
+## 6. Close It Out (5 minutes)
 
-Fill the closeout section of the tranche:
+Fill the closeout section of the tranche, and add the two lines on target changes that
+[the closeout requirement](ARTIFACT-AUTHORITY-BOUNDARIES.md#closeout-requirement) asks for:
 
 ```md
 ## Closeout
@@ -103,6 +110,8 @@ Fill the closeout section of the tranche:
 - Scenario proof: ran both criteria in the local app; screenshots attached.
 - Supporting mechanism proof: two new unit tests on the validator.
 - Missing proof: none at local lane; not verified on staging.
+- Acceptance criteria or proof mapping changed: no.
+- Authority for any change: none needed; the target is mine and did not move.
 - Branch disposition: ready for PR
 - Process-change disposition: none
 ```
